@@ -1,0 +1,284 @@
+//
+//  PrefixHeader.pch
+//  CcwbNews
+//
+//  Created by xyy520 on 16/5/17.
+//  Copyright © 2016年 谢 毅. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#ifdef __OBJC__
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+//*********************************
+#import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
+#import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import "Header.h"
+#import "AFHTTPSessionManager.h"
+#import "AddInterface.h"
+#import "Interface.h"
+#import "ActionDelegate.h"
+#import "MBProgressHUD+Add.h"
+#import "AppDelegate.h"
+#import "Enum_set.h"
+#import "SMPageControl.h"
+#import "UIImageView+AFNetworking.h"
+#import "UIImage+AFNetworking.h"
+#import "MBProgressHUD.h"
+#import "RequestInterface.h"
+#import "UIDevice+IdentifierAddition.h"
+#import "CLBottomCommentView.h"
+#import "CustomColor.h"
+#import "Masonry.h"
+#import "MJRefresh.h"
+#import "UIMyLabel.h"
+#import "HYSegmentControl.h"
+#import "UserInfo.h"
+#import "DiliWeiZhi.h"
+#import "JPhotoMagenage.h"
+#import "JQIndicatorView.h"
+#import "DiliWeiZhi.h"
+#import "UserInfo.h"
+#import "MJRefreshGifHeader.h"
+#import "UIImageView+AFNetworking.h"
+#import "MJChiBaoZiHeader.h"
+#import "MJChiBaoZiFooter.h"
+#import "YLImageView.h"
+#import "YLGIFImage.h"
+#import "UIImage+AFNetworking.h"
+#import "UIButton+AFNetworking.h"
+#import "XLsn0wLoop.h"
+#import <JavaScriptCore/JavaScriptCore.h>
+#import "LQXSwitch.h"
+#import "ZLCWebView.h"
+#import <WebKit/WebKit.h>
+#import "FYAlbumManager.h"
+#import "DBTakeVideoVC.h"
+#import <AVFoundation/AVFoundation.h>
+#import "UIWindow+YzdHUD.h"
+#import "UIView+Extension.h"
+#import <MediaPlayer/MediaPlayerDefines.h>
+#import <UMSocialCore/UMSocialCore.h>
+#import <UShareUI/UShareUI.h>
+#import <AVKit/AVKit.h>
+#import "LCTabBarController.h"
+#import "YBPopupMenu.h"
+#import "AndyDropDownList.h"
+#import "FDPickerTimer.h"
+#import "FDTimeChooser.h"
+#import "FDCityPicker.h"
+#import "YLButton.h"
+#import "AlertViewExtension.h"
+#import "XYW8IndicatorView.h"
+#import "VBTextView.h"
+
+//自己的view
+#import "AppFuntionView.h"
+#import "HomePageViewController.h"
+#import "TbeaPageViewController.h"
+#import "MyPageViewController.h"
+#import "OtherAppPageViewController.h"
+#import "ScanRebatehpViewController.h"
+#import "SearchTextFieldView.h"
+#import "ScanRebatehpCellview.h"
+#import "ModelSpecificationViewController.h"
+#import "SpecificationSelectViewController.h"
+#import "ModelSelectViewController.h"
+#import "CreateQRCodeViewController.h"
+#import "HistoryRecordViewController.h"
+#import "JiHuoViewController.h"
+#import "ScanCodeDetailViewController.h"
+#import "TiXianDataHpViewController.h"
+#import "TimeSelectViewController.h"
+#import "TiXianDataDetailViewController.h"
+#import "SortMoreViewController.h"
+#import "SortMoreCellView.h"
+#import "TiXianHistoryViewController.h"
+#import "WaterPersonCellView.h"
+#import "WaterPersonMangerViewController.h"
+#import "WaterPersonCellHpView.h"
+#import "WaterPersonHpViewController.h"
+#import "WaterPersonHpHeaderView.h"
+#import "WaterScanRebateViewController.h"
+#import "WaterPersonScanCodeCellView.h"
+#import "CheckInHistoryViewController.h"
+#import "ButtonItemLayoutView.h"
+#import "WaterLoginViewController.h"
+#import "WaterLoginDetailViewController.h"
+#import "WaterPersonInfoViewController.h"
+#import "WaterMettingViewController.h"
+#import "WaterMettingListViewController.h"
+#import "WaterMettingDetailViewController.h"
+#import "WaterMettingJoinMemberViewController.h"
+#import "WaterMettingCheckInViewController.h"
+#import "WaterMettingCheckInListViewController.h"
+#import "LoginPageViewController.h"
+#import "RegiestPageViewController.h"
+#import "ZJBLStoreShopTypeAlert.h"
+#import "RegiestDonePageViewController.h"
+#import "UserInfoMakeUpViewController.h"
+#import "UserAuthorizationViewController.h"
+#import "FocusNewsView.h"
+#import "TbeaHpCellView.h"
+#import "TbeaCompanyIntroductionViewController.h"
+#import "TbeaNewsListViewController.h"
+#import "TbeaNewsDetailViewController.h"
+#import "TbeaProductInstroduceViewController.h"
+#import "TbeaProductDetailViewController.h"
+#import "TbeaContactViewController.h"
+#import "MyPageHeaderView.h"
+#import "MyPageSettingViewController.h"
+#import "MyPageModifyPhoneViewController.h"
+#import "MyPageModifyPhoneNewViewController.h"
+#import "MyPageModifyPhoneDoneViewController.h"
+#import "SettingModifyPwdViewController.h"
+#import "SettingModifyPwdDoneViewController.h"
+#import "SettingAddressViewController.h"
+#import "SettingNewAddressViewController.h"
+#import "SettingCustomViewController.h"
+#import "SonAccountMangerViewController.h"
+#import "SonAccountAddNewViewController.h"
+#import "AuthBusinessViewController.h"
+#import "AuthWaterWorkerViewController.h"
+#import "MyAttentionViewController.h"
+#import "MyFansViewController.h"
+#import "MemberManagementViewController.h"
+#import "MemberMangementSelectUserTypeViewController.h"
+#import "HpFunctionCellView.h"
+#import "AreaSelectViewController.h"
+#import "CreateQrCodeDoneViewController.h"
+#import "CreqteQRCodeListViewController.h"
+#import "MallStoreHpViewController.h"
+#import "MallStoreFuntionView.h"
+#import "MallStoreSettingViewController.h"
+#import "MallStoreTopImageViewController.h"
+#import "HpNavigateView.h"
+#import "SGQRCode.h"
+#import "ScanQRCodeARViewController.h"
+#import "ScanQRInputCodeViewController.h"
+#import "ScanQRZhiFuDoneViewController.h"
+#import "PayPopConfirmView.h"
+#import "ScanQRPayDoneViewController.h"
+#import "ScanQRNoValidCodeViewController.h"
+#import "MallStoreCycleAdViewController.h"
+#import "MallStoreCycleAdDetailViewController.h"
+#import "MallStoreLinkSelectItemViewController.h"
+#import "MallStoreLinkSelectItemPageViewController.h"
+#import "MallStoreTurnDoneViewController.h"
+#import "MallStoreIntrduceViewController.h"
+#import "MyRebateAccountViewController.h"
+#import "MyRebateTianXianViewController.h"
+#import "MyTiXianQRCodeViewController.h"
+#import "MyInputOutputDetailViewController.h"
+#import "ComWaterMettingHpViewController.h"
+#import "ComWaterMettingReadyViewController.h"
+#import "ComWaterJXSSelectViewController.h"
+#import "ComWaterJoinMemberSelectViewController.h"
+#import "ComMettingScheduleViewController.h"
+#import "DateTimePickerView.h"
+#import "CustomTimeSelectViewController.h"
+#import "WaterPersonTiXianHistoryViewController.h"
+#import "WaterPersonHpInfoViewController.h"
+#import "DistributorRebateHpViewController.h"
+#import "DistributorRebateTiXianRankingViewController.h"
+#import "DistributorRebateTiXianHistoryViewController.h"
+#import "AddressSelectInputViewController.h"
+#import "ComCommitMettingDoneViewController.h"
+#import "ComMettingDetailLookViewController.h"
+#import "ComMettingDetailPreparingViewController.h"
+#import "ComMettingDetailNewViewController.h"
+#import "ComMettingDetailMettingInViewController.h"
+#import "ComMettingDetailMettingOverViewController.h"
+#import "ComMettingDetailUploadViewController.h"
+#import "ComMettinDetailUploadSummaryViewController.h"
+#import "ComMettingDetailUploadPicViewController.h"
+#import "ComMettingDetailSHowPicViewController.h"
+#import "ComWaterPersonMangerZJXViewController.h"
+#import "SonAccountAuthorizeViewController.h"
+#import "UserInfoMakeUpingViewController.h"
+#import "userAuthorizationingViewController.h"
+#import "SettingBGImageViewController.h"
+#import "SearchPageViewController.h"
+#import "SearchResultViewController.h"
+#import "SearchPageTopView.h"
+#import "WkWebViewViewController.h"
+#import "WkWebViewCustomView.h"
+#import "HtmlUrl.h"
+#import "PopoverView.h"
+#import "JXIndexViewController.h"
+#import "MyMessageViewController.h"
+#import "MallStoreNewCycleAdViewController.h"
+#import "MallStoreSpecialModuleListViewController.h"
+#import "MallStoreAddNewSpecialModuleViewController.h"
+#import "MallStoreGoodsMangerViewController.h"
+#import "MallStoreAddNewGoodsViewController.h"
+#import "MallStoreGoodsDetailViewController.h"
+#import "MallStoreSaleDetailViewController.h"
+#import "MallStoreHasBeenSoldDetailViewController.h"
+#import "MallStoreHasBeenEvaluatenViewController.h"
+#import "MallStoreDynamicListViewController.h"
+#import "MallStoreSendDynamicViewController.h"
+#import "MallStoreGoodsSalesNumberViewController.h"
+#import "MallStoreGoodsSalesDetailViewController.h"
+#import "MallStoreAddNewSpecialModuleCellViewController.h"
+#import "MallStoreSalesAccountListViewController.h"
+#import "DistributorMangerViewController.h"
+#import "DistributorTiXianHistoryViewController.h"
+#import "ScanSelectCommityViewController.h"
+#import "TbeaHPViewController.h"
+#import "TbeaDaiChuLiDetailViewController.h"
+#import "TbeaPaiDanPersonListViewController.h"
+#import "PopCustomDoneView.h"
+#import "TbeaBuySomeProductViewController.h"
+#import "TbeaPaiDanDoneViewController.h"
+#import "TbeaYiPaiDanDetailViewController.h"
+#import "TbeaDetectUserHPViewController.h"
+#import "TbeaDetectUserWeiJieDanViewController.h"
+#import "TbeaDetectUserWeiJieDanDoneViewController.h"
+#import "TbeaDetectUserYiJieDanViewController.h"
+#endif /* PrefixHeader_pch */
+
+/**
+ *  弱引用
+ */
+#define BXWeakSelf __weak typeof(self) weakSelf = self;
+
+#define BXNoteCenter [NSNotificationCenter defaultCenter]
+
+#define BXScreenH [UIScreen mainScreen].bounds.size.height
+#define BXScreenW [UIScreen mainScreen].bounds.size.width
+#define BXScreenBounds [UIScreen mainScreen].bounds
+#define BXKeyWindow [UIApplication sharedApplication].keyWindow
+
+// 随机色
+#define BXRandomColor BXColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+
+// 设置颜色
+#define BXColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+
+#define BXAlphaColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:a]
+//保单显示文字颜色
+#define The_Prompt_Color_Nine [[UIColor alloc]initWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]
+#define The_Prompt_Color_Six [[UIColor alloc]initWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1]
+#define The_Prompt_Color_Three [[UIColor alloc]initWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1]
+
+#define The_MainColor BXColor(51, 153, 255)
+#define BXGlobalBg BXColor(242, 242, 242)
+// 自定义log
+#ifdef DEBUG
+
+#define BXLog(...) NSLog(@"%s %d \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+
+#else
+
+#define BXLog(...)
+
+#endif
+
+
+#endif /* PrefixHeader_pch */
+
+

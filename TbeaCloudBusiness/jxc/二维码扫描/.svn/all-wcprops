@@ -1,0 +1,149 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F
+END
+zbar-back.png
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/zbar-back.png
+END
+Scanner.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/Scanner.h
+END
+ImageScanner.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/ImageScanner.h
+END
+zbar-samples.png
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/zbar-samples.png
+END
+zbar.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/zbar.h
+END
+Exception.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/Exception.h
+END
+ZBarSDK.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/ZBarSDK.h
+END
+zbar-help.html
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/zbar-help.html
+END
+ZBarImage.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/ZBarImage.h
+END
+Decoder.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/Decoder.h
+END
+Symbol.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/Symbol.h
+END
+ZBarCaptureReader.h
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/ZBarCaptureReader.h
+END
+Video.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/Video.h
+END
+Window.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/Window.h
+END
+ZBarImageScanner.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/ZBarImageScanner.h
+END
+ZBarReaderView.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/ZBarReaderView.h
+END
+zbar-helpicons.png
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/zbar-helpicons.png
+END
+Processor.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/Processor.h
+END
+ZBarReaderViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/ZBarReaderViewController.h
+END
+QRCodeScan.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/QRCodeScan.h
+END
+Image.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/Image.h
+END
+ZBarSymbol.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/ZBarSymbol.h
+END
+ZBarReaderController.h
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/TeBian/!svn/ver/95/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/ZBarReaderController.h
+END
+QRCodeScan.m
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/TeBian/!svn/ver/96/TeBian/jxc/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E6%8F%8F/QRCodeScan.m
+END

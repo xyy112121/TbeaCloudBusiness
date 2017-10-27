@@ -1,0 +1,454 @@
+//
+//  QRCodeScan.m
+//  KuaiPaiYunNan
+//
+//  Created by 谢 毅 on 13-7-12.
+//  Copyright (c) 2013年 谢 毅. All rights reserved.
+//
+
+#import "QRCodeScan.h"
+#import "Header.h"
+#import "AppDelegate.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "LPPopup.h"
+#import "JQIndicatorView.h"
+#import "UIImageView+AFNetworking.h"
+#import "AddInterface.h"
+@interface QRCodeScan ()
+
+@end
+
+@implementation QRCodeScan
+@synthesize resultText;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+-(IBAction)returnback:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self scanButtonTapped];
+    self.title = @"二维码扫描";
+	self.view.backgroundColor = COLORNOW(240, 240, 240);
+//    [[self.navigationController.navigationBar viewWithTag:1009] setAlpha:0];
+    UIImage* img=LOADIMAGE(@"returnbg", @"png");
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame =CGRectMake(0, 0, 40, 40);
+    [btn setBackgroundImage:img forState:UIControlStateNormal];
+    [btn addTarget: self action: @selector(returnback:) forControlEvents: UIControlEventTouchUpInside];
+    UIBarButtonItem* item=[[UIBarButtonItem alloc] initWithCustomView:btn];
+    self.navigationItem.leftBarButtonItem=item;
+
+//	if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+//		self.edgesForExtendedLayout = UIRectEdgeNone;
+//	}
+//	NSDictionary * dict=[NSDictionary dictionaryWithObject:COLORNOW(255, 255, 255) forKey:NSForegroundColorAttributeName];
+//	self.navigationController.navigationBar.titleTextAttributes = dict;
+//	self.title = @"二维码扫描";
+//	UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(2, 2, 60, 40)];
+//	UIButton *button = [[UIButton alloc] initWithFrame:contentView.bounds];
+//	[button setImage:LOADIMAGE(@"returnbg", @"png") forState:UIControlStateNormal];
+//	[self initview:nil];
+    // Do any additional setup after loading the view from its nib.
+}
+
+-(void)initview:(id)sender
+{
+	scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+	scrollview.backgroundColor = [UIColor clearColor];
+	[self.view addSubview:scrollview];
+	
+	UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(20, 20, SCREEN_WIDTH-40, 150)];
+	imageview.tag = 1500;
+	[imageview setImage:LOADIMAGE(@"test1", @"png")];
+	[scrollview addSubview:imageview];
+
+	UILabel *labelname = [[UILabel alloc] initWithFrame:CGRectMake(25,imageview.frame.origin.y+imageview.frame.size.height+10, 60, 20)];
+	labelname.font = FONTN(12.0f);
+	labelname.text = @"名称";
+	labelname.textColor = COLORNOW(0, 51, 153);
+	[scrollview addSubview:labelname];
+	
+	UILabel *labelnamevalue = [[UILabel alloc] initWithFrame:CGRectMake(80, labelname.frame.origin.y, SCREEN_WIDTH-90, 20)];
+	labelnamevalue.font = FONTN(12.0f);
+	labelnamevalue.tag = 1501;
+	labelnamevalue.text = @"";
+	labelnamevalue.textColor = COLORNOW(151, 151, 151);
+	[scrollview addSubview:labelnamevalue];
+	
+	UILabel *labelxinghao = [[UILabel alloc] initWithFrame:CGRectMake(25,labelname.frame.origin.y+labelname.frame.size.height+10, 60, 20)];
+	labelxinghao.font = FONTN(12.0f);
+	labelxinghao.text = @"型号";
+	labelxinghao.textColor = COLORNOW(0, 51, 153);
+	[scrollview addSubview:labelxinghao];
+	
+	UILabel *labelxinghaovalue = [[UILabel alloc] initWithFrame:CGRectMake(80, labelxinghao.frame.origin.y, SCREEN_WIDTH-90, 20)];
+	labelxinghaovalue.font = FONTN(12.0f);
+	labelxinghaovalue.tag = 1502;
+	labelxinghaovalue.text = @"";
+	labelxinghaovalue.textColor = COLORNOW(151, 151, 151);
+	[scrollview addSubview:labelxinghaovalue];
+	
+	UILabel *labelchangjia= [[UILabel alloc] initWithFrame:CGRectMake(25,labelxinghao.frame.origin.y+labelxinghao.frame.size.height+10, 60, 20)];
+	labelchangjia.font = FONTN(12.0f);
+	labelchangjia.text = @"生产厂家";
+	labelchangjia.textColor = COLORNOW(0, 51, 153);
+	[scrollview addSubview:labelchangjia];
+	
+	UILabel *labelchangjiavalue = [[UILabel alloc] initWithFrame:CGRectMake(80, labelchangjia.frame.origin.y, SCREEN_WIDTH-90, 20)];
+	labelchangjiavalue.font = FONTN(12.0f);
+	labelchangjiavalue.tag = 1503;
+	labelchangjiavalue.text = @"";
+	labelchangjiavalue.textColor = COLORNOW(151, 151, 151);
+	[scrollview addSubview:labelchangjiavalue];
+	
+	UILabel *labeldate= [[UILabel alloc] initWithFrame:CGRectMake(25,labelchangjia.frame.origin.y+labelchangjia.frame.size.height+10, 60, 20)];
+	labeldate.font = FONTN(12.0f);
+	labeldate.text = @"生产日期";
+	labeldate.textColor = COLORNOW(0, 51, 153);
+	[scrollview addSubview:labeldate];
+	
+	UILabel *labeldatevalue = [[UILabel alloc] initWithFrame:CGRectMake(80, labeldate.frame.origin.y, SCREEN_WIDTH-90, 20)];
+	labeldatevalue.font = FONTN(12.0f);
+	labeldatevalue.tag = 1504;
+	labeldatevalue.text = @"";
+	labeldatevalue.textColor = COLORNOW(151, 151, 151);
+	[scrollview addSubview:labeldatevalue];
+	
+	UILabel *labelgoto= [[UILabel alloc] initWithFrame:CGRectMake(25,labeldate.frame.origin.y+labeldate.frame.size.height+10, 60, 20)];
+	labelgoto.font = FONTN(12.0f);
+	labelgoto.text = @"发往";
+	labelgoto.textColor = COLORNOW(0, 51, 153);
+	[scrollview addSubview:labelgoto];
+	
+	UILabel *labelgotovalue = [[UILabel alloc] initWithFrame:CGRectMake(80, labelgoto.frame.origin.y, SCREEN_WIDTH-90, 20)];
+	labelgotovalue.font = FONTN(12.0f);
+	labelgotovalue.tag = 1505;
+	labelgotovalue.text = @"";
+	labelgotovalue.textColor = COLORNOW(151, 151, 151);
+	[scrollview addSubview:labelgotovalue];
+	
+}
+
+- (void) scanButtonTapped
+{    
+    ZBarReaderViewController *reader = [ZBarReaderViewController new];
+    
+    reader.readerDelegate = self;
+    
+    //非全屏
+    
+    reader.wantsFullScreenLayout = NO;
+    
+    //隐藏底部控制按钮
+    
+    reader.showsZBarControls = NO;
+    
+    //设置自己定义的界面
+    
+    [self setOverlayPickerView:reader];
+    
+    ZBarImageScanner *scanner = reader.scanner;
+    
+    [scanner setSymbology: ZBAR_I25
+     
+                   config: ZBAR_CFG_ENABLE
+     
+                       to: 0];
+    
+    [self presentViewController:reader animated:YES completion:nil];
+    
+}
+
+-(void) requestJXscan:(NSString *)comname
+{
+	NSString *postUrl = URLHeader;
+	
+	NSDictionary *parameters = @{@"ScanCode":comname};
+	
+	AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+	
+	JQIndicatorView *indicator = [[JQIndicatorView alloc] initWithType:JQIndicatorTypeBounceSpot1 tintColor:COLORNOW(200, 200, 200)];
+	indicator.center = app.window.center;
+	indicator.tag = IndicatorTag;
+	[app.window addSubview:indicator];
+	[indicator startAnimating];
+	
+	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+	[manager.requestSerializer setValue:@"IPHONE" forHTTPHeaderField:@"OrigDomain"];
+	[manager.requestSerializer setValue:@"tbea_v1" forHTTPHeaderField:@"ProtocolVer"];
+	[manager.requestSerializer setValue:@"V_1.0" forHTTPHeaderField:@"AppVersion"];
+	[manager.requestSerializer setValue:@"0" forHTTPHeaderField:@"ActionCode"];
+	[manager.requestSerializer setValue:@"TBEA06000200" forHTTPHeaderField:@"ServiceCode"];
+	[manager.requestSerializer setValue:app.userinfo.userid forHTTPHeaderField:@"UserId"];
+	[manager.requestSerializer setValue:app.dili.dililocality forHTTPHeaderField:@"CityId"];
+	[manager.requestSerializer setValue:[NSString stringWithFormat:@"%f",app.dili.jingdu] forHTTPHeaderField:@"Longitude"];
+	[manager.requestSerializer setValue:[NSString stringWithFormat:@"%f",app.dili.weidu] forHTTPHeaderField:@"Latitude"];
+	manager.responseSerializer = [AFJSONResponseSerializer serializer];//使用这个将得到的是JSON
+	
+	//注意：此行不加也可以
+	manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+	
+	[manager POST:postUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		DLog(@"JSON: %@", responseObject);
+		NSDictionary *dictemp = [responseObject objectForKey:@"ProductInfo"];
+		if([dictemp count]>0)
+		{
+			[self initview:nil];
+			
+			UIImageView *imageview = (UIImageView *)[scrollview viewWithTag:1500];
+			UILabel *label1 = (UILabel*)[scrollview viewWithTag:1501];
+			UILabel *label2 = (UILabel*)[scrollview viewWithTag:1502];
+			UILabel *label3 = (UILabel*)[scrollview viewWithTag:1503];
+			UILabel *label4 = (UILabel*)[scrollview viewWithTag:1504];
+			UILabel *label5 = (UILabel*)[scrollview viewWithTag:1505];
+			
+			NSURL *urlstr = [NSURL URLWithString:[URLPicHeader stringByAppendingString:[dictemp objectForKey:@"Picture"]]];
+			[imageview setImageWithURL:urlstr placeholderImage:LOADIMAGE(@"test", @"png")];
+			label1.text = [dictemp objectForKey:@"Name"];
+			label2.text = [dictemp objectForKey:@"Specifications"];
+			label3.text = [dictemp objectForKey:@"Manufacture"];
+			label4.text = [dictemp objectForKey:@"ManuDate"];
+			label5.text = [dictemp objectForKey:@"Destination"];
+		}
+		else
+		{
+			[indicator stopAnimating];
+			LPPopup *popup = [LPPopup popupWithText:@"无该产品信息，请与厂家联系400-887-7980"];
+			[popup showInView:app.window
+				centerAtPoint:app.window.center
+					 duration:kLPPopupDefaultWaitDuration
+				   completion:nil];
+			[self returnback:nil];
+		}
+		[indicator stopAnimating];
+		//...
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+		LPPopup *popup = [LPPopup popupWithText:@"网络不给力!"];
+		[popup showInView:self.view
+			centerAtPoint:self.view.center
+				 duration:kLPPopupDefaultWaitDuration
+			   completion:nil];
+		[indicator stopAnimating];
+	}];
+}
+
+
+- (void) imagePickerController: (UIImagePickerController*) reader
+ didFinishPickingMediaWithInfo: (NSDictionary*) info
+{
+    // ADD: get the decode results
+	
+    id<NSFastEnumeration> results =
+	[info objectForKey: ZBarReaderControllerResults];
+    ZBarSymbol *symbol = nil;
+    for(symbol in results)
+        // EXAMPLE: just grab the first barcode
+        break;
+    
+	
+    // EXAMPLE: do something useful with the barcode data
+    resultText = symbol.data;
+//	AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//	JQIndicatorView *indicator = [[JQIndicatorView alloc] initWithType:JQIndicatorTypeBounceSpot1 tintColor:COLORNOW(200, 200, 200)];
+//	indicator.center = app.window.center;
+//	indicator.tag = IndicatorTag;
+//	[app.window addSubview:indicator];
+//	[indicator startAnimating];
+    // EXAMPLE: do something useful with the barcode image
+    //    resultImage.image =
+    //	[info objectForKey: UIImagePickerControllerOriginalImage];
+	
+    // ADD: dismiss the controller (NB dismiss from the *reader*!)
+    [reader dismissViewControllerAnimated:YES completion:nil];
+	
+	[self requestJXscan:resultText];
+}
+
+- (void)setOverlayPickerView:(ZBarReaderViewController *)reader
+{
+    //清除原有控件
+//    reader
+    
+    for (UIView *temp in [reader.view subviews]) {
+        
+        for (UIButton *button in [temp subviews]) {
+            
+            if ([button isKindOfClass:[UIButton class]]) {
+                
+                [button removeFromSuperview];
+                
+            }
+            
+        }
+        
+        for (UIToolbar *toolbar in [temp subviews]) {
+            
+            if ([toolbar isKindOfClass:[UIToolbar class]]) {
+                
+                [toolbar setHidden:YES];
+                
+                [toolbar removeFromSuperview];
+                
+            }
+            
+        }
+        
+    }
+    
+//    //画中间的基准线
+//    
+//    UIView* line = [[UIView alloc] initWithFrame:CGRectMake(40, 220, 240, 1)];
+//    
+//    line.backgroundColor = [UIColor redColor];
+//    
+//    [reader.view addSubview:line];
+	
+    //最上部view
+    
+    UIView* upView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
+    
+    upView.alpha = 0.3;
+    
+    upView.backgroundColor = [UIColor blackColor];
+    
+    [reader.view addSubview:upView];
+    
+    //用于说明的label
+    UIImageView *imageviewbg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    imageviewbg.image = [UIImage imageNamed:@"top.png"];
+    [reader.view addSubview:imageviewbg];
+    
+    UIButton *returnButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [returnButton setFrame:CGRectMake(11, 22, 40, 40)];
+    if(iphone5)
+        [returnButton setFrame:CGRectMake(11, 22, 40, 40)];
+    UIImage *imagereturn = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"returnbg" ofType:@"png"]];
+    [returnButton setBackgroundImage:imagereturn forState:UIControlStateNormal];
+    [returnButton addTarget:self action:@selector(dismissOverlayView:)forControlEvents:UIControlEventTouchUpInside];
+    [reader.view addSubview:returnButton];
+    
+    UILabel * labIntroudction= [[UILabel alloc] init];
+    labIntroudction.backgroundColor = [UIColor clearColor];
+    labIntroudction.frame=CGRectMake(80, 22, 160, 40);
+    if(iphone5)
+        labIntroudction.frame=CGRectMake(80, 22, 160, 40);
+    labIntroudction.textColor=[UIColor whiteColor];
+    labIntroudction.text=@"二维码扫描";
+    labIntroudction.textAlignment = NSTextAlignmentCenter;
+    labIntroudction.font = [UIFont fontWithName:@"STHeitiTC-Medium" size:24.0f];
+    [reader.view addSubview:labIntroudction];
+    
+    //左侧的view
+    
+    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 80, 15, 280)];
+    
+    leftView.alpha = 0.3;
+    
+    leftView.backgroundColor = [UIColor blackColor];
+    
+    [reader.view addSubview:leftView];
+
+    
+    //右侧的view
+    
+    UIView *rightView = [[UIView alloc] initWithFrame:CGRectMake(305, 80, 15, 280)];
+    
+    rightView.alpha = 0.3;
+    
+    rightView.backgroundColor = [UIColor blackColor];
+    
+    [reader.view addSubview:rightView];
+    
+    
+    //底部view
+    
+    UIView * downView = [[UIView alloc] initWithFrame:CGRectMake(0, 360, 320, 220)];
+    
+    downView.alpha = 0.3;
+    
+    downView.backgroundColor = [UIColor blackColor];
+    
+    [reader.view addSubview:downView];
+
+    //用于取消操作的button
+    
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cancelButton setFrame:CGRectMake(15, 390, 290, 41)];
+    UIImage *imagecannel = [UIImage imageNamed:@"QRcancel.png"];
+    [cancelButton setBackgroundImage:imagecannel forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(dismissOverlayView:)forControlEvents:UIControlEventTouchUpInside];  
+    [reader.view addSubview:cancelButton];  
+    
+}
+
+- (void)dismissOverlayView:(id)sender{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self returnback:nil];
+}
+
+-(NSString *)fliternetaddress:(NSString *)source
+{
+	NSLog(@"source====%@",source);
+	
+	char oldnetaddress[1024];
+	char netaddress[1024];
+	char *newaddress;
+	strcpy(oldnetaddress,[source UTF8String]);
+	newaddress = strstr(oldnetaddress,"http://");
+    if(newaddress == nil)
+        newaddress = strstr(oldnetaddress,"https://");
+    if(newaddress == nil)
+        return nil;
+	memset(netaddress,'\0',1024);
+	int i = 0;
+	int aa = strlen(newaddress);
+	if(newaddress != NULL)
+	{
+		while((*newaddress != ';')&&(i<aa))
+		{
+			netaddress[i] = *newaddress;
+			newaddress++;
+			i++;
+		}
+		return ([NSString stringWithUTF8String:netaddress]);
+	}
+	return nil;
+}
+
+-(int)fliterintaddress:(NSString *)source
+{
+	NSLog(@"source====%@",source);
+	
+	char oldnetaddress[1024];
+	char *newaddress;
+	strcpy(oldnetaddress,[source UTF8String]);
+	newaddress = strstr(oldnetaddress,"http://");
+	if(newaddress != NULL)
+	{
+		int aa = strlen(newaddress);
+		return aa;
+	}
+	return 0;
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end
