@@ -111,7 +111,9 @@
 #define RQStoreDeleteFrontCoverpicCode @"TBEAYUN006002001002" //删除形象 图
 #define RQStoreCycleAdListCode @"TBEAYUN006002002000"  //获取轮换列表
 #define RQStoreAddnewCycleadInfoCode @"TBEAYUN006002002002"  //添加轮换广告
-#define RQMessageListCode @"TBEAYUN011005001001" //消息列表
+#define RQMessageCategoryListCode @"TBEAYUN011005001001" //消息种类列表
+#define RQMessageContentListCode @"TBEAYUN011005002001"  //消息gqge
+
 #define RQStoreGetDianPuInstroduce @"TBEAYUN006002004001" //获取店铺介绍
 #define RQStoreSaveDianPuInstroduce @"TBEAYUN006002004002" //保存店铺介绍
 #define RQStoreGetSpeModuleListCode @"TBEAYUN006002005001" //获取型号规格列表
@@ -134,7 +136,7 @@
 #define RQStoreAddGoodsModuleinameCode @"TBEAYUN001002001001"  //添加商品型号
 #define RQStoreSalesAccountListCode @"TBEAYUN006006001003"  //销售流水
 #define RQStoreDistributorMangerListCode @"TBEAYUN004005001000"  //分销商管理
-#define RQStoreDistributorTiXianHistoryCode @"TBEAYUN004005002000"  //分销商提现历史 
+#define RQStoreDistributorTiXianHistoryCode @"TBEAYUN004005002000"  //分销商提现历史
 #define RQUpdateNewVersionCode @"TBEAYUN015001001000"  // 更新
 
 #define RQTbeaHpSelectItemTypeCode @"TBEAYUN004006001000" //特变卫士类型

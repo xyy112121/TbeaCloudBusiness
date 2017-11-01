@@ -241,6 +241,7 @@
 #import "TbeaDetectUserYiJieDanViewController.h"
 #import "MyPageAboutMeViewController.h"
 #import "AuthNotPassReasonViewController.h"
+#import "MyMessageListViewController.h"
 #endif /* PrefixHeader_pch */
 
 /**

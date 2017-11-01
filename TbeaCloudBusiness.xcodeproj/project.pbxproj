@@ -816,6 +816,7 @@
 		7452DC051F5419B4008AE7EC /* MallStoreAddNewGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7452DC041F5419B4008AE7EC /* MallStoreAddNewGoodsViewController.m */; };
 		745929351FA967B7008FBE3C /* SwiftWebview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745929331FA967B7008FBE3C /* SwiftWebview.swift */; };
 		745929381FA9A2DE008FBE3C /* AuthNotPassReasonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 745929371FA9A2DE008FBE3C /* AuthNotPassReasonViewController.m */; };
+		7459293B1FA9AE9E008FBE3C /* MyMessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7459293A1FA9AE9E008FBE3C /* MyMessageListViewController.m */; };
 		745C39611F9F1F61008E0BB2 /* TbeaDaiChuLiDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 745C39601F9F1F61008E0BB2 /* TbeaDaiChuLiDetailViewController.m */; };
 		745C39641F9F27AF008E0BB2 /* TbeaPaiDanPersonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 745C39631F9F27AF008E0BB2 /* TbeaPaiDanPersonListViewController.m */; };
 		745C39671F9F2ED1008E0BB2 /* PopCustomDoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 745C39661F9F2ED1008E0BB2 /* PopCustomDoneView.m */; };
@@ -2091,6 +2092,8 @@
 		745929341FA967B7008FBE3C /* TbeaCloudBusiness-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TbeaCloudBusiness-Bridging-Header.h"; sourceTree = "<group>"; };
 		745929361FA9A2DE008FBE3C /* AuthNotPassReasonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthNotPassReasonViewController.h; sourceTree = "<group>"; };
 		745929371FA9A2DE008FBE3C /* AuthNotPassReasonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthNotPassReasonViewController.m; sourceTree = "<group>"; };
+		745929391FA9AE9E008FBE3C /* MyMessageListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMessageListViewController.h; sourceTree = "<group>"; };
+		7459293A1FA9AE9E008FBE3C /* MyMessageListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMessageListViewController.m; sourceTree = "<group>"; };
 		745C395F1F9F1F61008E0BB2 /* TbeaDaiChuLiDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbeaDaiChuLiDetailViewController.h; sourceTree = "<group>"; };
 		745C39601F9F1F61008E0BB2 /* TbeaDaiChuLiDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TbeaDaiChuLiDetailViewController.m; sourceTree = "<group>"; };
 		745C39621F9F27AF008E0BB2 /* TbeaPaiDanPersonListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TbeaPaiDanPersonListViewController.h; sourceTree = "<group>"; };
@@ -4483,6 +4486,8 @@
 			children = (
 				7448BC951F5267EC00354934 /* MyMessageViewController.h */,
 				7448BC961F5267EC00354934 /* MyMessageViewController.m */,
+				745929391FA9AE9E008FBE3C /* MyMessageListViewController.h */,
+				7459293A1FA9AE9E008FBE3C /* MyMessageListViewController.m */,
 			);
 			path = "消息";
 			sourceTree = "<group>";
@@ -5624,6 +5629,7 @@
 				74090D061F2EC8B800CB0FBE /* ComWaterMettingHpViewController.m in Sources */,
 				746688681F1F9FA100DA21B6 /* MyInputOutputDetailViewController.m in Sources */,
 				08A788C81ECF37FA007AB1F7 /* HpNavigateView.m in Sources */,
+				7459293B1FA9AE9E008FBE3C /* MyMessageListViewController.m in Sources */,
 				08183E4D1ECB404F00C9E553 /* YTextField.m in Sources */,
 				08CAA6431EE7F2C200F47C9E /* WaterMettingListViewController.m in Sources */,
 				08CAA6311EE7F2C200F47C9E /* HomePageViewController.m in Sources */,

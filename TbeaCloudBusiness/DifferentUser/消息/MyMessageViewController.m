@@ -18,7 +18,7 @@
     [super viewDidLoad];
 	[self initview];
 	
-	self.title = @"消息";
+	self.title = @"消息分类";
 	UIImage* img=LOADIMAGE(@"returnback", @"png");
 	UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(2, 2, 40, 40)];
 	UIButton *button = [[UIButton alloc] initWithFrame:contentView.bounds];
@@ -32,6 +32,7 @@
 
 -(void)initview
 {
+    app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStylePlain];
 	tableview.backgroundColor = [UIColor whiteColor];
 	tableview.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -145,18 +146,18 @@
 	NSString *nowcount = [NSString stringWithFormat:@"%@",[dictemp objectForKey:@"newcount"]];
 	if([nowcount intValue]>0)
 	{
-		UIImageView *imageviewpoint = [[UIImageView alloc] initWithFrame:CGRectMake(imageview.frame.origin.x+imageview.frame.size.width-10, imageview.frame.origin.y-8, 20, 16)];
+		UIImageView *imageviewpoint = [[UIImageView alloc] initWithFrame:CGRectMake(imageview.frame.origin.x+imageview.frame.size.width-15, imageview.frame.origin.y-8, 25, 16)];
 		imageviewpoint.layer.cornerRadius = 5.0f;
 		imageviewpoint.clipsToBounds = YES;
 		imageviewpoint.layer.borderColor = [UIColor whiteColor].CGColor;
 		imageviewpoint.layer.borderWidth = 1.0f;
-		imageviewpoint.backgroundColor = Colorredcolor;
+		imageviewpoint.backgroundColor = [UIColor redColor];
 		[cell.contentView addSubview:imageviewpoint];
 		
-		UILabel *labelnum = [[UILabel alloc] initWithFrame:CGRectMake(imageviewpoint.frame.origin.x, imageviewpoint.frame.origin.y, 20, 16)];
+		UILabel *labelnum = [[UILabel alloc] initWithFrame:CGRectMake(imageviewpoint.frame.origin.x, imageviewpoint.frame.origin.y, 25, 16)];
 		labelnum.textColor = [UIColor whiteColor];
 		labelnum.textAlignment = NSTextAlignmentCenter;
-		labelnum.font = FONTN(10.0f);
+		labelnum.font = FONTN(11.0f);
 		labelnum.text = nowcount;
 		[cell.contentView addSubview:labelnum];
 	}
@@ -167,7 +168,7 @@
 	labeltitle.text = [dictemp objectForKey:@"name"];
 	[cell.contentView addSubview:labeltitle];
 	
-	UILabel *labeltime = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-100, labeltitle.frame.origin.y, 90, 20)];
+	UILabel *labeltime = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-120, labeltitle.frame.origin.y, 110, 20)];
 	labeltime.textColor = ColorBlackGray;
 	labeltime.font = FONTN(14.0f);
 	labeltime.text = [dictemp objectForKey:@"lasttime"];
@@ -187,6 +188,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary *dictemp = [arraydata objectAtIndex:indexPath.row];
+    MyMessageListViewController *messagelist = [[MyMessageListViewController alloc] init];
+    messagelist.FCcategoryid = [dictemp objectForKey:@"id"];
+    [self.navigationController pushViewController:messagelist animated:YES];
+    
 //	NSDictionary *dictemp = [arraydata objectAtIndex:indexPath.row];
 //	WebViewContentViewController *webviewcontent = [[WebViewContentViewController alloc] init];
 //	webviewcontent.strtitle = [dictemp objectForKey:@"name"];
@@ -221,7 +227,7 @@
     [params setObject:page forKey:@"page"];
     [params setObject:pagesize forKey:@"pagesize"];
     
-    [RequestInterface doGetJsonWithParametersNoAn:params App:app RequestCode:RQMessageListCode ReqUrl:InterfaceRequestUrl ShowView:app.window alwaysdo:^{
+    [RequestInterface doGetJsonWithParametersNoAn:params App:app RequestCode:RQMessageCategoryListCode ReqUrl:InterfaceRequestUrl ShowView:app.window alwaysdo:^{
         
     } Success:^(NSDictionary *dic) {
         DLog(@"dic====%@",dic);
