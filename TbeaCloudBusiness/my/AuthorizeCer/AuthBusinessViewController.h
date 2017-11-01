@@ -16,7 +16,7 @@
 {
 	UITableView *tableview;
 	AppDelegate *app;
-	
+    NSDictionary *FCcompanyidentifyinfo;
 }
 
 @property(nonatomic,strong)id<ActionDelegate>delegate1;

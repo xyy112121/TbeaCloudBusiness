@@ -21,6 +21,7 @@
 		self.edgesForExtendedLayout = UIRectEdgeNone;
 	}
 	[self initview];
+    [self getauthbusinessinfo];
 	// Do any additional setup after loading the view.
 }
 
@@ -33,6 +34,10 @@
 	tableview.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 	tableview.delegate = self;
 	tableview.dataSource = self;
+    if (@available(iOS 11.0, *)) {
+        tableview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }else{
+    }
 	[self.view addSubview:tableview];
 	[self viewheader];
 	[self setExtraCellLineHidden:tableview];
@@ -180,7 +185,7 @@
 		cell.accessoryType = UITableViewCellAccessoryNone;
 	}
 	
-	
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
 	for(UIView *view in cell.contentView.subviews)
 	{
@@ -210,15 +215,15 @@
 			{
 				case 0:
 					labelname.text = @"企业名称";
-					labelvalue.text = @"绵羊市XX县XX镇XX村经营部";
+					labelvalue.text = [FCcompanyidentifyinfo objectForKey:@"companyname"];
 					break;
 				case 1:
 					labelname.text = @"注册号";
-					labelvalue.text = @"510*********234123";
+					labelvalue.text = [FCcompanyidentifyinfo objectForKey:@"companylisencecode"];
 					break;
 				case 2:
 					labelname.text = @"注册地址";
-					labelvalue.text = @"绵羊市XX县XX镇XX村14号";
+					labelvalue.text = [FCcompanyidentifyinfo objectForKey:@"companyaddress"];
 					break;
 			}
 			break;
@@ -227,11 +232,11 @@
 			{
 				case 0:
 					labelname.text = @"法人姓名";
-					labelvalue.text = @"李明";
+					labelvalue.text = [FCcompanyidentifyinfo objectForKey:@"masterperson"];
 					break;
 				case 1:
 					labelname.text = @"身份证号";
-					labelvalue.text = @"510*********234123";
+					labelvalue.text = [FCcompanyidentifyinfo objectForKey:@"masterpersoncardid"];
 					break;
 			}
 			break;
@@ -239,7 +244,7 @@
 			labelvalue.frame = CGRectMake(SCREEN_WIDTH-200, 10, 170, 20);
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			labelname.text = @"证件审核";
-			labelvalue.text = @"未通过";
+			labelvalue.text = [FCcompanyidentifyinfo objectForKey:@"identifystatus"];
 			break;
 		
 		
@@ -252,6 +257,49 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if((indexPath.section ==2)&&(indexPath.row == 0))
+    {
+        if([[FCcompanyidentifyinfo objectForKey:@"identifystatusid"] isEqualToString:@"notidentify"])
+        {
+            AuthNotPassReasonViewController *authnowpass = [[AuthNotPassReasonViewController alloc] init];
+            [self.navigationController pushViewController:authnowpass animated:YES];
+//            userAuthorizationingViewController *userauth = [[userAuthorizationingViewController alloc] init];
+//            [self.navigationController pushViewController:userauth animated:YES];
+        }
+        else
+        {
+            userAuthorizationingViewController *userauth = [[userAuthorizationingViewController alloc] init];
+            [self.navigationController pushViewController:userauth animated:YES];
+        }
+    }
+}
+
+#pragma mark 接口
+
+
+-(void)getauthbusinessinfo
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    [RequestInterface doGetJsonWithParametersNoAn:params App:app RequestCode:RQUserInfoAuthBusinessCode ReqUrl:InterfaceRequestUrl ShowView:app.window alwaysdo:^{
+        
+    } Success:^(NSDictionary *dic) {
+        DLog(@"dic====%@",dic);
+        if([[dic objectForKey:@"success"] isEqualToString:@"true"])
+        {
+            FCcompanyidentifyinfo = [[dic objectForKey:@"data"] objectForKey:@"companyidentifyinfo"];
+            tableview.delegate = self;
+            tableview.dataSource = self;
+            [tableview reloadData];
+            [self viewheader];
+        }
+        else
+        {
+            [MBProgressHUD showError:[dic objectForKey:@"msg"] toView:app.window];
+        }
+    } Failur:^(NSString *strmsg) {
+        [MBProgressHUD showError:@"请求失败,请检查网络" toView:self.view];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

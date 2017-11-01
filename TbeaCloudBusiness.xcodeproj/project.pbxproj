@@ -758,6 +758,8 @@
 		742F69D41FA310CE00D4E5C2 /* TbeaDetectUserWeiJieDanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 742F69D21FA310CE00D4E5C2 /* TbeaDetectUserWeiJieDanViewController.m */; };
 		742F69D81FA3111300D4E5C2 /* TbeaDetectUserYiJieDanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 742F69D71FA3111300D4E5C2 /* TbeaDetectUserYiJieDanViewController.m */; };
 		743308D21F4584D200099F3A /* SonAccountAuthorizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 743308D11F4584D200099F3A /* SonAccountAuthorizeViewController.m */; };
+		74359E5E1FA6F48A0007D51C /* MyPageHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74359E5D1FA6F48A0007D51C /* MyPageHelpViewController.m */; };
+		74359E611FA6F4980007D51C /* MyPageAboutMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74359E601FA6F4980007D51C /* MyPageAboutMeViewController.m */; };
 		74444B281F16FB2D009AB2CA /* MallStoreCycleAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74444B271F16FB2D009AB2CA /* MallStoreCycleAdViewController.m */; };
 		74444B2F1F17047B009AB2CA /* testpic.png in Resources */ = {isa = PBXBuildFile; fileRef = 74444B2C1F17047B009AB2CA /* testpic.png */; };
 		74444B301F17047B009AB2CA /* testpic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74444B2D1F17047B009AB2CA /* testpic@2x.png */; };
@@ -812,6 +814,8 @@
 		7452DBFF1F53FFC8008AE7EC /* MallStoreAddNewSpecialModuleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7452DBFE1F53FFC8008AE7EC /* MallStoreAddNewSpecialModuleViewController.m */; };
 		7452DC021F5406E6008AE7EC /* MallStoreGoodsMangerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7452DC011F5406E6008AE7EC /* MallStoreGoodsMangerViewController.m */; };
 		7452DC051F5419B4008AE7EC /* MallStoreAddNewGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7452DC041F5419B4008AE7EC /* MallStoreAddNewGoodsViewController.m */; };
+		745929351FA967B7008FBE3C /* SwiftWebview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745929331FA967B7008FBE3C /* SwiftWebview.swift */; };
+		745929381FA9A2DE008FBE3C /* AuthNotPassReasonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 745929371FA9A2DE008FBE3C /* AuthNotPassReasonViewController.m */; };
 		745C39611F9F1F61008E0BB2 /* TbeaDaiChuLiDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 745C39601F9F1F61008E0BB2 /* TbeaDaiChuLiDetailViewController.m */; };
 		745C39641F9F27AF008E0BB2 /* TbeaPaiDanPersonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 745C39631F9F27AF008E0BB2 /* TbeaPaiDanPersonListViewController.m */; };
 		745C39671F9F2ED1008E0BB2 /* PopCustomDoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 745C39661F9F2ED1008E0BB2 /* PopCustomDoneView.m */; };
@@ -1965,6 +1969,10 @@
 		742F69D71FA3111300D4E5C2 /* TbeaDetectUserYiJieDanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TbeaDetectUserYiJieDanViewController.m; sourceTree = "<group>"; };
 		743308D01F4584D200099F3A /* SonAccountAuthorizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonAccountAuthorizeViewController.h; sourceTree = "<group>"; };
 		743308D11F4584D200099F3A /* SonAccountAuthorizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonAccountAuthorizeViewController.m; sourceTree = "<group>"; };
+		74359E5C1FA6F48A0007D51C /* MyPageHelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPageHelpViewController.h; sourceTree = "<group>"; };
+		74359E5D1FA6F48A0007D51C /* MyPageHelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPageHelpViewController.m; sourceTree = "<group>"; };
+		74359E5F1FA6F4980007D51C /* MyPageAboutMeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPageAboutMeViewController.h; sourceTree = "<group>"; };
+		74359E601FA6F4980007D51C /* MyPageAboutMeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPageAboutMeViewController.m; sourceTree = "<group>"; };
 		74444B261F16FB2D009AB2CA /* MallStoreCycleAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallStoreCycleAdViewController.h; sourceTree = "<group>"; };
 		74444B271F16FB2D009AB2CA /* MallStoreCycleAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallStoreCycleAdViewController.m; sourceTree = "<group>"; };
 		74444B2C1F17047B009AB2CA /* testpic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testpic.png; sourceTree = "<group>"; };
@@ -2079,6 +2087,10 @@
 		7452DC011F5406E6008AE7EC /* MallStoreGoodsMangerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallStoreGoodsMangerViewController.m; sourceTree = "<group>"; };
 		7452DC031F5419B4008AE7EC /* MallStoreAddNewGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallStoreAddNewGoodsViewController.h; sourceTree = "<group>"; };
 		7452DC041F5419B4008AE7EC /* MallStoreAddNewGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallStoreAddNewGoodsViewController.m; sourceTree = "<group>"; };
+		745929331FA967B7008FBE3C /* SwiftWebview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftWebview.swift; sourceTree = "<group>"; };
+		745929341FA967B7008FBE3C /* TbeaCloudBusiness-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TbeaCloudBusiness-Bridging-Header.h"; sourceTree = "<group>"; };
+		745929361FA9A2DE008FBE3C /* AuthNotPassReasonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthNotPassReasonViewController.h; sourceTree = "<group>"; };
+		745929371FA9A2DE008FBE3C /* AuthNotPassReasonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthNotPassReasonViewController.m; sourceTree = "<group>"; };
 		745C395F1F9F1F61008E0BB2 /* TbeaDaiChuLiDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbeaDaiChuLiDetailViewController.h; sourceTree = "<group>"; };
 		745C39601F9F1F61008E0BB2 /* TbeaDaiChuLiDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TbeaDaiChuLiDetailViewController.m; sourceTree = "<group>"; };
 		745C39621F9F27AF008E0BB2 /* TbeaPaiDanPersonListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TbeaPaiDanPersonListViewController.h; sourceTree = "<group>"; };
@@ -3440,6 +3452,8 @@
 				084EDA421EFA0F5200602116 /* AuthBusinessViewController.m */,
 				084EDA441EFA1CA700602116 /* AuthWaterWorkerViewController.h */,
 				084EDA451EFA1CA700602116 /* AuthWaterWorkerViewController.m */,
+				745929361FA9A2DE008FBE3C /* AuthNotPassReasonViewController.h */,
+				745929371FA9A2DE008FBE3C /* AuthNotPassReasonViewController.m */,
 			);
 			path = AuthorizeCer;
 			sourceTree = "<group>";
@@ -3671,6 +3685,7 @@
 		086016941ECDEA3C0046FB3D /* my */ = {
 			isa = PBXGroup;
 			children = (
+				74359E5B1FA6F4710007D51C /* helpandabout */,
 				74033ABF1F1B922E00308A3A /* 我的返利账户 */,
 				084EDA691EFA5F2C00602116 /* MyFans */,
 				084EDA471EFA211F00602116 /* Attention */,
@@ -4413,6 +4428,19 @@
 			path = "已接单";
 			sourceTree = "<group>";
 		};
+		74359E5B1FA6F4710007D51C /* helpandabout */ = {
+			isa = PBXGroup;
+			children = (
+				745929331FA967B7008FBE3C /* SwiftWebview.swift */,
+				745929341FA967B7008FBE3C /* TbeaCloudBusiness-Bridging-Header.h */,
+				74359E5C1FA6F48A0007D51C /* MyPageHelpViewController.h */,
+				74359E5D1FA6F48A0007D51C /* MyPageHelpViewController.m */,
+				74359E5F1FA6F4980007D51C /* MyPageAboutMeViewController.h */,
+				74359E601FA6F4980007D51C /* MyPageAboutMeViewController.m */,
+			);
+			path = helpandabout;
+			sourceTree = "<group>";
+		};
 		74444B291F16FB7D009AB2CA /* 店铺动态 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4986,6 +5014,7 @@
 					081839761ECB3F7300C9E553 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 64VCC3B3JQ;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -5606,6 +5635,7 @@
 				08183D6D1ECB404E00C9E553 /* UIScrollView+MJRefresh.m in Sources */,
 				084EDA4A1EFA247F00602116 /* MyAttentionViewController.m in Sources */,
 				084103391F0F30B000A4194A /* HpFunctionCellView.m in Sources */,
+				745929381FA9A2DE008FBE3C /* AuthNotPassReasonViewController.m in Sources */,
 				08183D6E1ECB404E00C9E553 /* UIView+MJExtension.m in Sources */,
 				08183D541ECB404E00C9E553 /* MJRefreshAutoGifFooter.m in Sources */,
 				747999D71F5809FB0027933D /* MallStoreHasBeenSoldDetailViewController.m in Sources */,
@@ -5721,6 +5751,7 @@
 				08183D551ECB404E00C9E553 /* MJRefreshAutoNormalFooter.m in Sources */,
 				088D5A1F1EF2855700DE7A3A /* TbeaContactViewController.m in Sources */,
 				08183D201ECB404E00C9E553 /* BaseAnimation.m in Sources */,
+				74359E5E1FA6F48A0007D51C /* MyPageHelpViewController.m in Sources */,
 				08183E0D1ECB404E00C9E553 /* UIImage+GenerateFromView.m in Sources */,
 				748D2F5F1F3CABB600A7A766 /* ComWaterJXSSelectViewController.m in Sources */,
 				084EDA6C1EFA5F4100602116 /* MyFansViewController.m in Sources */,
@@ -5821,6 +5852,7 @@
 				74DB9A221F136D4F00635968 /* ScanQRCodeARViewController.m in Sources */,
 				08CAA63D1EE7F2C200F47C9E /* TiXianDataHpViewController.m in Sources */,
 				08183E141ECB404E00C9E553 /* InsetsLabel.m in Sources */,
+				745929351FA967B7008FBE3C /* SwiftWebview.swift in Sources */,
 				08183E611ECB404F00C9E553 /* XLsn0wLoop.m in Sources */,
 				08183E001ECB404E00C9E553 /* Jwt.m in Sources */,
 				74DB9A071F13655700635968 /* UIImage+SGHelper.m in Sources */,
@@ -5871,6 +5903,7 @@
 				0802417D1EEC2E4500518E6D /* CustomDatePicker.m in Sources */,
 				748D2F5C1F3CABB600A7A766 /* ComCommitMettingDoneViewController.m in Sources */,
 				745152D21F4EB31E006FB244 /* QRCodeScan.m in Sources */,
+				74359E611FA6F4980007D51C /* MyPageAboutMeViewController.m in Sources */,
 				08183D3D1ECB404E00C9E553 /* HYSegmentControl.m in Sources */,
 				7466B3A71F3FDB5900E8D8C6 /* ComMettingDetailPreparingViewController.m in Sources */,
 				08183DFF1ECB404E00C9E553 /* Algorithm.m in Sources */,
@@ -6028,7 +6061,9 @@
 		0818398F1ECB3F7300C9E553 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 64VCC3B3JQ;
 				ENABLE_BITCODE = NO;
@@ -6085,6 +6120,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "aa209252-c26f-4cca-91df-cd43de788290";
 				PROVISIONING_PROFILE_SPECIFIER = developreerapp;
+				SWIFT_OBJC_BRIDGING_HEADER = "TbeaCloudBusiness/my/helpandabout/TbeaCloudBusiness-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WARNING_CFLAGS = "-Wno-documentation";
 			};
 			name = Debug;
@@ -6092,7 +6130,9 @@
 		081839901ECB3F7300C9E553 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 64VCC3B3JQ;
 				ENABLE_BITCODE = NO;
@@ -6149,6 +6189,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "aa209252-c26f-4cca-91df-cd43de788290";
 				PROVISIONING_PROFILE_SPECIFIER = developreerapp;
+				SWIFT_OBJC_BRIDGING_HEADER = "TbeaCloudBusiness/my/helpandabout/TbeaCloudBusiness-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				WARNING_CFLAGS = "-Wno-documentation";
 			};
 			name = Release;

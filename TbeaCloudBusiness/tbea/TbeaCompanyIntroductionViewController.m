@@ -105,7 +105,7 @@
 	configuration.preferences = preferences;
 	
     
-    NSString *strurlnow = [NSString stringWithFormat:@"%@%@?categoryid=%@",Interfacehtmlurlheader,HtmlUrlTbeaCompanyIns,@"abouttbea"];
+    NSString *strurlnow = [NSString stringWithFormat:@"%@%@",[app.GBURLPreFix length]>0?app.GBURLPreFix:Interfacehtmlurlheader,HtmlUrlTbeaCompanyIns];
     
 	self.strurl = strurlnow;
 	wkwebview = [[WKWebView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, SCREEN_HEIGHT-64-40)
@@ -170,7 +170,7 @@
 	int tagnow = (int)[button tag];
 	if(tagnow == EnTbeaCompanyInstroduceSelect1)
 	{
-        NSString *strurlnow = [NSString stringWithFormat:@"%@%@?categoryid=%@",Interfacehtmlurlheader,HtmlUrlTbeaCompanyIns,@"abouttbea"];
+        NSString *strurlnow = [NSString stringWithFormat:@"%@%@",[app.GBURLPreFix length]>0?app.GBURLPreFix:Interfacehtmlurlheader,HtmlUrlTbeaCompanyIns];
 		self.strurl = strurlnow;
 		NSURL *fileURL = [NSURL URLWithString:self.strurl];
 		NSURLRequest *request  = [NSURLRequest requestWithURL:fileURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10];
@@ -178,7 +178,7 @@
 	}
 	else if(tagnow == EnTbeaCompanyInstroduceSelect2)
 	{
-        NSString *strurlnow = [NSString stringWithFormat:@"%@%@?categoryid=%@",Interfacehtmlurlheader,HtmlUrlTbeaCompanyIns,@"corporateculture"];
+        NSString *strurlnow = [NSString stringWithFormat:@"%@%@",[app.GBURLPreFix length]>0?app.GBURLPreFix:Interfacehtmlurlheader,HtmlUrlQiYeWenHuaIns];
 		self.strurl = strurlnow;
 		NSURL *fileURL = [NSURL URLWithString:self.strurl];
 		NSURLRequest *request  = [NSURLRequest requestWithURL:fileURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10];
@@ -186,7 +186,7 @@
 	}
 	else if(tagnow == EnTbeaCompanyInstroduceSelect3)
 	{
-        NSString *strurlnow = [NSString stringWithFormat:@"%@%@?categoryid=%@",Interfacehtmlurlheader,HtmlUrlTbeaCompanyIns,@"responsibility"];
+        NSString *strurlnow = [NSString stringWithFormat:@"%@%@",[app.GBURLPreFix length]>0?app.GBURLPreFix:Interfacehtmlurlheader,HtmlUrlQiYeZeRenIns];
 		self.strurl = strurlnow;
 		NSURL *fileURL = [NSURL URLWithString:self.strurl];
 		NSURLRequest *request  = [NSURLRequest requestWithURL:fileURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10];

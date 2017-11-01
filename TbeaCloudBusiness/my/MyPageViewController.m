@@ -36,6 +36,11 @@
 	tableview.dataSource = self;
 	[self.view addSubview:tableview];
 	
+    if (@available(iOS 11.0, *)) {
+        tableview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }else{
+    }
+    
 	[self setExtraCellLineHidden:tableview];
 	
 	UIButton *buttonsetting = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -228,13 +233,31 @@
         myfans.FCuserid = app.userinfo.userid;
         [self.navigationController pushViewController:myfans animated:YES];
     }
-    else if([[dictemp objectForKey:@"id"] isEqualToString:@"companyidentify"])
+    else if([[dictemp objectForKey:@"id"] isEqualToString:@"companyidentify"])  //认证
     {
-        UserInfoMakeUpingViewController *userinfo = [[UserInfoMakeUpingViewController alloc] init];
-        userinfo.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:userinfo animated:YES];
+//        if([FCdicuserpersoninfo objectForKey:@""])
+//        {
+            AuthBusinessViewController *business = [[AuthBusinessViewController alloc] init];
+            business.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:business animated:YES];
+//        }
+//        UserInfoMakeUpingViewController *userinfo = [[UserInfoMakeUpingViewController alloc] init];
+//        userinfo.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:userinfo animated:YES];
     }
-	
+	else if([[dictemp objectForKey:@"id"] isEqualToString:@"aboutplatform"])  //关于我们
+    {
+        SwiftWebview * s1 = [[SwiftWebview alloc] init];
+        s1.hidesBottomBarWhenPushed = YES;
+        NSString *strurlnow = [NSString stringWithFormat:@"%@%@",[app.GBURLPreFix length]>0?app.GBURLPreFix:Interfacehtmlurlheader,HtmlURLAboutMeIns];
+        s1.FCStrURL = strurlnow;
+        s1.FCtitle = @"关于我们";
+        [self.navigationController pushViewController:s1 animated:self];
+    }
+    else if([[dictemp objectForKey:@"id"] isEqualToString:@"platformhelp"])  //帮助中心
+    {
+   //     MyPageAboutMeViewController
+    }
 }
 
 #pragma mark 接口

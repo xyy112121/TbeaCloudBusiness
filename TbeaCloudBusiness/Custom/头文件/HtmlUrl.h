@@ -1,5 +1,11 @@
 #define Interfacehtmlmettingjiyao @"/index.php/h5forapp/Index/meetingsummary" //会议纪要
-#define HtmlUrlTbeaCompanyIns @"/index.php/h5forapp/Index/companyprofile" //公司简介
+#define HtmlUrlTbeaCompanyIns @"tbeaintro" //公司简介
+#define HtmlUrlQiYeWenHuaIns @"tbeaculture"  //企业文化
+#define HtmlUrlQiYeZeRenIns @"tbearesponsibility"  //企业责任
+#define HtmlURLAboutMeIns @"aboutplatform"  //关于我们
+
+
+
 #define HtmlUrlTbeaNewsZhiXun @"/index.php/h5forapp/Index/viewnews "
 #define HtmlUrlUserPersoninfo @"/index.php/h5forapp/Index/electricianserviceintroduce" //个人消息
 

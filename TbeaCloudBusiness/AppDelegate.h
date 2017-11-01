@@ -24,6 +24,7 @@ static BOOL isProduction = FALSE;
 @interface AppDelegate : UIResponder <UIApplicationDelegate,JPUSHRegisterDelegate>
 
 
+@property(nonatomic,strong)NSString *GBURLPreFix;
 @property(nonatomic,strong)UINavigationController *gnctl;
 @property(nonatomic,strong)NSString *pushflag;
 @property (strong, nonatomic) UIWindow *window;

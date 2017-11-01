@@ -50,7 +50,7 @@
     [self getupdateversion];
 	[self gethppage];//获取首页数据
     [self addnavigation:nil];
-	
+    [self getURLPrefix];//获取url前缀
     
 }
 
@@ -355,6 +355,29 @@
 
 
 #pragma mark 接口
+
+//获取url前缀
+-(void)getURLPrefix
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"terminaltype"] = @"ios";
+    
+    [RequestInterface doGetJsonWithParametersNoAn:params App:app RequestCode:RQGetURLHeaderFrontCode ReqUrl:InterfaceRequestUrl ShowView:app.window alwaysdo:^{
+    } Success:^(NSDictionary *dic) {
+        DLog(@"dic====%@",dic);
+        if([[dic objectForKey:@"success"] isEqualToString:@"true"])
+        {
+            app.GBURLPreFix = [[dic objectForKey:@"data"] objectForKey:@"url"];
+        }
+        else
+        {
+            [MBProgressHUD showError:[dic objectForKey:@"msg"] toView:app.window];
+        }
+    } Failur:^(NSString *strmsg) {
+        [MBProgressHUD showError:@"请求失败,请检查网络" toView:self.view];
+        
+    }];
+}
 
 -(void)getupdateversion
 {

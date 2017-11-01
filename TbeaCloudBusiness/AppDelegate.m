@@ -90,6 +90,7 @@
 
 -(void)initGmachineid
 {
+    self.GBURLPreFix = @"";
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	NSString *machdic = [userDefaults stringForKey:@"machid"];
 	if([machdic length]>0)

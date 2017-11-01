@@ -149,4 +149,6 @@
 #define RQTbeaDetectUserYiJieDanInfoCode @"TBEAYUN012001011000"   //已接单
 #define RQTbeaDetectUserJieDanDoneCode @"TBEAYUN012001010000"  //特变卫士  接单
 
-
+#define RQGetURLHeaderFrontCode @"TBEAYUN015001002000"   //获取url前缀
+#define RQUserInfoAuthBusinessCode @"TBEAYUN003004002000"  //获取用户认证信息
+#define RQUserAuthBusinessFailReasonCode @"TBEAYUN003004003000"  //获取用户失败原因

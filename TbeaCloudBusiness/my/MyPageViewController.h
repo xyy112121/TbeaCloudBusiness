@@ -11,6 +11,7 @@
  **/
 
 #import <UIKit/UIKit.h>
+#import "TbeaCloudBusiness-Swift.h"
 
 @interface MyPageViewController : UIViewController<ActionDelegate,UITableViewDelegate,UITableViewDataSource>
 {

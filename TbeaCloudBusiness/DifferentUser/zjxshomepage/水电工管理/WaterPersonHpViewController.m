@@ -43,6 +43,11 @@
 	tableview.backgroundColor = [UIColor clearColor];
 	[self.view addSubview:tableview];
 	
+    if (@available(iOS 11.0, *)) {
+        tableview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }else{
+    }
+    
 	[self setExtraCellLineHidden:tableview];
     [self getwateruserhome];
 }
