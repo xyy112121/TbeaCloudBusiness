@@ -6,7 +6,7 @@
 //  Copyright © 2017年 谢 毅. All rights reserved.
 //
 
-#define TITLES @[@"编辑",@"删除"]
+#define TITLES @[@"编辑",@"删除",@"签到码"]
 
 #import "ComMettingDetailNewViewController.h"
 
@@ -91,7 +91,7 @@
     
     NSString *strsizename;
     strsizename = [dicfrom objectForKey:@"name"];
-    CGSize sizeuser = [AddInterface getlablesize:strsizename Fwidth:100 Fheight:20 Sfont:FONTB(16.0f)];
+    CGSize sizeuser = [AddInterface getlablesize:strsizename Fwidth:200 Fheight:20 Sfont:FONTB(16.0f)];
     UILabel *labelusername = [[UILabel alloc] initWithFrame:CGRectMake(XYViewR(imageheader)+10, 7, sizeuser.width, 20)];
     labelusername.backgroundColor = [UIColor clearColor];
     labelusername.textColor = [UIColor blackColor];
@@ -167,6 +167,7 @@
     NSMutableArray *arrayicons = [[NSMutableArray alloc] init];
     [arrayicons addObject:LOADIMAGE(@"metting编辑", @"png")];
     [arrayicons addObject:LOADIMAGE(@"metting删除", @"png")];
+    [arrayicons addObject:LOADIMAGE(@"二维码icon", @"png")];
     ybpopmenu = [YBPopupMenu showRelyOnView:sender titles:TITLES icons:arrayicons menuWidth:130 otherSettings:^(YBPopupMenu *popupMenu)
                  {
                      popupMenu.dismissOnSelected = NO;
@@ -189,6 +190,12 @@
     else if([TITLES[index] isEqualToString:@"删除"])
     {
         [self deletemetting];
+    }
+    else if([TITLES[index] isEqualToString:@"签到码"])
+    {
+        ComMettingCreateSignInViewController *commetting = [[ComMettingCreateSignInViewController alloc] init];
+        commetting.FCmettingid = self.FCmettingid;
+        [self.navigationController pushViewController:commetting animated:YES];
     }
     [ybpopmenu dismiss];
     NSLog(@"点击了 %@ 选项",TITLES[index]);

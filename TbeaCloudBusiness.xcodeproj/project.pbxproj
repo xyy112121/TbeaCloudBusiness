@@ -757,6 +757,10 @@
 		742F69D31FA310CE00D4E5C2 /* TbeaDetectUserWeiJieDanDoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 742F69D01FA310CE00D4E5C2 /* TbeaDetectUserWeiJieDanDoneViewController.m */; };
 		742F69D41FA310CE00D4E5C2 /* TbeaDetectUserWeiJieDanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 742F69D21FA310CE00D4E5C2 /* TbeaDetectUserWeiJieDanViewController.m */; };
 		742F69D81FA3111300D4E5C2 /* TbeaDetectUserYiJieDanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 742F69D71FA3111300D4E5C2 /* TbeaDetectUserYiJieDanViewController.m */; };
+		743057851FB3FA950076A15C /* ComMettingCreateSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 743057841FB3FA950076A15C /* ComMettingCreateSignInViewController.m */; };
+		743057891FB4041F0076A15C /* 二维码icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 743057861FB4041E0076A15C /* 二维码icon@2x.png */; };
+		7430578A1FB4041F0076A15C /* 二维码icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 743057871FB4041F0076A15C /* 二维码icon.png */; };
+		7430578B1FB4041F0076A15C /* 二维码icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 743057881FB4041F0076A15C /* 二维码icon@3x.png */; };
 		743308D21F4584D200099F3A /* SonAccountAuthorizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 743308D11F4584D200099F3A /* SonAccountAuthorizeViewController.m */; };
 		74359E5E1FA6F48A0007D51C /* MyPageHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74359E5D1FA6F48A0007D51C /* MyPageHelpViewController.m */; };
 		74359E611FA6F4980007D51C /* MyPageAboutMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74359E601FA6F4980007D51C /* MyPageAboutMeViewController.m */; };
@@ -1968,6 +1972,11 @@
 		742F69D21FA310CE00D4E5C2 /* TbeaDetectUserWeiJieDanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TbeaDetectUserWeiJieDanViewController.m; sourceTree = "<group>"; };
 		742F69D61FA3111300D4E5C2 /* TbeaDetectUserYiJieDanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TbeaDetectUserYiJieDanViewController.h; sourceTree = "<group>"; };
 		742F69D71FA3111300D4E5C2 /* TbeaDetectUserYiJieDanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TbeaDetectUserYiJieDanViewController.m; sourceTree = "<group>"; };
+		743057831FB3FA950076A15C /* ComMettingCreateSignInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComMettingCreateSignInViewController.h; sourceTree = "<group>"; };
+		743057841FB3FA950076A15C /* ComMettingCreateSignInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComMettingCreateSignInViewController.m; sourceTree = "<group>"; };
+		743057861FB4041E0076A15C /* 二维码icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "二维码icon@2x.png"; sourceTree = "<group>"; };
+		743057871FB4041F0076A15C /* 二维码icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "二维码icon.png"; sourceTree = "<group>"; };
+		743057881FB4041F0076A15C /* 二维码icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "二维码icon@3x.png"; sourceTree = "<group>"; };
 		743308D01F4584D200099F3A /* SonAccountAuthorizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonAccountAuthorizeViewController.h; sourceTree = "<group>"; };
 		743308D11F4584D200099F3A /* SonAccountAuthorizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonAccountAuthorizeViewController.m; sourceTree = "<group>"; };
 		74359E5C1FA6F48A0007D51C /* MyPageHelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPageHelpViewController.h; sourceTree = "<group>"; };
@@ -4223,6 +4232,9 @@
 		7401C5431F259E2700E2BA06 /* 水电工会议 */ = {
 			isa = PBXGroup;
 			children = (
+				743057871FB4041F0076A15C /* 二维码icon.png */,
+				743057861FB4041E0076A15C /* 二维码icon@2x.png */,
+				743057881FB4041F0076A15C /* 二维码icon@3x.png */,
 				74E599181F419C3F00587D8A /* 暂无图片.png */,
 				74E599191F419C3F00587D8A /* 暂无图片@2x.png */,
 				74E5991A1F419C3F00587D8A /* 暂无图片@3x.png */,
@@ -4790,6 +4802,8 @@
 				7466B3C41F3FE3B500E8D8C6 /* ComMettingDetailMettingInViewController.m */,
 				7466B3C61F3FE4E800E8D8C6 /* ComMettingDetailMettingOverViewController.h */,
 				7466B3C71F3FE4E800E8D8C6 /* ComMettingDetailMettingOverViewController.m */,
+				743057831FB3FA950076A15C /* ComMettingCreateSignInViewController.h */,
+				743057841FB3FA950076A15C /* ComMettingCreateSignInViewController.m */,
 			);
 			path = "会议详情";
 			sourceTree = "<group>";
@@ -5223,6 +5237,7 @@
 				7401C54E1F259E2700E2BA06 /* metting水电工签到@2x.png in Resources */,
 				084EDA661EFA5AB200602116 /* mewater.png in Resources */,
 				74DB9A151F1368D700635968 /* hpmessagepoint@2x.png in Resources */,
+				743057891FB4041F0076A15C /* 二维码icon@2x.png in Resources */,
 				7466B3B91F3FDE2B00E8D8C6 /* metting更新@3x.png in Resources */,
 				08C63E851ED1DE3D00325F44 /* scanrebateheader1.png in Resources */,
 				085472021EE848E700DC9B4D /* userphone.png in Resources */,
@@ -5241,6 +5256,7 @@
 				748FE9521F5FEA740056DB1E /* bt其它应用1@3x.png in Resources */,
 				08CF45EE1EFBA3FA002A154A /* hp扫码返利@2x.png in Resources */,
 				7497F5FE1F4DBA2D006AE830 /* hp_colse@2x.png in Resources */,
+				7430578B1FB4041F0076A15C /* 二维码icon@3x.png in Resources */,
 				0817055E1EFCAD2D0017D1AE /* 实名认证grayicon@2x.png in Resources */,
 				74E5991B1F419C3F00587D8A /* 暂无图片.png in Resources */,
 				0887AA2C1EDEBD8300EC334B /* waterservice@2x.png in Resources */,
@@ -5334,6 +5350,7 @@
 				085472011EE848E700DC9B4D /* userlocationgray@3x.png in Resources */,
 				085472061EE848E700DC9B4D /* userpwd@2x.png in Resources */,
 				0887AA251EDEBD8300EC334B /* waterorder.png in Resources */,
+				7430578A1FB4041F0076A15C /* 二维码icon.png in Resources */,
 				08CF45F31EFBA3FA002A154A /* hp水电工管理.png in Resources */,
 				081031531EEFD0660045E2DD /* tbeaproduct@3x.png in Resources */,
 				0887AA3D1EDEC76C00EC334B /* waterlocationblue.png in Resources */,
@@ -5918,6 +5935,7 @@
 				08183E731ECB404F00C9E553 /* UIDevice+IdentifierAddition.m in Sources */,
 				08CAA6471EE7F2C200F47C9E /* WaterLoginViewController.m in Sources */,
 				084D9C7B1EF7C404008A4D10 /* SettingNewAddressViewController.m in Sources */,
+				743057851FB3FA950076A15C /* ComMettingCreateSignInViewController.m in Sources */,
 				0865C9F41EEAA50C00B2E70C /* UserInfoMakeUpViewController.m in Sources */,
 				08183D3B1ECB404E00C9E553 /* FYPhotoCollectionsViewController.m in Sources */,
 				08183D181ECB404E00C9E553 /* AFImageDownloader.m in Sources */,

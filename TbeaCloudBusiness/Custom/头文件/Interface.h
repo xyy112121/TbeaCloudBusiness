@@ -3,8 +3,8 @@
 
 #define Interfacehtmlurlheader @"http://121.42.193.154:6696/"
 
-#define URLHeader @"http://www.u-shang.net/interface/index.php"
-#define URLPicHeader @"http://www.u-shang.net/"
+#define URLHeader   @"http://121.42.193.154:6696/interface/index.php" //@"http://www.u-shang.net/interface/index.php"
+#define URLPicHeader  @"http://121.42.193.154:6696/" //@"http://www.u-shang.net/"
 
 
 #define RQLoginCode   @"TBEAYUN003001004000"  //登录接口
@@ -46,6 +46,8 @@
 #define RQWaterMettingStatusHpCode  @"TBEAYUN001005002000"   //会议状态
 #define RQWaterMettingListCode  @"TBEAYUN004004002000"  //水电工会议列表
 #define RQWaterMettingDetailCode @"TBEAYUN004004003000"  //获取水电工会议详情
+
+#define RQGetComettingCreateSignInCode @"TBEAYUN008003006000"  //获取签到二维码
 
 #define RQWaterMettingJoinMemberCode  @"TBEAYUN004004003001"  //水电工参与人员列表只是参与 
 #define RQComWaterMettingJoinMemberListCode @"TBEAYUN001004003000" //获取参与人员列表所有

@@ -242,6 +242,8 @@
 #import "MyPageAboutMeViewController.h"
 #import "AuthNotPassReasonViewController.h"
 #import "MyMessageListViewController.h"
+#import "ComMettingCreateSignInViewController.h"
+
 #endif /* PrefixHeader_pch */
 
 /**
