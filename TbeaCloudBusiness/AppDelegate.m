@@ -86,6 +86,7 @@
 		userinfo.usertype = [userdic objectForKey:@"usertypeid"];
         userinfo.useraccount = [userdic objectForKey:@"account"];
 	}
+    
 }
 
 -(void)initGmachineid
