@@ -225,7 +225,7 @@
 		mallstore.hidesBottomBarWhenPushed = YES;
 		[self.navigationController pushViewController:mallstore animated:YES];
 	}
-    else if([strmoduleid isEqualToString:@"marketer_shuidiangonghuiyi"]) //公司人员水电工管理
+    else if([strmoduleid isEqualToString:@"marketer_shuidiangonghuiyi"]) //公司人员水电工会议
     {
         comwater = [[ComWaterMettingHpViewController alloc] init];
         comwater.hidesBottomBarWhenPushed = YES;

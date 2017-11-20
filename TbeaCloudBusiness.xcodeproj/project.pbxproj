@@ -833,6 +833,7 @@
 		74642CF91F3180BE00A321B6 /* FDTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 74642CF41F3180BE00A321B6 /* FDTool.m */; };
 		74642CFD1F3180E100A321B6 /* DateTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74642CFC1F3180E100A321B6 /* DateTimePickerView.m */; };
 		74642D011F31813700A321B6 /* CustomTimeSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74642D001F31813700A321B6 /* CustomTimeSelectViewController.m */; };
+		74644DB91FBD877300DDDD26 /* CustomQustionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74644DB81FBD877300DDDD26 /* CustomQustionViewController.m */; };
 		746688681F1F9FA100DA21B6 /* MyInputOutputDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 746688671F1F9FA100DA21B6 /* MyInputOutputDetailViewController.m */; };
 		7466B3A71F3FDB5900E8D8C6 /* ComMettingDetailPreparingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7466B3A61F3FDB5900E8D8C6 /* ComMettingDetailPreparingViewController.m */; };
 		7466B3B41F3FDE2B00E8D8C6 /* metting编辑.png in Resources */ = {isa = PBXBuildFile; fileRef = 7466B3A81F3FDE2B00E8D8C6 /* metting编辑.png */; };
@@ -2126,6 +2127,8 @@
 		74642CFC1F3180E100A321B6 /* DateTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTimePickerView.m; sourceTree = "<group>"; };
 		74642CFF1F31813700A321B6 /* CustomTimeSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTimeSelectViewController.h; sourceTree = "<group>"; };
 		74642D001F31813700A321B6 /* CustomTimeSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTimeSelectViewController.m; sourceTree = "<group>"; };
+		74644DB71FBD877300DDDD26 /* CustomQustionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomQustionViewController.h; sourceTree = "<group>"; };
+		74644DB81FBD877300DDDD26 /* CustomQustionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomQustionViewController.m; sourceTree = "<group>"; };
 		746688661F1F9FA100DA21B6 /* MyInputOutputDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInputOutputDetailViewController.h; sourceTree = "<group>"; };
 		746688671F1F9FA100DA21B6 /* MyInputOutputDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInputOutputDetailViewController.m; sourceTree = "<group>"; };
 		7466B3A51F3FDB5900E8D8C6 /* ComMettingDetailPreparingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComMettingDetailPreparingViewController.h; sourceTree = "<group>"; };
@@ -4446,6 +4449,8 @@
 		74359E5B1FA6F4710007D51C /* helpandabout */ = {
 			isa = PBXGroup;
 			children = (
+				74644DB71FBD877300DDDD26 /* CustomQustionViewController.h */,
+				74644DB81FBD877300DDDD26 /* CustomQustionViewController.m */,
 				745929331FA967B7008FBE3C /* SwiftWebview.swift */,
 				745929341FA967B7008FBE3C /* TbeaCloudBusiness-Bridging-Header.h */,
 				74359E5C1FA6F48A0007D51C /* MyPageHelpViewController.h */,
@@ -5623,6 +5628,7 @@
 				08183D3E1ECB404E00C9E553 /* JQBounceSpot1Animation.m in Sources */,
 				08183D671ECB404E00C9E553 /* MJDIYBackFooter.m in Sources */,
 				08183D4F1ECB404E00C9E553 /* MJRefreshBackFooter.m in Sources */,
+				74644DB91FBD877300DDDD26 /* CustomQustionViewController.m in Sources */,
 				74F8C6F71F3997CB007AD1D0 /* DistributorRebateTiXianRankingViewController.m in Sources */,
 				08C63E501ED19BE900325F44 /* SearchTextFieldView.m in Sources */,
 				08CAA6401EE7F2C200F47C9E /* WaterMettingCheckInViewController.m in Sources */,
@@ -6034,7 +6040,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -6075,7 +6081,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -6103,6 +6109,7 @@
 				);
 				GCC_PREFIX_HEADER = "/Users/xyy/Desktop/工作/Other/睿尔的东西/德阳电商/二期/特变云商/代码/IOS/TbeaCloudBusiness/TbeaCloudBusiness/Custom/PrefixHeader.pch";
 				INFOPLIST_FILE = TbeaCloudBusiness/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6172,6 +6179,7 @@
 				);
 				GCC_PREFIX_HEADER = "/Users/xyy/Desktop/工作/Other/睿尔的东西/德阳电商/二期/特变云商/代码/IOS/TbeaCloudBusiness/TbeaCloudBusiness/Custom/PrefixHeader.pch";
 				INFOPLIST_FILE = TbeaCloudBusiness/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

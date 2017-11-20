@@ -3,7 +3,7 @@
 #define HtmlUrlQiYeWenHuaIns @"tbeaculture"  //企业文化
 #define HtmlUrlQiYeZeRenIns @"tbearesponsibility"  //企业责任
 #define HtmlURLAboutMeIns @"aboutplatform"  //关于我们
-
+#define HtmlURLHelpDetail @"userhelpdetail?questionid="  //帮助中心
 
 
 #define HtmlUrlTbeaNewsZhiXun @"/index.php/h5forapp/Index/viewnews "

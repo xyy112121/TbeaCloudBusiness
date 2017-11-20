@@ -256,7 +256,15 @@
     }
     else if([[dictemp objectForKey:@"id"] isEqualToString:@"platformhelp"])  //帮助中心
     {
-   //     MyPageAboutMeViewController
+        CustomQustionViewController *customquestion = [[CustomQustionViewController alloc] init];
+        customquestion.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:customquestion animated:YES];
+    }
+    else if([[dictemp objectForKey:@"id"] isEqualToString:@"marketer_shuidiangonghuiyi"]) //公司人员水电工会议
+    {
+        ComWaterMettingHpViewController *comwater = [[ComWaterMettingHpViewController alloc] init];
+        comwater.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:comwater animated:YES];
     }
 }
 

@@ -243,7 +243,7 @@
 #import "AuthNotPassReasonViewController.h"
 #import "MyMessageListViewController.h"
 #import "ComMettingCreateSignInViewController.h"
-
+#import "CustomQustionViewController.h"
 #endif /* PrefixHeader_pch */
 
 /**
