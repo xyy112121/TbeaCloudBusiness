@@ -44,7 +44,7 @@
 	[self setExtraCellLineHidden:tableview];
 	
 	UIButton *buttonsetting = [UIButton buttonWithType:UIButtonTypeCustom];
-	buttonsetting.frame = CGRectMake(SCREEN_WIDTH-60, 22, 40, 40);
+	buttonsetting.frame = CGRectMake(SCREEN_WIDTH-60, StatusBarHeight+2, 40, 40);
 	[buttonsetting setTitle:@"设置" forState:UIControlStateNormal];
 	[buttonsetting setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	buttonsetting.titleLabel.font = FONTN(15.0f);
@@ -58,7 +58,7 @@
 {
 	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160)];
 	
-	MyPageHeaderView *focusnews = [[MyPageHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160) DicFrom:FCdicuserpersoninfo];
+	MyPageHeaderView *focusnews = [[MyPageHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160+StatusBarHeight) DicFrom:FCdicuserpersoninfo];
 	focusnews.delegate1 = self;
 	[view addSubview:focusnews];
 	

@@ -47,6 +47,8 @@
 #define RQWaterMettingListCode  @"TBEAYUN004004002000"  //水电工会议列表
 #define RQWaterMettingDetailCode @"TBEAYUN004004003000"  //获取水电工会议详情
 
+#define RQWebPicDisplayListCode @"TBEAYUN002002004003" //web图片点击
+
 #define RQGetComettingCreateSignInCode @"TBEAYUN008003006000"  //获取签到二维码
 
 #define RQWaterMettingJoinMemberCode  @"TBEAYUN004004003001"  //水电工参与人员列表只是参与 

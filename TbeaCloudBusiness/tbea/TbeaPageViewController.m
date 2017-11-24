@@ -81,6 +81,7 @@
 {
 	TbeaProductDetailViewController *productdetail = [[TbeaProductDetailViewController alloc] init];
     productdetail.hidesBottomBarWhenPushed = YES;
+    productdetail.FCdicproduct = sender;
 	[self.navigationController pushViewController:productdetail animated:YES];
 }
 

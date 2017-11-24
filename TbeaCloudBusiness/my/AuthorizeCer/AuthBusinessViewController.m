@@ -44,7 +44,7 @@
 	
 	//返回按钮和标题
 	UIButton *buttonback = [UIButton buttonWithType:UIButtonTypeCustom];
-	buttonback.frame = CGRectMake(10, 22, 40, 40);
+	buttonback.frame = CGRectMake(10, StatusBarHeight +2, 40, 40);
 	buttonback.backgroundColor = [UIColor clearColor];
 	[buttonback setImage:LOADIMAGE(@"returnback", @"png") forState:UIControlStateNormal];
 	[buttonback addTarget:self action:@selector(returnback) forControlEvents:UIControlEventTouchUpInside];
@@ -269,6 +269,7 @@
         else
         {
             userAuthorizationingViewController *userauth = [[userAuthorizationingViewController alloc] init];
+            userauth.FCidentifystatus = [FCcompanyidentifyinfo objectForKey:@"identifystatusid"];
             [self.navigationController pushViewController:userauth animated:YES];
         }
     }

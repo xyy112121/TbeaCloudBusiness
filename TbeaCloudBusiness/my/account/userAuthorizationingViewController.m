@@ -40,11 +40,22 @@
     
     UIButton *buttonnext = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonnext.frame = CGRectMake(20, 40, SCREEN_WIDTH-40, 40);
+    
     [buttonnext setTitle:@"查看认证状态" forState:UIControlStateNormal];
     buttonnext.layer.cornerRadius = 3.0f;
     buttonnext.clipsToBounds = YES;
-    [buttonnext addTarget:self action:@selector(commitauth:) forControlEvents:UIControlEventTouchUpInside];
+    
     [buttonnext setBackgroundColor:COLORNOW(0, 170, 238)];
+    if([_FCidentifystatus isEqualToString:@"identifyfailed"])
+    {
+        [buttonnext setTitle:@"重新认证" forState:UIControlStateNormal];
+        [buttonnext setBackgroundColor:[UIColor redColor]];
+        [buttonnext addTarget:self action:@selector(recommitauth:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        [buttonnext addTarget:self action:@selector(commitauth:) forControlEvents:UIControlEventTouchUpInside];
+    }
     [viewfoot addSubview:buttonnext];
 }
 
@@ -103,6 +114,11 @@
 
 
 #pragma mark IBaction
+
+-(void)recommitauth:(id)sender
+{
+    
+}
 
 -(void)commitauth:(id)sender
 {

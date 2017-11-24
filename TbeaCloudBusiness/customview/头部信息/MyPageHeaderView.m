@@ -26,7 +26,7 @@
 
 -(void)initview:(NSDictionary  *)dicfrom
 {
-	UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(20,60,70,70)];
+	UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(20,StatusBarHeight+40,70,70)];
     NSString *strpic = [dicfrom objectForKey:@"thumbpicture"];//[NSString stringWithFormat:@"%@%@",InterfaceResource,[dicfrom objectForKey:@"thumbpicture"]];
     [imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"watertest", @"png")];
 	imageheader.layer.cornerRadius = 35.f;

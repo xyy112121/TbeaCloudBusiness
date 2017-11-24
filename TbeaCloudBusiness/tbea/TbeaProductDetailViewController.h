@@ -11,15 +11,18 @@
  **/
 
 #import <UIKit/UIKit.h>
-
-@interface TbeaProductDetailViewController : UIViewController<WKUIDelegate,WKScriptMessageHandler,WKNavigationDelegate,ActionDelegate,YBPopupMenuDelegate>
+#import "LLPhotoBrowser.h"
+@interface TbeaProductDetailViewController : UIViewController<WKUIDelegate,WKScriptMessageHandler,WKNavigationDelegate,ActionDelegate,LLPhotoBrowserDelegate,YBPopupMenuDelegate>
 {
 	AppDelegate *app;
 	WKWebView   *wkwebview;
 	WKUserContentController * userContentController;
 	YBPopupMenu *ybpopmenu;
+    NSMutableArray *FCphotoArr;
+    NSArray *FCarraypic;
+    int FCnowpage;
 }
-
+@property(nonatomic,strong)NSDictionary *FCdicproduct;
 @property(nonatomic,strong)id<ActionDelegate>delegate1;
 @property(nonatomic,strong)NSString *strurl;
 

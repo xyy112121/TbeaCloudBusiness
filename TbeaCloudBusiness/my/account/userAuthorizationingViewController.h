@@ -28,7 +28,7 @@
     NSString *FCcompanyphoto;
     NSString *FCstraddress;
 }
-
+@property(nonatomic,strong)NSString *FCidentifystatus;
 @property(nonatomic,strong)id<ActionDelegate>delegate1;
 
 @end

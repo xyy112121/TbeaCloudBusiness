@@ -244,6 +244,9 @@
 #import "MyMessageListViewController.h"
 #import "ComMettingCreateSignInViewController.h"
 #import "CustomQustionViewController.h"
+#import "TbeaScrollviewPicDisplayViewController.h"
+#import "LLPhotoBrowser.h"
+#import "LLPhotoBrowserConfig.h"
 #endif /* PrefixHeader_pch */
 
 /**

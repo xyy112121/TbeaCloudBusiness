@@ -68,9 +68,9 @@
 	textfield.placeholder = @"输入手机号";
 	textfield.font = FONTN(15.0f);
 	textfield.tag = EnLoginPhoneTextfield;
-//	textfield.text = @"17780619820"; //总经销商
+	textfield.text = @"17780619820"; //总经销商
 //    textfield.text = @"13220171001";  //分经销商
-    textfield.text = @"13220170100";     //公司人员
+//    textfield.text = @"13220170100";     //公司人员
 //   textfield.text  = @"18669069389";
 //    textfield.text = @"13220175001";//检修人员
 	textfield.tintColor = [UIColor whiteColor];

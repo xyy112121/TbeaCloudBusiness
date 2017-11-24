@@ -45,7 +45,7 @@
 	self.view.backgroundColor = [UIColor whiteColor];
 	app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarHeight-44-IPhone_SafeBottomMargin)];
 	tableview.backgroundColor = [UIColor clearColor];
 	tableview.delegate = self;
 	tableview.dataSource = self;
@@ -53,7 +53,7 @@
 	[self setExtraCellLineHidden:tableview];
     
     UIButton *buttonlogout = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonlogout.frame = CGRectMake(20, SCREEN_HEIGHT-64-80, SCREEN_WIDTH-40, 40);
+    buttonlogout.frame = CGRectMake(20, SCREEN_HEIGHT-64-80-IPhone_SafeBottomMargin, SCREEN_WIDTH-40, 40);
     buttonlogout.backgroundColor = COLORNOW(238, 89, 83);
     [buttonlogout setTitle:@"退出登录" forState:UIControlStateNormal];
     buttonlogout.layer.cornerRadius = 3.0f;

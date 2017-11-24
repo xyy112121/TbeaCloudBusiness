@@ -50,8 +50,9 @@
 #pragma mark 页面布局
 -(void)initview
 {
-	self.title = @"公司简介";
+	self.title = [_FCdicproduct objectForKey:@"name"];
 	self.view.backgroundColor = [UIColor whiteColor];
+    FCphotoArr = [[NSMutableArray alloc] init];
 	app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	
 	UIView *view = [self addtabviewheader:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
@@ -97,14 +98,14 @@
 	userContentController = [[WKUserContentController alloc] init];
 	WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
 	configuration.userContentController = userContentController;
-	//	[userContentController addScriptMessageHandler:self name:@"commonBack"];
+    [userContentController addScriptMessageHandler:self name:@"showlargepicture"];
 	
 	WKPreferences *preferences = [WKPreferences new];
 	preferences.javaScriptCanOpenWindowsAutomatically = YES;
 	preferences.minimumFontSize = 40.0;
 	configuration.preferences = preferences;
 	
-	self.strurl = @"http://www.baidu.com";
+	self.strurl = [NSString stringWithFormat:@"%@%@%@",[app.GBURLPreFix length]>0?app.GBURLPreFix:Interfacehtmlurlheader,HtmlURLTbeaProductDetail,[_FCdicproduct objectForKey:@"id"]];
 	wkwebview = [[WKWebView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, SCREEN_HEIGHT-64-40)
 								   configuration:configuration];
 	NSURL *fileURL = [NSURL URLWithString:self.strurl];
@@ -133,7 +134,7 @@
 - (void)dealloc
 {
 	NSLog(@"%s",__FUNCTION__);
-	[userContentController removeScriptMessageHandlerForName:@"commonBack"];
+	[userContentController removeScriptMessageHandlerForName:@"showlargepicture"];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -147,6 +148,49 @@
 	NSDictionary* dict=[NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
 	self.navigationController.navigationBar.titleTextAttributes= dict;
 }
+
+#pragma mark 点击网络图片
+-(void)clickwebpic
+{
+    [FCphotoArr removeAllObjects];
+    for(int i=0;i<[FCarraypic count];i++)
+    {
+        NSDictionary *dictemp = [FCarraypic objectAtIndex:i];
+        [FCphotoArr addObject:[dictemp objectForKey:@"picture"]];
+    }
+    
+    // 1 初始化
+    LLPhotoBrowser *photoBrowser = [[LLPhotoBrowser alloc]init];
+    // 2 设置代理
+    photoBrowser.delegate = self;
+    // 3 设置当前图片
+    photoBrowser.currentImageIndex = FCnowpage;
+    // 4 设置图片的个数
+    photoBrowser.imageCount = [FCarraypic count];
+    // 5 设置图片的容器
+    photoBrowser.sourceImagesContainerView = self.view;
+    // 6 展示
+    [photoBrowser show];
+}
+
+#pragma mark LLPhotoDelegate
+// 代理方法 返回图片URL
+- (NSURL *)photoBrowser:(LLPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index{
+    
+    NSURL *url = [NSURL URLWithString:FCphotoArr[index]];
+    return url;
+}
+// 代理方法返回缩略图
+- (UIImage *)photoBrowser:(LLPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index{
+    
+    //    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    
+    //    UIImageView *imageview = [self.view viewWithTag:EnWaterMettingPicArrmentImageViewTag+index];
+    
+    return nil;//imageview.image;
+    
+}
+
 
 #pragma mark pop弹出框
 - (void)Clickmorefunction:(id)sender
@@ -206,14 +250,14 @@
 	int tagnow = (int)[button tag];
 	if(tagnow == EnTbeaProductDetailSelect1)
 	{
-		self.strurl = @"http://www.baidu.com";
+		self.strurl = [NSString stringWithFormat:@"%@%@%@",[app.GBURLPreFix length]>0?app.GBURLPreFix:Interfacehtmlurlheader,HtmlURLTbeaProductDetail,[_FCdicproduct objectForKey:@"id"]];
 		NSURL *fileURL = [NSURL URLWithString:self.strurl];
 		NSURLRequest *request  = [NSURLRequest requestWithURL:fileURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10];
 		[wkwebview loadRequest:request];
 	}
 	else if(tagnow == EnTbeaProductDetailSelect2)
 	{
-		self.strurl = @"http://www.qq.com";
+		self.strurl = [NSString stringWithFormat:@"%@%@%@",[app.GBURLPreFix length]>0?app.GBURLPreFix:Interfacehtmlurlheader,HtmlUrlTbeaProductParameter,[_FCdicproduct objectForKey:@"id"]];
 		NSURL *fileURL = [NSURL URLWithString:self.strurl];
 		NSURLRequest *request  = [NSURLRequest requestWithURL:fileURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10];
 		[wkwebview loadRequest:request];
@@ -237,9 +281,19 @@
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message
 {
 	NSLog(@"body:%@,%@",message.body,message.name);
-	if ([message.name isEqualToString:@"commonBack"]) //返回
+	if ([message.name isEqualToString:@"showlargepicture"]) //返回
 	{
-		[self returnback];
+        NSString *strjson = message.body;
+        if (![strjson isKindOfClass:[NSString class]]) {
+            return;
+        }
+        
+        NSDictionary *tempdic = [AddInterface dictionaryWithJsonString:strjson];
+        
+        
+        [self getpiclist:[tempdic objectForKey:@"id"] NowPage:[tempdic objectForKey:@"sequence"]];
+
+        DLog(@"userinfo====%@",tempdic);
 	}
 }
 
@@ -349,6 +403,39 @@
 	
 	[self presentViewController:alertController animated:YES completion:nil];
 	
+}
+
+
+#pragma mark 接口
+-(void)getpiclist:(NSString *)commodityid NowPage:(NSString *)nowpage
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"commodityid"] = commodityid;
+
+    
+    
+    [RequestInterface doGetJsonWithParametersNoAn:params App:app RequestCode:RQWebPicDisplayListCode ReqUrl:InterfaceRequestUrl ShowView:app.window alwaysdo:^{
+        
+    } Success:^(NSDictionary *dic) {
+        DLog(@"dic====%@",dic);
+        if([[dic objectForKey:@"success"] isEqualToString:@"true"])
+        {
+            FCarraypic = [[dic objectForKey:@"data"] objectForKey:@"picturelist"];
+            FCnowpage = [nowpage intValue];
+            [self clickwebpic];
+//            TbeaScrollviewPicDisplayViewController *tbeascrollview = [[TbeaScrollviewPicDisplayViewController alloc] init];
+//            tbeascrollview.FCarraypic = [[dic objectForKey:@"data"] objectForKey:@"picturelist"];
+//            tbeascrollview.FCnowpage = [nowpage intValue];
+//            [self.navigationController pushViewController:tbeascrollview animated:YES];
+        }
+        else
+        {
+            [MBProgressHUD showError:[dic objectForKey:@"msg"] toView:app.window];
+        }
+    } Failur:^(NSString *strmsg) {
+        [MBProgressHUD showError:@"请求失败,请检查网络" toView:self.view];
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
