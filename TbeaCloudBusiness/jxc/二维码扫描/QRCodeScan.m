@@ -292,7 +292,7 @@
 	scrollview.backgroundColor = [UIColor clearColor];
 	[self.view addSubview:scrollview];
 	
-	UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+	UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
 	imageview.tag = 1500;
 	imageview.contentMode = UIViewContentModeScaleAspectFill;
 	imageview.clipsToBounds = YES;

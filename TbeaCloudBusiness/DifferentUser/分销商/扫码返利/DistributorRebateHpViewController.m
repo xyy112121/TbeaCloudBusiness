@@ -49,7 +49,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
     tableview.backgroundColor = [UIColor clearColor];
     [self.view addSubview:tableview];
     [self setExtraCellLineHidden:tableview];
@@ -73,7 +73,7 @@
     UIView *viewsearch = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
     viewsearch.backgroundColor = COLORNOW(0, 170, 238);
     
-    SearchTextFieldView *searchtext = [[SearchTextFieldView alloc] initWithFrame:CGRectMake(60, 10, SCREEN_WIDTH-120, 30) Pastr:@"扫码返利查询"];
+    SearchTextFieldView *searchtext = [[SearchTextFieldView alloc] initWithFrame:CGRectMake(40, 10, SCREEN_WIDTH-60, 30) Pastr:@"扫码返利查询"];
     searchtext.delegate1 = self;
     [viewsearch addSubview:searchtext];
     

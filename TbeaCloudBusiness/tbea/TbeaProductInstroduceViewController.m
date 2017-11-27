@@ -400,6 +400,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TbeaProductDetailViewController *productdetail = [[TbeaProductDetailViewController alloc] init];
+    NSDictionary *dictemp = [FCarraydata objectAtIndex:indexPath.row];
+    productdetail.FCdicproduct = dictemp;
     [self.navigationController pushViewController:productdetail animated:YES];
 }
 

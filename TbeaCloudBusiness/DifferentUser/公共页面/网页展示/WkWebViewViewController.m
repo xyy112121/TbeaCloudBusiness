@@ -38,7 +38,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = self.FCstrtitle;
     app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    UIView  *view = [[WkWebViewCustomView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64) StrUrl:self.FCstrurl];
+    UIView  *view = [[WkWebViewCustomView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight) StrUrl:self.FCstrurl];
     [self.view addSubview:view];
 }
 

@@ -457,7 +457,7 @@
     self.frame = CGRectMake(0, 0, screenWith, screenHeight);
     [UIView animateWithDuration:0.25f animations:^{
         self.alpha = 1;
-        _contentV.frame = CGRectMake(0, screenHeight-220-64, screenWith, 220);
+        _contentV.frame = CGRectMake(0, screenHeight-220-StatusBarAndNavigationHeight, screenWith, 220);
 
     } completion:^(BOOL finished) {
 
@@ -467,10 +467,10 @@
     
     [UIView animateWithDuration:0.2f animations:^{
         self.alpha = 0;
-        _contentV.frame = CGRectMake(0, screenHeight-64, screenWith, 220);
+        _contentV.frame = CGRectMake(0, screenHeight-StatusBarAndNavigationHeight, screenWith, 220);
     } completion:^(BOOL finished) {
 
-        self.frame = CGRectMake(0, screenHeight-64, screenWith, screenHeight);
+        self.frame = CGRectMake(0, screenHeight-StatusBarAndNavigationHeight, screenWith, screenHeight);
     }];
 
 }

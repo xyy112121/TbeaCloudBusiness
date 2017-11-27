@@ -103,7 +103,7 @@
 
 -(void)footview:(id)sender
 {
-	UIView *viewheader = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-64-80, SCREEN_WIDTH, 80)];
+	UIView *viewheader = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-StatusBarAndNavigationHeight-80, SCREEN_WIDTH, 80)];
 	viewheader.backgroundColor = [UIColor whiteColor];
 
 	UIButton *buttoncommit = [UIButton buttonWithType:UIButtonTypeCustom];

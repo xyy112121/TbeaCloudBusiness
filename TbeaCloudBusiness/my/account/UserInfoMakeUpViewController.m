@@ -39,7 +39,7 @@
 	self.view.backgroundColor = [UIColor whiteColor];
 	app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
 	tableview.backgroundColor = [UIColor clearColor];
 	tableview.delegate = self;
 	tableview.dataSource = self;
@@ -48,7 +48,7 @@
 	[self setExtraCellLineHidden:tableview];
 	
 	UIButton *buttonnext = [UIButton buttonWithType:UIButtonTypeCustom];
-	buttonnext.frame = CGRectMake(20, SCREEN_HEIGHT-70-64, SCREEN_WIDTH-40, 40);
+	buttonnext.frame = CGRectMake(20, SCREEN_HEIGHT-70-StatusBarAndNavigationHeight, SCREEN_WIDTH-40, 40);
 	[buttonnext setTitle:@"下一步" forState:UIControlStateNormal];
 	buttonnext.layer.cornerRadius = 3.0f;
 	buttonnext.clipsToBounds = YES;

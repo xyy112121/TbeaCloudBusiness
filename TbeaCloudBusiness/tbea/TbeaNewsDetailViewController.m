@@ -57,7 +57,7 @@
 	configuration.preferences = preferences;
 	
     NSString *strurlnow = [NSString stringWithFormat:@"%@%@?newsid=%@",Interfacehtmlurlheader,HtmlUrlTbeaNewsZhiXun,self.FCnewsid];
-	wkwebview = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)
+	wkwebview = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)
 								   configuration:configuration];
 	NSURL *fileURL = [NSURL URLWithString:strurlnow];
 	NSURLRequest *request  = [NSURLRequest requestWithURL:fileURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10];

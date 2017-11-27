@@ -56,7 +56,7 @@
 
 -(void)viewheader
 {
-	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160)];
+	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160+StatusBarHeight)];
 	
 	MyPageHeaderView *focusnews = [[MyPageHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160+StatusBarHeight) DicFrom:FCdicuserpersoninfo];
 	focusnews.delegate1 = self;

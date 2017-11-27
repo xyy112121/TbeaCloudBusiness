@@ -49,7 +49,7 @@
 
 	
 	
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
 	tableview.backgroundColor = [UIColor clearColor];
 	tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
 	tableview.delegate = self;

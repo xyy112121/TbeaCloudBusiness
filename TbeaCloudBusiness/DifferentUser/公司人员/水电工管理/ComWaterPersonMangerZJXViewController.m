@@ -41,7 +41,7 @@
     FCorderitem = @"";
     FCorderid = @"desc";
     
-    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, SCREEN_HEIGHT-64-100)];
+    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-100)];
     tableview.backgroundColor = [UIColor clearColor];
     [self.view addSubview:tableview];
     //	[self addtabviewheader];

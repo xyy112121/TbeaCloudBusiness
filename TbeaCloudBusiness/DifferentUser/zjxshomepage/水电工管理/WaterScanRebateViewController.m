@@ -49,7 +49,7 @@
     FCorderitem=@"";
     FCorder=@"desc";
     
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
 	tableview.backgroundColor = [UIColor clearColor];
 	tableview.delegate = self;
 	tableview.dataSource = self;
@@ -179,7 +179,7 @@
 
 -(void)addtotlemoneyinfo:(NSString *)totlemoney
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-64-50, SCREEN_WIDTH, 50)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-StatusBarAndNavigationHeight-50, SCREEN_WIDTH, 50)];
     view.backgroundColor = COLORNOW(240, 133, 56);
     view.tag = EnWaterPersonScanTiXianMoneyView;
     [self.view addSubview:view];

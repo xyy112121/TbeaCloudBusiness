@@ -87,7 +87,7 @@
 
 -(void)initview:(NSDictionary *)sender
 {
-	scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+	scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
 	scrollview.backgroundColor = [UIColor clearColor];
 	[self.view addSubview:scrollview];
 	
@@ -144,7 +144,7 @@
 	imageviewline.backgroundColor = COLORNOW(211, 211, 211);
 	[scrollview addSubview:imageviewline];
 	
-	webview = [[UIWebView alloc] initWithFrame:CGRectMake(10, imageviewline.frame.origin.y+10, SCREEN_WIDTH-20, SCREEN_HEIGHT-60-64-20)];
+	webview = [[UIWebView alloc] initWithFrame:CGRectMake(10, imageviewline.frame.origin.y+10, SCREEN_WIDTH-20, SCREEN_HEIGHT-60-StatusBarAndNavigationHeight-20)];
 	webview.delegate = self;
 	webview.backgroundColor = [UIColor clearColor];
 	[webview loadHTMLString:[sender objectForKey:@"Content"] baseURL:nil];

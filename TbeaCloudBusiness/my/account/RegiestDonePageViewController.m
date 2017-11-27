@@ -40,7 +40,7 @@
 	[self initviewunder];
 	
 	//返回按钮和标题
-	UIImageView *imagetopbg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
+	UIImageView *imagetopbg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, StatusBarAndNavigationHeight)];
 	imagetopbg.backgroundColor = COLORNOW(0, 170, 238);
 	[self.view addSubview:imagetopbg];
 	
@@ -51,7 +51,7 @@
 //	[buttonback addTarget:self action:@selector(returnback:) forControlEvents:UIControlEventTouchUpInside];
 //	[self.view addSubview:buttonback];
 	
-	UILabel *labelname = [[UILabel alloc] initWithFrame:CGRectMake(50, 22, SCREEN_WIDTH-100, 40)];
+	UILabel *labelname = [[UILabel alloc] initWithFrame:CGRectMake(50, StatusBarHeight+2, SCREEN_WIDTH-100, 40)];
 	labelname.text = @"注册成功";
 	labelname.font = FONTN(16.0f);
 	labelname.backgroundColor = [UIColor clearColor];
@@ -62,7 +62,7 @@
 
 -(void)initviewtop
 {
-	UIImageView *imageviewicon = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-70)/2, 64+50, 70, 70)];
+	UIImageView *imageviewicon = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-70)/2, StatusBarAndNavigationHeight+50, 70, 70)];
 	imageviewicon.image = LOADIMAGE(@"userdone", @"png");
 	[self.view addSubview:imageviewicon];
 	

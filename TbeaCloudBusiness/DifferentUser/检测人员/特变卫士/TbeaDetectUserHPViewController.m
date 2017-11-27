@@ -50,7 +50,7 @@
     FCorderdate = @"";
     FCorderstatus = @"";
     
-    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 80, SCREEN_WIDTH, SCREEN_HEIGHT-64-80)];
+    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 80, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-80)];
     tableview.backgroundColor = [UIColor clearColor];
     [self.view addSubview:tableview];
     

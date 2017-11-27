@@ -48,7 +48,7 @@
     self.title = @"轮换广告详情";
     app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
     tableview.backgroundColor = [UIColor clearColor];
     tableview.delegate = self;
     tableview.dataSource = self;
@@ -61,7 +61,7 @@
     [self.view addGestureRecognizer:tapGestureRecognizer];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(20, SCREEN_HEIGHT-64-80, SCREEN_WIDTH-40, 40);
+    button.frame = CGRectMake(20, SCREEN_HEIGHT-StatusBarAndNavigationHeight-80, SCREEN_WIDTH-40, 40);
     [button setTitle:@"删除" forState:UIControlStateNormal];
     button.titleLabel.font = FONTN(15.0f);
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

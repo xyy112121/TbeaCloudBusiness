@@ -401,3 +401,6 @@ typedef enum
 #define EnWaterMettingPicArrmentDeleteBtTag 60200
 
 #define EnTbeaHpViewTypeBtTag  60300
+
+#define EnTixianHistoryViewTopView 60400
+

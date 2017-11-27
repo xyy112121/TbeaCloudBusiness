@@ -54,7 +54,7 @@
 	self.view.backgroundColor = [UIColor whiteColor];
 	self.title = @"搜索结果";
     
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStylePlain];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight) style:UITableViewStylePlain];
 	tableview.backgroundColor = [UIColor whiteColor];
 	[self.view addSubview:tableview];
 	[self getsearchresult:@"1" PageSize:@"10"];

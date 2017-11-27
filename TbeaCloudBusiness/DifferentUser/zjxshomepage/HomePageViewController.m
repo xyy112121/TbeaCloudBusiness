@@ -39,8 +39,8 @@
 	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
 	app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	
-	
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49)];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-49-IPhone_SafeBottomMargin)];
+    DLog(@"tableviewheight====%f,%f",StatusBarAndNavigationHeight,SCREEN_HEIGHT-StatusBarAndNavigationHeight-49-IPhone_SafeBottomMargin);
 	tableview.backgroundColor = [UIColor clearColor];
 	tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
 	tableview.delegate = self;

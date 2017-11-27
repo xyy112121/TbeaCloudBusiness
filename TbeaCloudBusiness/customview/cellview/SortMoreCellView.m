@@ -32,11 +32,13 @@
 //全部cell  //经销cell
 -(void)initview:(NSDictionary *)dic
 {
-	float nowwidth = (SCREEN_WIDTH-20)/4;
+	float nowwidth = (SCREEN_WIDTH-20)/3;
 	
-	UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 40, 40)];
-    NSString *strpic = [dic objectForKey:@"thumbpicture"];//[InterfaceResource stringByAppendingString:[[dic objectForKey:@"thumbpicture"] length]>0?[dic objectForKey:@"thumbpicture"]:@"noimage.png"];
+	UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 40, 40)];
+    NSString *strpic = [dic objectForKey:@"thumbpicture"];
 	[imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
+    imageheader.layer.cornerRadius = 20.0f;
+    imageheader.clipsToBounds =YES;
 	[self addSubview:imageheader];
 	
 	NSString *strname = [dic objectForKey:@"personname"];
@@ -48,19 +50,19 @@
 	lablename.backgroundColor = [UIColor clearColor];
 	[self addSubview:lablename];
 	
-	UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(lablename)+5, XYViewTop(lablename)+5, 25, 10)];
+	UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewL(lablename), XYViewBottom(lablename)+5, 25, 10)];
     strpic = [dic objectForKey:@"persontypeicon"];//[InterfaceResource stringByAppendingString:[[dic objectForKey:@"persontypeicon"] length]>0?[dic objectForKey:@"persontypeicon"]:@"noimage.png"];
 	[imageicon setImageWithURL:[NSURL URLWithString:strpic]];
 	[self addSubview:imageicon];
 	
-	UILabel *lableaddr = [[UILabel alloc] initWithFrame:CGRectMake(XYViewL(lablename), XYViewBottom(lablename), SCREEN_WIDTH/2-20, 20)];
-	lableaddr.text = [dic objectForKey:@"companyname"];
-	lableaddr.font = FONTN(12.0f);
-	lableaddr.textColor = COLORNOW(160, 160, 160);
-	lableaddr.backgroundColor = [UIColor clearColor];
-	[self addSubview:lableaddr];
+//    UILabel *lableaddr = [[UILabel alloc] initWithFrame:CGRectMake(XYViewL(lablename), XYViewBottom(lablename), SCREEN_WIDTH/2-20, 20)];
+//    lableaddr.text = [dic objectForKey:@"companyname"];
+//    lableaddr.font = FONTN(12.0f);
+//    lableaddr.textColor = COLORNOW(160, 160, 160);
+//    lableaddr.backgroundColor = [UIColor clearColor];
+//    [self addSubview:lableaddr];
 	
-	UILabel *lablearea = [[UILabel alloc] initWithFrame:CGRectMake(10+nowwidth*2, 20, nowwidth, 20)];
+	UILabel *lablearea = [[UILabel alloc] initWithFrame:CGRectMake(10+nowwidth, 20, nowwidth, 20)];
 	lablearea.text = [dic objectForKey:@"zone"];
 	lablearea.font = FONTN(14.0f);
 	lablearea.textColor = COLORNOW(117, 117, 117);

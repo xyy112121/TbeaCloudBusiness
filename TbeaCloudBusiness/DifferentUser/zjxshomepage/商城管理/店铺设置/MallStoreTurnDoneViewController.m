@@ -75,7 +75,7 @@
 -(void)initviewunder
 {
     UIButton *buttonloging = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonloging.frame = CGRectMake(30, SCREEN_HEIGHT-60-64-100, SCREEN_WIDTH-60, 40);
+    buttonloging.frame = CGRectMake(30, SCREEN_HEIGHT-60-StatusBarAndNavigationHeight-100, SCREEN_WIDTH-60, 40);
     buttonloging.layer.cornerRadius = 3.0f;
     buttonloging.backgroundColor = COLORNOW(0, 170, 238);
     buttonloging.clipsToBounds = YES;

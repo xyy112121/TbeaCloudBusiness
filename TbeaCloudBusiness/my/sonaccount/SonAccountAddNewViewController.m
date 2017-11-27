@@ -55,7 +55,7 @@
 	
     FCarrayauthorization = [[NSArray alloc] init];
     
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
 	tableview.backgroundColor = [UIColor clearColor];
 	tableview.delegate = self;
 	tableview.dataSource = self;
@@ -64,7 +64,7 @@
 	[self setExtraCellLineHidden:tableview];
 	
 	UIButton *buttonnext = [UIButton buttonWithType:UIButtonTypeCustom];
-	buttonnext.frame = CGRectMake(20, SCREEN_HEIGHT-70-64, SCREEN_WIDTH-40, 40);
+	buttonnext.frame = CGRectMake(20, SCREEN_HEIGHT-70-StatusBarAndNavigationHeight, SCREEN_WIDTH-40, 40);
 	[buttonnext setTitle:@"保存" forState:UIControlStateNormal];
 	buttonnext.layer.cornerRadius = 3.0f;
 	buttonnext.clipsToBounds = YES;
@@ -134,6 +134,7 @@
         [self returnkey];
         SonAccountAuthorizeViewController *sonaccount = [[SonAccountAuthorizeViewController alloc] init];
         sonaccount.delegate1 = self;
+        sonaccount.FCfromflag = @"1";  //修改字账户权限 用1
         [self.navigationController pushViewController:sonaccount animated:YES];
         return NO;
     }

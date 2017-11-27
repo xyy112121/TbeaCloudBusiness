@@ -269,7 +269,7 @@
 	}
 	
 	//底部图
-	UIImageView *imageviewbottom = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-256)/2,scrollview.frame.size.height-64-80, 256, 82)];
+	UIImageView *imageviewbottom = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-256)/2,scrollview.frame.size.height-StatusBarAndNavigationHeight-80, 256, 82)];
 	imageviewbottom.image = LOADIMAGE(@"jxlogo", @"png");
 	[scrollview insertSubview:imageviewbottom atIndex:0];
 }

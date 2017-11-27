@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TbeaCloudBusiness/DifferentUser/zjxshomepage/&#x5546;&#x57ce;&#x7ba1;&#x7406;/&#x5e97;&#x94fa;&#x52a8;&#x6001;/MallStoreDynamicListViewController.m"
-            timestampString = "526381273.359028"
+            timestampString = "533467638.13776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "416"
@@ -26,12 +26,12 @@
                   moduleName = "TbeaCloudBusiness"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xyy/Desktop/%E5%B7%A5%E4%BD%9C/Other/%E7%9D%BF%E5%B0%94%E7%9A%84%E4%B8%9C%E8%A5%BF/%E5%BE%B7%E9%98%B3%E7%94%B5%E5%95%86/%E4%BA%8C%E6%9C%9F/%E7%89%B9%E5%8F%98%E4%BA%91%E5%95%86/%E4%BB%A3%E7%A0%81/IOS/TbeaCloudBusiness/TbeaCloudBusiness/DifferentUser/zjxshomepage/%E5%95%86%E5%9F%8E%E7%AE%A1%E7%90%86/%E5%BA%97%E9%93%BA%E5%8A%A8%E6%80%81/MallStoreDynamicListViewController.m"
-                  timestampString = "533196428.068221"
+                  timestampString = "533467638.297364"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "416"
                   endingLineNumber = "416"
-                  offsetFromSymbolStart = "155">
+                  offsetFromSymbolStart = "164">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -41,7 +41,7 @@
                   moduleName = "TbeaCloudBusiness"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xyy/Desktop/%E5%B7%A5%E4%BD%9C/Other/%E7%9D%BF%E5%B0%94%E7%9A%84%E4%B8%9C%E8%A5%BF/%E5%BE%B7%E9%98%B3%E7%94%B5%E5%95%86/%E4%BA%8C%E6%9C%9F/%E7%89%B9%E5%8F%98%E4%BA%91%E5%95%86/%E4%BB%A3%E7%A0%81/IOS/TbeaCloudBusiness/TbeaCloudBusiness/DifferentUser/zjxshomepage/%E5%95%86%E5%9F%8E%E7%AE%A1%E7%90%86/%E5%BA%97%E9%93%BA%E5%8A%A8%E6%80%81/MallStoreDynamicListViewController.m"
-                  timestampString = "533196428.069996"
+                  timestampString = "533467638.298852"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "418"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TbeaCloudBusiness/DifferentUser/zjxshomepage/&#x5546;&#x57ce;&#x7ba1;&#x7406;/&#x5e97;&#x94fa;&#x52a8;&#x6001;/MallStoreDynamicListViewController.m"
-            timestampString = "526381273.359028"
+            timestampString = "533467638.137824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "419"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TbeaCloudBusiness/DifferentUser/zjxshomepage/&#x5546;&#x57ce;&#x7ba1;&#x7406;/&#x5546;&#x54c1;&#x9500;&#x91cf;/MallStoreGoodsSalesDetailViewController.m"
-            timestampString = "526188216.817463"
+            timestampString = "533467638.137871"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "288"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TbeaCloudBusiness/DifferentUser/zjxshomepage/&#x5546;&#x57ce;&#x7ba1;&#x7406;/&#x5546;&#x54c1;&#x9500;&#x91cf;/MallStoreGoodsSalesDetailViewController.m"
-            timestampString = "526188218.057057"
+            timestampString = "533467638.137917"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "285"
@@ -106,12 +106,12 @@
                   moduleName = "TbeaCloudBusiness"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xyy/Desktop/%E5%B7%A5%E4%BD%9C/Other/%E7%9D%BF%E5%B0%94%E7%9A%84%E4%B8%9C%E8%A5%BF/%E5%BE%B7%E9%98%B3%E7%94%B5%E5%95%86/%E4%BA%8C%E6%9C%9F/%E7%89%B9%E5%8F%98%E4%BA%91%E5%95%86/%E4%BB%A3%E7%A0%81/IOS/TbeaCloudBusiness/TbeaCloudBusiness/DifferentUser/zjxshomepage/%E5%95%86%E5%9F%8E%E7%AE%A1%E7%90%86/%E5%95%86%E5%93%81%E9%94%80%E9%87%8F/MallStoreGoodsSalesDetailViewController.m"
-                  timestampString = "533196428.080744"
+                  timestampString = "533467638.306926"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "285"
                   endingLineNumber = "285"
-                  offsetFromSymbolStart = "155">
+                  offsetFromSymbolStart = "164">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -121,7 +121,7 @@
                   moduleName = "TbeaCloudBusiness"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xyy/Desktop/%E5%B7%A5%E4%BD%9C/Other/%E7%9D%BF%E5%B0%94%E7%9A%84%E4%B8%9C%E8%A5%BF/%E5%BE%B7%E9%98%B3%E7%94%B5%E5%95%86/%E4%BA%8C%E6%9C%9F/%E7%89%B9%E5%8F%98%E4%BA%91%E5%95%86/%E4%BB%A3%E7%A0%81/IOS/TbeaCloudBusiness/TbeaCloudBusiness/DifferentUser/zjxshomepage/%E5%95%86%E5%9F%8E%E7%AE%A1%E7%90%86/%E5%95%86%E5%93%81%E9%94%80%E9%87%8F/MallStoreGoodsSalesDetailViewController.m"
-                  timestampString = "533196428.082358"
+                  timestampString = "533467638.30809"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "287"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TbeaCloudBusiness/DifferentUser/zjxshomepage/&#x5546;&#x57ce;&#x7ba1;&#x7406;/&#x5e97;&#x94fa;&#x8bbe;&#x7f6e;/MallStoreCycleAdDetailViewController.m"
-            timestampString = "526361463.898892"
+            timestampString = "533467638.137962"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "442"
@@ -154,12 +154,12 @@
                   moduleName = "TbeaCloudBusiness"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xyy/Desktop/%E5%B7%A5%E4%BD%9C/Other/%E7%9D%BF%E5%B0%94%E7%9A%84%E4%B8%9C%E8%A5%BF/%E5%BE%B7%E9%98%B3%E7%94%B5%E5%95%86/%E4%BA%8C%E6%9C%9F/%E7%89%B9%E5%8F%98%E4%BA%91%E5%95%86/%E4%BB%A3%E7%A0%81/IOS/TbeaCloudBusiness/TbeaCloudBusiness/DifferentUser/zjxshomepage/%E5%95%86%E5%9F%8E%E7%AE%A1%E7%90%86/%E5%BA%97%E9%93%BA%E8%AE%BE%E7%BD%AE/MallStoreCycleAdDetailViewController.m"
-                  timestampString = "533196428.086165"
+                  timestampString = "533467638.310985"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "442"
                   endingLineNumber = "442"
-                  offsetFromSymbolStart = "353">
+                  offsetFromSymbolStart = "480">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -169,7 +169,7 @@
                   moduleName = "TbeaCloudBusiness"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xyy/Desktop/%E5%B7%A5%E4%BD%9C/Other/%E7%9D%BF%E5%B0%94%E7%9A%84%E4%B8%9C%E8%A5%BF/%E5%BE%B7%E9%98%B3%E7%94%B5%E5%95%86/%E4%BA%8C%E6%9C%9F/%E7%89%B9%E5%8F%98%E4%BA%91%E5%95%86/%E4%BB%A3%E7%A0%81/IOS/TbeaCloudBusiness/TbeaCloudBusiness/DifferentUser/zjxshomepage/%E5%95%86%E5%9F%8E%E7%AE%A1%E7%90%86/%E5%BA%97%E9%93%BA%E8%AE%BE%E7%BD%AE/MallStoreCycleAdDetailViewController.m"
-                  timestampString = "533196428.088184"
+                  timestampString = "533467638.312176"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "444"
@@ -185,45 +185,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TbeaCloudBusiness/DifferentUser/zjxshomepage/&#x626b;&#x7801;&#x8fd4;&#x5229;/JiHuoViewController.m"
-            timestampString = "530432464.502643"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
-            landmarkName = "-getjihuolist:Pagesize:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TbeaCloudBusiness/DifferentUser/zjxshomepage/&#x626b;&#x7801;&#x8fd4;&#x5229;/JiHuoViewController.m"
-            timestampString = "530432464.503716"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "-getjihuolist:Pagesize:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TbeaCloudBusiness/DifferentUser/&#x68c0;&#x6d4b;&#x4eba;&#x5458;/&#x7279;&#x53d8;&#x536b;&#x58eb;/TbeaDetectUserHPViewController.m"
-            timestampString = "530786606.442421"
+            timestampString = "533467638.138007"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "546"
             endingLineNumber = "546"
-            landmarkName = "-gettbealist:Pagesize:InterfaceCode:"
+            landmarkName = "-comfirmjiedan:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -234,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TbeaCloudBusiness/DifferentUser/&#x68c0;&#x6d4b;&#x4eba;&#x5458;/&#x7279;&#x53d8;&#x536b;&#x58eb;/TbeaDetectUserHPViewController.m"
-            timestampString = "530786606.44249"
+            timestampString = "533467638.138047"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "460"

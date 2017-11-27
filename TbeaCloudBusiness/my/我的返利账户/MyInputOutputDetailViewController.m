@@ -46,7 +46,7 @@
     FCpaystatusid = @"";
     FCpayeeusertypeid = @"";
     
-    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 90, SCREEN_WIDTH, SCREEN_HEIGHT-64-90)];
+    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 90, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-90)];
     tableview.backgroundColor = [UIColor clearColor];
     tableview.delegate = self;
     tableview.dataSource = self;

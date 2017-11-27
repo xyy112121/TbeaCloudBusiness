@@ -13,7 +13,7 @@
 //获取普通管理器
 +(AFHTTPSessionManager *)getHTTPManager{
 	AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-	manager.requestSerializer.timeoutInterval = 10.0f;
+	manager.requestSerializer.timeoutInterval = 20.0f;
 	manager.responseSerializer = [AFHTTPResponseSerializer serializer];
 	return manager;
 }

@@ -54,7 +54,7 @@
 	self.view.backgroundColor = [UIColor whiteColor];
 	app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
 	tableview.backgroundColor = [UIColor clearColor];
 	tableview.delegate = self;
 	tableview.dataSource = self;
@@ -188,7 +188,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary *dictemp = [FCarraydata objectAtIndex:indexPath.row];
     SonAccountAuthorizeViewController *sonaccount = [[SonAccountAuthorizeViewController alloc] init];
+    sonaccount.FCfromflag = @"2";  //修改字账户权限 用2
+    sonaccount.FCpersonid =  [dictemp objectForKey:@"userid"];
     [self.navigationController pushViewController:sonaccount animated:YES];
 }
 

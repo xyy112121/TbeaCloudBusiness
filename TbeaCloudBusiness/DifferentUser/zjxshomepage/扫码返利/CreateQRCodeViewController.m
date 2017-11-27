@@ -48,7 +48,7 @@
 	self.view.backgroundColor = [UIColor whiteColor];
 	app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
 	tableview.backgroundColor = [UIColor clearColor];
 	tableview.delegate = self;
 	tableview.dataSource = self;
@@ -142,6 +142,14 @@
     else if([textfield5.text length] == 0)
     {
         [MBProgressHUD showError:@"请选择产品名称" toView:app.window];
+    }
+    else if(![AddInterface isValidatenumber:textfield2.text])
+    {
+        [MBProgressHUD showError:@"金额只能填写数字" toView:app.window];
+    }
+    else if(![AddInterface isValidatenumber:textfield3.text])
+    {
+        [MBProgressHUD showError:@"数量只能填写数字" toView:app.window];
     }
 	else
 	{
@@ -238,7 +246,7 @@
 	[button setTitle:@"预览" forState:UIControlStateNormal];
 	button.titleLabel.font = FONTN(15.0f);
 	[button setTitleColor:COLORNOW(117, 117, 117) forState:UIControlStateNormal];
-	[viewheader addSubview:button];
+//	[viewheader addSubview:button];
 	
 	return viewheader;
 }

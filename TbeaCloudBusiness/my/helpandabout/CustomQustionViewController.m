@@ -55,7 +55,7 @@
 	NSDictionary * dict=[NSDictionary dictionaryWithObject:COLORNOW(255, 255, 255) forKey:NSForegroundColorAttributeName];
 	self.navigationController.navigationBar.titleTextAttributes = dict;
 	self.title = @"客服中心";
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStylePlain];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight) style:UITableViewStylePlain];
 	tableview.backgroundColor = [UIColor whiteColor];
 	
     if (@available(iOS 11.0, *)) {

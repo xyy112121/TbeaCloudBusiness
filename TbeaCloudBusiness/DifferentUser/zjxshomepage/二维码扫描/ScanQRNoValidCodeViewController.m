@@ -60,7 +60,7 @@
 
 -(void)initviewtop
 {
-    UIImageView *imageviewicon = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-60)/2, 64+50, 60, 54)];
+    UIImageView *imageviewicon = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-60)/2, StatusBarAndNavigationHeight+50, 60, 54)];
     imageviewicon.image = LOADIMAGE(@"scanqrnovalid", @"png");
     [self.view addSubview:imageviewicon];
     
@@ -97,7 +97,7 @@
 -(void)initviewunder
 {
     UIButton *buttondone = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttondone.frame = CGRectMake(30, SCREEN_HEIGHT-100-64, SCREEN_WIDTH-60, 40);
+    buttondone.frame = CGRectMake(30, SCREEN_HEIGHT-100-StatusBarAndNavigationHeight, SCREEN_WIDTH-60, 40);
     buttondone.layer.cornerRadius = 3.0f;
     buttondone.backgroundColor = COLORNOW(0, 170, 238);
     buttondone.clipsToBounds = YES;

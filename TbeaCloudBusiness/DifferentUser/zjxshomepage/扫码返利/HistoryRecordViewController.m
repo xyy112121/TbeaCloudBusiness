@@ -47,7 +47,7 @@
 	[self getjihuostatuslist];
 	
 	
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, SCREEN_HEIGHT-64-40)];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-40)];
 	tableview.backgroundColor = [UIColor clearColor];
 	[self.view addSubview:tableview];
 	[self addtabviewheader];
@@ -468,11 +468,12 @@
 {
 	
 	NSDictionary *dictemp = [FCarraydata objectAtIndex:indexPath.row];
-	JiHuoViewController *jihuoview = [[JiHuoViewController alloc] init];
-	jihuoview.FCqrcodeid = [dictemp objectForKey:@"id"];
-	[self.navigationController pushViewController:jihuoview animated:YES];
-	
-	
+//    JiHuoViewController *jihuoview = [[JiHuoViewController alloc] init];
+//    jihuoview.FCqrcodeid = [dictemp objectForKey:@"id"];
+//    [self.navigationController pushViewController:jihuoview animated:YES];
+	CreqteQRCodeListViewController *create = [[CreqteQRCodeListViewController alloc] init];
+	create.FCcreateid = [dictemp objectForKey:@"id"];
+    [self.navigationController pushViewController:create animated:YES];
 }
 
 #pragma mark 接口

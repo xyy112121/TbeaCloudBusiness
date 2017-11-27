@@ -52,6 +52,7 @@
 #define ViewSafeAreInsets(view) ({UIEdgeInsets insets; if(@available(iOS 11.0, *)) {insets = view.safeAreaInsets;} else {insets = UIEdgeInsetsZero;} insets;})
 #define  StatusBarHeight      (iPhoneX ? 44.f : 20.f)
 #define IPhone_SafeBottomMargin  (iPhoneX ? 30.f : 0.f)
+#define StatusBarAndNavigationHeight (StatusBarHeight+44)
 
 
 #define iphone6ratio 1.17  // 375/320

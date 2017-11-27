@@ -26,7 +26,7 @@
 {
     [self.navigationController setNavigationBarHidden:YES];
 	UIImageView *imageviewtopblue = [[UIImageView alloc] init];
-	imageviewtopblue.frame = CGRectMake(0, 0, SCREEN_WIDTH, 64);
+	imageviewtopblue.frame = CGRectMake(0, 0, SCREEN_WIDTH, StatusBarHeight+44);
 	imageviewtopblue.backgroundColor =COLORNOW(0, 170, 238);
 	[self.view addSubview:imageviewtopblue];
 
@@ -42,7 +42,7 @@
 	{
 		arraydata = [[NSMutableArray alloc] init];
 	}
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStylePlain];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, StatusBarHeight+44, SCREEN_WIDTH, SCREEN_HEIGHT-(StatusBarHeight+44)) style:UITableViewStylePlain];
 	tableview.backgroundColor = [UIColor clearColor];
 	tableview.delegate = self;
 	tableview.dataSource = self;
@@ -91,11 +91,11 @@
     [buttontype setTitleColor:ColorBlackdeep forState:UIControlStateNormal];
     [buttontype setImage:LOADIMAGE(@"returnback", @"png") forState:UIControlStateNormal];
     [buttontype addTarget:self action:@selector(returnback:) forControlEvents:UIControlEventTouchUpInside];
-    buttontype.frame = CGRectMake(10, 22, 40, 40);
+    buttontype.frame = CGRectMake(10, StatusBarHeight+2, 40, 40);
     [buttontype setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:buttontype];
     
-    UIImageView *imagetextbg = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(buttontype)+5, 27, XYViewWidth(self.view)-120,30)];
+    UIImageView *imagetextbg = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(buttontype)+5, StatusBarHeight+7, XYViewWidth(self.view)-120,30)];
     imagetextbg.backgroundColor = [UIColor whiteColor];
     imagetextbg.layer.cornerRadius = 3.0f;
     imagetextbg.clipsToBounds = YES;
@@ -105,7 +105,7 @@
     imagesearch.image = LOADIMAGE(@"hp_searchicon", @"png");
     [self.view addSubview:imagesearch];
     
-    UITextField *textfieldsearch = [[UITextField alloc] initWithFrame:CGRectMake(XYViewR(imagesearch)+5, 28, XYViewWidth(self.view)-150,26)];
+    UITextField *textfieldsearch = [[UITextField alloc] initWithFrame:CGRectMake(XYViewR(imagesearch)+5, StatusBarHeight+8, XYViewWidth(self.view)-150,26)];
     textfieldsearch.backgroundColor = [UIColor clearColor];
     textfieldsearch.placeholder = @"输入搜索的名称";
     textfieldsearch.delegate = self;
@@ -121,7 +121,7 @@
     
     //返回按钮
     UIButton *btreturn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btreturn.frame = CGRectMake(SCREEN_WIDTH-70, 22, 70, 40);
+    btreturn.frame = CGRectMake(SCREEN_WIDTH-70, StatusBarHeight+2, 70, 40);
     [btreturn setTitle:@"搜索" forState:UIControlStateNormal];
     btreturn.titleLabel.font = FONTN(15.0f);
     [btreturn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

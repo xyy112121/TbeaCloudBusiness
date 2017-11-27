@@ -38,9 +38,9 @@
 -(void)initview
 {
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    self.title = @"权限分配";
     app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49)];
+    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
     tableview.backgroundColor = [UIColor clearColor];
     tableview.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     tableview.delegate = self;
@@ -49,15 +49,24 @@
     [self viewheader];
     [self setExtraCellLineHidden:tableview];
     
+    [self initfootbtview];
+    [self getsonaccountlist];
+}
+
+-(void)initfootbtview
+{
+    UIView *viewfoot = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 70)];
+    viewfoot.backgroundColor = [UIColor whiteColor];
+    tableview.tableFooterView = viewfoot;
+    
     UIButton *buttonnext = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonnext.frame = CGRectMake(20, SCREEN_HEIGHT-70-64, SCREEN_WIDTH-40, 40);
+    buttonnext.frame = CGRectMake(20, 30, SCREEN_WIDTH-40, 40);
     [buttonnext setTitle:@"保存" forState:UIControlStateNormal];
     buttonnext.layer.cornerRadius = 3.0f;
     buttonnext.clipsToBounds = YES;
     [buttonnext addTarget:self action:@selector(savesonaccount:) forControlEvents:UIControlEventTouchUpInside];
     [buttonnext setBackgroundColor:COLORNOW(0, 170, 238)];
-    [self.view addSubview:buttonnext];
-    [self getsonaccountlist];
+    [viewfoot addSubview:buttonnext];
 }
 
 -(void)viewheader
@@ -160,11 +169,23 @@
 
 -(void)savesonaccount:(id)sender
 {
-    if([self.delegate1 respondsToSelector:@selector(DGSaveSonAccountFunctionAuthorList:)])
+    if([_FCfromflag isEqualToString:@"1"]) //表示新增子账户的授权
     {
-        [self.delegate1 DGSaveSonAccountFunctionAuthorList:_FCarrayauthor];
+        if([self.delegate1 respondsToSelector:@selector(DGSaveSonAccountFunctionAuthorList:)])
+        {
+            [self.delegate1 DGSaveSonAccountFunctionAuthorList:_FCarrayauthor];
+        }
+        [self.navigationController popViewControllerAnimated:YES];
     }
-    [self.navigationController popViewControllerAnimated:YES];
+    else if([_FCfromflag isEqualToString:@"2"])  //表示修改子账户的授权
+    {
+        for(int i=0;i<[_FCarrayauthor count];i++)
+        {
+            NSMutableDictionary *dic = [_FCarrayauthor objectAtIndex:i];
+            [dic setObject:_FCpersonid forKey:@"personid"];
+        }
+        [self savesonaccountauthorize];
+    }
 }
 
 
@@ -321,6 +342,29 @@
             }
             
             [tableview reloadData];
+        }
+        else
+        {
+            [MBProgressHUD showError:[dic objectForKey:@"msg"] toView:app.window];
+        }
+    } Failur:^(NSString *strmsg) {
+        [MBProgressHUD showError:@"请求失败,请检查网络" toView:self.view];
+    }];
+}
+
+-(void)savesonaccountauthorize
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:[AddInterface DataTOjsonString:_FCarrayauthor] forKey:@"moduleauthlist"];
+    
+    
+    [RequestInterface doGetJsonWithParametersNoAn:params App:app RequestCode:RQUserCenterSaveSonAccountAuthorize ReqUrl:InterfaceRequestUrl ShowView:app.window alwaysdo:^{
+        
+    } Success:^(NSDictionary *dic) {
+        DLog(@"dic====%@",dic);
+        if([[dic objectForKey:@"success"] isEqualToString:@"true"])
+        {
+            [self.navigationController popViewControllerAnimated:YES];
         }
         else
         {

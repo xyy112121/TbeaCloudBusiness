@@ -39,13 +39,13 @@
 	self.view.backgroundColor = [UIColor whiteColor];
 	app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	arrayselectitem = [[NSMutableArray alloc] init];
-	FCorderid = @"desc";
+	FCorderid = @"";
 	FCorderitem = @"money";
 	FCstarttime = @"";
 	FCendtime = @"";
 	FCzonelds = @"";
 	
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 90, SCREEN_WIDTH, SCREEN_HEIGHT-64-90)];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 90, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-90)];
 	tableview.backgroundColor = [UIColor clearColor];
 	[self.view addSubview:tableview];
 	[self addtabviewheader];
@@ -78,7 +78,7 @@
 	UIView *viewsearch = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
 	viewsearch.backgroundColor = COLORNOW(0, 170, 238);
 	
-	SearchTextFieldView *searchtext = [[SearchTextFieldView alloc] initWithFrame:CGRectMake(60, 10, SCREEN_WIDTH-120, 30) Pastr:@"扫码返利查询"];
+	SearchTextFieldView *searchtext = [[SearchTextFieldView alloc] initWithFrame:CGRectMake(40, 10, SCREEN_WIDTH-60, 30) Pastr:@"扫码返利查询"];
 	searchtext.delegate1 = self;
 	[viewsearch addSubview:searchtext];
 	
@@ -123,7 +123,7 @@
 	line2.backgroundColor = COLORNOW(200, 200, 200);
 	[viewselectitem addSubview:line2];
 	
-	float nowwidth = (SCREEN_WIDTH-20)/4;
+	float nowwidth = (SCREEN_WIDTH-20)/3;
 	
 	//编码
 	UIButton *buttonitemusertype = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -136,14 +136,14 @@
 	[viewselectitem addSubview:buttonitemusertype];
 	
 	//区域
-	ButtonItemLayoutView *buttonitemarea = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-10, 0, nowwidth, 40)];
+	ButtonItemLayoutView *buttonitemarea = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+nowwidth, 0, nowwidth, 40)];
 	[buttonitemarea.button addTarget:self action:@selector(ClickSelectarea:) forControlEvents:UIControlEventTouchUpInside];
 	buttonitemarea.tag = EnSortMoreSelectItembt2;
 	[buttonitemarea updatebuttonitem:EnButtonTextCenter TextStr:@"区域" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrowgrayunder", @"png")];
 	[viewselectitem addSubview:buttonitemarea];
 	
 	//金额
-	ButtonItemLayoutView *buttonitemmoney = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-15-nowwidth, 0, nowwidth, 40)];
+	ButtonItemLayoutView *buttonitemmoney = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-10-nowwidth, 0, nowwidth, 40)];
 	[buttonitemmoney.button addTarget:self action:@selector(ClickSelectMoney:) forControlEvents:UIControlEventTouchUpInside];
 	buttonitemmoney.tag = EnSortMoreSelectItembt3;
 	[buttonitemmoney updatebuttonitem:EnButtonTextRight TextStr:@"金额" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrawgray", @"png")];
@@ -170,6 +170,15 @@
 {
 	
 }
+
+-(void)DGClickGoToSearch:(id)sender
+{
+    SearchPageViewController *searchpage = [[SearchPageViewController alloc] init];
+    UINavigationController *nctl = [[UINavigationController alloc] initWithRootViewController:searchpage];
+    searchpage.FCSearchFromType = @"all";
+    [self.navigationController presentViewController:nctl animated:YES completion:nil];
+}
+
 
 -(void)DGAreaSelectDone:(NSArray *)sender
 {
@@ -203,19 +212,26 @@
 	//激活  已激活  未激活
 	FCorderitem = @"money";
 	ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnSortMoreSelectItembt3];
-	if([FCorderid isEqualToString:@"desc"])
+    if([FCorderid isEqualToString:@""])
+    {
+        FCorderid= @"desc";
+        [buttonitem1 updatelabstr:@"金额"];
+        //        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+	else if([FCorderid isEqualToString:@"desc"])
 	{
 		FCorderid= @"asc";
 		[buttonitem1 updatelabstr:@"金额"];
-		[buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
-		[buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+//        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+		[buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
 	}
 	else
 	{
 		FCorderid= @"desc";
 		[buttonitem1 updatelabstr:@"金额"];
-		[buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
-		[buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
+//        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+		[buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
 	}
 	[self getrebatesortlist:@"1" Pagesize:@"10"];
 }
@@ -270,8 +286,8 @@
 	else
 	{
 		FCzonelds = @"";
-		ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnSortMoreSelectItembt2];
-		[buttonitem1 updatelabstr:@"全部区域"];
+//        ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnSortMoreSelectItembt2];
+//        [buttonitem1 updatelabstr:@"全部区域"];
 		[self getrebatesortlist:@"1" Pagesize:@"10"];
 	}
 		

@@ -78,7 +78,7 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
         
         self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
         [self.progressView setTrackTintColor:[UIColor colorWithWhite:1.0f alpha:0.0f]];
-        [self.progressView setFrame:CGRectMake(0, 64, self.frame.size.width, self.progressView.frame.size.height)];
+        [self.progressView setFrame:CGRectMake(0, StatusBarAndNavigationHeight, self.frame.size.width, self.progressView.frame.size.height)];
         [self.progressView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin];
         
         

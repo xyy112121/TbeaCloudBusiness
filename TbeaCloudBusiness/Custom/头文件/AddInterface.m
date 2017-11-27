@@ -240,7 +240,7 @@
 
 +(BOOL) isValidatenumber:(NSString *)mobile
 {
-	//手机号以13， 15，18开头，八个 \d 数字字符
+	//
 	NSString *regex = @"^\\d+(\\.\\d{2})?$";
 	NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
 	return [phoneTest evaluateWithObject:mobile];

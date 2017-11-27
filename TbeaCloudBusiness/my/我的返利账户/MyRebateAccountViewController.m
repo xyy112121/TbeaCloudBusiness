@@ -65,7 +65,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.title = @"返利账户";
-    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStylePlain];
+    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight) style:UITableViewStylePlain];
     tableview.backgroundColor = [UIColor whiteColor];
     [self setExtraCellLineHidden:tableview];
     [self.view addSubview:tableview];

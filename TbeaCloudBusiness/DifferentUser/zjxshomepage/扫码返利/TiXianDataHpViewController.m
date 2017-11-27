@@ -40,13 +40,13 @@
 	app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	arrayselectitem = [[NSMutableArray alloc] init];
 	FCorderitem = @"";
-	FCorderid = @"desc";
+	FCorderid = @"";
 	FCstarttime = @"";
 	FCendtime = @"";
 	FCpaystatusid = @"";
 	FCpayeeusertypeid = @"";
 	
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 90, SCREEN_WIDTH, SCREEN_HEIGHT-64-90)];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 90, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-90)];
 	tableview.backgroundColor = [UIColor clearColor];
 	tableview.delegate = self;
 	tableview.dataSource = self;
@@ -155,24 +155,24 @@
 	
 	
 	
-	float widthnow = (SCREEN_WIDTH-20)/4;
+	float widthnow = (SCREEN_WIDTH-20)/3;
 	//时间
-	ButtonItemLayoutView *buttonstatus = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, XYViewBottom(line1), widthnow, 40)];
-	[buttonstatus.button addTarget:self action:@selector(ClickSelectTime:) forControlEvents:UIControlEventTouchUpInside];
-	buttonstatus.tag = EnTixianDataSelectItembt1;
-	[buttonstatus updatebuttonitem:EnButtonTextLeft TextStr:@"时间" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrowgrayunder", @"png")];
-	[viewselectitem addSubview:buttonstatus];
+//    ButtonItemLayoutView *buttonstatus = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, XYViewBottom(line1), widthnow, 40)];
+//    [buttonstatus.button addTarget:self action:@selector(ClickSelectTime:) forControlEvents:UIControlEventTouchUpInside];
+//    buttonstatus.tag = EnTixianDataSelectItembt1;
+//    [buttonstatus updatebuttonitem:EnButtonTextLeft TextStr:@"时间" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrowgrayunder", @"png")];
+//    [viewselectitem addSubview:buttonstatus];
 	
-	//全部用户
-	ButtonItemLayoutView *buttonitemalluser = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow*2, XYViewBottom(line1), widthnow, 40)];
-	[buttonitemalluser.button addTarget:self action:@selector(ClickSelectUser:) forControlEvents:UIControlEventTouchUpInside];
-	buttonitemalluser.tag = EnTixianDataSelectItembt2;
-	[buttonitemalluser updatebuttonitem:EnButtonTextCenter TextStr:@"用户" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrowgrayunder", @"png")];
-	[viewselectitem addSubview:buttonitemalluser];
+    //全部用户
+    ButtonItemLayoutView *buttonitemalluser = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, XYViewBottom(line1), widthnow*2, 40)];
+    [buttonitemalluser.button addTarget:self action:@selector(ClickSelectUser:) forControlEvents:UIControlEventTouchUpInside];
+    buttonitemalluser.tag = EnTixianDataSelectItembt2;
+    [buttonitemalluser updatebuttonitem:EnButtonTextLeft TextStr:@"用户" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrowgrayunder", @"png")];
+    [viewselectitem addSubview:buttonitemalluser];
 	
 	
 	//金额
-	ButtonItemLayoutView *buttonitemmoney = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-15-widthnow, XYViewBottom(line1), widthnow, 40)];
+	ButtonItemLayoutView *buttonitemmoney = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-10-widthnow, XYViewBottom(line1), widthnow, 40)];
 	[buttonitemmoney.button addTarget:self action:@selector(ClickSelectMoney:) forControlEvents:UIControlEventTouchUpInside];
 	buttonitemmoney.tag = EnTixianDataSelectItembt3;
 	[buttonitemmoney updatebuttonitem:EnButtonTextRight TextStr:@"金额" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrawgray", @"png")];
@@ -192,6 +192,45 @@
 	UIColor* color = [UIColor whiteColor];
 	NSDictionary* dict=[NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
 	self.navigationController.navigationBar.titleTextAttributes= dict;
+}
+
+-(UIView *)viewcell1:(NSDictionary *)dic Frame:(CGRect)frame
+{
+    float widthnow = (SCREEN_WIDTH-20)/3;
+    
+    UIView *viewcell = [[UIView alloc] initWithFrame:frame];
+    viewcell.backgroundColor = [UIColor clearColor];
+    
+    
+    UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 30, 30)];
+    NSString *strpic = [dic objectForKey:@"thumbpicture"];
+    [imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
+    imageheader.contentMode = UIViewContentModeScaleAspectFill;
+    imageheader.layer.cornerRadius = 15.0f;
+    imageheader.clipsToBounds = YES;
+    [viewcell addSubview:imageheader];
+    
+    CGSize sizeuser = [AddInterface getlablesize:[dic objectForKey:@"personname"] Fwidth:100 Fheight:20 Sfont:FONTN(14.0f)];
+    UILabel *labelusername = [[UILabel alloc] initWithFrame:CGRectMake(XYViewR(imageheader)+10, 7, sizeuser.width, 20)];
+    labelusername.backgroundColor = [UIColor clearColor];
+    labelusername.textColor = [UIColor blackColor];
+    labelusername.font = FONTN(14.0f);
+    labelusername.text = [dic objectForKey:@"personname"];
+    [viewcell addSubview:labelusername];
+    
+    UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelusername)+5, XYViewTop(labelusername)+5, 25, 10)];
+    strpic = [dic objectForKey:@"persontypeicon"];
+    [imageicon setImageWithURL:[NSURL URLWithString:strpic]];
+    [viewcell addSubview:imageicon];
+    
+    UILabel *straddr = [[UILabel alloc] initWithFrame:CGRectMake(XYViewR(imageheader)+10, XYViewBottom(labelusername)-2,widthnow*2-30, 17)];
+    straddr.backgroundColor = [UIColor clearColor];
+    straddr.textColor = COLORNOW(117, 117, 117);
+    straddr.font = FONTN(13.0f);
+    straddr.text = [dic objectForKey:@"companyname"];
+    [viewcell addSubview:straddr];
+    
+    return viewcell;
 }
 
 #pragma mark ActionDelegate
@@ -253,19 +292,26 @@
 	//激活  已激活  未激活
 	FCorderitem = @"money";
 	ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnTixianDataSelectItembt3];
-	if([FCorderid isEqualToString:@"desc"])
+	if([FCorderid isEqualToString:@""])
+    {
+        FCorderid= @"desc";
+        [buttonitem1 updatelabstr:@"金额"];
+     //   [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    else if([FCorderid isEqualToString:@"desc"])
 	{
 		FCorderid= @"asc";
 		[buttonitem1 updatelabstr:@"金额"];
-		[buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
-		[buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+	//	[buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+		[buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
 	}
 	else
 	{
 		FCorderid= @"desc";
 		[buttonitem1 updatelabstr:@"金额"];
-		[buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
-		[buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
+	//	[buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+		[buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
 	}
 	[self gettixiandatalist:@"1" Pagesize:@"10"];
 }
@@ -299,6 +345,7 @@
 		flagnow = 0;
 		[andydroplist hiddenList];
 	}
+    
 }
 
 -(void)ClickSelectTime:(id)sender
@@ -354,33 +401,63 @@
 		FCendtime = @"";
 		FCorderitem = @"time";
 		FCorderid = @"desc";
-		ButtonItemLayoutView *buttonitem = [self.view viewWithTag:EnTixianDataSelectItembt1];
-		[buttonitem updatelabstr:astr];
-		[buttonitem updatelablecolor:COLORNOW(0, 170, 238)];
-		[buttonitem updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
-		if([astr isEqualToString:@"默认"]||[astr isEqualToString:@"正序"])
-		{
-			[self gettixiandatalist:@"1" Pagesize:@"10"];
-		}
-		else if([astr isEqualToString:@"倒序"])
-		{
-			FCorderid = @"asc";
-			[self gettixiandatalist:@"1" Pagesize:@"10"];
-		}
-		else if([astr isEqualToString:@"自定义"])
-		{
-			FCorderitem = @"";
-			TimeSelectViewController *timeselect = [[TimeSelectViewController alloc] init];
-			timeselect.delegate1 = self;
-			[self.navigationController pushViewController:timeselect animated:YES];
-		}
+        
+        if([FCorderid isEqualToString:@""])
+        {
+            
+        }
+        else if([FCorderid isEqualToString:@"desc"])
+        {
+            FCorderid = @"asc";
+        }
+        else
+        {
+            FCorderid = @"desc";
+        }
+        [self gettixiandatalist:@"1" Pagesize:@"10"];
+//        ButtonItemLayoutView *buttonitem = [self.view viewWithTag:EnTixianDataSelectItembt1];
+//        [buttonitem updatelabstr:astr];
+//        [buttonitem updatelablecolor:COLORNOW(0, 170, 238)];
+//        [buttonitem updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
+//        if([astr isEqualToString:@"默认"]||[astr isEqualToString:@"正序"])
+//        {
+//            [self gettixiandatalist:@"1" Pagesize:@"10"];
+//        }
+//        else if([astr isEqualToString:@"倒序"])
+//        {
+//            FCorderid = @"asc";
+//            [self gettixiandatalist:@"1" Pagesize:@"10"];
+//        }
+//        else if([astr isEqualToString:@"自定义"])
+//        {
+//            FCorderitem = @"";
+//            TimeSelectViewController *timeselect = [[TimeSelectViewController alloc] init];
+//            timeselect.delegate1 = self;
+//            [self.navigationController pushViewController:timeselect animated:YES];
+//        }
 	}
 	else if(enselectitem == EnTiXianDataSelectUser)
 	{
+        ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnTixianDataSelectItembt3];
+        FCorderid= @"desc";
+        [buttonitem1 updatelabstr:@"金额"];
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+        
+        
+        FCorderid = @"";
 		ButtonItemLayoutView *buttonitem = [self.view viewWithTag:EnTixianDataSelectItembt2];
 		[buttonitem updatelabstr:astr];
 		[buttonitem updatelablecolor:COLORNOW(0, 170, 238)];
 		[buttonitem updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
+        for(int i=0;i<[FCarrayPayeeUsertype count];i++)
+        {
+            NSDictionary *dictemp = [FCarrayPayeeUsertype objectAtIndex:i];
+            if([[dictemp objectForKey:@"name"] isEqualToString:astr])
+            {
+                FCpayeeusertypeid = [dictemp objectForKey:@"id"];
+            }
+        }
+        [self gettixiandatalist:@"1" Pagesize:@"10"];
 	}
 }
 
@@ -425,7 +502,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 40;
+	return 50;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -454,48 +531,51 @@
 	
 	NSDictionary *dic = [FCarraydata objectAtIndex:indexPath.row];
 	
-	float widthnow = (SCREEN_WIDTH-20)/4;
-	NSString *strtiem = [dic objectForKey:@"time"];
-	UILabel *labeltime = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, widthnow*2, 20)];
-	labeltime.text = strtiem;;
-	labeltime.textColor = [UIColor blackColor];
-	labeltime.font = FONTN(13.0f);
-	labeltime.textAlignment = NSTextAlignmentLeft;
-	[cell.contentView addSubview:labeltime];
-	
-	
-	NSString *str = [dic objectForKey:@"personname"];
-	CGSize size = [AddInterface getlablesize:str Fwidth:100 Fheight:20 Sfont:FONTN(13.0f)];
-	UILabel *labeluser = [[UILabel alloc] initWithFrame:CGRectMake(10+widthnow*2+(widthnow-size.width-15)/2, 10, size.width, 20)];
-	labeluser.text = str;
-	labeluser.textColor = [UIColor blackColor];
-	labeluser.font = FONTN(13.0f);
-	labeluser.backgroundColor = [UIColor clearColor];
-	labeluser.textAlignment = NSTextAlignmentCenter;
-	[cell.contentView addSubview:labeluser];
-	
-	UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labeluser)+3, 15, 10, 10)];
-    NSString *strpic = [dic objectForKey:@"persontypeicon"];//[InterfaceResource stringByAppendingString:[[dic objectForKey:@"persontypeicon"] length]>0?[dic objectForKey:@"persontypeicon"]:@"noimage.png"];
-    [imageicon setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebateheader1", @"png")];
-    imageicon.contentMode = UIViewContentModeScaleAspectFill;
-	[cell.contentView addSubview:imageicon];
-	
-	NSString *strmoney = [NSString stringWithFormat:@"%@",[dic objectForKey:@"money"]];
-	CGSize size2 = [AddInterface getlablesize:strmoney Fwidth:widthnow Fheight:20 Sfont:FONTMEDIUM(17.0f)];
-	UILabel *lablemoneyvalue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-size2.width-10, 10, size2.width, 20)];
-	lablemoneyvalue.text =strmoney;
-	lablemoneyvalue.font = FONTMEDIUM(17.0f);
-	lablemoneyvalue.textColor = [UIColor blackColor];
-	lablemoneyvalue.textAlignment = NSTextAlignmentRight;
-	lablemoneyvalue.backgroundColor = [UIColor clearColor];
-	[cell.contentView addSubview:lablemoneyvalue];
-	
-	UILabel *lablemoneyflag1 = [[UILabel alloc] initWithFrame:CGRectMake(XYViewL(lablemoneyvalue)-10, XYViewTop(lablemoneyvalue)+4, 10,10)];
-	lablemoneyflag1.text = @"￥";
-	lablemoneyflag1.font = FONTMEDIUM(11.0f);
-	lablemoneyflag1.textColor = [UIColor blackColor];
-	lablemoneyflag1.backgroundColor = [UIColor clearColor];
-	[cell.contentView addSubview:lablemoneyflag1];
+	float widthnow = (SCREEN_WIDTH-20)/3;
+    
+    UIView *viewtemp = [self viewcell1:dic Frame:CGRectMake(10, 0, widthnow*2, 50)];
+    [cell.contentView addSubview:viewtemp];
+//    NSString *strtiem = [dic objectForKey:@"time"];
+//    UILabel *labeltime = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, widthnow, 20)];
+//    labeltime.text = strtiem;;
+//    labeltime.textColor = [UIColor blackColor];
+//    labeltime.font = FONTN(13.0f);
+//    labeltime.textAlignment = NSTextAlignmentLeft;
+//    [cell.contentView addSubview:labeltime];
+//
+//
+//    NSString *str = [dic objectForKey:@"personname"];
+//    CGSize size = [AddInterface getlablesize:str Fwidth:100 Fheight:20 Sfont:FONTN(13.0f)];
+//    UILabel *labeluser = [[UILabel alloc] initWithFrame:CGRectMake(10+widthnow+(widthnow-size.width)/2, 10, size.width, 20)];
+//    labeluser.text = str;
+//    labeluser.textColor = [UIColor blackColor];
+//    labeluser.font = FONTN(13.0f);
+//    labeluser.backgroundColor = [UIColor clearColor];
+//    labeluser.textAlignment = NSTextAlignmentCenter;
+//    [cell.contentView addSubview:labeluser];
+//
+//    UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labeluser)+3, 15, 10, 10)];
+//    NSString *strpic = [dic objectForKey:@"persontypeicon"];
+//    [imageicon setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebateheader1", @"png")];
+//    imageicon.contentMode = UIViewContentModeScaleAspectFill;
+//    [cell.contentView addSubview:imageicon];
+//
+    NSString *strmoney = [NSString stringWithFormat:@"%@",[dic objectForKey:@"money"]];
+    CGSize size2 = [AddInterface getlablesize:strmoney Fwidth:widthnow Fheight:20 Sfont:FONTMEDIUM(17.0f)];
+    UILabel *lablemoneyvalue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-size2.width-10, 15, size2.width, 20)];
+    lablemoneyvalue.text =strmoney;
+    lablemoneyvalue.font = FONTMEDIUM(17.0f);
+    lablemoneyvalue.textColor = [UIColor blackColor];
+    lablemoneyvalue.textAlignment = NSTextAlignmentRight;
+    lablemoneyvalue.backgroundColor = [UIColor clearColor];
+    [cell.contentView addSubview:lablemoneyvalue];
+
+    UILabel *lablemoneyflag1 = [[UILabel alloc] initWithFrame:CGRectMake(XYViewL(lablemoneyvalue)-10, XYViewTop(lablemoneyvalue)+4, 10,10)];
+    lablemoneyflag1.text = @"￥";
+    lablemoneyflag1.font = FONTMEDIUM(11.0f);
+    lablemoneyflag1.textColor = [UIColor blackColor];
+    lablemoneyflag1.backgroundColor = [UIColor clearColor];
+    [cell.contentView addSubview:lablemoneyflag1];
 	
 	
 	

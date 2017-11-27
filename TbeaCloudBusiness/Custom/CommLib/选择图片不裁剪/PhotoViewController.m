@@ -69,7 +69,7 @@
         //滚动到最后一个
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_assets.count - 1 inSection:0]atScrollPosition:UICollectionViewScrollPositionBottom animated:false];
         //重置偏移量
-        [self.collectionView setContentOffset:CGPointMake(0, self.collectionView.contentOffset.y + 64)];
+        [self.collectionView setContentOffset:CGPointMake(0, self.collectionView.contentOffset.y + StatusBarAndNavigationHeight)];
     }
 }
 
@@ -170,7 +170,7 @@
 {
     if(_collectionView == nil)
     {
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 64-44) collectionViewLayout:[[UICollectionViewFlowLayout alloc]init]];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - StatusBarAndNavigationHeight-44) collectionViewLayout:[[UICollectionViewFlowLayout alloc]init]];
         //protocol
         _collectionView.delegate = self;
         _collectionView.dataSource = self;

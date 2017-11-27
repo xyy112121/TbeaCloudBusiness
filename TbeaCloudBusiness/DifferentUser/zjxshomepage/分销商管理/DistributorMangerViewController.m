@@ -45,7 +45,7 @@
     FCendtime = @"";
     FCzonelds = @"";
     
-    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, SCREEN_HEIGHT-64-40)];
+    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-40)];
     tableview.backgroundColor = [UIColor clearColor];
     [self.view addSubview:tableview];
     [self addtabviewheader];

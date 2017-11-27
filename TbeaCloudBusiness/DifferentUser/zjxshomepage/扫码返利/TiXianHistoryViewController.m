@@ -40,11 +40,12 @@
 	app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	arrayselectitem = [[NSMutableArray alloc] init];
 	FCorderitem = @"";
-	FCorderid = @"desc";
+	FCorderid = @"";
 	FCstarttime = @"";
 	FCendtime = @"";
-	
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-64-100)];
+    FCmoney = @"";
+    FCtime = @"";
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-100)];
 	tableview.backgroundColor = [UIColor clearColor];
 	[self.view addSubview:tableview];
 	[self setExtraCellLineHidden:tableview];
@@ -64,10 +65,14 @@
 
 -(void)addtabviewheader
 {
+    [[self.view viewWithTag:EnTixianHistoryViewTopView] removeFromSuperview];
 	UIView *tabviewheader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
+    tabviewheader.tag = EnTixianHistoryViewTopView;
 	tabviewheader.backgroundColor = [UIColor clearColor];
 	[self.view addSubview:tabviewheader];
-	[tabviewheader addSubview:[self getviewselectitem:CGRectMake(0, 0, SCREEN_WIDTH, 100)]];
+    if(sortitemview == nil)
+        sortitemview = [self getviewselectitem:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
+	[tabviewheader addSubview:sortitemview];
 }
 
 
@@ -113,8 +118,10 @@
 -(void)jingxiaoshangheader:(UIView *)viewheader
 {
 	UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 40, 40)];
-    NSString *strpic = [FCdicpayeeinfo objectForKey:@"thumbpicture"];//[InterfaceResource stringByAppendingString:[[FCdicpayeeinfo objectForKey:@"thumbpicture"] length]>0?[FCdicpayeeinfo objectForKey:@"thumbpicture"]:@"noimage.png"];
+    NSString *strpic = [FCdicpayeeinfo objectForKey:@"thumbpicture"];
 	[imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
+    imageheader.layer.cornerRadius = 20.0f;
+    imageheader.clipsToBounds = YES;
 	imageheader.contentMode = UIViewContentModeScaleAspectFill;
 	[viewheader addSubview:imageheader];
 	
@@ -237,21 +244,30 @@
 	//远近  从远到近   从近到远
 	//激活  已激活  未激活
 	FCorderitem = @"money";
-	ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnSortMoreSelectItembt3];
-	if([FCorderid isEqualToString:@"desc"])
+    FCorderid = @"";
+	ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnTixianDataSelectItembt3];
+    if([FCmoney isEqualToString:@""])
+    {
+        FCmoney= @"desc";
+//        [buttonitem1 updatelabstr:@"金额"];
+        //        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+	else if([FCmoney isEqualToString:@"desc"])
 	{
-		FCorderid= @"asc";
-		[buttonitem1 updatelabstr:@"金额"];
-		[buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
-		[buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+		FCmoney= @"asc";
+//		[buttonitem1 updatelabstr:@"金额"];
+//        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+		[buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
 	}
 	else
 	{
-		FCorderid= @"desc";
-		[buttonitem1 updatelabstr:@"金额"];
-		[buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
-		[buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
+		FCmoney= @"desc";
+//		[buttonitem1 updatelabstr:@"金额"];
+//        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+		[buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
 	}
+    FCorderid = FCmoney;
 	[self gettixianhistorylist:@"1" Pagesize:@"10"];
 }
 
@@ -263,7 +279,7 @@
 	//远近  从远到近   从近到远
 	//激活(状态)  已激活  未激活
 	[arrayselectitem removeAllObjects];
-	ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnRebateQRCodeHistoryButton1];
+	ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnTixianDataSelectItembt1];
 	[buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
 	[buttonitem1 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
 	if (flagnow==0)
@@ -305,16 +321,19 @@
 	FCstarttime = @"";
 	FCendtime = @"";
 	FCorderitem = @"time";
-	FCorderid = @"desc";
+	FCorderid = @"";
 	ButtonItemLayoutView *buttonitem = [self.view viewWithTag:EnRebateQRCodeHistoryButton1];
 	[buttonitem updatelabstr:astr];
 	if([astr isEqualToString:@"默认"]||[astr isEqualToString:@"正序"])
 	{
+        FCtime = @"desc";
+        FCorderid = FCtime;
 		[self gettixianhistorylist:@"1" Pagesize:@"10"];
 	}
 	else if([astr isEqualToString:@"倒序"])
 	{
-		FCorderid = @"asc";
+		FCtime = @"asc";
+        FCorderid = FCtime;
 		[self gettixianhistorylist:@"1" Pagesize:@"10"];
 	}
 	else if([astr isEqualToString:@"自定义"])
@@ -425,7 +444,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	
+    NSDictionary *dictemp = [FCarraydata objectAtIndex:indexPath.row];
+    TiXianDataDetailViewController *tixiandata = [[TiXianDataDetailViewController alloc] init];
+    tixiandata.FCtakemoneyid = [dictemp objectForKey:@"dataid"];
+    [self.navigationController pushViewController:tixiandata animated:YES];
 }
 
 #pragma mark 接口

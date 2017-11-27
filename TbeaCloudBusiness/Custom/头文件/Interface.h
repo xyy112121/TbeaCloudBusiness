@@ -90,6 +90,8 @@
 #define REUserCenterAddSonAccountCode @"TBEAYUN011004002001" //新增子账户
 #define REUserCenterAddSonAccountUserTypeCode @"TBEAYUN011004002000" //新增子账户
 #define RQUserCenterSonAccountFunctionCode @"TBEAYUN011004003001" //子账户功能列表
+#define RQUserCenterSaveSonAccountAuthorize @"TBEAYUN011004004001" //保存子账户功能列表
+
 #define RQUserCenterDeleteSonAccountCode @"TBEAYUN011004005001" //删除子账户
 #define RQUserCenterMyAttentionGoodsListCode @"TBEAYUN011002001001" //关注商品
 #define RQUserCenterMyAttentionShopListCode @"TBEAYUN011002002001" //关注店铺

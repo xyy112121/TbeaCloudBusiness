@@ -69,7 +69,7 @@
     isallselect = EnNotSelect;//表示当前 未全选
     selectarray = [[NSMutableArray alloc] init];
     
-    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
     tableview.backgroundColor = [UIColor clearColor];
     [self.view addSubview:tableview];
     [self setExtraCellLineHidden:tableview];
@@ -147,7 +147,7 @@
 
 -(void)adddeletebotmview
 {
-    viewbottom = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-64-50, SCREEN_WIDTH, 50)];
+    viewbottom = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-StatusBarAndNavigationHeight-50, SCREEN_WIDTH, 50)];
     viewbottom.backgroundColor = [UIColor whiteColor];
     
     UIImageView *imageline = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1)];

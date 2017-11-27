@@ -55,7 +55,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"现场照片";
     
-    imageviewno = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-60)/2, (SCREEN_HEIGHT-89-64)/2, 60, 89)];
+    imageviewno = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-60)/2, (SCREEN_HEIGHT-89-StatusBarAndNavigationHeight)/2, 60, 89)];
     imageviewno.image = LOADIMAGE(@"暂无图片", @"png");
     imageviewno.alpha = 0;
     [self.view addSubview:imageviewno];

@@ -46,6 +46,8 @@
 	UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(imagesorticon)+10, 10, 40, 40)];
     NSString *strpic = [dic objectForKey:@"thumbpicture"];//[InterfaceResource stringByAppendingString:[[dic objectForKey:@"thumbpicture"] length]>0?[dic objectForKey:@"thumbpicture"]:@"noimage.png"];
 	[imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
+    imageheader.layer.cornerRadius = 20.0f;
+    imageheader.clipsToBounds = YES;
 	[self addSubview:imageheader];
 	
 	NSString *strname = [dic objectForKey:@"personname"];

@@ -46,7 +46,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
     tableview.backgroundColor = [UIColor clearColor];
     [self.view addSubview:tableview];
     [self setExtraCellLineHidden:tableview];
@@ -204,6 +204,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TbeaProductDetailViewController *productdetail = [[TbeaProductDetailViewController alloc] init];
+    NSDictionary *dictemp = [FCarraydata objectAtIndex:indexPath.row];
+    productdetail.FCdicproduct = dictemp;
     [self.navigationController pushViewController:productdetail animated:YES];
 }
 

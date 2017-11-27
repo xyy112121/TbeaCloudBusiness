@@ -28,11 +28,12 @@
 	NSString *FCorderid;
 	NSString *FCstarttime;
 	NSString *FCendtime;
-	
-	
+    NSString *FCmoney;
+    NSString *FCtime;
 	//
 	NSArray *FCarraydata;
 	NSDictionary *FCdicpayeeinfo;
+    UIView *sortitemview;
 }
 @property(nonatomic,strong)NSString *FCpersontype;
 @property(nonatomic,strong)NSString *FCpayeeid;

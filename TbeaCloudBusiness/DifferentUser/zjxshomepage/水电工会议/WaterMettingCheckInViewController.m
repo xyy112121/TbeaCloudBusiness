@@ -41,7 +41,7 @@
 	
 	enselectitem = EnWaterMettingCheckInUser; //默认选择的时间
 	
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
 	tableview.backgroundColor = [UIColor clearColor];
 	[self.view addSubview:tableview];
 	[self addtabviewheader];

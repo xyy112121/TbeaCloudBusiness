@@ -39,7 +39,7 @@
 	self.view.backgroundColor = [UIColor whiteColor];
 	app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
 	tableview.backgroundColor = [UIColor clearColor];
 	[self.view addSubview:tableview];
 	
@@ -84,7 +84,7 @@
 	labelusername.text = [dic objectForKey:@"personname"];
 	[fromcell.contentView addSubview:labelusername];
 	
-	UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelusername)+5, XYViewTop(labelusername)+5, 10, 10)];
+	UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelusername)+5, XYViewTop(labelusername)+5, 25, 10)];
     strpic = [dic objectForKey:@"persontypeicon"];//[InterfaceResource stringByAppendingString:[[dic objectForKey:@"persontypeicon"] length]>0?[dic objectForKey:@"persontypeicon"]:@"noimage.png"];
 	[imageicon setImageWithURL:[NSURL URLWithString:strpic]];
 	[fromcell.contentView addSubview:imageicon];
@@ -218,6 +218,7 @@
 	CGSize sizeuser;
 	NSDictionary *dic;
 	NSString *strpic;
+    UILabel *lablemoneyflag1;
 	if(indexPath.section == 0)
 	{
 		switch (indexPath.row)
@@ -272,9 +273,19 @@
 				labelname.text = @"金额";
 				[cell.contentView addSubview:labelname];
 				
+                
+                
 				labelvalue.text = [[FCdicdata objectForKey:@"takemoneycodeinfo"] objectForKey:@"money"];
 				labelvalue.font = FONTMEDIUM(16.0f);
+                labelvalue.frame =  CGRectMake(XYViewR(labelname)+20, 10, SCREEN_WIDTH-100, 20);
 				[cell.contentView addSubview:labelvalue];
+                
+                lablemoneyflag1 = [[UILabel alloc] initWithFrame:CGRectMake(XYViewL(labelvalue)-10, XYViewTop(labelvalue)+4, 10,10)];
+                lablemoneyflag1.text = @"￥";
+                lablemoneyflag1.font = FONTMEDIUM(11.0f);
+                lablemoneyflag1.textColor = [UIColor blackColor];
+                lablemoneyflag1.backgroundColor = [UIColor clearColor];
+                [cell.contentView addSubview:lablemoneyflag1];
 				break;
 		}
 	}

@@ -117,7 +117,7 @@
 
 -(void)initview:(id)sender
 {
-	scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+	scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
 	scrollview.backgroundColor = [UIColor clearColor];
 	scrollview.showsHorizontalScrollIndicator = NO;
 	scrollview.showsVerticalScrollIndicator = NO;

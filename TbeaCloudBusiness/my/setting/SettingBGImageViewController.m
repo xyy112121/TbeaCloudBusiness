@@ -71,7 +71,7 @@
     [self.view addSubview:imageview];
     
     UIButton *buttonlibary = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonlibary.frame = CGRectMake(30, SCREEN_HEIGHT-64-120, SCREEN_WIDTH-60, 40);
+    buttonlibary.frame = CGRectMake(30, SCREEN_HEIGHT-StatusBarAndNavigationHeight-120, SCREEN_WIDTH-60, 40);
     buttonlibary.layer.cornerRadius = 3.0f;
     buttonlibary.backgroundColor = [UIColor whiteColor];
     buttonlibary.clipsToBounds = YES;
@@ -82,7 +82,7 @@
     [self.view addSubview:buttonlibary];
     
     UIButton *buttoncama = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttoncama.frame = CGRectMake(30, SCREEN_HEIGHT-64-60, SCREEN_WIDTH-60, 40);
+    buttoncama.frame = CGRectMake(30, SCREEN_HEIGHT-StatusBarAndNavigationHeight-60, SCREEN_WIDTH-60, 40);
     buttoncama.layer.cornerRadius = 3.0f;
     buttoncama.backgroundColor = [UIColor whiteColor];
     buttoncama.clipsToBounds = YES;

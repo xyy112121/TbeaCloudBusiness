@@ -53,7 +53,7 @@
 	self.navigationController.navigationBar.titleTextAttributes = dict;
 	self.title = @"收货地址管理";
 	app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStylePlain];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight) style:UITableViewStylePlain];
 	tableview.backgroundColor = [UIColor clearColor];
 	tableview.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 	tableview.delegate = self;

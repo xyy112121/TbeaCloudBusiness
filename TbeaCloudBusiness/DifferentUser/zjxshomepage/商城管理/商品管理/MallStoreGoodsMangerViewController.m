@@ -56,7 +56,7 @@
     app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     FCorderid = @"";
     FCorder = @"desc";
-    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-50)];
+    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-50)];
     tableview.backgroundColor = [UIColor clearColor];
     tableview.delegate = self;
     tableview.dataSource = self;
@@ -82,7 +82,7 @@
 
 -(void)setviewfoot
 {
-    UIView *viewfoot = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-64-50, SCREEN_WIDTH, 50)];
+    UIView *viewfoot = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-StatusBarAndNavigationHeight-50, SCREEN_WIDTH, 50)];
     viewfoot.backgroundColor = [UIColor clearColor];
     [self.view addSubview:viewfoot];
     

@@ -52,7 +52,7 @@
     FCorderitem=@"";
     FCorderid=@"";
     
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 220, SCREEN_WIDTH, SCREEN_HEIGHT-64-220)];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 220, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-220)];
 	tableview.backgroundColor = [UIColor clearColor];
 	[self.view addSubview:tableview];
     [self setExtraCellLineHidden:tableview];

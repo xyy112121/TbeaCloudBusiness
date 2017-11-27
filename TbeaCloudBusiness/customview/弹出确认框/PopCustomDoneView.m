@@ -30,7 +30,7 @@
     clearbt.frame = CGRectMake(0,0,XYViewWidth(self),XYViewHeight(self));
     [self addSubview:clearbt];
     
-    UIView *tipebackView =[[UIView alloc]initWithFrame:CGRectMake(30, self.frame.size.height/2-90-64, self.frame.size.width-60, 180)];
+    UIView *tipebackView =[[UIView alloc]initWithFrame:CGRectMake(30, self.frame.size.height/2-90-StatusBarAndNavigationHeight, self.frame.size.width-60, 180)];
     tipebackView.backgroundColor=[UIColor whiteColor];
     tipebackView.layer.cornerRadius=5;
     [self addSubview:tipebackView];

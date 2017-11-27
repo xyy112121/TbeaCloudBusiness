@@ -40,7 +40,7 @@
 	app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	FCactivitestatusid = @"all";
 	
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 126, SCREEN_WIDTH, SCREEN_HEIGHT-64-100)];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 126, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-126)];
 	tableview.backgroundColor = [UIColor clearColor];
 	[self.view addSubview:tableview];
 	
@@ -85,6 +85,11 @@
 	
 	float widthnow = (SCREEN_WIDTH-20)/4;
 	
+    ButtonItemLayoutView *buttoncode = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, XYViewBottom(line1), widthnow, 40)];
+    buttoncode.tag = EnCreateQRCodeListSelectItem1;
+    [buttoncode updatebuttonitem:EnButtonTextLeft TextStr:@"编码" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:nil];
+    [viewselectitem addSubview:buttoncode];
+    
 	//状态
 	ButtonItemLayoutView *buttonstatus = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-widthnow-10, XYViewBottom(line1), widthnow, 40)];
 	[buttonstatus.button addTarget:self action:@selector(ClickSelectstatus:) forControlEvents:UIControlEventTouchUpInside];
@@ -288,6 +293,10 @@
 	lablemoneyvalue.text = [dictemp objectForKey:@"activitystatus"];
 	lablemoneyvalue.font = FONTN(15.0f);
 	lablemoneyvalue.textColor = [UIColor blackColor];
+    if([[dictemp objectForKey:@"activitystatusid"] isEqualToString:@"notactivity"])
+    {
+        lablemoneyvalue.textColor = COLORNOW(220, 220, 220);
+    }
 	lablemoneyvalue.textAlignment = NSTextAlignmentRight;
 	lablemoneyvalue.backgroundColor = [UIColor clearColor];
 	[cell.contentView addSubview:lablemoneyvalue];
