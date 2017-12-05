@@ -6,7 +6,7 @@
 //  Copyright © 2017年 谢 毅. All rights reserved.
 //
 
-#define TITLES @[@"更新"]
+#define TITLES @[@"更新",@"签到码"]
 
 #import "ComMettingDetailMettingInViewController.h"
 
@@ -132,7 +132,7 @@
     UIView *view = [[UIView alloc] initWithFrame:fromframe];
     
     UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(0, 10, 30, 30)];
-    NSString *strpic = [dicfrom objectForKey:@"masterthumbpicture"];//[InterfaceResource stringByAppendingString:[[dicfrom objectForKey:@"masterthumbpicture"] length]>0?[dicfrom objectForKey:@"masterthumbpicture"]:@"noimage.png"];
+    NSString *strpic = [dicfrom objectForKey:@"masterthumbpicture"];
     [imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
     imageheader.layer.cornerRadius = 15.0f;
     imageheader.clipsToBounds = YES;
@@ -147,7 +147,7 @@
     [view addSubview:labelusername];
     
     UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelusername)+5, XYViewTop(labelusername)+5, 10, 10)];
-    NSString *strpic1 = [dicfrom objectForKey:@"companytypeicon"];//[InterfaceResource stringByAppendingString:[[dicfrom objectForKey:@"companytypeicon"] length]>0?[dicfrom objectForKey:@"companytypeicon"]:@"noimage.png"];
+    NSString *strpic1 = [dicfrom objectForKey:@"companytypeicon"];
     [imageheader setImageWithURL:[NSURL URLWithString:strpic1] placeholderImage:LOADIMAGE(@"scanrebateheader1", @"png")];
     [view addSubview:imageicon];
     
@@ -167,6 +167,7 @@
 {
     NSMutableArray *arrayicons = [[NSMutableArray alloc] init];
     [arrayicons addObject:LOADIMAGE(@"metting更新", @"png")];
+    [arrayicons addObject:LOADIMAGE(@"二维码icon", @"png")];
     ybpopmenu = [YBPopupMenu showRelyOnView:sender titles:TITLES icons:arrayicons menuWidth:130 otherSettings:^(YBPopupMenu *popupMenu)
                  {
                      popupMenu.dismissOnSelected = NO;
@@ -187,6 +188,12 @@
         upload.delegate1 = self;
         upload.FCmettingid = self.FCmettingid;
         [self.navigationController pushViewController:upload animated:YES];
+    }
+    else if([TITLES[index] isEqualToString:@"签到码"])
+    {
+        ComMettingCreateSignInViewController *commetting = [[ComMettingCreateSignInViewController alloc] init];
+        commetting.FCmettingid = self.FCmettingid;
+        [self.navigationController pushViewController:commetting animated:YES];
     }
     [ybpopmenu dismiss];
     NSLog(@"点击了 %@ 选项",TITLES[index]);
@@ -356,7 +363,7 @@
     labelname.font = FONTN(15.0f);
     
     
-    UILabel *labelvalue = [[UILabel alloc] initWithFrame:CGRectMake(XYViewR(labelname)+10, 10, SCREEN_WIDTH-100, 20)];
+    UILabel *labelvalue = [[UILabel alloc] initWithFrame:CGRectMake(XYViewR(labelname)+10, 10, SCREEN_WIDTH-100-20, 20)];
     labelvalue.backgroundColor = [UIColor clearColor];
     labelvalue.textColor = COLORNOW(117, 117, 117);
     labelvalue.font = FONTN(15.0f);

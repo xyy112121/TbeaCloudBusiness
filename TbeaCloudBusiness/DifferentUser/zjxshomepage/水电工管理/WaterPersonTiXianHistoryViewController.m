@@ -40,9 +40,10 @@
     app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     arrayselectitem = [[NSMutableArray alloc] init];
     FCorderitem = @"";
-    FCorderid = @"desc";
+    FCorderid = @"";
     FCstartdate = @"";
     FCenddate = @"";
+    FCSelectUserRow = 0;
     
     tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-100)];
     tableview.backgroundColor = [UIColor clearColor];
@@ -70,7 +71,9 @@
     UIView *tabviewheader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
     tabviewheader.backgroundColor = [UIColor clearColor];
     [self.view addSubview:tabviewheader];
-    [tabviewheader addSubview:[self getviewselectitem:CGRectMake(0, 0, SCREEN_WIDTH, 100)]];
+    if(topheaderview == nil)
+        topheaderview = [self getviewselectitem:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
+    [tabviewheader addSubview:topheaderview];
 }
 
 
@@ -120,7 +123,9 @@
 -(void)jingxiaoshangheader:(UIView *)viewheader
 {
     UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 40, 40)];
-    NSString *strpic = [FCdicelectricianinfo objectForKey:@"thumbpicture"];//[InterfaceResource stringByAppendingString:[[FCdicelectricianinfo objectForKey:@"thumbpicture"] length]>0?[FCdicelectricianinfo objectForKey:@"thumbpicture"]:@"noimage.png"];
+    NSString *strpic = [FCdicelectricianinfo objectForKey:@"thumbpicture"];
+    imageheader.layer.cornerRadius = 20.0f;
+    imageheader.clipsToBounds = YES;
     [imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
     imageheader.contentMode = UIViewContentModeScaleAspectFill;
     [viewheader addSubview:imageheader];
@@ -146,9 +151,9 @@
     lableaddr.backgroundColor = [UIColor clearColor];
     [viewheader addSubview:lableaddr];
     
-    UIImageView *imagearraw = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-30, 24, 7, 12)];
-    imagearraw.image = LOADIMAGE(@"tbeaarrowright", @"png");
-    [viewheader addSubview:imagearraw];
+//    UIImageView *imagearraw = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-30, 24, 7, 12)];
+//    imagearraw.image = LOADIMAGE(@"tbeaarrowright", @"png");
+//    [viewheader addSubview:imagearraw];
     
     UIButton *buttonperson = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonperson.frame = CGRectMake(0, 0, SCREEN_WIDTH, 60);
@@ -179,8 +184,10 @@
 {
     
     UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 40, 40)];
-    NSString *strpic = [FCdicelectricianinfo objectForKey:@"thumbpicture"];//[InterfaceResource stringByAppendingString:[[FCdicelectricianinfo objectForKey:@"thumbpicture"] length]>0?[FCdicelectricianinfo objectForKey:@"thumbpicture"]:@"noimage.png"];
+    NSString *strpic = [FCdicelectricianinfo objectForKey:@"thumbpicture"];
     [imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
+    imageheader.layer.cornerRadius = 20.0f;
+    imageheader.clipsToBounds = YES;
     imageheader.contentMode = UIViewContentModeScaleAspectFill;
     [viewheader addSubview:imageheader];
     
@@ -263,19 +270,24 @@
     //激活  已激活  未激活
     FCorderitem = @"money";
     ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnTixianDataSelectItembt3];
-    if([FCorderid isEqualToString:@"desc"])
+    if([FCorderid isEqualToString:@""])
+    {
+        FCorderid= @"desc";
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    else if([FCorderid isEqualToString:@"desc"])
     {
         FCorderid= @"asc";
-        [buttonitem1 updatelabstr:@"金额"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
-        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+//        [buttonitem1 updatelabstr:@"金额"];
+//        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
     }
     else
     {
         FCorderid= @"desc";
-        [buttonitem1 updatelabstr:@"金额"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
-        [buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
+//        [buttonitem1 updatelabstr:@"金额"];
+//        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
     }
     [self getwatertixianhistorylist:@"1" Pagesize:@"10"];
 }
@@ -313,8 +325,9 @@
 #pragma mark TYYNavFilterDelegate
 -(AndyDropDownList *)initandydroplist:(UIButton *)button
 {
-    andydroplist = [[AndyDropDownList alloc] initWithListDataSource:arrayselectitem rowHeight:44 view:button Frame:CGRectMake(0, 91, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    andydroplist = [[AndyDropDownList alloc] initWithListDataSource:arrayselectitem rowHeight:44 view:button Frame:CGRectMake(0, 101, SCREEN_WIDTH, SCREEN_HEIGHT)];
     andydroplist.delegate = self;
+    [andydroplist setselectrow:FCSelectUserRow];
     return andydroplist;
 }
 
@@ -330,20 +343,27 @@
     FCstartdate = @"";
     FCenddate = @"";
     FCorderitem = @"time";
-    FCorderid = @"desc";
-    ButtonItemLayoutView *buttonitem = [self.view viewWithTag:EnRebateQRCodeHistoryButton1];
-    [buttonitem updatelabstr:astr];
+    FCorderid = @"";
+//    ButtonItemLayoutView *buttonitem = [self.view viewWithTag:EnTixianDataSelectItembt1];
+    ButtonItemLayoutView *buttonitem3 = [self.view viewWithTag:EnTixianDataSelectItembt3];
+    [buttonitem3 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+//    [buttonitem updatelabstr:astr];
     if([astr isEqualToString:@"默认"]||[astr isEqualToString:@"正序"])
     {
+        FCSelectUserRow = 0;
+        if([astr isEqualToString:@"正序"])
+            FCSelectUserRow = 1;
         [self getwatertixianhistorylist:@"1" Pagesize:@"10"];
     }
     else if([astr isEqualToString:@"倒序"])
     {
+        FCSelectUserRow = 2;
         FCorderid = @"asc";
         [self getwatertixianhistorylist:@"1" Pagesize:@"10"];
     }
     else if([astr isEqualToString:@"自定义"])
     {
+        FCSelectUserRow = 3;
         FCorderitem = @"";
         TimeSelectViewController *timeselect = [[TimeSelectViewController alloc] init];
         timeselect.delegate1 = self;
@@ -420,7 +440,7 @@
     
     float widthnow = (SCREEN_WIDTH-20)/4;
     NSString *strtiem = [dictemp objectForKey:@"time"];
-    UILabel *labeltime = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, widthnow*2, 20)];
+    UILabel *labeltime = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, widthnow*2, 20)];
     labeltime.text = strtiem;;
     labeltime.textColor = [UIColor blackColor];
     labeltime.font = FONTN(13.0f);

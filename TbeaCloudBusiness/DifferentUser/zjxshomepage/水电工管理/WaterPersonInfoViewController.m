@@ -107,14 +107,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if(indexPath.row == 5)
+	if(indexPath.row == 8)
 		return 60;
 	return 40;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 6;
+	return 9;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -174,16 +174,16 @@
 				labelname.text = @"年龄";
 				[cell.contentView addSubview:labelname];
 				
-				labelvalue.text = @"48";
+				labelvalue.text = [FCdicdata objectForKey:@"age"];
 				[cell.contentView addSubview:labelvalue];
 				break;
-			case 3:
-				labelname.text = @"认证状态";
-				[cell.contentView addSubview:labelname];
-				
-				labelvalue.text = [FCdicdata objectForKey:@"whetheridentifyname"];
-				[cell.contentView addSubview:labelvalue];
-				break;
+            case 3:
+                labelname.text = @"工龄";
+                [cell.contentView addSubview:labelname];
+                
+                //labelvalue.text = [FCdicdata objectForKey:@"belongtocompany"];
+                [cell.contentView addSubview:labelvalue];
+                break;
 			case 4:
 				labelname.text = @"隶属";
 				[cell.contentView addSubview:labelname];
@@ -191,7 +191,28 @@
 				labelvalue.text = [FCdicdata objectForKey:@"belongtocompany"];
 				[cell.contentView addSubview:labelvalue];
 				break;
-			case 5:
+            case 5:
+                labelname.text = @"电话号码";
+                [cell.contentView addSubview:labelname];
+                
+                labelvalue.text = [FCdicdata objectForKey:@"mobilenumber"];
+                [cell.contentView addSubview:labelvalue];
+                break;
+            case 6:
+                labelname.text = @"认证状态";
+                [cell.contentView addSubview:labelname];
+                
+                labelvalue.text = [FCdicdata objectForKey:@"whetheridentifyname"];
+                [cell.contentView addSubview:labelvalue];
+                break;
+            case 7:
+                labelname.text = @"服务范围";
+                [cell.contentView addSubview:labelname];
+                
+                labelvalue.text = [FCdicdata objectForKey:@"servicescope"];
+                [cell.contentView addSubview:labelvalue];
+                break;
+			case 8:
 				labelname.text = @"个人介绍";
 				[cell.contentView addSubview:labelname];
 				

@@ -61,6 +61,9 @@
     FCmeetingendttime=@"";
     FCorderitem=@"";
     FCorderid=@"";
+    FCordertime = @"";
+    FCordercode = @"";
+    FCSelectDropListItem = 0;
     
     tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-40)];
     tableview.backgroundColor = [UIColor clearColor];
@@ -98,7 +101,7 @@
     UIView *viewsearch = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     viewsearch.backgroundColor = COLORNOW(0, 170, 238);
     
-    SearchTextFieldView *searchtext = [[SearchTextFieldView alloc] initWithFrame:CGRectMake(60, 10, SCREEN_WIDTH-120, 30) Pastr:@"会议查询"];
+    SearchTextFieldView *searchtext = [[SearchTextFieldView alloc] initWithFrame:CGRectMake(40, 10, SCREEN_WIDTH-60, 30) Pastr:@"会议查询"];
     searchtext.delegate1 = self;
     [viewsearch addSubview:searchtext];
     
@@ -151,7 +154,7 @@
     ButtonItemLayoutView *buttonmetting = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, XYViewBottom(line1), widthnow*3, 40)];
     [buttonmetting.button addTarget:self action:@selector(ClickSelectmettingcode:) forControlEvents:UIControlEventTouchUpInside];
     buttonmetting.tag = EnWaterMettingSelectItembt1;
-    [buttonmetting updatebuttonitem:EnButtonTextLeft TextStr:@"会议编号" Font:FONTN(14.0f) Color:COLORNOW(0, 170, 236) Image:LOADIMAGE(@"arrawgray", @"png")];
+    [buttonmetting updatebuttonitem:EnButtonTextLeft TextStr:@"会议编号" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrawgray", @"png")];
     [viewselectitem addSubview:buttonmetting];
     
     //区域
@@ -253,22 +256,26 @@
 -(void)ClickSelectmettingcode:(id)sender
 {
     ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterMettingSelectItembt1];
-    if([FCorderid isEqualToString:@"desc"])
+    ButtonItemLayoutView *buttonitem2 = [self.view viewWithTag:EnWaterMettingSelectItembt4];
+    [buttonitem2 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+    FCorderitem = @"meetingcode";
+    if([FCordercode isEqualToString:@""])
     {
-        FCorderid= @"asc";
-        FCorderitem = @"meetingcode";
-        //  [buttonitem1 updatelabstr:@"从小到大"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        FCordercode= @"desc";
+       
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    else if([FCordercode isEqualToString:@"desc"])
+    {
+        FCordercode= @"asc";
         [buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
     }
     else
     {
-        FCorderid= @"desc";
-        FCorderitem = @"meetingcode";
-        //   [buttonitem1 updatelabstr:@"从大到小"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        FCordercode= @"desc";
         [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
     }
+    FCorderid = FCordercode;
     [self gethpmetting:@"1" PageSize:@"10"];
 }
 
@@ -276,7 +283,7 @@
 {
     
     ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterMettingSelectItembt2];
-    [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+//    [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
     [buttonitem1 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
     [arrayselectitem removeAllObjects];
     if (flagnow==0)
@@ -299,7 +306,7 @@
 -(void)ClickSelectStatus:(id)sender
 {
     ButtonItemLayoutView *buttonitem3 = [self.view viewWithTag:EnWaterMettingSelectItembt3];
-    [buttonitem3 updatelablecolor:COLORNOW(0, 170, 236)];
+//    [buttonitem3 updatelablecolor:COLORNOW(0, 170, 236)];
     [buttonitem3 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
     [arrayselectitem removeAllObjects];
     if (flagnow==0)
@@ -325,22 +332,25 @@
 -(void)ClickSelecttime:(id)sender
 {
     ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterMettingSelectItembt4];
-    if([FCorderid isEqualToString:@"desc"])
+    ButtonItemLayoutView *buttonitem2 = [self.view viewWithTag:EnWaterMettingSelectItembt1];
+    [buttonitem2 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+    FCorderitem = @"meetingtime";
+    if([FCordertime isEqualToString:@""])
     {
-        FCorderid= @"asc";
-        FCorderitem = @"meetingtime";
-        //  [buttonitem1 updatelabstr:@"从小到大"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        FCordertime= @"desc";
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    else if([FCordertime isEqualToString:@"desc"])
+    {
+        FCordertime= @"asc";
         [buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
     }
     else
     {
-        FCorderid= @"desc";
-        FCorderitem = @"meetingtime";
-        //   [buttonitem1 updatelabstr:@"从大到小"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        FCordertime= @"desc";
         [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
     }
+    FCorderid = FCordertime;
     [self gethpmetting:@"1" PageSize:@"10"];
 }
 
@@ -361,6 +371,7 @@
 {
     andydroplist = [[AndyDropDownList alloc] initWithListDataSource:arrayselectitem rowHeight:44 view:button Frame:CGRectMake(0, 40, SCREEN_WIDTH, SCREEN_HEIGHT-220)];
     andydroplist.delegate = self;
+    [andydroplist setselectrow:FCSelectDropListItem];
     return andydroplist;
 }
 
@@ -377,12 +388,14 @@
     {
         if([aStr isEqualToString:@"区域选择"])
         {
+            FCSelectDropListItem = 1;
             AreaSelectViewController *areaseelct = [[AreaSelectViewController alloc] init];
             areaseelct.delegate1 = self;
             [self.navigationController pushViewController:areaseelct animated:YES];
         }
         else
         {
+            FCSelectDropListItem = 0;
             FCzoneid = @"";
             ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterMettingSelectItembt2];
             [buttonitem1 updatelabstr:@"全部区域"];
@@ -391,7 +404,18 @@
     }
     else if(enselectitem == EnWaterMettingstatus)
     {
-        FCmeetingstatusid = [AddInterface returnselectid:FCarraystatus SelectValue:aStr];
+        for(int i=0;i<[FCarraystatus count];i++)
+        {
+            NSDictionary *dictemp = [FCarraystatus objectAtIndex:i];
+            if([[dictemp objectForKey:@"name"] isEqualToString:aStr])
+            {
+                FCSelectDropListItem = i;
+                FCmeetingstatusid = [dictemp objectForKey:@"id"];
+                break;
+            }
+        }
+        [self gethpmetting:@"1" PageSize:@"10"];
+        
     }
     [self gethpmetting:@"1" PageSize:@"10"];
 }
@@ -470,7 +494,7 @@
     
     NSDictionary *dictemp = [FCarraydata objectAtIndex:indexPath.row];
     
-    UILabel *lablecode = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, widthnow*3, 20)];
+    UILabel *lablecode = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, widthnow*3, 20)];
     lablecode.text = [dictemp objectForKey:@"meetingcode"];
     lablecode.font = FONTN(13.0f);
     lablecode.textColor = [UIColor blackColor];

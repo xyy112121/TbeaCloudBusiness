@@ -25,6 +25,7 @@
     NSString *FCaddress;
     NSString *FCisdefault;
 }
-
+@property(nonatomic,strong)NSDictionary *FCdicaddr; //地址
+@property(nonatomic,strong)NSString *FCfromflag;//1表示修改显示   2表示新增加
 @property(nonatomic,strong)NSString *FCaddressid;
 @end

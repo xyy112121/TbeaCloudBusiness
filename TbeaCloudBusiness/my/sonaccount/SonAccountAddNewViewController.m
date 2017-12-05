@@ -60,7 +60,12 @@
 	tableview.delegate = self;
 	tableview.dataSource = self;
 	[self.view addSubview:tableview];
-	
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidekeyboard:)];
+    tapGestureRecognizer.cancelsTouchesInView = NO;
+    [tableview addGestureRecognizer:tapGestureRecognizer];
+    
+    
 	[self setExtraCellLineHidden:tableview];
 	
 	UIButton *buttonnext = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -164,6 +169,8 @@
 -(void)DGSaveSonAccountFunctionAuthorList:(id)sender
 {
     FCarrayauthorization = sender;
+    UITextField *textfield = [tableview viewWithTag:EnSonAccountMangerTextfieldTag8];
+    textfield.text = [NSString stringWithFormat:@"%ld",[FCarrayauthorization count]];
 }
 
 #pragma mark 弹窗求
@@ -182,18 +189,73 @@
 -(void)picupload
 {
     UIImageView *imageview = [tableview viewWithTag:EnUserCenterSonAccountHeaderPicTag];
-    [JPhotoMagenage getOneImageInController:self finish:^(UIImage *images) {
-        NSLog(@"%@",images);
-        UIImage *image = [AddInterface scaleToSize:images size:CGSizeMake(800, 800)];
-        imageview.image = image;
-        FCimage = image;
-        
-    } cancel:^{
-        
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"选择图片"
+                                                                             message:nil
+                                                                      preferredStyle:UIAlertControllerStyleActionSheet];
+    //取消:style:UIAlertActionStyleCancel
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alertController addAction:cancelAction];
+    
+    UIAlertAction *moreAction = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [JPhotoMagenage getTakeLibryImageInController:self finish:^(UIImage *images) {
+            NSLog(@"%@",images);
+            UIImage *image = [AddInterface scaleToSize:images size:CGSizeMake(800, 800)];
+            imageview.image = image;
+            FCimage = image;
+            [self uploadcustompic:FCimage];
+        } cancel:^{
+            
+        }];
     }];
+    
+    [alertController addAction:moreAction];
+
+
+    UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [JPhotoMagenage getOneImageInController:self finish:^(UIImage *images) {
+            NSLog(@"%@",images);
+            UIImage *image = [AddInterface scaleToSize:images size:CGSizeMake(800, 800)];
+            imageview.image = image;
+            FCimage = image;
+            [self uploadcustompic:FCimage];
+        } cancel:^{
+
+        }];
+    }];
+    [alertController addAction:OKAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+
+    
+
 }
 
 #pragma mark IBaction
+-(void)hidekeyboard:(id)sender
+{
+    UITextField *textfield1 = [self.view viewWithTag:EnSonAccountMangerTextfieldTag1];//电话
+    UITextField *textfield2 = [self.view viewWithTag:EnSonAccountMangerTextfieldTag2];//姓名
+    UITextField *textfield3 = [self.view viewWithTag:EnSonAccountMangerTextfieldTag3];//用户类型
+    UITextField *textfield4 = [self.view viewWithTag:EnSonAccountMangerTextfieldTag4];//性别
+    UITextField *textfield5 = [self.view viewWithTag:EnSonAccountMangerTextfieldTag5];//生日
+    UITextField *textfield6 = [self.view viewWithTag:EnSonAccountMangerTextfieldTag6];//登录密码
+    UITextField *textfield7 = [self.view viewWithTag:EnSonAccountMangerTextfieldTag7];//职务显示
+    
+    [textfield1 resignFirstResponder];
+    [textfield2 resignFirstResponder];
+    [textfield3 resignFirstResponder];
+    [textfield4 resignFirstResponder];
+    [textfield5 resignFirstResponder];
+    [textfield6 resignFirstResponder];
+    [textfield7 resignFirstResponder];
+    FCtel = textfield1.text;
+    FCname = textfield2.text;
+    FCsex = textfield4.text;
+    FCpwd = textfield6.text;
+    FCjobtitle = textfield7.text;
+}
+
 -(void)returnback
 {
 	[self.navigationController popViewControllerAnimated:YES];
@@ -226,6 +288,10 @@
     {
         [MBProgressHUD showError:@"请选择授权功能" toView:app.window];
     }
+    else if(![AddInterface isValidateMobile:textfield1.text])
+    {
+        [MBProgressHUD showError:@"电话号码填写不规范" toView:app.window];
+    }
     else
     {
         FCtel = textfield1.text;
@@ -234,12 +300,33 @@
         FCpwd = textfield6.text;
         FCjobtitle = textfield7.text;
         [self crateaccountinterface];
-  //      [self uploadcustompic:FCimage];
+        
         
     }
 }
 
+-(void)uploadimageheader
+{
+    [self uploadcustompic:FCimage];
+}
+
 #pragma mark tableview delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    UITextField *textfield1 = [self.view viewWithTag:EnSonAccountMangerTextfieldTag1];//电话
+    UITextField *textfield2 = [self.view viewWithTag:EnSonAccountMangerTextfieldTag2];//姓名
+    UITextField *textfield4 = [self.view viewWithTag:EnSonAccountMangerTextfieldTag4];//性别
+    UITextField *textfield6 = [self.view viewWithTag:EnSonAccountMangerTextfieldTag6];//登录密码
+    UITextField *textfield7 = [self.view viewWithTag:EnSonAccountMangerTextfieldTag7];//职务显示
+    FCtel = textfield1.text;
+    FCname = textfield2.text;
+    FCtel = textfield1.text;
+    FCname = textfield2.text;
+    FCsex = textfield4.text;
+    FCpwd = textfield6.text;
+    FCjobtitle = textfield7.text;
+}
+
 //隐藏那些没有cell的线
 -(void)setExtraCellLineHidden: (UITableView *)tableView
 {
@@ -321,7 +408,7 @@
 	textfield.delegate = self;
 	if([_FCisedit isEqualToString:@"NO"])
         textfield.enabled = NO;
-	
+    
 	UIImageView *imageheader;
 
 	switch (indexPath.row)
@@ -333,6 +420,7 @@
 			
 		//	textfield.text = @"138****8888";
 //			textfield.enabled = NO;
+            textfield.text = FCtel;
 			textfield.textColor = COLORNOW(117, 117, 117);
 			textfield.tag = EnSonAccountMangerTextfieldTag1;
 			[cell.contentView addSubview:textfield];
@@ -343,6 +431,7 @@
 			
 		//	textfield.text = @"李明";
 		//	textfield.enabled = NO;
+            textfield.text = FCname;
 			textfield.tag = EnSonAccountMangerTextfieldTag2;
 			[cell.contentView addSubview:textfield];
 			break;
@@ -361,6 +450,7 @@
 			[cell.contentView addSubview:labelname];
 			
 		//	textfield.text = @"男";
+            textfield.text = FCsex;
 			textfield.tag = EnSonAccountMangerTextfieldTag4;
 			[cell.contentView addSubview:textfield];
 			break;
@@ -369,6 +459,8 @@
 			[cell.contentView addSubview:labelname];
 			
 		//	textfield.text = @"1985-05-18";
+            if([FCyear length]>0)
+                textfield.text = [NSString stringWithFormat:@"%@-%@-%@",FCyear,FCmonth,FCday];
 			textfield.tag = EnSonAccountMangerTextfieldTag5;
 			[cell.contentView addSubview:textfield];
 			break;
@@ -377,6 +469,7 @@
 			[cell.contentView addSubview:labelname];
 			
 		//	textfield.text = @"******";
+            textfield.text = FCpwd;
             textfield.secureTextEntry = YES;
 			textfield.tag = EnSonAccountMangerTextfieldTag6;
 			[cell.contentView addSubview:textfield];
@@ -386,6 +479,7 @@
 			[cell.contentView addSubview:labelname];
 			
 		//	textfield.text = @"营销总监";
+            textfield.text = FCjobtitle;
 			textfield.tag = EnSonAccountMangerTextfieldTag7;
 			[cell.contentView addSubview:textfield];
 			break;
@@ -394,10 +488,11 @@
 			[cell.contentView addSubview:labelname];
 			
 			imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(100, 10, 30, 30)];
-			imageheader.image = LOADIMAGE(@"userhedergray", @"png");
+//            imageheader.image = LOADIMAGE(@"userhedergray", @"png");
 			imageheader.layer.cornerRadius = 15.0f;
             imageheader.tag = EnUserCenterSonAccountHeaderPicTag;
 			imageheader.clipsToBounds = YES;
+            imageheader.image = FCimage;
 			[cell.contentView addSubview:imageheader];
 			break;
 		case 8:
@@ -406,6 +501,7 @@
 			[cell.contentView addSubview:labelname];
 			
 		//	textfield.text = @"营销总监";
+            textfield.textAlignment = NSTextAlignmentRight;
 			textfield.tag = EnSonAccountMangerTextfieldTag8;
 			[cell.contentView addSubview:textfield];
 			break;

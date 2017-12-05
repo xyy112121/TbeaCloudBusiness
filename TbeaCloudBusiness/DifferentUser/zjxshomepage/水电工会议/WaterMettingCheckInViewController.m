@@ -38,9 +38,14 @@
 	self.title = @"会议签到";
 	self.view.backgroundColor = [UIColor whiteColor];
 	app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	
-	enselectitem = EnWaterMettingCheckInUser; //默认选择的时间
-	
+    FCordermettinguser = @"";
+    FCorderid = @"";
+    FCzoneid = @"";
+    FCordermettingtime = @"";
+    FCSelectDropListItem = 0;
+    FCorderitem = @"";
+    
+    
 	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
 	tableview.backgroundColor = [UIColor clearColor];
 	[self.view addSubview:tableview];
@@ -65,7 +70,9 @@
 	UIView *tabviewheader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 80)];
 	tabviewheader.backgroundColor = [UIColor clearColor];
 	tableview.tableHeaderView = tabviewheader;
-	[tabviewheader addSubview:[self viewselectitem:CGRectMake(0, 0, SCREEN_WIDTH, 80)]];
+    if(viewtopselectitem==nil)
+       viewtopselectitem =  [self viewselectitem:CGRectMake(0, 0, SCREEN_WIDTH, 80)];
+	[tabviewheader addSubview:viewtopselectitem];
 }
 
 
@@ -86,7 +93,7 @@
 	UILabel *labelname = [[UILabel alloc] initWithFrame:CGRectMake(18, 10, 140, 20)];
 	labelname.backgroundColor = [UIColor clearColor];
 	labelname.textColor = [UIColor blackColor];
-	labelname.text = @"签到人数:46";
+	labelname.text = @"签到人数:0";
 	labelname.clipsToBounds = YES;
     labelname.tag = EnWaterMettingJoinMemberNumTag;
 	labelname.font = FONTMEDIUM(15.0f);
@@ -97,7 +104,7 @@
 	ButtonItemLayoutView *buttonmetting = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, XYViewBottom(line1), widthnow, 40)];
 	[buttonmetting.button addTarget:self action:@selector(ClickSelectUser:) forControlEvents:UIControlEventTouchUpInside];
 	buttonmetting.tag = EnWaterMettingCheckInSelectItembt1;
-	[buttonmetting updatebuttonitem:EnButtonTextLeft TextStr:@"用户" Font:FONTN(14.0f) Color:COLORNOW(0, 170, 236) Image:LOADIMAGE(@"arrawgray", @"png")];
+	[buttonmetting updatebuttonitem:EnButtonTextLeft TextStr:@"用户" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrawgray", @"png")];
 	[viewselectitem addSubview:buttonmetting];
 	
 	//区域
@@ -131,10 +138,6 @@
 }
 
 #pragma mark ActionDelegate
--(void)DGSelectDateDone:(NSString *)starttime EndTime:(NSString *)endtime
-{
-    
-}
 
 -(void)DGAreaSelectDone:(NSArray *)sender
 {
@@ -146,8 +149,8 @@
         
         selectzone = [selectzone length]==0?[dictemp objectForKey:@"name"]:[NSString stringWithFormat:@"%@,%@",selectzone,[dictemp objectForKey:@"name"]];
     }
-    ButtonItemLayoutView *buttonitem = [self.view viewWithTag:EnWaterMettingCheckInSelectItembt2];
-    [buttonitem updatelabstr:selectzone];
+//    ButtonItemLayoutView *buttonitem = [self.view viewWithTag:EnWaterMettingCheckInSelectItembt2];
+//    [buttonitem updatelabstr:selectzone];
     
     [self getmettingqiandao:@"1" PageSize:@"10"];
 }
@@ -161,11 +164,10 @@
 -(void)ClickSelectArea:(id)sender
 {
     ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterMettingCheckInSelectItembt2];
-    [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+//    [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
     [buttonitem1 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
     if (flagnow==0)
     {
-        enselectitem =  EnWaterMettingCheckInArea;
         flagnow = 1;
         arrayselectitem = @[@"全部区域",@"区域选择"];
         [self initandydroplist:sender];
@@ -182,22 +184,25 @@
 -(void)ClickSelectUser:(id)sender
 {
     ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterMettingCheckInSelectItembt1];
-    if([FCorderid isEqualToString:@"desc"])
+    ButtonItemLayoutView *buttonitem2 = [self.view viewWithTag:EnWaterMettingCheckInSelectItembt3];
+    [buttonitem2 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+    FCorderitem = @"signtime";
+    if([FCordermettingtime isEqualToString:@""])
     {
-        FCorderid= @"asc";
-        FCorderitem = @"signtime";
-        //  [buttonitem1 updatelabstr:@"从小到大"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        FCordermettingtime = @"desc";
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    else if([FCordermettingtime isEqualToString:@"desc"])
+    {
+        FCordermettingtime= @"asc";
         [buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
     }
     else
     {
-        FCorderid= @"desc";
-        FCorderitem = @"signtime";
-        //   [buttonitem1 updatelabstr:@"从大到小"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        FCordermettingtime= @"desc";
         [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
     }
+    FCorderid = FCordermettingtime;
     [self getmettingqiandao:@"1" PageSize:@"10"];
     
 }
@@ -205,22 +210,26 @@
 -(void)ClickSelectTime:(id)sender
 {
     ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterMettingCheckInSelectItembt3];
-    if([FCorderid isEqualToString:@"desc"])
+    ButtonItemLayoutView *buttonitem2 = [self.view viewWithTag:EnWaterMettingCheckInSelectItembt1];
+    [buttonitem2 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+    FCordermettingtime = @"";
+    FCorderitem = @"signuser";
+    if([FCordermettinguser isEqualToString:@""])
     {
-        FCorderid= @"asc";
-        FCorderitem = @"signuser";
-        //  [buttonitem1 updatelabstr:@"从小到大"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        FCordermettinguser= @"desc";
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    else if([FCordermettinguser isEqualToString:@"desc"])
+    {
+        FCordermettinguser= @"asc";
         [buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
     }
     else
     {
-        FCorderid= @"desc";
-        FCorderitem = @"signuser";
-        //   [buttonitem1 updatelabstr:@"从大到小"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        FCordermettinguser= @"desc";
         [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
     }
+    FCorderid = FCordermettinguser;
     [self getmettingqiandao:@"1" PageSize:@"10"];
 }
 
@@ -229,6 +238,7 @@
 {
 	andydroplist = [[AndyDropDownList alloc] initWithListDataSource:arrayselectitem rowHeight:44 view:button Frame:CGRectMake(0, 81, SCREEN_WIDTH, SCREEN_HEIGHT)];
 	andydroplist.delegate = self;
+    [andydroplist setselectrow:FCSelectDropListItem];
 	return andydroplist;
 }
 
@@ -241,31 +251,20 @@
 {
 	flagnow = 0;
 	DLog(@"astr====%@",aStr);
-	if(enselectitem == EnWaterMettingCheckInArea)
-	{
-        if([aStr isEqualToString:@"区域选择"])
-        {
-            AreaSelectViewController *areaseelct = [[AreaSelectViewController alloc] init];
-            areaseelct.delegate1 = self;
-            [self.navigationController pushViewController:areaseelct animated:YES];
-        }
-        else
-        {
-            FCzoneid = @"";
-            ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterMettingCheckInSelectItembt2];
-            [buttonitem1 updatelabstr:@"全部区域"];
-        }
-
-	}
-//	else if(enselectitem == EnWaterMettingCheckInTime)
-//	{
-//		if([aStr isEqualToString:@"自定义"])
-//		{
-//			TimeSelectViewController *tiemselect = [[TimeSelectViewController alloc] init];
-//			[self.navigationController pushViewController:tiemselect animated:YES];
-//		}
-//	}
-
+    if([aStr isEqualToString:@"区域选择"])
+    {
+        FCSelectDropListItem = 1;
+        AreaSelectViewController *areaseelct = [[AreaSelectViewController alloc] init];
+        areaseelct.delegate1 = self;
+        [self.navigationController pushViewController:areaseelct animated:YES];
+    }
+    else
+    {
+        FCSelectDropListItem = 0;
+        FCzoneid = @"";
+        ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterMettingCheckInSelectItembt2];
+        [buttonitem1 updatelabstr:@"全部区域"];
+    }
 }
 
 #pragma mark tableview delegate
@@ -340,8 +339,8 @@
 	
     NSDictionary *dictemp = [FCarraydata objectAtIndex:indexPath.row];
     
-	UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 30, 30)];
-    NSString *strpic1 = [dictemp objectForKey:@"thumbpicture"];//[InterfaceResource stringByAppendingString:[[dictemp objectForKey:@"thumbpicture"] length]>0?[dictemp objectForKey:@"thumbpicture"]:@"noimage.png"];
+	UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 30, 30)];
+    NSString *strpic1 = [dictemp objectForKey:@"thumbpicture"];
     [imageheader setImageWithURL:[NSURL URLWithString:strpic1] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
     imageheader.layer.cornerRadius = 15.0f;
     imageheader.clipsToBounds = YES;
@@ -356,8 +355,8 @@
 	lablename.backgroundColor = [UIColor clearColor];
 	[cell.contentView addSubview:lablename];
 	
-	UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(lablename)+5, XYViewTop(lablename)+5, 10, 10)];
-    NSString *strpic2 = [dictemp objectForKey:@"persontypeicon"];//[InterfaceResource stringByAppendingString:[[dictemp objectForKey:@"persontypeicon"] length]>0?[dictemp objectForKey:@"persontypeicon"]:@"noimage.png"];
+	UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(lablename)+5, XYViewTop(lablename)+5, 25, 10)];
+    NSString *strpic2 = [dictemp objectForKey:@"persontypeicon"];
     [imageicon setImageWithURL:[NSURL URLWithString:strpic2] placeholderImage:LOADIMAGE(@"scanrebateheader1", @"png")];
 	[cell.contentView addSubview:imageicon];
 	

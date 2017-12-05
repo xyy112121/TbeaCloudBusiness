@@ -56,7 +56,7 @@
 {
     
     UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 30, 30)];
-    NSString *strpic = [dicfrom objectForKey:@"thumbpicture"];//[InterfaceResource stringByAppendingString:[[dicfrom objectForKey:@"thumbpicture"] length]>0?[dicfrom objectForKey:@"thumbpicture"]:@"noimage.png"];
+    NSString *strpic = [dicfrom objectForKey:@"masterthumbpicture"];
     [imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
     imageheader.layer.cornerRadius = 15.0f;
     imageheader.clipsToBounds = YES;

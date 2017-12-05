@@ -47,13 +47,14 @@
 	
 	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
 	tableview.backgroundColor = [UIColor clearColor];
-	tableview.delegate = self;
-	tableview.dataSource = self;
+    tableview.delegate = self;
+    tableview.dataSource = self;
 	[self.view addSubview:tableview];
 	
 	[self setExtraCellLineHidden:tableview];
 	
 	[self initfootview];
+//    [self getmysettinginfo:app.userinfo.usertel];
 }
 
 -(void)initfootview
@@ -198,7 +199,7 @@
 	{
 		case 0:
 			labeltitle.text = @"手机号";
-			textfield1.text =@"13899999999";
+			textfield1.text =app.userinfo.usertel;
 			textfield1.textColor = ColorBlackGray;
 			textfield1.enabled = NO;
 			textfield1.tag = EnModifyBindingOldTelTextfieldTag;
@@ -311,7 +312,9 @@
         DLog(@"dic====%@",dic);
         if([[dic objectForKey:@"success"] isEqualToString:@"true"])
         {
-            
+//            FCdicdata = [[dic objectForKey:@"data"] objectForKey:@"baseinfo"];
+
+//            [tableview reloadData];
         }
         else
         {

@@ -6,7 +6,7 @@
 //  Copyright © 2017年 谢 毅. All rights reserved.
 //
 
-#define TITLES @[@"编辑"]
+#define TITLES @[@"签到码"]
 
 #import "ComMettingDetailPreparingViewController.h"
 
@@ -165,7 +165,7 @@
 - (void)Clickmorefunction:(id)sender
 {
     NSMutableArray *arrayicons = [[NSMutableArray alloc] init];
-    [arrayicons addObject:LOADIMAGE(@"metting编辑", @"png")];
+    [arrayicons addObject:LOADIMAGE(@"二维码icon", @"png")];
     ybpopmenu = [YBPopupMenu showRelyOnView:sender titles:TITLES icons:arrayicons menuWidth:130 otherSettings:^(YBPopupMenu *popupMenu)
                  {
                      popupMenu.dismissOnSelected = NO;
@@ -180,14 +180,11 @@
 
 - (void)ybPopupMenuDidSelectedAtIndex:(NSInteger)index ybPopupMenu:(YBPopupMenu *)ybPopupMenu
 {
-    if([TITLES[index] isEqualToString:@"编辑"])
+    if([TITLES[index] isEqualToString:@"签到码"])
     {
-        editstatus = EnMettingEdit;
-        [self initviewunder];
-    }
-    else if([TITLES[index] isEqualToString:@"删除"])
-    {
-        
+        ComMettingCreateSignInViewController *commetting = [[ComMettingCreateSignInViewController alloc] init];
+        commetting.FCmettingid = self.FCmettingid;
+        [self.navigationController pushViewController:commetting animated:YES];
     }
     [ybpopmenu dismiss];
     NSLog(@"点击了 %@ 选项",TITLES[index]);

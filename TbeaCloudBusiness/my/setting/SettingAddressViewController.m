@@ -89,7 +89,8 @@
 -(void)AddAddress:(id)sender
 {
 	SettingNewAddressViewController *addr = [[SettingNewAddressViewController alloc] init];
-//	addr.straddrid = @"";
+    addr.FCfromflag = @"2";
+    
 	[self.navigationController pushViewController:addr animated:YES];
 }
 
@@ -206,6 +207,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary *dictemp = [FCarraydata objectAtIndex:indexPath.row];
+    SettingNewAddressViewController *addr = [[SettingNewAddressViewController alloc] init];
+    addr.FCfromflag = @"1"; //表示查看修改
+    addr.FCdicaddr = dictemp;
+    [self.navigationController pushViewController:addr animated:YES];
 }
 
 //先要设Cell可编辑

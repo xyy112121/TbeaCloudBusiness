@@ -32,7 +32,9 @@
     NSString *FCorderitem;
     NSString *FCorderid;
     
-    
+    NSString *FCordertime;
+    NSString *FCordercode;
+    int FCSelectDropListItem;
     //
     int prentflag;//跳转
     NSString *FCcommitmettingid;

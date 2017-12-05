@@ -12,7 +12,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SonAccountAddNewViewController : UIViewController<PickerTimerDelegate,ActionDelegate,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
+@interface SonAccountAddNewViewController : UIViewController<UIScrollViewDelegate,PickerTimerDelegate,ActionDelegate,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 {
 	UITableView *tableview;
 	AppDelegate *app;

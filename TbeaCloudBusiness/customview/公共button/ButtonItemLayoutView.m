@@ -39,7 +39,7 @@
 	CGSize size = [AddInterface getlablesize:textstr Fwidth:self.frame.size.width-10 Fheight:20 Sfont:font];
 	if(textalignment==EnButtonTextLeft)
 	{
-		self.labelname.frame = CGRectMake(10, 10, size.width, size.height);
+		self.labelname.frame = CGRectMake(2, 10, size.width, size.height);
 	}
 	else if(textalignment==EnButtonTextCenter)
 	{

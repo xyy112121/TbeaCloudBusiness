@@ -114,8 +114,9 @@
             FCdicdata = [dic objectForKey:@"data"];
             [self addtabviewheader];
             
-            NSString *strurlnow = [NSString stringWithFormat:@"%@%@",Interfacehtmlurlheader,HtmlUrlUserPersoninfo];
-            UIView  *view = [[WkWebViewCustomView alloc] initWithFrame:CGRectMake(0, 240, SCREEN_WIDTH, SCREEN_WIDTH-240) StrUrl:strurlnow];
+            NSString *strurlnow = [NSString stringWithFormat:@"%@%@%@",[app.GBURLPreFix length]>0?app.GBURLPreFix:Interfacehtmlurlheader,HtmlUrlUserPersoninfo,self.FCelectricianid];
+            DLog(@"strurlnow====%@",strurlnow);
+            UIView  *view = [[WkWebViewCustomView alloc] initWithFrame:CGRectMake(0, 240, SCREEN_WIDTH, SCREEN_HEIGHT-240) StrUrl:strurlnow];
             [self.view addSubview:view];
           //
             

@@ -110,7 +110,9 @@
 #pragma mark ActionDelegate
 -(void)DGSelectDateDone:(NSString *)starttime EndTime:(NSString *)endtime
 {
-    
+//    FCsta = starttime;
+//    FCenddate = endtime;
+//    [self getwaterzjxlist:@"1" Pagesize:@"10"];
 }
 
 

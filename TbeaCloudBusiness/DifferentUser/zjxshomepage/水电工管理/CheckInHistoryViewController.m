@@ -38,16 +38,15 @@
 	self.title = @"签到历史";
 	self.view.backgroundColor = [UIColor whiteColor];
 	app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	enselectitem = EnCheckInSelectmetting; //默认选择的会议
+//	enselectitem = EnCheckInSelectmetting; //默认选择的会议
     arrayselectitem = [[NSMutableArray alloc] init];
-    FCelectricianid = @"";
     FCmeetingcode = @"";
     FCzoneid = @"";
     FCstartdate = @"";
     FCenddate = @"";
     FCorderitem = @"";
-    FCorder = @"desc";
-    
+    FCorder = @"";
+    FCSelectDropListItem = 0;
     
 	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-100)];
 	tableview.backgroundColor = [UIColor clearColor];
@@ -77,7 +76,9 @@
 	UIView *tabviewheader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
 	tabviewheader.backgroundColor = [UIColor clearColor];
 	[self.view addSubview:tabviewheader];
-	[tabviewheader addSubview:[self viewselectitem:CGRectMake(0, 0, SCREEN_WIDTH, 100)]];
+    if(viewtopselectitem == nil)
+        viewtopselectitem = [self viewselectitem:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
+	[tabviewheader addSubview:viewtopselectitem];
 }
 
 
@@ -97,24 +98,24 @@
 	
 	[self wateruserheader:viewselectitem];
 	
-	float widthnow = (SCREEN_WIDTH-20)/3;
+	float widthnow = (SCREEN_WIDTH-20)/5;
 	
 	//会议编号
-	ButtonItemLayoutView *buttonmetting = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, XYViewBottom(line1), widthnow, 40)];
+	ButtonItemLayoutView *buttonmetting = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, XYViewBottom(line1), widthnow*2, 40)];
 //	[buttonmetting.button addTarget:self action:@selector(ClickSelectmetting:) forControlEvents:UIControlEventTouchUpInside];
 	buttonmetting.tag = EnWaterCheckInSelectItembt1;
-	[buttonmetting updatebuttonitem:EnButtonTextLeft TextStr:@"会议编号" Font:FONTN(14.0f) Color:COLORNOW(0, 170, 236) Image:nil];
+	[buttonmetting updatebuttonitem:EnButtonTextLeft TextStr:@"会议编号" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:nil];
 	[viewselectitem addSubview:buttonmetting];
 	
 	//区域
-	ButtonItemLayoutView *buttonitemarea = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow, XYViewBottom(line1), widthnow, 40)];
-	[buttonitemarea.button addTarget:self action:@selector(ClickSelectarea:) forControlEvents:UIControlEventTouchUpInside];
+	ButtonItemLayoutView *buttonitemarea = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow*2, XYViewBottom(line1), widthnow, 40)];
+//    [buttonitemarea.button addTarget:self action:@selector(ClickSelectarea:) forControlEvents:UIControlEventTouchUpInside];
 	buttonitemarea.tag = EnWaterCheckInSelectItembt2;
-	[buttonitemarea updatebuttonitem:EnButtonTextCenter TextStr:@"区域" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrowgrayunder", @"png")];
+	[buttonitemarea updatebuttonitem:EnButtonTextCenter TextStr:@"区域" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:nil];
 	[viewselectitem addSubview:buttonitemarea];
 	
 	//时间
-	ButtonItemLayoutView *buttonitemtime = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow*2, XYViewBottom(line1), widthnow, 40)];
+	ButtonItemLayoutView *buttonitemtime = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow*3, XYViewBottom(line1), widthnow*2, 40)];
 	[buttonitemtime.button addTarget:self action:@selector(ClickSelecttime:) forControlEvents:UIControlEventTouchUpInside];
 	buttonitemtime.tag = EnWaterCheckInSelectItembt3;
 	[buttonitemtime updatebuttonitem:EnButtonTextRight TextStr:@"时间" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrowgrayunder", @"png")];
@@ -125,13 +126,15 @@
 
 -(void)wateruserheader:(UIView *)viewheader
 {
-	float nowwidth = (SCREEN_WIDTH-40)/4;
 	
 	UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 40, 40)];
-	imageheader.image = LOADIMAGE(@"scanrebatetest1", @"png");
+    NSString *strpic = [FCdicdata objectForKey:@"thumbpicture"];
+	[imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
+    imageheader.layer.cornerRadius = 20.0f;
+    imageheader.clipsToBounds = YES;
 	[viewheader addSubview:imageheader];
 	
-	NSString *strname = @"江南小颖";
+	NSString *strname = [FCdicdata objectForKey:@"personname"];
 	CGSize size = [AddInterface getlablesize:strname Fwidth:200 Fheight:20 Sfont:FONTN(14.0f)];
 	UILabel *lablename = [[UILabel alloc] initWithFrame:CGRectMake(XYViewR(imageheader)+10, XYViewTop(imageheader)+10, size.width, 20)];
 	lablename.text =strname;
@@ -141,13 +144,15 @@
 	[viewheader addSubview:lablename];
 	
 	UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(lablename)+5, XYViewTop(lablename)+5, 10, 10)];
-	imageicon.image = LOADIMAGE(@"scanrebateheader1", @"png");
+    strpic = [FCdicdata objectForKey:@"persontypeicon"];
+    [imageicon setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
+//	imageicon.image = LOADIMAGE(@"scanrebateheader1", @"png");
 	[viewheader addSubview:imageicon];
 	
 	
-	UILabel *lablemoneyvalue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-nowwidth-10, 20, nowwidth, 20)];
-	lablemoneyvalue.text = @"2140";
-	lablemoneyvalue.font = FONTMEDIUM(17.0f);
+	UILabel *lablemoneyvalue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-120-10, 20, 120, 20)];
+	lablemoneyvalue.text = [FCdicdata objectForKey:@"totleattendtimes"];
+	lablemoneyvalue.font = FONTB(16.0f);
 	lablemoneyvalue.textAlignment = NSTextAlignmentRight;
 	lablemoneyvalue.textColor = [UIColor blackColor];
 	lablemoneyvalue.backgroundColor = [UIColor clearColor];
@@ -171,7 +176,9 @@
 #pragma mark ActionDelegate
 -(void)DGSelectDateDone:(NSString *)starttime EndTime:(NSString *)endtime
 {
-	
+    FCstartdate = starttime;
+    FCenddate = endtime;
+    [self getcheckinhistory:@"1" PageSize:@"10"];
 }
 
 
@@ -188,8 +195,8 @@
 	ButtonItemLayoutView *buttonitem2 = [self.view viewWithTag:EnWaterCheckInSelectItembt2];
 	
 	
-	[buttonitem2 updatelablecolor:COLORNOW(0, 170, 236)];
-
+//    [buttonitem2 updatelablecolor:COLORNOW(0, 170, 236)];
+    [arrayselectitem removeAllObjects];
 	[buttonitem2 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
 	if (flagnow==0)
 	{
@@ -211,9 +218,9 @@
 -(void)ClickSelecttime:(id)sender
 {
 	ButtonItemLayoutView *buttonitem3 = [self.view viewWithTag:EnWaterCheckInSelectItembt3];
-	[buttonitem3 updatelablecolor:COLORNOW(0, 170, 236)];
+//    [buttonitem3 updatelablecolor:COLORNOW(0, 170, 236)];
 	[buttonitem3 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
-    
+    [arrayselectitem removeAllObjects];
 	if (flagnow==0)
 	{
 		enselectitem =  EnCheckInSelecttime;
@@ -236,8 +243,9 @@
 #pragma mark TYYNavFilterDelegate
 -(AndyDropDownList *)initandydroplist:(UIButton *)button
 {
-	andydroplist = [[AndyDropDownList alloc] initWithListDataSource:arrayselectitem rowHeight:44 view:button Frame:CGRectMake(0, 100, SCREEN_WIDTH, SCREEN_HEIGHT)];
+	andydroplist = [[AndyDropDownList alloc] initWithListDataSource:arrayselectitem rowHeight:44 view:button Frame:CGRectMake(0, 101, SCREEN_WIDTH, SCREEN_HEIGHT)];
 	andydroplist.delegate = self;
+    [andydroplist setselectrow:FCSelectDropListItem];
 	return andydroplist;
 }
 
@@ -250,7 +258,7 @@
 {
     flagnow = 0;
     DLog(@"astr====%@",astr);
-    if(enselectitem == EnTiXianDataSelectDate)
+    if(enselectitem == EnCheckInSelecttime)
     {
         FCstartdate = @"";
         FCenddate = @"";
@@ -262,15 +270,20 @@
         [buttonitem updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
         if([astr isEqualToString:@"默认"]||[astr isEqualToString:@"正序"])
         {
+            FCSelectDropListItem = 0;
+            if([astr isEqualToString:@"正序"])
+                FCSelectDropListItem = 1;
             [self getcheckinhistory:@"1" PageSize:@"10"];
         }
         else if([astr isEqualToString:@"倒序"])
         {
+            FCSelectDropListItem = 2;
             FCorder = @"asc";
             [self getcheckinhistory:@"1" PageSize:@"10"];
         }
         else if([astr isEqualToString:@"自定义"])
         {
+            FCSelectDropListItem = 3;
             FCorderitem = @"";
             TimeSelectViewController *timeselect = [[TimeSelectViewController alloc] init];
             timeselect.delegate1 = self;
@@ -281,12 +294,14 @@
     {
         if([astr isEqualToString:@"区域选择"])
         {
+            FCSelectDropListItem = 0;
             AreaSelectViewController *areaseelct = [[AreaSelectViewController alloc] init];
             areaseelct.delegate1 = self;
             [self.navigationController pushViewController:areaseelct animated:YES];
         }
         else
         {
+            FCSelectDropListItem = 1;
             FCzoneid = @"";
             ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterCheckInSelectItembt2];
 //            [buttonitem1 updatelabstr:@"全部区域"];
@@ -361,11 +376,11 @@
 	
 	cell.backgroundColor = [UIColor whiteColor];
 	
-	float widthnow = (SCREEN_WIDTH-20)/3;
+	float widthnow = (SCREEN_WIDTH-20)/5;
 	
     NSDictionary *dictemp = [FCarraydata objectAtIndex:indexPath.row];
     
-	UILabel *lablecode = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, widthnow, 20)];
+	UILabel *lablecode = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, widthnow*2, 20)];
 	lablecode.text = [dictemp objectForKey:@"meetingcode"];
 	lablecode.font = FONTN(13.0f);
 	lablecode.textColor = [UIColor blackColor];
@@ -374,7 +389,7 @@
 	[cell.contentView addSubview:lablecode];
 	
 	
-	UILabel *lablearea = [[UILabel alloc] initWithFrame:CGRectMake(10+widthnow, 10, widthnow, 20)];
+	UILabel *lablearea = [[UILabel alloc] initWithFrame:CGRectMake(10+widthnow*2, 10, widthnow, 20)];
 	lablearea.text = [dictemp objectForKey:@"zone"];
 	lablearea.font = FONTN(13.0f);
 	lablearea.textColor = [UIColor blackColor];
@@ -383,7 +398,7 @@
 	[cell.contentView addSubview:lablearea];
 	
 	NSString *strtiem = [dictemp objectForKey:@"attendtime"];
-	UILabel *labeltime = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-widthnow-30, 10, widthnow+20, 20)];
+	UILabel *labeltime = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-widthnow*2-10, 10, widthnow*2, 20)];
 	labeltime.text = strtiem;;
 	labeltime.textColor = [UIColor blackColor];
 	labeltime.font = FONTN(13.0f);
@@ -406,7 +421,7 @@
 -(void)getcheckinhistory:(NSString *)page PageSize:(NSString *)pagesize
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"electricianid"] = FCelectricianid;
+    params[@"electricianid"] = _FCelectricianid;
     params[@"meetingcode"] = FCmeetingcode;
     params[@"zoneid"] = FCzoneid;
     params[@"startdate"] = FCstartdate;

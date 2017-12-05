@@ -19,6 +19,7 @@
 	AppDelegate *app;
 	EnWaterPersonHpFunctionType functiontype;
     NSDictionary *FCdicdata;
+    
 }
 
 @property(nonatomic,strong)NSString *FCelectricianid;

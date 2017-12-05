@@ -29,6 +29,11 @@
     NSString *FCorderid;
     
     NSArray *FCarraydata;
+    
+    NSString *FCordermettinguser;
+    NSString *FCordermettingtime;
+    UIView *viewtopselectitem;  //顶部选项view
+    int FCSelectDropListItem;
 }
 
 @property(nonatomic,strong)NSString *FCmettingid;

@@ -202,7 +202,7 @@
     viewcell.backgroundColor = [UIColor clearColor];
     
     
-    UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 30, 30)];
+    UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(0, 10, 30, 30)];
     NSString *strpic = [dic objectForKey:@"thumbpicture"];
     [imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
     imageheader.contentMode = UIViewContentModeScaleAspectFill;

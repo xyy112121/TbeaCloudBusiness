@@ -32,19 +32,21 @@
 //全部cell
 -(void)initview:(NSDictionary *)dic  CellIndex:(NSIndexPath *)indexPath
 {
-	UIImageView *imagesorticon = [[UIImageView alloc] initWithFrame:CGRectMake(20, 21, 18, 18)];
-	if(indexPath.row == 0)
-		imagesorticon.image = LOADIMAGE(@"scanrebatesort1", @"png");
-	else if(indexPath.row == 1)
-		imagesorticon.image = LOADIMAGE(@"scanrebatesort2", @"png");
-	else if(indexPath.row == 2)
-		imagesorticon.image = LOADIMAGE(@"scanrebatesort3", @"png");
-	else
-		imagesorticon.image = LOADIMAGE(@"scanrebatesort4", @"png");
+	UIImageView *imagesorticon = [[UIImageView alloc] initWithFrame:CGRectMake(20, 19, 22, 22)];
+//    if(indexPath.row == 0)
+//        imagesorticon.image = LOADIMAGE(@"scanrebatesort1", @"png");
+//    else if(indexPath.row == 1)
+//        imagesorticon.image = LOADIMAGE(@"scanrebatesort2", @"png");
+//    else if(indexPath.row == 2)
+//        imagesorticon.image = LOADIMAGE(@"scanrebatesort3", @"png");
+//    else
+//        imagesorticon.image = LOADIMAGE(@"scanrebatesort4", @"png");
+    NSString *strpic1 = [dic objectForKey:@"rankingorder"];
+    [imagesorticon setImageWithURL:[NSURL URLWithString:strpic1] placeholderImage:nil];
 	[self addSubview:imagesorticon];
 	
 	UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(imagesorticon)+10, 10, 40, 40)];
-    NSString *strpic = [dic objectForKey:@"thumbpicture"];//[InterfaceResource stringByAppendingString:[[dic objectForKey:@"thumbpicture"] length]>0?[dic objectForKey:@"thumbpicture"]:@"noimage.png"];
+    NSString *strpic = [dic objectForKey:@"thumbpicture"];
 	[imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
     imageheader.layer.cornerRadius = 20.0f;
     imageheader.clipsToBounds = YES;

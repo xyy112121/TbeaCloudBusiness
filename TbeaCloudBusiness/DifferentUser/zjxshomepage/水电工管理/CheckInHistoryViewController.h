@@ -20,7 +20,6 @@
 	EnCheckInSelectItem enselectitem;
 	
     //参数
-    NSString *FCelectricianid;
     NSString *FCmeetingcode;
     NSString *FCzoneid;
     NSString *FCstartdate;
@@ -35,6 +34,9 @@
     
 	AndyDropDownList *andydroplist;
 	int flagnow; //表明当前的是否显示
+    
+    UIView *viewtopselectitem;  //顶部选项view
+    int FCSelectDropListItem;
 	
 }
 @property(nonatomic,strong)NSString *FCelectricianid;

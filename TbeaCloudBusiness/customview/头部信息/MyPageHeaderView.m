@@ -27,10 +27,13 @@
 -(void)initview:(NSDictionary  *)dicfrom
 {
 	UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(20,StatusBarHeight+40,70,70)];
-    NSString *strpic = [dicfrom objectForKey:@"thumbpicture"];//[NSString stringWithFormat:@"%@%@",InterfaceResource,[dicfrom objectForKey:@"thumbpicture"]];
+    NSString *strpic = [dicfrom objectForKey:@"thumbpicture"];
     [imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"watertest", @"png")];
 	imageheader.layer.cornerRadius = 35.f;
 	imageheader.clipsToBounds = YES;
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotonext:)];
+    imageheader.userInteractionEnabled  = YES;
+    [imageheader addGestureRecognizer:gesture];
 	imageheader.contentMode = UIViewContentModeScaleAspectFill;
 	[self addSubview:imageheader];
 	
@@ -66,7 +69,10 @@
 
 -(void)gotonext:(id)sender
 {
-	
+    if(_delegate1&&([_delegate1 respondsToSelector:@selector(DGClickUserHeaderIntoInfo:)]))
+    {
+        [_delegate1 DGClickUserHeaderIntoInfo:sender];
+    }
 }
 
 @end

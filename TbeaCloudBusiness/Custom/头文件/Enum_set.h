@@ -404,3 +404,13 @@ typedef enum
 
 #define EnTixianHistoryViewTopView 60400
 
+#define EnMyPersonInfoTextfield1 60500
+#define EnMyPersonInfoTextfield2 60501
+#define EnMyPersonInfoTextfield3 60502
+#define EnMyPersonInfoTextfield4 60503
+#define EnMyPersonInfoTextfield5 60504
+#define EnMyPersonInfoTextfield6 60505
+#define EnMyPersonInfoTextfield7 60506
+#define EnMyPersonInfoTextfield8 60507
+#define EnMyPersonInfoTextfield9 60508
+#define EnMyPersonInfoImageView1 60509

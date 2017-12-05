@@ -42,6 +42,12 @@
     [buttonloging setImage:LOADIMAGE(@"returnback", @"png") forState:UIControlStateNormal];
     [buttonloging addTarget:self action:@selector(returnback) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:buttonloging];
+    
+    UILabel *labeltitle = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-80)/2, StatusBarHeight+12, 80, 20)];
+    labeltitle.textColor = [UIColor whiteColor];
+    labeltitle.font = FONTN(17.0f);
+    labeltitle.text = @"客服中心";
+    [self.view addSubview:labeltitle];
 	
 }
 
@@ -55,7 +61,7 @@
 	NSDictionary * dict=[NSDictionary dictionaryWithObject:COLORNOW(255, 255, 255) forKey:NSForegroundColorAttributeName];
 	self.navigationController.navigationBar.titleTextAttributes = dict;
 	self.title = @"客服中心";
-	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight) style:UITableViewStylePlain];
+	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
 	tableview.backgroundColor = [UIColor whiteColor];
 	
     if (@available(iOS 11.0, *)) {

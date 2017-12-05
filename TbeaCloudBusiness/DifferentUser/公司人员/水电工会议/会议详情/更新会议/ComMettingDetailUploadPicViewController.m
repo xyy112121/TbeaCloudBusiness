@@ -44,14 +44,45 @@
     self.navigationItem.rightBarButtonItem = barButtonItemright;
     
     [self initview];
-    
-    // Do any additional setup after loading the view.
 }
 
 -(void)initview
 {
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"图片上传";
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidekeyboard:)];
+    tapGestureRecognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tapGestureRecognizer];
+    
+    UILabel *strtitle = [[UILabel alloc] initWithFrame:CGRectMake(10,10,60,20)];
+    strtitle.backgroundColor = [UIColor clearColor];
+    strtitle.textColor = [UIColor blackColor];
+    strtitle.font = FONTB(16.0f);
+    strtitle.text = @"主题";
+    [self.view addSubview:strtitle];
+    
+    UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(strtitle.frame.origin.x+strtitle.frame.size.width+10, 5, SCREEN_WIDTH-90, 30)];
+    textfield.layer.cornerRadius = 3;
+    textfield.layer.borderColor = COLORNOW(230, 230, 230).CGColor;
+    textfield.layer.borderWidth = 0.5f;
+    textfield.backgroundColor = COLORNOW(245, 245, 245);
+    textfield.tag = 621;
+    textfield.delegate = self;
+    textfield.placeholder = @"填写主题";
+    textfield.font = FONTN(15.0f);
+    textfield.returnKeyType = UIReturnKeyDone;
+    textfield.clearButtonMode = UITextFieldViewModeAlways;
+    UIView *leftview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 5)];
+    textfield.leftView = leftview;
+    leftview.userInteractionEnabled = NO;
+    textfield.leftViewMode = UITextFieldViewModeAlways;
+    [self.view addSubview:textfield];
+    
+    UIImageView *imageline = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, 0.7)];
+    imageline.backgroundColor = COLORNOW(220, 220, 220);
+    [self.view addSubview:imageline];
+    
     
 }
 
@@ -73,6 +104,20 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)hidekeyboard:(id)sender
+{
+    
+}
+
+-(void)clickselectpic:(id)sender
+{
+    [JPhotoMagenage JphotoGetFromLibrayInController:self finish:^(NSArray<UIImage *> *images) {
+        
+    } cancel:^{
+        
+    }];
+}
+
 -(void)uploadpic:(id)sender
 {
     [self uploadcustompic];
@@ -83,7 +128,7 @@
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
-    //    params[@"meetingcontent"] = @"测试内容。。。。。。。";
+    
     
     NSMutableArray *arrayimage = [[NSMutableArray alloc] init];
     [arrayimage addObject:LOADIMAGE(@"metting编辑", @"png")];

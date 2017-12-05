@@ -68,10 +68,9 @@
 	[fromcell.contentView addSubview:labelname];
 
 	UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelname)+10, 10, 30, 30)];
-    NSString *strpic = [dic objectForKey:@"thumbpicture"];//[InterfaceResource stringByAppendingString:[[dic objectForKey:@"thumbpicture"] length]>0?[dic objectForKey:@"thumbpicture"]:@"noimage.png"];
+    NSString *strpic = [dic objectForKey:@"thumbpicture"];
 	[imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
 	imageheader.contentMode = UIViewContentModeScaleAspectFill;
-	
 	imageheader.layer.cornerRadius = 15.0f;
 	imageheader.clipsToBounds = YES;
 	[fromcell.contentView addSubview:imageheader];
@@ -85,7 +84,7 @@
 	[fromcell.contentView addSubview:labelusername];
 	
 	UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelusername)+5, XYViewTop(labelusername)+5, 25, 10)];
-    strpic = [dic objectForKey:@"persontypeicon"];//[InterfaceResource stringByAppendingString:[[dic objectForKey:@"persontypeicon"] length]>0?[dic objectForKey:@"persontypeicon"]:@"noimage.png"];
+    strpic = [dic objectForKey:@"persontypeicon"];
 	[imageicon setImageWithURL:[NSURL URLWithString:strpic]];
 	[fromcell.contentView addSubview:imageicon];
 	
@@ -211,48 +210,19 @@
 	labelvalue.textColor = [UIColor blackColor];
 	labelvalue.font = FONTN(15.0f);
 	
-	
-	UIImageView *imageheader;
-	UIImageView *imageicon;
-	UILabel *labelusername;
-	CGSize sizeuser;
 	NSDictionary *dic;
-	NSString *strpic;
+
     UILabel *lablemoneyflag1;
 	if(indexPath.section == 0)
 	{
 		switch (indexPath.row)
 		{
 			case 0:
-				dic = [FCdicdata objectForKey:@"payeeinfo"];
-				labelname.text = @"提现用户";
-				labelname.frame = CGRectMake(20, 15, 80, 20);
-				[cell.contentView addSubview:labelname];
-				
-				imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelname)+10, 10, 30, 30)];
-                strpic = [dic objectForKey:@"thumbpicture"];//[InterfaceResource stringByAppendingString:[[dic objectForKey:@"thumbpicture"] length]>0?[dic objectForKey:@"thumbpicture"]:@"noimage.png"];
-				[imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
-				imageheader.contentMode = UIViewContentModeScaleAspectFill;
-				imageheader.layer.cornerRadius = 15.0f;
-				imageheader.clipsToBounds = YES;
-				[cell.contentView addSubview:imageheader];
-				
-				sizeuser = [AddInterface getlablesize:[dic objectForKey:@"personname"] Fwidth:100 Fheight:20 Sfont:FONTN(15.0f)];
-				labelusername = [[UILabel alloc] initWithFrame:CGRectMake(XYViewR(imageheader)+10, 15, sizeuser.width, 20)];
-				labelusername.backgroundColor = [UIColor clearColor];
-				labelusername.textColor = [UIColor blackColor];
-				labelusername.font = FONTN(15.0f);
-				labelusername.text = [dic objectForKey:@"personname"];
-				[cell.contentView addSubview:labelusername];
-				
-				imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelusername)+5, XYViewTop(labelusername)+5, 10, 10)];
-                strpic = [dic objectForKey:@"persontypeicon"];//[InterfaceResource stringByAppendingString:[[dic objectForKey:@"persontypeicon"] length]>0?[dic objectForKey:@"persontypeicon"]:@"noimage.png"];
-				[imageheader setImageWithURL:[NSURL URLWithString:strpic]];
-				[cell.contentView addSubview:imageicon];
+                dic = [FCdicdata objectForKey:@"payeeinfo"];
+                [self viewcell1:dic FromCell:cell LeftName:@"提现用户"];
 				break;
 			case 1:
 				dic = [FCdicdata objectForKey:@"ownerinfo"];
-			//	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 				[self viewcell1:dic FromCell:cell LeftName:@"隶属关系"];
 				break;
 			case 2:

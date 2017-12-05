@@ -372,7 +372,9 @@
 #pragma mark ActionDelegate
 -(void)DGSelectDateDone:(NSString *)starttime EndTime:(NSString *)endtime
 {
-    
+//    FCstartdate = starttime;
+//    FCenddate = endtime;
+//    [self ]
 }
 
 

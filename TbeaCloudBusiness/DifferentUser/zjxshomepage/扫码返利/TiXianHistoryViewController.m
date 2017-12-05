@@ -414,7 +414,7 @@
 	
 	float widthnow = (SCREEN_WIDTH-20)/4;
 	NSString *strtiem = [dictemp objectForKey:@"time"];
-	UILabel *labeltime = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, widthnow*2, 20)];
+	UILabel *labeltime = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, widthnow*2, 20)];
 	labeltime.text = strtiem;;
 	labeltime.textColor = [UIColor blackColor];
 	labeltime.font = FONTN(13.0f);

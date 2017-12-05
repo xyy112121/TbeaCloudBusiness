@@ -271,7 +271,7 @@
 -(void)getjihuodetail
 {
 	NSMutableDictionary *params = [NSMutableDictionary dictionary];
-	params[@"qrcode"] = @"08380152002049421053";//self.FCqrcodeactivityid;
+	params[@"qrcode"] = self.FCqrcodeactivityid;
 
 	
 	[RequestInterface doGetJsonWithParametersNoAn:params App:app RequestCode:RQCreateQRCodeDetailCode ReqUrl:InterfaceRequestUrl ShowView:app.window alwaysdo:^{
@@ -280,10 +280,10 @@
 		DLog(@"dic====%@",dic);
 		if([[dic objectForKey:@"success"] isEqualToString:@"true"])
 		{
-			FCdicscancodedetail = [dic objectForKey:@"data"];
-			tableview.delegate = self;
-			tableview.dataSource = self;
-			[tableview reloadData];
+            FCdicscancodedetail = [dic objectForKey:@"data"];
+            tableview.delegate = self;
+            tableview.dataSource = self;
+            [tableview reloadData];
 		}
 		else
 		{

@@ -29,7 +29,7 @@ UITableViewDelegate>
 @property(nonatomic,strong)UIView *bgView;
 @property(nonatomic,strong)UIImageView *arrow;
 @property(nonatomic,assign)NSInteger index;    //记录选中行
-
+@property(nonatomic,assign)int FCSelectrow;
 @end
 
 
@@ -62,6 +62,12 @@ UITableViewDelegate>
 		self.button = (UIButton *)v;
 	}
 	return self;
+}
+
+-(void)setselectrow:(int)row
+{
+    _FCSelectrow = row;
+    [self.tableView reloadData];
 }
 
 -(UIView *)bgView
@@ -166,7 +172,14 @@ UITableViewDelegate>
         {
             [cell addSubview:self.arrow];
         }
+    
     }
+    if(indexPath.row == _FCSelectrow)
+    {
+        cell.textLabel.textColor = COLORNOW(0, 170, 238);
+    }
+    
+    
     
     return cell;
 }

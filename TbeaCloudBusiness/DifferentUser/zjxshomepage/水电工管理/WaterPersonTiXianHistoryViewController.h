@@ -28,10 +28,12 @@
     NSString *FCstartdate;
     NSString *FCenddate;
     
-    
+    UIView *topheaderview;
     //
     NSArray *FCarraydata;
     NSDictionary *FCdicelectricianinfo;
+    
+    int FCSelectUserRow;
 }
 @property(nonatomic,strong)NSString *FCelectricianid;
 @property(nonatomic,strong)NSString *FCpersontype;

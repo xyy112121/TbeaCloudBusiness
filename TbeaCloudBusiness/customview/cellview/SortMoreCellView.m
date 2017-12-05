@@ -51,7 +51,7 @@
 	[self addSubview:lablename];
 	
 	UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewL(lablename), XYViewBottom(lablename)+5, 25, 10)];
-    strpic = [dic objectForKey:@"persontypeicon"];//[InterfaceResource stringByAppendingString:[[dic objectForKey:@"persontypeicon"] length]>0?[dic objectForKey:@"persontypeicon"]:@"noimage.png"];
+    strpic = [dic objectForKey:@"persontypeicon"];
 	[imageicon setImageWithURL:[NSURL URLWithString:strpic]];
 	[self addSubview:imageicon];
 	

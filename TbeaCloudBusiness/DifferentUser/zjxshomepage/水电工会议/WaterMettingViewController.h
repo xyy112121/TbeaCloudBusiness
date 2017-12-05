@@ -33,11 +33,15 @@
     NSString *FCmeetingendttime;
     NSString *FCorderitem;
     NSString *FCorderid;
-    
+    NSString *FCordermettingcode;
+    NSString *FCordermettingtime;
     
 	AndyDropDownList *andydroplist;
 	NSMutableArray *arrayselectitem;
 	int flagnow; //表明当前的是否显示
+    
+    UIView *viewtopselectitem;  //顶部选项view
+    int FCSelectDropListItem;
 
 }
 

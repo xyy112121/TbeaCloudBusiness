@@ -77,8 +77,9 @@
 	UIView *tabviewheader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 90)];
 	tabviewheader.backgroundColor = [UIColor clearColor];
 	[tabviewheader addSubview:[self searchbarview]];
-	[tabviewheader addSubview:[self viewselectitemtop:CGRectMake(0, 50, SCREEN_WIDTH, 40)]];
-	
+    if(viewtopselectitem == nil)
+        viewtopselectitem = [self viewselectitemtop:CGRectMake(0, 50, SCREEN_WIDTH, 40)];
+	[tabviewheader addSubview:viewtopselectitem];
 	[self.view addSubview:tabviewheader];
 }
 
@@ -87,7 +88,7 @@
 	UIView *viewsearch = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
 	viewsearch.backgroundColor = COLORNOW(0, 170, 238);
 	
-	SearchTextFieldView *searchtext = [[SearchTextFieldView alloc] initWithFrame:CGRectMake(60, 10, SCREEN_WIDTH-120, 30) Pastr:@"会议查询"];
+	SearchTextFieldView *searchtext = [[SearchTextFieldView alloc] initWithFrame:CGRectMake(40, 10, SCREEN_WIDTH-60, 30) Pastr:@"会议查询"];
 	searchtext.delegate1 = self;
 	[viewsearch addSubview:searchtext];
 	
@@ -112,35 +113,35 @@
 	line2.backgroundColor = COLORNOW(200, 200, 200);
 	[viewselectitem addSubview:line2];
 	
-	float widthnow = (SCREEN_WIDTH-20)/8;
-	
-	//会议编号
-	ButtonItemLayoutView *buttonmetting = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, XYViewBottom(line1), widthnow*3, 40)];
-	[buttonmetting.button addTarget:self action:@selector(ClickSelectmettingcode:) forControlEvents:UIControlEventTouchUpInside];
-	buttonmetting.tag = EnWaterMettingSelectItembt1;
-	[buttonmetting updatebuttonitem:EnButtonTextLeft TextStr:@"会议编号" Font:FONTN(14.0f) Color:COLORNOW(0, 170, 236) Image:LOADIMAGE(@"arrawgray", @"png")];
-	[viewselectitem addSubview:buttonmetting];
-	
-	//区域
-	ButtonItemLayoutView *buttonitemarea = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow*3, XYViewBottom(line1), widthnow*1.5, 40)];
-	[buttonitemarea.button addTarget:self action:@selector(ClickSelectarea:) forControlEvents:UIControlEventTouchUpInside];
-	buttonitemarea.tag = EnWaterMettingSelectItembt2;
-	[buttonitemarea updatebuttonitem:EnButtonTextCenter TextStr:@"区域" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrowgrayunder", @"png")];
-	[viewselectitem addSubview:buttonitemarea];
-	
-	//状态
-	ButtonItemLayoutView *buttonitemstatus = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow*4.5, XYViewBottom(line1), widthnow*1.5, 40)];
-	[buttonitemstatus.button addTarget:self action:@selector(ClickSelectStatus:) forControlEvents:UIControlEventTouchUpInside];
-	buttonitemstatus.tag = EnWaterMettingSelectItembt3;
-	[buttonitemstatus updatebuttonitem:EnButtonTextCenter TextStr:@"状态" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrowgrayunder", @"png")];
-	[viewselectitem addSubview:buttonitemstatus];
-	
-	//时间
-	ButtonItemLayoutView *buttonitemtime = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow*6, XYViewBottom(line1), widthnow*2, 40)];
-	[buttonitemtime.button addTarget:self action:@selector(ClickSelecttime:) forControlEvents:UIControlEventTouchUpInside];
-	buttonitemtime.tag = EnWaterMettingSelectItembt4;
-	[buttonitemtime updatebuttonitem:EnButtonTextCenter TextStr:@"时间" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrawgray", @"png")];
-	[viewselectitem addSubview:buttonitemtime];
+    float widthnow = (SCREEN_WIDTH-20)/8;
+    
+    //会议编号
+    ButtonItemLayoutView *buttonmetting = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, XYViewBottom(line1), widthnow*3, 40)];
+    [buttonmetting.button addTarget:self action:@selector(ClickSelectmettingcode:) forControlEvents:UIControlEventTouchUpInside];
+    buttonmetting.tag = EnWaterMettingSelectItembt1;
+    [buttonmetting updatebuttonitem:EnButtonTextLeft TextStr:@"会议编号" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrawgray", @"png")];
+    [viewselectitem addSubview:buttonmetting];
+    
+    //区域
+    ButtonItemLayoutView *buttonitemarea = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow*3, XYViewBottom(line1), widthnow*1.5, 40)];
+    [buttonitemarea.button addTarget:self action:@selector(ClickSelectarea:) forControlEvents:UIControlEventTouchUpInside];
+    buttonitemarea.tag = EnWaterMettingSelectItembt2;
+    [buttonitemarea updatebuttonitem:EnButtonTextCenter TextStr:@"区域" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrowgrayunder", @"png")];
+    [viewselectitem addSubview:buttonitemarea];
+    
+    //状态
+    ButtonItemLayoutView *buttonitemstatus = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow*4.5, XYViewBottom(line1), widthnow*1.5, 40)];
+    [buttonitemstatus.button addTarget:self action:@selector(ClickSelectStatus:) forControlEvents:UIControlEventTouchUpInside];
+    buttonitemstatus.tag = EnWaterMettingSelectItembt3;
+    [buttonitemstatus updatebuttonitem:EnButtonTextCenter TextStr:@"状态" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrowgrayunder", @"png")];
+    [viewselectitem addSubview:buttonitemstatus];
+    
+    //时间
+    ButtonItemLayoutView *buttonitemtime = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow*6, XYViewBottom(line1), widthnow*2, 40)];
+    [buttonitemtime.button addTarget:self action:@selector(ClickSelecttime:) forControlEvents:UIControlEventTouchUpInside];
+    buttonitemtime.tag = EnWaterMettingSelectItembt4;
+    [buttonitemtime updatebuttonitem:EnButtonTextRight TextStr:@"时间" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrawgray", @"png")];
+    [viewselectitem addSubview:buttonitemtime];
 	
 	return viewselectitem;
 }
@@ -160,18 +161,12 @@
 }
 
 #pragma mark ActionDelegate
-#pragma mark ActionDelegate
 -(void)DGClickGoToSearch:(id)sender
 {
     SearchPageViewController *searchpage = [[SearchPageViewController alloc] init];
     UINavigationController *nctl = [[UINavigationController alloc] initWithRootViewController:searchpage];
     searchpage.FCSearchFromType = @"servicemeeting";
     [self.navigationController presentViewController:nctl animated:YES completion:nil];
-}
-
--(void)DGSelectDateDone:(NSString *)starttime EndTime:(NSString *)endtime
-{
-    
 }
 
 -(void)DGAreaSelectDone:(NSArray *)sender
@@ -184,8 +179,8 @@
         
         selectzone = [selectzone length]==0?[dictemp objectForKey:@"name"]:[NSString stringWithFormat:@"%@,%@",selectzone,[dictemp objectForKey:@"name"]];
     }
-    ButtonItemLayoutView *buttonitem = [self.view viewWithTag:EnWaterMettingSelectItembt2];
-    [buttonitem updatelabstr:selectzone];
+//    ButtonItemLayoutView *buttonitem = [self.view viewWithTag:EnWaterMettingSelectItembt2];
+//    [buttonitem updatelabstr:selectzone];
     
     [self getmettinglist:@"1" PageSize:@"10"];
 }
@@ -205,29 +200,33 @@
 -(void)ClickSelectmettingcode:(id)sender
 {
     ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterMettingSelectItembt1];
-    if([FCorderid isEqualToString:@"desc"])
+    ButtonItemLayoutView *buttonitem2 = [self.view viewWithTag:EnWaterMettingSelectItembt4];
+    [buttonitem2 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+    FCorderitem = @"meetingcode";
+    FCordermettingtime = @"";
+    if([FCordermettingcode isEqualToString:@""])
     {
-        FCorderid= @"asc";
-        FCorderitem = @"meetingcode";
-        //  [buttonitem1 updatelabstr:@"从小到大"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        FCordermettingcode= @"desc";
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    else if([FCorderid isEqualToString:@"desc"])
+    {
+        FCordermettingcode= @"asc";
         [buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
     }
     else
     {
-        FCorderid= @"desc";
-        FCorderitem = @"meetingcode";
-        //   [buttonitem1 updatelabstr:@"从大到小"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        FCordermettingcode= @"desc";
         [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
     }
+    FCorderid = FCordermettingcode;
     [self getmettinglist:@"1" PageSize:@"10"];
 }
 
 -(void)ClickSelectarea:(id)sender
 {
+    
     ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterMettingSelectItembt2];
-    [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
     [buttonitem1 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
     [arrayselectitem removeAllObjects];
     if (flagnow==0)
@@ -250,7 +249,6 @@
 -(void)ClickSelectStatus:(id)sender
 {
     ButtonItemLayoutView *buttonitem3 = [self.view viewWithTag:EnWaterMettingSelectItembt3];
-    [buttonitem3 updatelablecolor:COLORNOW(0, 170, 236)];
     [buttonitem3 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
     [arrayselectitem removeAllObjects];
     if (flagnow==0)
@@ -276,22 +274,26 @@
 -(void)ClickSelecttime:(id)sender
 {
     ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterMettingSelectItembt4];
-    if([FCorderid isEqualToString:@"desc"])
+    ButtonItemLayoutView *buttonitem2 = [self.view viewWithTag:EnWaterMettingSelectItembt1];
+    [buttonitem2 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+    FCorderitem = @"meetingtime";
+    FCordermettingcode = @"";
+    if([FCordermettingtime isEqualToString:@""])
     {
-        FCorderid= @"asc";
-        FCorderitem = @"meetingtime";
-        //  [buttonitem1 updatelabstr:@"从小到大"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        FCordermettingtime= @"desc";
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    else if([FCordermettingtime isEqualToString:@"desc"])
+    {
+        FCordermettingtime= @"asc";
         [buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
     }
     else
     {
-        FCorderid= @"desc";
-        FCorderitem = @"meetingtime";
-        //   [buttonitem1 updatelabstr:@"从大到小"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        FCordermettingtime= @"desc";
         [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
     }
+    FCorderid = FCordermettingtime;
     [self getmettinglist:@"1" PageSize:@"10"];
 }
 
@@ -300,6 +302,7 @@
 {
 	andydroplist = [[AndyDropDownList alloc] initWithListDataSource:arrayselectitem rowHeight:44 view:button Frame:CGRectMake(0, 90, SCREEN_WIDTH, SCREEN_HEIGHT)];
 	andydroplist.delegate = self;
+    [andydroplist setselectrow:FCSelectDropListItem];
 	return andydroplist;
 }
 
@@ -415,7 +418,7 @@
 	
     NSDictionary *dictemp = [FCarraydata objectAtIndex:indexPath.row];
     
-    UILabel *lablecode = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, widthnow*3, 20)];
+    UILabel *lablecode = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, widthnow*3, 20)];
     lablecode.text = [dictemp objectForKey:@"meetingcode"];
     lablecode.font = FONTN(13.0f);
     lablecode.textColor = [UIColor blackColor];
@@ -445,7 +448,7 @@
     labeltime.text = strtiem;;
     labeltime.textColor = [UIColor blackColor];
     labeltime.font = FONTN(13.0f);
-    labeltime.textAlignment = NSTextAlignmentCenter;
+    labeltime.textAlignment = NSTextAlignmentRight;
     [cell.contentView addSubview:labeltime];
 	
 	

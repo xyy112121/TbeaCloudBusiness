@@ -32,17 +32,19 @@
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:contentView];
     self.navigationItem.leftBarButtonItem = barButtonItem;
     
-    UIView *contentViewright = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
-    UIButton *buttonright = [[UIButton alloc] initWithFrame:contentViewright.bounds];
-    buttonright.titleLabel.font = FONTN(14.0f);
-    [buttonright setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [buttonright setTitle:@"保存" forState:UIControlStateNormal];
-    buttonright.imageEdgeInsets = UIEdgeInsetsMake(0,0, 0, -20);
-    [buttonright addTarget:self action: @selector(gotomettingsave:) forControlEvents: UIControlEventTouchUpInside];
-    [contentViewright addSubview:buttonright];
-    UIBarButtonItem *barButtonItemright = [[UIBarButtonItem alloc] initWithCustomView:contentViewright];
-    self.navigationItem.rightBarButtonItem = barButtonItemright;
-    
+    if([_FCfromflag isEqualToString:@"1"])
+    {
+        UIView *contentViewright = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
+        UIButton *buttonright = [[UIButton alloc] initWithFrame:contentViewright.bounds];
+        buttonright.titleLabel.font = FONTN(14.0f);
+        [buttonright setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [buttonright setTitle:@"保存" forState:UIControlStateNormal];
+        buttonright.imageEdgeInsets = UIEdgeInsetsMake(0,0, 0, -20);
+        [buttonright addTarget:self action: @selector(gotomettingsave:) forControlEvents: UIControlEventTouchUpInside];
+        [contentViewright addSubview:buttonright];
+        UIBarButtonItem *barButtonItemright = [[UIBarButtonItem alloc] initWithCustomView:contentViewright];
+        self.navigationItem.rightBarButtonItem = barButtonItemright;
+    }
     [self initview];
     
     // Do any additional setup after loading the view.

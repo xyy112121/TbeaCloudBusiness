@@ -80,7 +80,8 @@
 #define RQComWaterUploadPicCode @"TBEAYUN008003003001"  //公司人员上传图片
 #define RQMallStoreSaveDynamicCode @"TBEAYUN006005001002"  //添加动态
 #define RQMettingShowPicDeletePicCode @"TBEAYUN008003003002"  //删除图片s
-
+#define REMySelfPersoninfoCode @"TBEAYUN011006001001"  //个人中心个人资料
+#define REModifyPersonInfoCode @"TBEAYUN011006002001"  //修改个人中心个人资料
 
 #define RQUserCenterSettingHpCode  @"TBEAYUN011001001001"//用户中心设置
 #define RQUserCenterReceiveAddressCode @"TBEAYUN011001002001" //收货地址列表

@@ -45,16 +45,16 @@
 	[self addSubview:lablename];
 	
 	UIImageView *imageusericon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(lablename)+5,XYViewTop(lablename)+5,25,10)];
-    NSString *stricon = [dicbaseinfo objectForKey:@"persontypeicon"];//[InterfaceResource stringByAppendingString:[[dicbaseinfo objectForKey:@"persontypeicon"] length]>0?[dicbaseinfo objectForKey:@"persontypeicon"]:@"noimage.png"];
+    NSString *stricon = [dicbaseinfo objectForKey:@"persontypeicon"];
     [imageusericon setImageWithURL:[NSURL URLWithString:stricon]];
 	[self addSubview:imageusericon];
 	
-    UIButton *buttonarrow = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonarrow.frame = CGRectMake(XYViewR(imageusericon)+10, XYViewTop(lablename)-5, 40, 30);
-    buttonarrow.backgroundColor = [UIColor clearColor];
-    [buttonarrow setImage:LOADIMAGE(@"tbeaarrowright", @"png") forState:UIControlStateNormal];
-    [buttonarrow addTarget:self action:@selector(photoTappedAd:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:buttonarrow];
+//    UIButton *buttonarrow = [UIButton buttonWithType:UIButtonTypeCustom];
+//    buttonarrow.frame = CGRectMake(XYViewR(imageusericon)+10, XYViewTop(lablename)-5, 40, 30);
+//    buttonarrow.backgroundColor = [UIColor clearColor];
+//    [buttonarrow setImage:LOADIMAGE(@"tbeaarrowright", @"png") forState:UIControlStateNormal];
+//    [buttonarrow addTarget:self action:@selector(photoTappedAd:) forControlEvents:UIControlEventTouchUpInside];
+//    [self addSubview:buttonarrow];
     
     UIImageView *imageusericonaddr = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewL(lablename),XYViewBottom(lablename)+15,7,10)];
     imageusericonaddr.image = LOADIMAGE(@"waterlocationblue", @"png");

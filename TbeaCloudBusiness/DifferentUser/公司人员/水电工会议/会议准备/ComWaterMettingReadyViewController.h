@@ -25,6 +25,8 @@
     NSString *FCendtime; //结束时间
     NSString *FCstrtime; //举行时间
     
+ 
+    
     NSString *FCmettingarrangement;//会议安排 
     NSString *FCprovice;
     NSString *FCcity;

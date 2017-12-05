@@ -150,7 +150,7 @@
     labelname.textColor = COLORNOW(117, 117, 117);
     
     
-    UILabel *textfield = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-130, 5, 80, 30)];
+    UILabel *textfield = [[UILabel alloc] initWithFrame:CGRectMake(100, 5, SCREEN_WIDTH-130, 30)];
     textfield.backgroundColor = [UIColor clearColor];
     textfield.font = FONTN(16.0f);
     textfield.textColor = [UIColor blackColor];
@@ -166,6 +166,7 @@
             
             
             textfield.text = FCdetailsummary;
+            textfield.textAlignment = NSTextAlignmentRight;
             [cell.contentView addSubview:textfield];
             break;
         case 1:
@@ -190,6 +191,7 @@
         ComMettinDetailUploadSummaryViewController *summary = [[ComMettinDetailUploadSummaryViewController alloc] init];
         summary.delegate1 = self;
         summary.FCmettingid = self.FCmettingid;
+        summary.FCfromflag = @"1";
         [self.navigationController pushViewController:summary animated:YES];
     }
     else

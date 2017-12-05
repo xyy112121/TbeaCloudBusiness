@@ -926,6 +926,8 @@
 		7497F60F1F4DDC4E006AE830 /* WkWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7497F60E1F4DDC4E006AE830 /* WkWebViewViewController.m */; };
 		74A21F9C1F5C55050073EF92 /* MallStoreAddNewSpecialModuleCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A21F9B1F5C55050073EF92 /* MallStoreAddNewSpecialModuleCellViewController.m */; };
 		74A21FA01F5C5A2E0073EF92 /* MallStoreSalesAccountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A21F9F1F5C5A2E0073EF92 /* MallStoreSalesAccountListViewController.m */; };
+		74AA2DC11FD531F800910BCF /* MyPagePersonInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AA2DC01FD531F800910BCF /* MyPagePersonInfoViewController.m */; };
+		74AA2DC41FD5339C00910BCF /* AddCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AA2DC21FD5339C00910BCF /* AddCustomView.m */; };
 		74DB27A21F1CF7170088FF4A /* MyTiXianQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DB27A11F1CF7170088FF4A /* MyTiXianQRCodeViewController.m */; };
 		74DB9A071F13655700635968 /* UIImage+SGHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DB99FC1F13655700635968 /* UIImage+SGHelper.m */; };
 		74DB9A081F13655700635968 /* SGQRCode.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 74DB99FD1F13655700635968 /* SGQRCode.bundle */; };
@@ -2298,6 +2300,10 @@
 		74A21F9B1F5C55050073EF92 /* MallStoreAddNewSpecialModuleCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallStoreAddNewSpecialModuleCellViewController.m; sourceTree = "<group>"; };
 		74A21F9E1F5C5A2E0073EF92 /* MallStoreSalesAccountListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallStoreSalesAccountListViewController.h; sourceTree = "<group>"; };
 		74A21F9F1F5C5A2E0073EF92 /* MallStoreSalesAccountListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallStoreSalesAccountListViewController.m; sourceTree = "<group>"; };
+		74AA2DBF1FD531F800910BCF /* MyPagePersonInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPagePersonInfoViewController.h; sourceTree = "<group>"; };
+		74AA2DC01FD531F800910BCF /* MyPagePersonInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPagePersonInfoViewController.m; sourceTree = "<group>"; };
+		74AA2DC21FD5339C00910BCF /* AddCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCustomView.m; sourceTree = "<group>"; };
+		74AA2DC31FD5339C00910BCF /* AddCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCustomView.h; sourceTree = "<group>"; };
 		74DB27A01F1CF7170088FF4A /* MyTiXianQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTiXianQRCodeViewController.h; sourceTree = "<group>"; };
 		74DB27A11F1CF7170088FF4A /* MyTiXianQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTiXianQRCodeViewController.m; sourceTree = "<group>"; };
 		74DB99FB1F13655700635968 /* UIImage+SGHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SGHelper.h"; sourceTree = "<group>"; };
@@ -3270,6 +3276,8 @@
 		08183D031ECB404E00C9E553 /* 头文件 */ = {
 			isa = PBXGroup;
 			children = (
+				74AA2DC31FD5339C00910BCF /* AddCustomView.h */,
+				74AA2DC21FD5339C00910BCF /* AddCustomView.m */,
 				08183D041ECB404E00C9E553 /* ActionDelegate.h */,
 				08183D051ECB404E00C9E553 /* AddInterface.h */,
 				08183D061ECB404E00C9E553 /* AddInterface.m */,
@@ -3645,6 +3653,7 @@
 		086016941ECDEA3C0046FB3D /* my */ = {
 			isa = PBXGroup;
 			children = (
+				74AA2DBE1FD5317600910BCF /* PersonData */,
 				74359E5B1FA6F4710007D51C /* helpandabout */,
 				74033ABF1F1B922E00308A3A /* 我的返利账户 */,
 				084EDA691EFA5F2C00602116 /* MyFans */,
@@ -5011,6 +5020,15 @@
 			path = "销售流水";
 			sourceTree = "<group>";
 		};
+		74AA2DBE1FD5317600910BCF /* PersonData */ = {
+			isa = PBXGroup;
+			children = (
+				74AA2DBF1FD531F800910BCF /* MyPagePersonInfoViewController.h */,
+				74AA2DC01FD531F800910BCF /* MyPagePersonInfoViewController.m */,
+			);
+			path = PersonData;
+			sourceTree = "<group>";
+		};
 		74AFDDE31F2A348A009F3074 /* 公司人员 */ = {
 			isa = PBXGroup;
 			children = (
@@ -5877,6 +5895,7 @@
 				081839821ECB3F7300C9E553 /* ViewController.mm in Sources */,
 				086718071EF131B00030F22E /* TbeaNewsDetailViewController.m in Sources */,
 				08183E011ECB404E00C9E553 /* UIView+Extension.m in Sources */,
+				74AA2DC11FD531F800910BCF /* MyPagePersonInfoViewController.m in Sources */,
 				08183D491ECB404E00C9E553 /* YzdHUDBackgroundView.m in Sources */,
 				08183EB91ECB404F00C9E553 /* Reachability.m in Sources */,
 				08183D221ECB404E00C9E553 /* FoldAnimation.m in Sources */,
@@ -6011,6 +6030,7 @@
 				08183E7F1ECB404F00C9E553 /* PhotoNavigationViewController.m in Sources */,
 				08183D171ECB404E00C9E553 /* AFAutoPurgingImageCache.m in Sources */,
 				74F282171F36055D00E7BA12 /* WaterPersonTiXianHistoryViewController.m in Sources */,
+				74AA2DC41FD5339C00910BCF /* AddCustomView.m in Sources */,
 				086016981ECDEA5D0046FB3D /* TbeaPageViewController.m in Sources */,
 				7414C4DE1FC7E0A6005E43E4 /* UIView+WebCacheOperation.m in Sources */,
 				74677F561FA02EED00035F8C /* TbeaBuySomeProductViewController.m in Sources */,

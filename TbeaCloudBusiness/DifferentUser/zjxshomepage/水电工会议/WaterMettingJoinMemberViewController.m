@@ -56,13 +56,13 @@
 {
 	
 	UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 30, 30)];
-    NSString *strpic = [dicfrom objectForKey:@"thumbpicture"];//[InterfaceResource stringByAppendingString:[[dicfrom objectForKey:@"thumbpicture"] length]>0?[dicfrom objectForKey:@"thumbpicture"]:@"noimage.png"];
+    NSString *strpic = [dicfrom objectForKey:@"thumbpicture"];
     [imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
 	imageheader.layer.cornerRadius = 15.0f;
 	imageheader.clipsToBounds = YES;
 	[fromcell.contentView addSubview:imageheader];
 	
-	CGSize sizeuser = [AddInterface getlablesize:[dicfrom objectForKey:@"name"] Fwidth:100 Fheight:20 Sfont:FONTN(14.0f)];
+	CGSize sizeuser = [AddInterface getlablesize:[dicfrom objectForKey:@"name"] Fwidth:200 Fheight:20 Sfont:FONTB(14.0f)];
 	UILabel *labelusername = [[UILabel alloc] initWithFrame:CGRectMake(XYViewR(imageheader)+10, 7, sizeuser.width, 20)];
 	labelusername.backgroundColor = [UIColor clearColor];
 	labelusername.textColor = [UIColor blackColor];
@@ -70,9 +70,9 @@
 	labelusername.text = [dicfrom objectForKey:@"name"];
 	[fromcell.contentView addSubview:labelusername];
 	
-	UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelusername)+5, XYViewTop(labelusername)+5, 10, 10)];
-    NSString *strpic1 = [dicfrom objectForKey:@"persontypeicon"];//[InterfaceResource stringByAppendingString:[[dicfrom objectForKey:@"persontypeicon"] length]>0?[dicfrom objectForKey:@"persontypeicon"]:@"noimage.png"];
-    [imageheader setImageWithURL:[NSURL URLWithString:strpic1] placeholderImage:LOADIMAGE(@"scanrebateheader1", @"png")];
+	UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelusername)+5, XYViewTop(labelusername)+5, 25, 10)];
+    NSString *strpic1 = [dicfrom objectForKey:@"persontypeicon"];
+    [imageicon setImageWithURL:[NSURL URLWithString:strpic1] placeholderImage:LOADIMAGE(@"scanrebateheader1", @"png")];
 	[fromcell.contentView addSubview:imageicon];
 	
 	UILabel *straddr = [[UILabel alloc] initWithFrame:CGRectMake(XYViewR(imageheader)+10, XYViewBottom(labelusername)-2, SCREEN_WIDTH-100, 17)];

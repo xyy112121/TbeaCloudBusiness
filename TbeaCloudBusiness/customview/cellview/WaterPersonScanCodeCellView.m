@@ -33,9 +33,9 @@
 
 -(void)initviescan:(NSDictionary *)dicfrom
 {
-	float widthnow = (SCREEN_WIDTH-20)/3;
+	float widthnow = (SCREEN_WIDTH-20)/7;
 	NSString *strtiem = [dicfrom objectForKey:@"scantime"];
-	UILabel *labeltime = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, widthnow+20, 20)];
+	UILabel *labeltime = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, widthnow*3, 20)];
 	labeltime.text = strtiem;
 	labeltime.textColor = [UIColor blackColor];
 	labeltime.font = FONTN(13.0f);
@@ -43,7 +43,7 @@
 	[self addSubview:labeltime];
 	
 	
-	UILabel *labelnumber = [[UILabel alloc] initWithFrame:CGRectMake(10+widthnow+10, 15, widthnow, 20)];
+	UILabel *labelnumber = [[UILabel alloc] initWithFrame:CGRectMake(10+widthnow*3, 15, widthnow*2, 20)];
 	labelnumber.text = [dicfrom objectForKey:@"confirmstatus"];
 	if([labelnumber.text isEqualToString:@"已确认"])
 	{
@@ -55,8 +55,8 @@
 	labelnumber.textAlignment = NSTextAlignmentCenter;
 	[self addSubview:labelnumber];
 	
-    CGSize size = [AddInterface getlablesize:[NSString stringWithFormat:@"%@",[dicfrom objectForKey:@"money"]] Fwidth:widthnow Fheight:20 Sfont:FONTMEDIUM(14.0f)];
-	UILabel *labeljihuo = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-20-size.width, 15, size.width, size.height)];
+    CGSize size = [AddInterface getlablesize:[NSString stringWithFormat:@"%@",[dicfrom objectForKey:@"money"]] Fwidth:widthnow*2 Fheight:20 Sfont:FONTMEDIUM(14.0f)];
+	UILabel *labeljihuo = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-10-size.width, 15, size.width, size.height)];
 	labeljihuo.text = [NSString stringWithFormat:@"%@",[dicfrom objectForKey:@"money"]];
 	labeljihuo.textColor = [UIColor blackColor];
 	labeljihuo.font = FONTMEDIUM(14.0f);
@@ -73,24 +73,24 @@
 
 -(void)initvieTiXian:(NSDictionary *)dicfrom
 {
-	float widthnow = (SCREEN_WIDTH-20)/3;
+	float widthnow = (SCREEN_WIDTH-20)/7;
 	NSString *strtiem = [dicfrom objectForKey:@"time"];
-	UILabel *labeltime = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, widthnow+20, 20)];
+	UILabel *labeltime = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, widthnow*3, 20)];
 	labeltime.text = strtiem;;
 	labeltime.textColor = [UIColor blackColor];
 	labeltime.font = FONTN(13.0f);
 	labeltime.textAlignment = NSTextAlignmentLeft;
 	[self addSubview:labeltime];
 	
-    UILabel *labelnumber = [[UILabel alloc] initWithFrame:CGRectMake(10+widthnow+10, 15, widthnow, 20)];
+    UILabel *labelnumber = [[UILabel alloc] initWithFrame:CGRectMake(10+widthnow*3, 15, widthnow*2, 20)];
     labelnumber.text = [dicfrom objectForKey:@"zone"];
     labelnumber.textColor = [UIColor blackColor];
     labelnumber.font = FONTN(13.0f);
     labelnumber.textAlignment = NSTextAlignmentCenter;
     [self addSubview:labelnumber];
     
-    CGSize size = [AddInterface getlablesize:[NSString stringWithFormat:@"%@",[dicfrom objectForKey:@"money"]] Fwidth:widthnow Fheight:20 Sfont:FONTMEDIUM(14.0f)];
-    UILabel *labeljihuo = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-20-size.width, 15, size.width, size.height)];
+    CGSize size = [AddInterface getlablesize:[NSString stringWithFormat:@"%@",[dicfrom objectForKey:@"money"]] Fwidth:widthnow*2 Fheight:20 Sfont:FONTMEDIUM(14.0f)];
+    UILabel *labeljihuo = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-10-size.width, 15, size.width, size.height)];
     labeljihuo.text = [NSString stringWithFormat:@"%@",[dicfrom objectForKey:@"money"]];
     labeljihuo.textColor = [UIColor blackColor];
     labeljihuo.font = FONTMEDIUM(14.0f);

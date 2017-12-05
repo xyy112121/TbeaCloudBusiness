@@ -77,7 +77,7 @@
 
 -(void)viewcell1:(NSDictionary *)dicfrom FromCell:(UITableViewCell *)fromcell LabelName:(NSString *)strname
 {
-    UILabel *labelname = [[UILabel alloc] initWithFrame:CGRectMake(20, 15, 70, 20)];
+    UILabel *labelname = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, 70, 20)];
     labelname.backgroundColor = [UIColor clearColor];
     labelname.textColor = COLORNOW(117, 117, 117);
     labelname.font = FONTN(15.0f);
@@ -85,7 +85,7 @@
     [fromcell.contentView addSubview:labelname];
     
     UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelname)+10, 10, 30, 30)];
-    NSString *strpic = [dicfrom objectForKey:@"headpicture"];//[InterfaceResource stringByAppendingString:[[dicfrom objectForKey:@"headpicture"] length]>0?[dicfrom objectForKey:@"headpicture"]:@"noimage.png"];
+    NSString *strpic = [dicfrom objectForKey:@"headpicture"];
     [imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
     imageheader.contentMode = UIViewContentModeScaleAspectFill;
     imageheader.layer.cornerRadius = 15.0f;
@@ -93,7 +93,7 @@
     [fromcell.contentView addSubview:imageheader];
     
     NSString *strsizename = [dicfrom objectForKey:@"name"];
-    CGSize sizeuser = [AddInterface getlablesize:strsizename Fwidth:100 Fheight:20 Sfont:FONTN(14.0f)];
+    CGSize sizeuser = [AddInterface getlablesize:strsizename Fwidth:100 Fheight:20 Sfont:FONTB(14.0f)];
     UILabel *labelusername = [[UILabel alloc] initWithFrame:CGRectMake(XYViewR(imageheader)+10, 7, sizeuser.width, 20)];
     labelusername.backgroundColor = [UIColor clearColor];
     labelusername.textColor = [UIColor blackColor];
@@ -101,8 +101,8 @@
     labelusername.text = strsizename;
     [fromcell.contentView addSubview:labelusername];
     
-    UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelusername)+5, XYViewTop(labelusername)+5, 10, 10)];
-    strpic = [dicfrom objectForKey:@"persontypeicon"];//[InterfaceResource stringByAppendingString:[[dicfrom objectForKey:@"persontypeicon"] length]>0?[dicfrom objectForKey:@"persontypeicon"]:@"noimage.png"];
+    UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelusername)+5, XYViewTop(labelusername)+5, 25, 10)];
+    strpic = [dicfrom objectForKey:@"persontypeicon"];
     [imageicon setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebateheader1", @"png")];
     [fromcell.contentView addSubview:imageicon];
     
@@ -119,7 +119,7 @@
     UIView *view = [[UIView alloc] initWithFrame:fromframe];
     
     UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 30, 30)];
-    NSString *strpic = [dicfrom objectForKey:@"masterthumbpicture"];//[InterfaceResource stringByAppendingString:[[dicfrom objectForKey:@"masterthumbpicture"] length]>0?[dicfrom objectForKey:@"masterthumbpicture"]:@"noimage.png"];
+    NSString *strpic = [dicfrom objectForKey:@"masterthumbpicture"];
     [imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
     imageheader.layer.cornerRadius = 15.0f;
     imageheader.clipsToBounds = YES;
@@ -133,9 +133,9 @@
     labelusername.text = [dicfrom objectForKey:@"mastername"];
     [view addSubview:labelusername];
     
-    UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelusername)+5, XYViewTop(labelusername)+5, 10, 10)];
-    NSString *strpic1 = [dicfrom objectForKey:@"companytypeicon"];//[InterfaceResource stringByAppendingString:[[dicfrom objectForKey:@"companytypeicon"] length]>0?[dicfrom objectForKey:@"companytypeicon"]:@"noimage.png"];
-    [imageheader setImageWithURL:[NSURL URLWithString:strpic1] placeholderImage:LOADIMAGE(@"scanrebateheader1", @"png")];
+    UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelusername)+5, XYViewTop(labelusername)+5, 25, 10)];
+    NSString *strpic1 = [dicfrom objectForKey:@"companytypeicon"];
+    [imageicon setImageWithURL:[NSURL URLWithString:strpic1] placeholderImage:LOADIMAGE(@"scanrebateheader1", @"png")];
     [view addSubview:imageicon];
     
     UILabel *straddr = [[UILabel alloc] initWithFrame:CGRectMake(XYViewR(imageheader)+10, XYViewBottom(labelusername), SCREEN_WIDTH-100, 18)];
@@ -240,8 +240,8 @@
     self.view.backgroundColor =[UIColor whiteColor];
     alert =[[AlertViewExtension alloc] initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, SCREEN_HEIGHT)];
     alert.delegate=self;
-    [alert setbackviewframeWidth:300 Andheight:260];
-    [alert settipeTitleStr:@"确保正确录入数据,相关操作会根据时间节点受限\n【发起状态】会议开始前24小时,可编辑,删除,不可更新\n【进行状态】会议开始至结束24小时内,可编辑,不可删除,更新\n【结束状态】会议结束后,可更新,不可编辑,删除" Andfont:14.0f Title:@"提示" BtStr:@"确定"];
+    [alert setbackviewframeWidth:300 Andheight:320];
+    [alert settipeTitleStr:@"【新会议状态】会议开始前24小时: 可编辑,可删除，不可更新\n【准备中状态】会议开始前24小时到会议开始: 不可编辑,不可删除，不可更新\n【会议中状态】会议开始到会议结束: 不可编辑,不可删除，可更新\n【已结束状态】会议结束到会议结束后72小时: 不可编辑,不可删除，可更新\n【已关闭状态】会议已结束后的状态: 不可编辑,不可删除，不可更新" Andfont:14.0f Title:@"提示" BtStr:@"确定"];
     [app.window addSubview:alert];
 }
 
@@ -357,7 +357,7 @@
     cell.backgroundColor = [UIColor whiteColor];
     
     
-    UILabel *labelname = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 70, 20)];
+    UILabel *labelname = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 70, 20)];
     labelname.backgroundColor = [UIColor clearColor];
     labelname.textColor = COLORNOW(117, 117, 117);
     labelname.font = FONTN(15.0f);
@@ -529,6 +529,7 @@
             label = [cell.contentView viewWithTag:EnComMettingScheduleLabelValue];
             mettingschedule.FCmettingdes = [label.text length]>0?label.text:@"";
             mettingschedule.delegate1 = self;
+            mettingschedule.FCfromflag = @"1";
             [self.navigationController pushViewController:mettingschedule animated:YES];
             break;
         default:

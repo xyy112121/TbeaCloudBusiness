@@ -179,7 +179,9 @@
 #pragma mark ActionDelegate
 -(void)DGSelectDateDone:(NSString *)starttime EndTime:(NSString *)endtime
 {
-    
+    FCstarttime = starttime;
+    FCendtime = endtime;
+    [self getrebatesortlist:@"1" Pagesize:@"10"];
 }
 
 -(void)DGAreaSelectDone:(NSArray *)sender

@@ -85,11 +85,13 @@
     imageline.backgroundColor = COLORNOW(227, 227, 227);
     [self.view addSubview:imageline];
     
-    UILabel *labelins = [[UILabel alloc] initWithFrame:CGRectMake(20, XYViewBottom(imageline)+10, SCREEN_WIDTH-30, 120)];
-    labelins.text = @"提示\n[发起状态]会议开始前24小时,可编辑,删除,不可更新\n[进行状态]会议开始至结束24小时内,可编辑,不可删除,更新\n[结束状态]会议结束后,可更新,不可编辑,删除";
+    NSString *strsize = @"提示\n【新会议状态】会议开始前24小时: 可编辑,可删除，不可更新\n【准备中状态】会议开始前24小时到会议开始: 不可编辑,不可删除，不可更新\n【会议中状态】会议开始到会议结束: 不可编辑,不可删除，可更新\n【已结束状态】会议结束到会议结束后72小时: 不可编辑,不可删除，可更新\n【已关闭状态】会议已结束后的状态: 不可编辑,不可删除，不可更新";
+    CGSize size = [AddInterface getlablesize:strsize Fwidth:SCREEN_WIDTH-30 Fheight:200 Sfont:FONTN(13.0f)];
+    UILabel *labelins = [[UILabel alloc] initWithFrame:CGRectMake(20, XYViewBottom(imageline)+10, SCREEN_WIDTH-30, size.height)];
+    labelins.text = strsize;
     labelins.font = FONTN(13.0f);
     labelins.backgroundColor = [UIColor clearColor];
-    labelins.numberOfLines = 6;
+    labelins.numberOfLines = 0;
     labelins.textColor = COLORNOW(172, 172, 172);
     [self.view addSubview:labelins];
     
@@ -122,6 +124,9 @@
 
 -(void)ClickLook:(id)sender
 {
+//    WaterMettingDetailViewController *mettingdetail = [[WaterMettingDetailViewController alloc] init];
+//    mettingdetail.FCmettingid = self.FCmettingid;
+//    [self.navigationController pushViewController:mettingdetail animated:YES];
     ComMettingDetailLookViewController *comcomitdone = [[ComMettingDetailLookViewController alloc] init];
     comcomitdone.FCmettingid = self.FCmettingid;
     comcomitdone.FCfromflag = @"2";

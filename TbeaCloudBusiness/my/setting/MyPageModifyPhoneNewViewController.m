@@ -198,9 +198,8 @@
 	{
 		case 0:
 			labeltitle.text = @"手机号";
-			textfield1.text =@"13899999999";
+			textfield1.placeholder =@"请填写新的电话";
 			textfield1.textColor = ColorBlackGray;
-			textfield1.enabled = NO;
 			textfield1.tag = EnModifyBindingOldTelTextfieldTag;
 			[cell.contentView addSubview:textfield1];
 			

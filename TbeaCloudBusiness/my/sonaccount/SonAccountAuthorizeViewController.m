@@ -55,7 +55,7 @@
 
 -(void)initfootbtview
 {
-    UIView *viewfoot = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 70)];
+    UIView *viewfoot = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 90)];
     viewfoot.backgroundColor = [UIColor whiteColor];
     tableview.tableFooterView = viewfoot;
     

@@ -81,7 +81,7 @@
 	UIView *viewsearch = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
 	viewsearch.backgroundColor = COLORNOW(0, 170, 238);
 	
-	SearchTextFieldView *searchtext = [[SearchTextFieldView alloc] initWithFrame:CGRectMake(60, 10, SCREEN_WIDTH-120, 30) Pastr:@"水电工查询"];
+	SearchTextFieldView *searchtext = [[SearchTextFieldView alloc] initWithFrame:CGRectMake(40, 10, SCREEN_WIDTH-60, 30) Pastr:@"水电工查询"];
 	searchtext.delegate1 = self;
 	[viewsearch addSubview:searchtext];
 	
@@ -320,7 +320,9 @@
     NSDictionary *dictemp = [FCarraydata objectAtIndex:indexPath.row];
     
 	UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 30, 30)];
-    NSString *strpic1 = [dictemp objectForKey:@"thumbpicture"];//[InterfaceResource stringByAppendingString:[[dictemp objectForKey:@"thumbpicture"] length]>0?[dictemp objectForKey:@"thumbpicture"]:@"noimage.png"];
+    NSString *strpic1 = [dictemp objectForKey:@"thumbpicture"];
+    imageheader.layer.cornerRadius = 15.0f;
+    imageheader.clipsToBounds = YES;
     [imageheader setImageWithURL:[NSURL URLWithString:strpic1] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
 	[cell.contentView addSubview:imageheader];
 	
@@ -360,7 +362,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary *dictemp = [FCarraydata objectAtIndex:indexPath.row];
 	CheckInHistoryViewController *checkinhistory = [[CheckInHistoryViewController alloc] init];
+    checkinhistory.FCelectricianid = [dictemp objectForKey:@"id"];
 	[self.navigationController pushViewController:checkinhistory animated:YES];
 }
 

@@ -47,7 +47,7 @@
 	
 	FCorderitemvalue = @"";
 	FCzoneid = @"";
-	FCorderid = @"desc";
+	FCorderid = @"";
 	FCwatertypeid = @"";
 	FCsearchname = @"";
 	
@@ -134,10 +134,10 @@
 	float widthnow = (SCREEN_WIDTH-20)/4;
 	
 	//水电工类型
-	ButtonItemLayoutView *buttonitemusertype = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, XYViewBottom(line1), widthnow, 40)];
+	ButtonItemLayoutView *buttonitemusertype = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, XYViewBottom(line1), widthnow*2, 40)];
 	[buttonitemusertype.button addTarget:self action:@selector(ClickSelectusertype:) forControlEvents:UIControlEventTouchUpInside];
 	buttonitemusertype.tag = EnWaterListSelectItembt1;
-	[buttonitemusertype updatebuttonitem:EnButtonTextLeft TextStr:@"水电工" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrowgrayunder", @"png")];
+	[buttonitemusertype updatebuttonitem:EnButtonTextLeft TextStr:@"全部" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrowgrayunder", @"png")];
 	[viewselectitem addSubview:buttonitemusertype];
 	
 	//区域
@@ -211,18 +211,25 @@
 	//远近  从远到近   从近到远
 	//激活  已激活  未激活
 	ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterListSelectItembt3];
-	if([FCorderid isEqualToString:@"desc"])
+    if([FCorderid isEqualToString:@""])
+    {
+        FCorderid= @"desc";
+        //        [buttonitem1 updatelabstr:@"从大到小"];
+        //        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+	else if([FCorderid isEqualToString:@"desc"])
 	{
 		FCorderid= @"asc";
-		[buttonitem1 updatelabstr:@"从小到大"];
-		[buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+//        [buttonitem1 updatelabstr:@"从小到大"];
+//        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
 		[buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
 	}
 	else
 	{
 		FCorderid= @"desc";
-		[buttonitem1 updatelabstr:@"从大到小"];
-		[buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+//        [buttonitem1 updatelabstr:@"从大到小"];
+//        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
 		[buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
 	}
 	
@@ -231,9 +238,9 @@
 
 -(void)ClickSelectarea:(id)sender
 {
-	ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterListSelectItembt2];
-	[buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
-	[buttonitem1 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
+//	ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterListSelectItembt2];
+//    [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+//    [buttonitem1 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
 	[arrayselectitem removeAllObjects];
 	if (flagnow==0)
 	{
@@ -255,9 +262,9 @@
 -(void)ClickSelectusertype:(id)sender
 {
 	
-	ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterListSelectItembt1];
-	[buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
-	[buttonitem1 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
+//	ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnWaterListSelectItembt1];
+//    [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+//    [buttonitem1 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
 	[arrayselectitem removeAllObjects];
 	if (flagnow==0)
 	{

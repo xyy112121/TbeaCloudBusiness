@@ -38,6 +38,7 @@
 	self.view.backgroundColor = [UIColor whiteColor];
 	app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	selecttype = EnWaterScanType;
+    FCSelectDropListItem = 0;
 //	enselectitem = EnWaterScanSelectDate; //默认选择的时间
 	
     FCarrayxinhao = [[NSArray alloc] init];
@@ -47,7 +48,7 @@
     FCcommoditymodelspecification=@"";
     FCconfirmstatusid=@"";
     FCorderitem=@"";
-    FCorder=@"desc";
+    FCorder=@"";
     
 	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
 	tableview.backgroundColor = [UIColor clearColor];
@@ -79,7 +80,9 @@
 	UIView *tabviewheader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 90)];
 	tabviewheader.backgroundColor = [UIColor clearColor];
 	tableview.tableHeaderView = tabviewheader;
-	[tabviewheader addSubview:[self viewselectitem:CGRectMake(0, 0, SCREEN_WIDTH, 90)]];
+    if(viewtopselectitem == nil)
+        viewtopselectitem = [self viewselectitem:CGRectMake(0, 0, SCREEN_WIDTH, 90)];
+	[tabviewheader addSubview:viewtopselectitem];
 }
 
 
@@ -130,50 +133,50 @@
 
 -(void)addscancodeselectitem:(UIView *)viewselectitem Line1:(UIImageView *)line1
 {
-    float widthnow = (SCREEN_WIDTH-20)/3;
+    float widthnow = (SCREEN_WIDTH-20)/7;
     //时间
-    ButtonItemLayoutView *buttonitemtime = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, XYViewBottom(line1), widthnow, 40)];
+    ButtonItemLayoutView *buttonitemtime = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, XYViewBottom(line1), widthnow*3, 40)];
     [buttonitemtime.button addTarget:self action:@selector(ClickSelecttime:) forControlEvents:UIControlEventTouchUpInside];
     buttonitemtime.tag = EnTixianDataSelectItembt1;
-    [buttonitemtime updatebuttonitem:EnButtonTextLeft TextStr:@"时间" Font:FONTN(14.0f) Color:COLORNOW(0, 170, 236) Image:LOADIMAGE(@"arrowblueunder", @"png")];
+    [buttonitemtime updatebuttonitem:EnButtonTextLeft TextStr:@"时间" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrowgrayunder", @"png")];
     [viewselectitem addSubview:buttonitemtime];
     
     //全部用户
-    ButtonItemLayoutView *buttonitemstatus = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow+10, XYViewBottom(line1), widthnow, 40)];
+    ButtonItemLayoutView *buttonitemstatus = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow*3, XYViewBottom(line1), widthnow*2, 40)];
     [buttonitemstatus.button addTarget:self action:@selector(ClickSelectStatus:) forControlEvents:UIControlEventTouchUpInside];
     buttonitemstatus.tag = EnTixianDataSelectItembt2;
-    [buttonitemstatus updatebuttonitem:EnButtonTextCenter TextStr:@"状态" Font:FONTN(14.0f) Color:COLORNOW(0, 170, 236) Image:LOADIMAGE(@"arrowblueunder", @"png")];
+    [buttonitemstatus updatebuttonitem:EnButtonTextCenter TextStr:@"状态" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrowgrayunder", @"png")];
     [viewselectitem addSubview:buttonitemstatus];
     
     //金额
-    ButtonItemLayoutView *buttonitemmoney = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow*2, XYViewBottom(line1), widthnow, 40)];
+    ButtonItemLayoutView *buttonitemmoney = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow*5, XYViewBottom(line1), widthnow*2, 40)];
     [buttonitemmoney.button addTarget:self action:@selector(ClickSelectMoney:) forControlEvents:UIControlEventTouchUpInside];
     buttonitemmoney.tag = EnTixianDataSelectItembt3;
-    [buttonitemmoney updatebuttonitem:EnButtonTextRight TextStr:@"金额" Font:FONTN(14.0f) Color:COLORNOW(0, 170, 236) Image:LOADIMAGE(@"arrawgray", @"png")];
+    [buttonitemmoney updatebuttonitem:EnButtonTextRight TextStr:@"金额" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrawgray", @"png")];
     [viewselectitem addSubview:buttonitemmoney];
 }
 
 -(void)addtixianselectitem:(UIView *)viewselectitem Line1:(UIImageView *)line1
 {
-    float widthnow = (SCREEN_WIDTH-20)/3;
+    float widthnow = (SCREEN_WIDTH-20)/7;
     //时间
-    ButtonItemLayoutView *buttonitemtime = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, XYViewBottom(line1), widthnow, 40)];
+    ButtonItemLayoutView *buttonitemtime = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, XYViewBottom(line1), widthnow*3, 40)];
     [buttonitemtime.button addTarget:self action:@selector(ClickSelecttime:) forControlEvents:UIControlEventTouchUpInside];
     buttonitemtime.tag = EnTixianDataSelectItembt1;
-    [buttonitemtime updatebuttonitem:EnButtonTextLeft TextStr:@"时间" Font:FONTN(14.0f) Color:COLORNOW(0, 170, 236) Image:LOADIMAGE(@"arrowblueunder", @"png")];
+    [buttonitemtime updatebuttonitem:EnButtonTextLeft TextStr:@"时间" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrowgrayunder", @"png")];
     [viewselectitem addSubview:buttonitemtime];
     
     //区域
-    ButtonItemLayoutView *buttonitemarea = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow+10, XYViewBottom(line1), widthnow, 40)];
+    ButtonItemLayoutView *buttonitemarea = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow*3, XYViewBottom(line1), widthnow*2, 40)];
     buttonitemarea.tag = EnTixianDataSelectItembt2;
-    [buttonitemarea updatebuttonitem:EnButtonTextCenter TextStr:@"地区" Font:FONTN(14.0f) Color:COLORNOW(0, 170, 236) Image:nil];
+    [buttonitemarea updatebuttonitem:EnButtonTextCenter TextStr:@"地区" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:nil];
     [viewselectitem addSubview:buttonitemarea];
     
     //金额
-    ButtonItemLayoutView *buttonitemmoney = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow*2, XYViewBottom(line1), widthnow, 40)];
+    ButtonItemLayoutView *buttonitemmoney = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+widthnow*5, XYViewBottom(line1), widthnow*2, 40)];
     [buttonitemmoney.button addTarget:self action:@selector(ClickSelectMoney:) forControlEvents:UIControlEventTouchUpInside];
     buttonitemmoney.tag = EnTixianDataSelectItembt3;
-    [buttonitemmoney updatebuttonitem:EnButtonTextRight TextStr:@"金额" Font:FONTN(14.0f) Color:COLORNOW(0, 170, 236) Image:LOADIMAGE(@"arrawgray", @"png")];
+    [buttonitemmoney updatebuttonitem:EnButtonTextRight TextStr:@"金额" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrawgray", @"png")];
     [viewselectitem addSubview:buttonitemmoney];
 }
 
@@ -235,6 +238,8 @@
     {
         selecttype = EnWaterScanType;
         tableview.tableHeaderView = nil;
+        [viewtopselectitem removeFromSuperview];
+        viewtopselectitem = nil;
         [self addtabviewheader];
     }
 	UIButton *button1 = [self.view viewWithTag:EnWaterScanCodeBt];
@@ -265,12 +270,14 @@
 {
     if(selecttype == EnWaterTiXianType)
     {
-       
+
     }
     else
     {
         selecttype = EnWaterTiXianType;
         tableview.tableHeaderView = nil;
+        [viewtopselectitem removeFromSuperview];
+        viewtopselectitem = nil;
          [self addtabviewheader];
     }
 	UIButton *button1 = [self.view viewWithTag:EnWaterScanCodeBt];
@@ -288,7 +295,7 @@
     [buttonitem3 updatelablecolor:COLORNOW(117, 117, 117)];
 	
 	
-	enselectitem = EnWaterScanSelectDate;
+//    enselectitem = EnWaterScanSelectDate;
 	[tableview reloadData];
 	
 	flagnow = 0;
@@ -301,18 +308,19 @@
 -(void)ClickSelectMoney:(id)sender
 {
     ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnTixianDataSelectItembt3];
-    if([FCorder isEqualToString:@"desc"])
+    if([FCorder isEqualToString:@""])
+    {
+        FCorder= @"desc";
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    else if([FCorder isEqualToString:@"desc"])
     {
         FCorder= @"asc";
-        FCorderitem = @"money";
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
         [buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
     }
     else
     {
         FCorder= @"desc";
-        FCorderitem = @"money";
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
         [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
     }
     [self getwaterrebatelist:@"1" Pagesize:@"10"];
@@ -320,9 +328,9 @@
 
 -(void)ClickSelectStatus:(id)sender
 {
-    ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnTixianDataSelectItembt2];
-    [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
-    [buttonitem1 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
+//    ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnTixianDataSelectItembt2];
+//    [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+//    [buttonitem1 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
     
     if (flagnow==0)
     {
@@ -353,9 +361,9 @@
     //远近  从远到近   从近到远
     //激活(状态)  已激活  未激活
     [arrayselectitem removeAllObjects];
-    ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnTixianDataSelectItembt1];
-    [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
-    [buttonitem1 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
+//    ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnTixianDataSelectItembt1];
+//    [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+//    [buttonitem1 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
     if (flagnow==0)
     {
         enselectitem =  EnWaterScanSelectDate;
@@ -380,6 +388,7 @@
 {
 	andydroplist = [[AndyDropDownList alloc] initWithListDataSource:arrayselectitem rowHeight:44 view:button Frame:CGRectMake(0, 91, SCREEN_WIDTH, SCREEN_HEIGHT)];
 	andydroplist.delegate = self;
+    [andydroplist setselectrow:FCSelectDropListItem];
 	return andydroplist;
 }
 
@@ -402,15 +411,20 @@
         [buttonitem updatelabstr:astr];
         if([astr isEqualToString:@"默认"]||[astr isEqualToString:@"正序"])
         {
+            FCSelectDropListItem = 0;
+            if([astr isEqualToString:@"正序"])
+                FCSelectDropListItem = 1;
             [self getwaterrebatelist:@"1" Pagesize:@"10"];
         }
         else if([astr isEqualToString:@"倒序"])
         {
+            FCSelectDropListItem = 2;
             FCorder = @"asc";
             [self getwaterrebatelist:@"1" Pagesize:@"10"];
         }
         else if([astr isEqualToString:@"自定义"])
         {
+            FCSelectDropListItem = 3;
             FCorderitem = @"";
             TimeSelectViewController *timeselect = [[TimeSelectViewController alloc] init];
             timeselect.delegate1 = self;
@@ -504,7 +518,7 @@
 	if(selecttype == EnWaterScanType)
 	{
 		ScanCodeDetailViewController *scancode = [[ScanCodeDetailViewController alloc] init];
-        scancode.FCqrcodeactivityid = [dictemp objectForKey:@"rebatescanid"];
+        scancode.FCqrcodeactivityid = [dictemp objectForKey:@"qrcode"];
 		[self.navigationController pushViewController:scancode animated:YES];
 	}
 	else

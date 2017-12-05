@@ -86,7 +86,12 @@
 }
 
 #pragma mark ActionDelegate
-
+-(void)DGClickUserHeaderIntoInfo:(id)sender
+{
+    MyPagePersonInfoViewController *personinfo = [[MyPagePersonInfoViewController alloc] init];
+    personinfo.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:personinfo animated:YES];
+}
 
 #pragma mark tableview delegate
 //隐藏那些没有cell的线
@@ -207,33 +212,34 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *dictemp = [[arrayitemlist objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    if([[dictemp objectForKey:@"id"] isEqualToString:@"mymoneyaccount"]) //我的扫码返利账户
+    NSString *strid = [dictemp objectForKey:@"id"];
+    if([strid isEqualToString:@"mymoneyaccount"]) //我的扫码返利账户
     {
         MyRebateAccountViewController *rebateaccount = [[MyRebateAccountViewController alloc] init];
         rebateaccount.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:rebateaccount animated:YES];
     }
-    else if([[dictemp objectForKey:@"id"] isEqualToString:@"mysubaccount"]) //账户
+    else if([strid isEqualToString:@"mysubaccount"]) //账户
     {
         SonAccountMangerViewController *sonaccount = [[SonAccountMangerViewController alloc] init];
         sonaccount.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:sonaccount animated:YES];
     }
-    else if([[dictemp objectForKey:@"id"] isEqualToString:@"myfocus"]) //我的关注
+    else if([strid isEqualToString:@"myfocus"]) //我的关注
     {
         MyAttentionViewController *myattention = [[MyAttentionViewController alloc] init];
         myattention.hidesBottomBarWhenPushed = YES;
         myattention.FCuserid = app.userinfo.userid;
         [self.navigationController pushViewController:myattention animated:YES];
     }
-    else if([[dictemp objectForKey:@"id"] isEqualToString:@"myfans"]) //我的粉丝
+    else if([strid isEqualToString:@"myfans"]) //我的粉丝
     {
         MyFansViewController *myfans = [[MyFansViewController alloc] init];
         myfans.hidesBottomBarWhenPushed = YES;
         myfans.FCuserid = app.userinfo.userid;
         [self.navigationController pushViewController:myfans animated:YES];
     }
-    else if([[dictemp objectForKey:@"id"] isEqualToString:@"companyidentify"])  //认证
+    else if([strid isEqualToString:@"companyidentify"])  //认证
     {
 //        if([FCdicuserpersoninfo objectForKey:@""])
 //        {
@@ -245,7 +251,7 @@
 //        userinfo.hidesBottomBarWhenPushed = YES;
 //        [self.navigationController pushViewController:userinfo animated:YES];
     }
-	else if([[dictemp objectForKey:@"id"] isEqualToString:@"aboutplatform"])  //关于我们
+	else if([strid isEqualToString:@"aboutplatform"])  //关于我们
     {
         SwiftWebview * s1 = [[SwiftWebview alloc] init];
         s1.hidesBottomBarWhenPushed = YES;
@@ -254,17 +260,23 @@
         s1.FCtitle = @"关于我们";
         [self.navigationController pushViewController:s1 animated:self];
     }
-    else if([[dictemp objectForKey:@"id"] isEqualToString:@"platformhelp"])  //帮助中心
+    else if([strid isEqualToString:@"platformhelp"])  //帮助中心
     {
         CustomQustionViewController *customquestion = [[CustomQustionViewController alloc] init];
         customquestion.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:customquestion animated:YES];
     }
-    else if([[dictemp objectForKey:@"id"] isEqualToString:@"marketer_shuidiangonghuiyi"]) //公司人员水电工会议
+    else if([strid isEqualToString:@"marketer_shuidiangonghuiyi"]) //公司人员水电工会议
     {
         ComWaterMettingHpViewController *comwater = [[ComWaterMettingHpViewController alloc] init];
         comwater.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:comwater animated:YES];
+    }
+    else if([strid isEqualToString:@"mymessage"]) //我的消息
+    {
+        MyMessageViewController *mymessage = [[MyMessageViewController alloc] init];
+        mymessage.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:mymessage animated:YES];
     }
 }
 

@@ -48,4 +48,6 @@
  *   隐藏
  */
 -(void)hiddenList;
+
+-(void)setselectrow:(int)row;
 @end

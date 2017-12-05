@@ -43,16 +43,32 @@
 	UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:contentView];
 	self.navigationItem.leftBarButtonItem = barButtonItem;
 	
-	UIView *contentViewright = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
-	UIButton *buttonright = [[UIButton alloc] initWithFrame:contentViewright.bounds];
-	buttonright.titleLabel.font = FONTN(14.0f);
-	[buttonright setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-	[buttonright setTitle:@"保存" forState:UIControlStateNormal];
-	buttonright.imageEdgeInsets = UIEdgeInsetsMake(0,0, 0, -20);
-	[buttonright addTarget:self action: @selector(saveaddr:) forControlEvents: UIControlEventTouchUpInside];
-	[contentViewright addSubview:buttonright];
-	UIBarButtonItem *barButtonItemright = [[UIBarButtonItem alloc] initWithCustomView:contentViewright];
-	self.navigationItem.rightBarButtonItem = barButtonItemright;
+    if([_FCfromflag isEqualToString:@"2"])
+    {
+        UIView *contentViewright = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
+        UIButton *buttonright = [[UIButton alloc] initWithFrame:contentViewright.bounds];
+        buttonright.titleLabel.font = FONTN(14.0f);
+        [buttonright setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [buttonright setTitle:@"保存" forState:UIControlStateNormal];
+        buttonright.imageEdgeInsets = UIEdgeInsetsMake(0,0, 0, -20);
+        [buttonright addTarget:self action: @selector(saveaddr:) forControlEvents: UIControlEventTouchUpInside];
+        [contentViewright addSubview:buttonright];
+        UIBarButtonItem *barButtonItemright = [[UIBarButtonItem alloc] initWithCustomView:contentViewright];
+        self.navigationItem.rightBarButtonItem = barButtonItemright;
+    }
+    else if([_FCfromflag isEqualToString:@"1"])
+    {
+        UIView *contentViewright = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
+        UIButton *buttonright = [[UIButton alloc] initWithFrame:contentViewright.bounds];
+        buttonright.titleLabel.font = FONTN(14.0f);
+        [buttonright setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [buttonright setTitle:@"删除" forState:UIControlStateNormal];
+        buttonright.imageEdgeInsets = UIEdgeInsetsMake(0,0, 0, -20);
+        [buttonright addTarget:self action: @selector(removeaddr:) forControlEvents: UIControlEventTouchUpInside];
+        [contentViewright addSubview:buttonright];
+        UIBarButtonItem *barButtonItemright = [[UIBarButtonItem alloc] initWithCustomView:contentViewright];
+        self.navigationItem.rightBarButtonItem = barButtonItemright;
+    }
 }
 
 -(void)initview
@@ -66,6 +82,19 @@
 	self.navigationController.navigationBar.titleTextAttributes = dict;
 	self.title = @"收货地址管理";
 	isselect = EnNotSelect;
+    
+    if(_FCdicaddr!=nil)
+    {
+        _FCaddressid = [_FCdicaddr objectForKey:@"recvaddrid"];
+        FCname = [_FCdicaddr objectForKey:@"contactperson"];
+        FCtel = [_FCdicaddr objectForKey:@"contactmobile"];
+        FCprovice = [_FCdicaddr objectForKey:@"province"];
+        FCcity = [_FCdicaddr objectForKey:@"city"];
+        FCarea = [_FCdicaddr objectForKey:@"zone"];
+        FCaddress= [_FCdicaddr objectForKey:@"address"];
+        FCisdefault = [NSString stringWithFormat:@"%@",[_FCdicaddr objectForKey:@"isdefault"]];
+    }
+    
 	app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight) style:UITableViewStylePlain];
 	tableview.backgroundColor = [UIColor clearColor];
@@ -77,6 +106,30 @@
 	[self setExtraCellLineHidden:tableview];
 	tableview.delegate = self;
 	tableview.dataSource = self;
+    [self initfootview];
+}
+
+-(void)initfootview
+{
+    UIView *viewfoot = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 80)];
+    viewfoot.backgroundColor = [UIColor clearColor];
+    
+    UIImageView *imageline = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.7)];
+    imageline.backgroundColor =COLORNOW(220, 220, 220);
+    [viewfoot addSubview:imageline];
+    
+    UIButton *btnext = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnext.frame = CGRectMake(20, 30, SCREEN_WIDTH-40, 35);
+    btnext.backgroundColor = COLORNOW(0, 170, 238);
+    [btnext setTitle:@"保存" forState:UIControlStateNormal];
+    [btnext setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btnext.titleLabel.font = FONTN(15.0f);
+    [btnext addTarget:self action:@selector(saveaddr:) forControlEvents:UIControlEventTouchUpInside];
+    btnext.layer.cornerRadius= 3.0f;
+    btnext.clipsToBounds = YES;
+    [viewfoot addSubview:btnext];
+    
+    tableview.tableFooterView = viewfoot;
 }
 
 #pragma mark tableview delegate
@@ -168,6 +221,7 @@
 			labeltitle.text = @"收货人";
 			textfield1.textColor = [UIColor blackColor];
 			textfield1.placeholder = @"请输入收货人姓名";
+            textfield1.text = FCname;
 			textfield1.tag = EnAddAddressTextfieldTag1;
 			[cell.contentView addSubview:textfield1];
 			break;
@@ -175,6 +229,7 @@
 			labeltitle.text = @"手机号码";
 			textfield1.textColor = [UIColor blackColor];
 			textfield1.placeholder = @"请输入收货人手机号码";
+            textfield1.text =FCtel;
 			textfield1.tag = EnAddAddressTextfieldTag2;
 			[cell.contentView addSubview:textfield1];
 			break;
@@ -182,6 +237,7 @@
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			labeltitle.text = @"所在地区";
 			textfield1.textColor = [UIColor blackColor];
+            textfield1.text =FCarea;
 			textfield1.tag = EnAddAddressTextfieldTag3;
 			[cell.contentView addSubview:textfield1];
 			break;
@@ -189,6 +245,7 @@
 			labeltitle.text = @"详细地址";
 			textfield1.textColor = [UIColor blackColor];
 			textfield1.placeholder = @"点击设置详细地址";
+            textfield1.text =FCaddress;
 			textfield1.tag = EnAddAddressTextfieldTag4;
 			[cell.contentView addSubview:textfield1];
 			break;
@@ -199,6 +256,11 @@
 			[cell.contentView addSubview:textfield1];
 			textfield1.enabled = NO;
 			[buttonselect setImage:LOADIMAGE(@"menotselectgray", @"png") forState:UIControlStateNormal];
+            if([FCisdefault intValue] == 1)
+            {
+                isselect = EnSelectd;
+                [buttonselect setImage:LOADIMAGE(@"me默认收货地址", @"png") forState:UIControlStateNormal];
+            }
 			[cell.contentView addSubview:buttonselect];
 			break;
 	}
@@ -236,6 +298,11 @@
 -(void)returnback
 {
 	[self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)removeaddr:(id)sender
+{
+    [self removereceiveaddr:[_FCdicaddr objectForKey:@"recvaddrid"]];
 }
 
 -(void)clickdefaultaddr:(id)sender
@@ -325,6 +392,29 @@
 
 
 #pragma mark 接口
+-(void)removereceiveaddr:(NSString *)removeid
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"recvaddrid"] = removeid;
+    
+    
+    [RequestInterface doGetJsonWithParametersNoAn:params App:app RequestCode:RQUserCenterRemoveReceiveaddrCode ReqUrl:InterfaceRequestUrl ShowView:app.window alwaysdo:^{
+        
+    } Success:^(NSDictionary *dic) {
+        DLog(@"dic====%@",dic);
+        if([[dic objectForKey:@"success"] isEqualToString:@"true"])
+        {
+            [self returnback];
+        }
+        else
+        {
+            [MBProgressHUD showError:[dic objectForKey:@"msg"] toView:app.window];
+        }
+    } Failur:^(NSString *strmsg) {
+        [MBProgressHUD showError:@"请求失败,请检查网络" toView:self.view];
+    }];
+}
+
 -(void)addnewsaddress
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];

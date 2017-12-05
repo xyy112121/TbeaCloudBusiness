@@ -69,7 +69,7 @@
     
     UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelname)+10, 10, 30, 30)];
     NSString *strpic;
-    strpic = [dicfrom objectForKey:@"thumbpicture"];//[InterfaceResource stringByAppendingString:[[dicfrom objectForKey:@"thumbpicture"] length]>0?[dicfrom objectForKey:@"thumbpicture"]:@"noimage.png"];
+    strpic = [dicfrom objectForKey:@"thumbpicture"];
     [imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
     imageheader.contentMode = UIViewContentModeScaleAspectFill;
     imageheader.layer.cornerRadius = 15.0f;
@@ -78,7 +78,7 @@
     
     NSString *strsizename;
     strsizename = [dicfrom objectForKey:@"name"];
-    CGSize sizeuser = [AddInterface getlablesize:strsizename Fwidth:100 Fheight:20 Sfont:FONTN(14.0f)];
+    CGSize sizeuser = [AddInterface getlablesize:strsizename Fwidth:100 Fheight:20 Sfont:FONTB(14.0f)];
     UILabel *labelusername = [[UILabel alloc] initWithFrame:CGRectMake(XYViewR(imageheader)+10, 7, sizeuser.width, 20)];
     labelusername.backgroundColor = [UIColor clearColor];
     labelusername.textColor = [UIColor blackColor];
@@ -87,7 +87,7 @@
     [fromcell.contentView addSubview:labelusername];
     
     UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelusername)+5, XYViewTop(labelusername)+5, 10, 10)];
-    strpic = [dicfrom objectForKey:@"thumbpicture"];//[InterfaceResource stringByAppendingString:[[dicfrom objectForKey:@"thumbpicture"] length]>0?[dicfrom objectForKey:@"thumbpicture"]:@"noimage.png"];
+    strpic = [dicfrom objectForKey:@"persontypeicon"];
     [imageicon setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebateheader1", @"png")];
     [fromcell.contentView addSubview:imageicon];
     
@@ -104,7 +104,7 @@
     UIView *view = [[UIView alloc] initWithFrame:fromframe];
     
     UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(0, 10, 30, 30)];
-    NSString *strpic = [dicfrom objectForKey:@"masterthumbpicture"];//[InterfaceResource stringByAppendingString:[[dicfrom objectForKey:@"masterthumbpicture"] length]>0?[dicfrom objectForKey:@"masterthumbpicture"]:@"noimage.png"];
+    NSString *strpic = [dicfrom objectForKey:@"masterthumbpicture"];
     [imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
     imageheader.layer.cornerRadius = 15.0f;
     imageheader.clipsToBounds = YES;
@@ -118,9 +118,9 @@
     labelusername.text = [dicfrom objectForKey:@"mastername"];
     [view addSubview:labelusername];
     
-    UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelusername)+5, XYViewTop(labelusername)+5, 10, 10)];
-    NSString *strpic1 = [dicfrom objectForKey:@"companytypeicon"];//[InterfaceResource stringByAppendingString:[[dicfrom objectForKey:@"companytypeicon"] length]>0?[dicfrom objectForKey:@"companytypeicon"]:@"noimage.png"];
-    [imageheader setImageWithURL:[NSURL URLWithString:strpic1] placeholderImage:LOADIMAGE(@"scanrebateheader1", @"png")];
+    UIImageView *imageicon = [[UIImageView alloc] initWithFrame:CGRectMake(XYViewR(labelusername)+5, XYViewTop(labelusername)+5, 25, 10)];
+    NSString *strpic1 = [dicfrom objectForKey:@"companytypeicon"];
+    [imageicon setImageWithURL:[NSURL URLWithString:strpic1] placeholderImage:LOADIMAGE(@"scanrebateheader1", @"png")];
     [view addSubview:imageicon];
     
     UILabel *straddr = [[UILabel alloc] initWithFrame:CGRectMake(XYViewR(imageheader)+10, XYViewBottom(labelusername), SCREEN_WIDTH-100, 18)];
@@ -281,7 +281,6 @@
                 {
                     [cell.contentView addSubview:[self viewcelljuban:[FCarrayjibandanwei objectAtIndex:i] FromFrame:CGRectMake(100, 50*i, SCREEN_WIDTH-130, 50)]];
                 }
-           //     [self viewcell1:[FCdicdata objectForKey:@"organizecompanylist"] FromCell:cell LabelName:@"举办单位"];
                 break;
             case 3:
                 labelname.text = @"举办地点";
@@ -377,31 +376,6 @@
             [self.navigationController pushViewController:mettingschedule animated:YES];
             break;
     }
-    
-//    WaterMettingJoinMemberViewController *joinmember;
-//    WaterMettingCheckInViewController *checkin;
-//    switch (indexPath.section)
-//    {
-//        case 1:
-//            if(indexPath.row == 1)
-//            {
-//                joinmember = [[WaterMettingJoinMemberViewController alloc] init];
-//                joinmember.FCmettingid = @"";
-//                [self.navigationController pushViewController:joinmember animated:YES];
-//            }
-//            break;
-//        case 3:
-//            if(indexPath.row == 0)
-//            {
-//                checkin = [[WaterMettingCheckInViewController alloc] init];
-//                checkin.FCmettingid = @"";
-//                [self.navigationController pushViewController:checkin animated:YES];
-//                
-//            }
-//            break;
-//        default:
-//            break;
-//    }
 }
 
 #pragma mark 接口
@@ -416,10 +390,10 @@
         DLog(@"dic====%@",dic);
         if([[dic objectForKey:@"success"] isEqualToString:@"true"])
         {
+            FCdicdata = [dic objectForKey:@"data"];
             FCarrayjibandanwei = [[dic objectForKey:@"data"] objectForKey:@"organizecompanylist"];
             FCmettingarrangement = [[FCdicdata objectForKey:@"meetinginfo"] objectForKey:@"meetingitems"];
             FCjoinmemberids = [[FCdicdata objectForKey:@"participantlist"] objectForKey:@"participantlist"];
-            FCdicdata = [dic objectForKey:@"data"];
             tableview.delegate = self;
             tableview.dataSource = self;
             [tableview reloadData];
