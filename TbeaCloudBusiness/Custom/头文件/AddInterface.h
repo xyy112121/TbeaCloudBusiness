@@ -36,6 +36,7 @@
 +(void)clearCache:(NSString *)path;
 +(BOOL) isValidatenumber:(NSString *)mobile;
 + (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
++(UIViewController *)GetControllerFromView:(UIView*) pView;
 //获取str的size
 +(CGSize) getlablesize:(NSString *)str Fwidth:(float)fwidth Fheight:(float)fheight Sfont:(UIFont *)sfont;
 

@@ -47,6 +47,14 @@
     [self UI_init];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBar.barTintColor = COLORNOW(0, 170, 238);
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    self.navigationController.navigationBar.translucent = NO;
+}
+
 #pragma mark - data
 - (void)DATA_init
 {
@@ -99,7 +107,7 @@
 {
     if (_bottomBar == nil)
     {
-        _bottomBar = [[UITabBar alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height - 44, self.view.frame.size.width, 44)];
+        _bottomBar = [[UITabBar alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height - 44-IPhone_SafeBottomMargin, self.view.frame.size.width, 44)];
         //add subviews
         [_bottomBar addSubview:self.sendButton];
         [_bottomBar addSubview:self.numberOfLabel];

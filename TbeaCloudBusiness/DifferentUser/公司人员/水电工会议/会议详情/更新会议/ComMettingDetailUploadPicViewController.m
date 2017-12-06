@@ -50,12 +50,12 @@
 {
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"图片上传";
-    
+    FCArraySelectPic = [[NSMutableArray alloc] init];
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidekeyboard:)];
     tapGestureRecognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tapGestureRecognizer];
     
-    UILabel *strtitle = [[UILabel alloc] initWithFrame:CGRectMake(10,10,60,20)];
+    UILabel *strtitle = [[UILabel alloc] initWithFrame:CGRectMake(10,10,40,20)];
     strtitle.backgroundColor = [UIColor clearColor];
     strtitle.textColor = [UIColor blackColor];
     strtitle.font = FONTB(16.0f);
@@ -83,8 +83,14 @@
     imageline.backgroundColor = COLORNOW(220, 220, 220);
     [self.view addSubview:imageline];
     
-    
+    float space = 10; //每两块间的空隔是10个朴素，
+    int verticalnum = 5; //一排排5个
+    int widthnow = (SCREEN_WIDTH-space*(verticalnum+1))/verticalnum;
+    CMArrangementPicView *cmarrangement = [[CMArrangementPicView alloc] initWithFrame:CGRectMake(0, XYViewBottom(imageline)+10, SCREEN_WIDTH, widthnow*2+30) ArraySelect:FCArraySelectPic];
+    [self.view addSubview:cmarrangement];
 }
+
+
 
 
 -(void)viewWillAppear:(BOOL)animated
@@ -121,6 +127,12 @@
 -(void)uploadpic:(id)sender
 {
     [self uploadcustompic];
+}
+
+#pragma mark actiondelegate
+-(void)DGClickDeleteArrangementPic:(int)sender
+{
+    [FCArraySelectPic removeObjectAtIndex:sender];
 }
 
 #pragma mark 接口

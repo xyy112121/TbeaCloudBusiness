@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    if (self.maxNumberOfSelectImages ==0) self.maxNumberOfSelectImages = 9;
+    if (self.maxNumberOfSelectImages ==0) self.maxNumberOfSelectImages = 8;
     
     self.viewControllers = @[[[PhotoGroupViewController alloc]init]];
     

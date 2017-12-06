@@ -186,7 +186,6 @@
         }
     }];
     NSString * title = [self transformAblumTitle:localasset.localizedTitle];
-    
     cell.timeLabel.text = [NSString stringWithFormat:@"%@", title];
     cell.numLabel.text = [NSString stringWithFormat:@"%ld",(long)result.count];
     return cell;

@@ -391,6 +391,18 @@
 	return flag;
 }
 
+//获取view的controller
++(UIViewController *)GetControllerFromView:(UIView*) pView
+{
+    for (UIView* pNext = [pView superview]; pNext; pNext = pNext.superview) {
+        UIResponder *pNextResponder = [pNext nextResponder];
+        if ([pNextResponder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController *)pNextResponder;
+        }
+    }
+    return nil;
+}
+
 //时间差
 +(BOOL)timechar: (NSString *)theDate
 {

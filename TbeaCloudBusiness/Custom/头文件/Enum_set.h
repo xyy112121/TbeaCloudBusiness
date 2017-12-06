@@ -414,3 +414,6 @@ typedef enum
 #define EnMyPersonInfoTextfield8 60507
 #define EnMyPersonInfoTextfield9 60508
 #define EnMyPersonInfoImageView1 60509
+
+#define EnArrangementPicDeleteBt 60600
+

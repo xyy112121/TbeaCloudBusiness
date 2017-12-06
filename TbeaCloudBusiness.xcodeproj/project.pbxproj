@@ -788,6 +788,7 @@
 		743308D21F4584D200099F3A /* SonAccountAuthorizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 743308D11F4584D200099F3A /* SonAccountAuthorizeViewController.m */; };
 		74359E5E1FA6F48A0007D51C /* MyPageHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74359E5D1FA6F48A0007D51C /* MyPageHelpViewController.m */; };
 		74359E611FA6F4980007D51C /* MyPageAboutMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74359E601FA6F4980007D51C /* MyPageAboutMeViewController.m */; };
+		743B2ACF1FD798D600E27008 /* CMArrangementPicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 743B2ACE1FD798D600E27008 /* CMArrangementPicView.m */; };
 		74444B281F16FB2D009AB2CA /* MallStoreCycleAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74444B271F16FB2D009AB2CA /* MallStoreCycleAdViewController.m */; };
 		74444B2F1F17047B009AB2CA /* testpic.png in Resources */ = {isa = PBXBuildFile; fileRef = 74444B2C1F17047B009AB2CA /* testpic.png */; };
 		74444B301F17047B009AB2CA /* testpic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74444B2D1F17047B009AB2CA /* testpic@2x.png */; };
@@ -2058,6 +2059,8 @@
 		74359E5D1FA6F48A0007D51C /* MyPageHelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPageHelpViewController.m; sourceTree = "<group>"; };
 		74359E5F1FA6F4980007D51C /* MyPageAboutMeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPageAboutMeViewController.h; sourceTree = "<group>"; };
 		74359E601FA6F4980007D51C /* MyPageAboutMeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPageAboutMeViewController.m; sourceTree = "<group>"; };
+		743B2ACD1FD798D600E27008 /* CMArrangementPicView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMArrangementPicView.h; sourceTree = "<group>"; };
+		743B2ACE1FD798D600E27008 /* CMArrangementPicView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMArrangementPicView.m; sourceTree = "<group>"; };
 		74444B261F16FB2D009AB2CA /* MallStoreCycleAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallStoreCycleAdViewController.h; sourceTree = "<group>"; };
 		74444B271F16FB2D009AB2CA /* MallStoreCycleAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallStoreCycleAdViewController.m; sourceTree = "<group>"; };
 		74444B2C1F17047B009AB2CA /* testpic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testpic.png; sourceTree = "<group>"; };
@@ -4151,6 +4154,7 @@
 		08DFD6C81ECC9EDF0002281A /* customview */ = {
 			isa = PBXGroup;
 			children = (
+				743B2ACC1FD798B300E27008 /* ArrangementPic */,
 				740FCAD51F14B34E00FE84B3 /* 弹出确认框 */,
 				084103331F0F30B000A4194A /* 头部functionview */,
 				08474C801EE10C9A000DAD2F /* 公共button */,
@@ -4612,6 +4616,15 @@
 				74359E601FA6F4980007D51C /* MyPageAboutMeViewController.m */,
 			);
 			path = helpandabout;
+			sourceTree = "<group>";
+		};
+		743B2ACC1FD798B300E27008 /* ArrangementPic */ = {
+			isa = PBXGroup;
+			children = (
+				743B2ACD1FD798D600E27008 /* CMArrangementPicView.h */,
+				743B2ACE1FD798D600E27008 /* CMArrangementPicView.m */,
+			);
+			path = ArrangementPic;
 			sourceTree = "<group>";
 		};
 		74444B291F16FB7D009AB2CA /* 店铺动态 */ = {
@@ -6093,6 +6106,7 @@
 				747999DA1F5814A80027933D /* MallStoreHasBeenEvaluatenViewController.m in Sources */,
 				08183D261ECB404E00C9E553 /* pinyin.c in Sources */,
 				7406B85D1FC41F0F0056372C /* MJRefreshBackGifFooter.m in Sources */,
+				743B2ACF1FD798D600E27008 /* CMArrangementPicView.m in Sources */,
 				084EDA431EFA0F5200602116 /* AuthBusinessViewController.m in Sources */,
 				08CAA63A1EE7F2C200F47C9E /* SpecificationSelectViewController.m in Sources */,
 				745152CB1F4EB31E006FB244 /* ReturnMoneyDetailViewController.m in Sources */,

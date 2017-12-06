@@ -249,6 +249,7 @@
 #import "LLPhotoBrowserConfig.h"
 #import "AddCustomView.h"
 #import "MyPagePersonInfoViewController.h"
+#import "CMArrangementPicView.h"
 #endif /* PrefixHeader_pch */
 
 /**
