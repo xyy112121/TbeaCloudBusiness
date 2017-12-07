@@ -53,6 +53,7 @@
 -(void)initview
 {
     self.view.backgroundColor = [UIColor whiteColor];
+    app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.title = @"现场照片";
     
     imageviewno = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-60)/2, (SCREEN_HEIGHT-89-StatusBarAndNavigationHeight)/2, 60, 89)];
@@ -143,10 +144,17 @@
 
 -(void)gotomettingupload:(id)sender
 {
-    ComMettingDetailUploadPicViewController *pic = [[ComMettingDetailUploadPicViewController alloc] init];
-    pic.delegate1 = self;
+//    ComMettingDetailUploadPicViewController *pic = [[ComMettingDetailUploadPicViewController alloc] init];
+//    pic.delegate1 = self;
+//    pic.FCmettingid = self.FCmettingid;
+//    [self.navigationController pushViewController:pic animated:YES];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    ComMettingUpdateDetailPicViewController *pic = [storyboard instantiateViewControllerWithIdentifier:@"ComMettingUpdateDetailPicViewController"];
+    ComMettingUpdateDetailPicViewController *pic = [[ComMettingUpdateDetailPicViewController alloc] init];
+//    pic.delegate1 = self;
     pic.FCmettingid = self.FCmettingid;
     [self.navigationController pushViewController:pic animated:YES];
+    
 }
 
 

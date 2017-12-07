@@ -430,6 +430,8 @@
         ComMettingScheduleViewController *mettingschedule;
         WkWebViewViewController *webview;
         WaterMettingCheckInViewController *checkin;
+        ComMettingDetailSHowPicViewController *picshow;
+        ComMettinDetailUploadSummaryViewController *summary;
         switch (indexPath.section)
         {
             case 1:
@@ -451,16 +453,18 @@
                         [self.navigationController pushViewController:mettingschedule animated:YES];
                         break;
                     case 1:
-                        webview = [[WkWebViewViewController alloc] init];
-                        webview.FCstrurl = [NSString stringWithFormat:@"%@%@?meetingid=%@",Interfacehtmlurlheader,Interfacehtmlmettingjiyao,[[FCdicdata objectForKey:@"meetingbaseinfo"] objectForKey:@"id"]];
-                        webview.FCstrtitle = @"会议纪要";
-                        [self.navigationController pushViewController:webview animated:YES];
+                        summary = [[ComMettinDetailUploadSummaryViewController alloc] init];
+                        summary.delegate1 = self;
+                        summary.FCmettingid = self.FCmettingid;
+                        summary.FCfromflag = @"0";
+                        [self.navigationController pushViewController:summary animated:YES];
                         break;
                     case 2:
-                        webview = [[WkWebViewViewController alloc] init];
-                        webview.FCstrurl = [NSString stringWithFormat:@"%@%@?meetingid=%@",Interfacehtmlurlheader,Interfacehtmlmettingjiyao,[[FCdicdata objectForKey:@"meetingbaseinfo"] objectForKey:@"id"]];
-                        webview.FCstrtitle = @"会议纪要";
-                        [self.navigationController pushViewController:webview animated:YES];
+                        picshow = [[ComMettingDetailSHowPicViewController alloc] init];
+                        picshow.delegate1 = self;
+                        picshow.FCmettingid = self.FCmettingid;
+                        picshow.FCfromflag = @"0";
+                        [self.navigationController pushViewController:picshow animated:YES];
                         break;
                 }
                 

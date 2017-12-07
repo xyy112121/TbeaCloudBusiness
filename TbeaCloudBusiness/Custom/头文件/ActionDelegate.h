@@ -48,7 +48,7 @@
 -(void)DGCommitClickJieDan:(NSString *)strelecid;//接单提交
 -(void)DGClickUserHeaderIntoInfo:(id)sender;//点击头像
 -(void)DGClickDeleteArrangementPic:(int)sender; //删除排列照片
-
+-(void)DGUpdateSelectPic:(NSMutableArray *)sender;
 
 
 //以下是分销系统用到的，由于原来移植过来的所以全部放在这里了

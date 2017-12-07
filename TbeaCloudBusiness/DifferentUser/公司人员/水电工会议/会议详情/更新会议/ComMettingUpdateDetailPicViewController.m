@@ -1,26 +1,26 @@
 //
-//  ComMettingDetailUploadPicViewController.m
+//  ComMettingUpdateDetailPicViewController.m
 //  TbeaCloudBusiness
 //
-//  Created by xyy on 2017/8/14.
+//  Created by xyy on 2017/12/7.
 //  Copyright © 2017年 谢 毅. All rights reserved.
 //
 
-#import "ComMettingDetailUploadPicViewController.h"
+#import "ComMettingUpdateDetailPicViewController.h"
 
-@interface ComMettingDetailUploadPicViewController ()
-
+@interface ComMettingUpdateDetailPicViewController ()
+@property (strong, nonatomic)UIView *photoView;
+@property (strong, nonatomic)UIButton *FCButtondon;
+@property (strong,nonatomic)UITextField *FCtextfield;
+@property (nonatomic, strong) WSImagePickerView *pickerView;
 @end
 
-@implementation ComMettingDetailUploadPicViewController
+@implementation ComMettingUpdateDetailPicViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
-    {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
+    self.title = @"图片上传";
+    [self initview];
     
     UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(2, 2, 60, 40)];
     UIButton *button = [[UIButton alloc] initWithFrame:contentView.bounds];
@@ -42,57 +42,7 @@
     [contentViewright addSubview:buttonright];
     UIBarButtonItem *barButtonItemright = [[UIBarButtonItem alloc] initWithCustomView:contentViewright];
     self.navigationItem.rightBarButtonItem = barButtonItemright;
-    
-    [self initview];
 }
-
--(void)initview
-{
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"图片上传";
-    FCArraySelectPic = [[NSMutableArray alloc] init];
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidekeyboard:)];
-    tapGestureRecognizer.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:tapGestureRecognizer];
-    
-    UILabel *strtitle = [[UILabel alloc] initWithFrame:CGRectMake(10,10,40,20)];
-    strtitle.backgroundColor = [UIColor clearColor];
-    strtitle.textColor = [UIColor blackColor];
-    strtitle.font = FONTB(16.0f);
-    strtitle.text = @"主题";
-    [self.view addSubview:strtitle];
-    
-    UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(strtitle.frame.origin.x+strtitle.frame.size.width+10, 5, SCREEN_WIDTH-90, 30)];
-    textfield.layer.cornerRadius = 3;
-    textfield.layer.borderColor = COLORNOW(230, 230, 230).CGColor;
-    textfield.layer.borderWidth = 0.5f;
-    textfield.backgroundColor = COLORNOW(245, 245, 245);
-    textfield.tag = 621;
-    textfield.delegate = self;
-    textfield.placeholder = @"填写主题";
-    textfield.font = FONTN(15.0f);
-    textfield.returnKeyType = UIReturnKeyDone;
-    textfield.clearButtonMode = UITextFieldViewModeAlways;
-    UIView *leftview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 5)];
-    textfield.leftView = leftview;
-    leftview.userInteractionEnabled = NO;
-    textfield.leftViewMode = UITextFieldViewModeAlways;
-    [self.view addSubview:textfield];
-    
-    UIImageView *imageline = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, 0.7)];
-    imageline.backgroundColor = COLORNOW(220, 220, 220);
-    [self.view addSubview:imageline];
-    
-    float space = 15; //每两块间的空隔是10个朴素，
-    int verticalnum = 4; //一排排5个
-    int widthnow = (SCREEN_WIDTH-space*(verticalnum+1))/verticalnum;
-    CMArrangementPicView *cmarrangement = [[CMArrangementPicView alloc] initWithFrame:CGRectMake(0, XYViewBottom(imageline)+10, SCREEN_WIDTH, widthnow*2+30) ArraySelect:FCArraySelectPic];
-    cmarrangement.delegate1 = self;
-    [self.view addSubview:cmarrangement];
-}
-
-
-
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -104,11 +54,80 @@
     NSDictionary* dict=[NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
     self.navigationController.navigationBar.titleTextAttributes= dict;
 }
-#pragma mark IBAction
--(void)returnback
+
+-(void)initview
 {
+    self.view.backgroundColor = [UIColor whiteColor];
+    app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.title = @"图片上传";
+
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidekeyboard:)];
+    tapGestureRecognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tapGestureRecognizer];
     
-    [self.navigationController popViewControllerAnimated:YES];
+    UILabel *strtitle = [[UILabel alloc] initWithFrame:CGRectMake(10,10,40,20)];
+    strtitle.backgroundColor = [UIColor clearColor];
+    strtitle.textColor = [UIColor blackColor];
+    strtitle.font = FONTB(16.0f);
+    strtitle.text = @"主题";
+    [self.view addSubview:strtitle];
+    
+    _FCtextfield = [[UITextField alloc] initWithFrame:CGRectMake(strtitle.frame.origin.x+strtitle.frame.size.width+10, 5, SCREEN_WIDTH-90, 30)];
+    _FCtextfield.layer.cornerRadius = 3;
+    _FCtextfield.layer.borderColor = COLORNOW(230, 230, 230).CGColor;
+    _FCtextfield.layer.borderWidth = 0.5f;
+    _FCtextfield.backgroundColor = COLORNOW(245, 245, 245);
+    _FCtextfield.tag = 621;
+    _FCtextfield.delegate = self;
+    _FCtextfield.placeholder = @"填写主题";
+    _FCtextfield.font = FONTN(15.0f);
+    _FCtextfield.returnKeyType = UIReturnKeyDone;
+    _FCtextfield.clearButtonMode = UITextFieldViewModeAlways;
+    UIView *leftview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 5)];
+    _FCtextfield.leftView = leftview;
+    leftview.userInteractionEnabled = NO;
+    _FCtextfield.leftViewMode = UITextFieldViewModeAlways;
+    [self.view addSubview:_FCtextfield];
+    
+    UIImageView *imageline = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, 0.7)];
+    imageline.backgroundColor = COLORNOW(220, 220, 220);
+    [self.view addSubview:imageline];
+    
+    _photoView = [[UIView alloc] initWithFrame:CGRectMake(0, XYViewBottom(imageline)+20, SCREEN_WIDTH, 100)];
+    
+    WSImagePickerConfig *config = [WSImagePickerConfig new];
+    config.itemSize = CGSizeMake(80, 80);
+    config.photosMaxCount = 8;
+    
+    WSImagePickerView *pickerView = [[WSImagePickerView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, 0) config:config];
+    //Height changed with photo selection
+    __weak typeof(self) weakSelf = self;
+    pickerView.viewHeightChanged = ^(CGFloat height) {
+        weakSelf.photoView.frame = CGRectMake(XYViewL(weakSelf.photoView), XYViewTop(weakSelf.photoView), XYViewWidth(weakSelf.photoView), height);
+        [weakSelf.view setNeedsLayout];
+        [weakSelf.view layoutIfNeeded];
+    };
+    pickerView.navigationController = self.navigationController;
+    [_photoView addSubview:pickerView];
+    self.pickerView = pickerView;
+    
+    [self.view addSubview:_photoView];
+    //refresh superview height
+    [pickerView refreshImagePickerViewWithPhotoArray:nil];
+}
+
+
+
+#pragma mark IBAction
+-(void)uploadpic:(id)sender
+{
+    FCArraySelectPic = [_pickerView getPhotos];
+    if([_FCtextfield.text length]==0)
+        [MBProgressHUD showMessage:@"请填写主题" toView:app.window];
+    else if([FCArraySelectPic count]==0)
+        [MBProgressHUD showMessage:@"请添加图片" toView:app.window];
+    else
+        [self uploadcustompic];
 }
 
 -(void)hidekeyboard:(id)sender
@@ -116,32 +135,22 @@
     
 }
 
--(void)clickselectpic:(id)sender
+-(void)returnback
 {
-    [JPhotoMagenage JphotoGetFromLibrayInController:self finish:^(NSArray<UIImage *> *images) {
-        
-    } cancel:^{
-        
-    }];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)uploadpic:(id)sender
-{
-    [self uploadcustompic];
-}
-
-#pragma mark actiondelegate
--(void)DGUpdateSelectPic:(NSMutableArray *)sender
-{
-    FCArraySelectPic = sender;
+- (IBAction)onClickConfirm:(id)sender {
+    NSArray *array = [_pickerView getPhotos];
+    NSLog(@"%@",array);
+    [[[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"共选择了%@张照片",@(array.count)] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show];
 }
 
 #pragma mark 接口
 -(void)uploadcustompic
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-
-    
     
     NSMutableArray *arrayimage = [[NSMutableArray alloc] init];
     [arrayimage addObject:LOADIMAGE(@"metting编辑", @"png")];
@@ -171,7 +180,7 @@
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"meetingid"] = self.FCmettingid;
-    params[@"picturetitle"] = @"主题";
+    params[@"picturetitle"] = _FCtextfield.text;
     params[@"pictures"] = picpath;
     params[@"primarypictureindex"] = @"1";
     

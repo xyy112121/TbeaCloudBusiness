@@ -11,6 +11,7 @@
 @interface CMArrangementPicView : UIView
 {
     NSMutableArray *FCArraySelect;
+    UIView *FCViewbg;
 }
 @property(nonatomic,strong)id<ActionDelegate>delegate1;
 -(id)initWithFrame:(CGRect)frame ArraySelect:(NSMutableArray *)arraySelect;

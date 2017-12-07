@@ -25,6 +25,7 @@
     //
     NSArray *FCarrayusertype;
     NSArray *FCarraydata;
+    UIView *FCviewtop;
     //
     NSString *FCname;
     NSString *FCownertypeid;
@@ -32,6 +33,8 @@
     NSString *FCendtime;
     NSString *FCorderitem;
     NSString *FCorderid;
+    NSString *FCorderchecknum;
+    NSString *FCordertime;
     
 }
 

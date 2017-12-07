@@ -43,6 +43,7 @@
     FCorderid = @"desc";
     FCstarttime = @"";
     FCendtime = @"";
+    FCSelectDropListItem = 0;
     
     tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-100)];
     tableview.backgroundColor = [UIColor clearColor];
@@ -67,7 +68,9 @@
     UIView *tabviewheader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
     tabviewheader.backgroundColor = [UIColor clearColor];
     [self.view addSubview:tabviewheader];
-    [tabviewheader addSubview:[self getviewselectitem:CGRectMake(0, 0, SCREEN_WIDTH, 100)]];
+    if(FCtopview == nil)
+        FCtopview = [self getviewselectitem:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
+    [tabviewheader addSubview:FCtopview];
 }
 
 
@@ -112,6 +115,8 @@
     UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 40, 40)];
     NSString *strpic = [FCdicpayeeinfo objectForKey:@"thumbpicture"];
     [imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
+    imageheader.layer.cornerRadius = 20.0f;
+    imageheader.clipsToBounds = YES;
     imageheader.contentMode = UIViewContentModeScaleAspectFill;
     [viewheader addSubview:imageheader];
     
@@ -194,15 +199,11 @@
     if([FCorderid isEqualToString:@"desc"])
     {
         FCorderid= @"asc";
-        [buttonitem1 updatelabstr:@"金额"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
         [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
     }
     else
     {
         FCorderid= @"desc";
-        [buttonitem1 updatelabstr:@"金额"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
         [buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
     }
     [self gettixianhistorylist:@"1" Pagesize:@"10"];
@@ -217,7 +218,7 @@
     //激活(状态)  已激活  未激活
     [arrayselectitem removeAllObjects];
     ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnRebateQRCodeHistoryButton1];
-    [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+//    [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
     [buttonitem1 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
     if (flagnow==0)
     {
@@ -243,6 +244,7 @@
 {
     andydroplist = [[AndyDropDownList alloc] initWithListDataSource:arrayselectitem rowHeight:44 view:button Frame:CGRectMake(0, 91, SCREEN_WIDTH, SCREEN_HEIGHT)];
     andydroplist.delegate = self;
+    [andydroplist setselectrow:FCSelectDropListItem];
     return andydroplist;
 }
 
@@ -263,15 +265,20 @@
     [buttonitem updatelabstr:astr];
     if([astr isEqualToString:@"默认"]||[astr isEqualToString:@"正序"])
     {
+        FCSelectDropListItem = 0;
+        if([astr isEqualToString:@"正序"])
+            FCSelectDropListItem = 1;
         [self gettixianhistorylist:@"1" Pagesize:@"10"];
     }
     else if([astr isEqualToString:@"倒序"])
     {
+        FCSelectDropListItem = 2;
         FCorderid = @"asc";
         [self gettixianhistorylist:@"1" Pagesize:@"10"];
     }
     else if([astr isEqualToString:@"自定义"])
     {
+        FCSelectDropListItem = 3;
         FCorderitem = @"";
         TimeSelectViewController *timeselect = [[TimeSelectViewController alloc] init];
         timeselect.delegate1 = self;

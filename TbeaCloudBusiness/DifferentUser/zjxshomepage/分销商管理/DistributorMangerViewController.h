@@ -29,8 +29,10 @@
     NSString *FCstarttime;
     NSString *FCendtime;
     NSString *FCzonelds;
+    NSString *FCorderuser;
+    NSString *FCordermoney;
     
-    
+    int FCSelectDropListItem;
 }
 
 @property(nonatomic,strong)id<ActionDelegate>delegate1;

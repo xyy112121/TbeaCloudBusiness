@@ -250,6 +250,8 @@
 #import "AddCustomView.h"
 #import "MyPagePersonInfoViewController.h"
 #import "CMArrangementPicView.h"
+#import "WSImagePickerView.h"
+#import "ComMettingUpdateDetailPicViewController.h"
 #endif /* PrefixHeader_pch */
 
 /**

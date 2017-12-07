@@ -25,7 +25,8 @@
     NSString *FCstarttime;
     NSString *FCendtime;
     
-    
+    UIView *FCtopview;
+    int FCSelectDropListItem;
     //
     NSArray *FCarraydata;
     NSDictionary *FCdicpayeeinfo;

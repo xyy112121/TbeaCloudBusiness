@@ -53,6 +53,7 @@
 -(void)initview
 {
     self.view.backgroundColor = [UIColor whiteColor];
+    app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.title = @"会议纪要";
     UILabel *labelname = [[UILabel alloc] initWithFrame:CGRectMake(18, 5, 40, 30)];
     labelname.backgroundColor = [UIColor clearColor];

@@ -350,7 +350,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    if(([arraymessage count]>0)&&indexPath.row==0)
+    {
+        MyMessageViewController *mymessage = [[MyMessageViewController alloc] init];
+        mymessage.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:mymessage animated:YES];
+    }
 }
 
 

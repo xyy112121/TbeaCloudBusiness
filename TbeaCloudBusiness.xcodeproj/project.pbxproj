@@ -929,6 +929,21 @@
 		74A21FA01F5C5A2E0073EF92 /* MallStoreSalesAccountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A21F9F1F5C5A2E0073EF92 /* MallStoreSalesAccountListViewController.m */; };
 		74AA2DC11FD531F800910BCF /* MyPagePersonInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AA2DC01FD531F800910BCF /* MyPagePersonInfoViewController.m */; };
 		74AA2DC41FD5339C00910BCF /* AddCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AA2DC21FD5339C00910BCF /* AddCustomView.m */; };
+		74D977B51FD8E47F00BAA4F3 /* JFAssetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D9779A1FD8E47F00BAA4F3 /* JFAssetHelper.m */; };
+		74D977B61FD8E47F00BAA4F3 /* JFImageCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D9779C1FD8E47F00BAA4F3 /* JFImageCollectionViewController.m */; };
+		74D977B71FD8E47F00BAA4F3 /* JFImageGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D9779E1FD8E47F00BAA4F3 /* JFImageGroupTableViewController.m */; };
+		74D977B81FD8E47F00BAA4F3 /* JFImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D977A01FD8E47F00BAA4F3 /* JFImageManager.m */; };
+		74D977B91FD8E48000BAA4F3 /* JFImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D977A21FD8E47F00BAA4F3 /* JFImagePickerController.m */; };
+		74D977BA1FD8E48000BAA4F3 /* JFImagePickerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D977A41FD8E47F00BAA4F3 /* JFImagePickerViewCell.m */; };
+		74D977BB1FD8E48000BAA4F3 /* JFPhotoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D977A61FD8E47F00BAA4F3 /* JFPhotoBrowserViewController.m */; };
+		74D977BC1FD8E48000BAA4F3 /* JFPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D977A81FD8E47F00BAA4F3 /* JFPhotoView.m */; };
+		74D977BD1FD8E48000BAA4F3 /* WSImageBroserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D977AB1FD8E47F00BAA4F3 /* WSImageBroserCell.m */; };
+		74D977BE1FD8E48000BAA4F3 /* WSImageBroswerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D977AD1FD8E47F00BAA4F3 /* WSImageBroswerVC.m */; };
+		74D977BF1FD8E48000BAA4F3 /* WSImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D977AF1FD8E47F00BAA4F3 /* WSImageModel.m */; };
+		74D977C01FD8E48000BAA4F3 /* WSPhotosBroseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D977B11FD8E47F00BAA4F3 /* WSPhotosBroseVC.m */; };
+		74D977C11FD8E48000BAA4F3 /* WSImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D977B41FD8E47F00BAA4F3 /* WSImagePickerView.m */; };
+		74D977C41FD8E62C00BAA4F3 /* ComMettingUpdateDetailPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D977C31FD8E62C00BAA4F3 /* ComMettingUpdateDetailPicViewController.m */; };
+		74D977C61FD8E7A100BAA4F3 /* bg_photo_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 74D977C51FD8E7A100BAA4F3 /* bg_photo_add.png */; };
 		74DB27A21F1CF7170088FF4A /* MyTiXianQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DB27A11F1CF7170088FF4A /* MyTiXianQRCodeViewController.m */; };
 		74DB9A071F13655700635968 /* UIImage+SGHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DB99FC1F13655700635968 /* UIImage+SGHelper.m */; };
 		74DB9A081F13655700635968 /* SGQRCode.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 74DB99FD1F13655700635968 /* SGQRCode.bundle */; };
@@ -2307,6 +2322,35 @@
 		74AA2DC01FD531F800910BCF /* MyPagePersonInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPagePersonInfoViewController.m; sourceTree = "<group>"; };
 		74AA2DC21FD5339C00910BCF /* AddCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCustomView.m; sourceTree = "<group>"; };
 		74AA2DC31FD5339C00910BCF /* AddCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCustomView.h; sourceTree = "<group>"; };
+		74D977991FD8E47F00BAA4F3 /* JFAssetHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAssetHelper.h; sourceTree = "<group>"; };
+		74D9779A1FD8E47F00BAA4F3 /* JFAssetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAssetHelper.m; sourceTree = "<group>"; };
+		74D9779B1FD8E47F00BAA4F3 /* JFImageCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFImageCollectionViewController.h; sourceTree = "<group>"; };
+		74D9779C1FD8E47F00BAA4F3 /* JFImageCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFImageCollectionViewController.m; sourceTree = "<group>"; };
+		74D9779D1FD8E47F00BAA4F3 /* JFImageGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFImageGroupTableViewController.h; sourceTree = "<group>"; };
+		74D9779E1FD8E47F00BAA4F3 /* JFImageGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFImageGroupTableViewController.m; sourceTree = "<group>"; };
+		74D9779F1FD8E47F00BAA4F3 /* JFImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFImageManager.h; sourceTree = "<group>"; };
+		74D977A01FD8E47F00BAA4F3 /* JFImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFImageManager.m; sourceTree = "<group>"; };
+		74D977A11FD8E47F00BAA4F3 /* JFImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFImagePickerController.h; sourceTree = "<group>"; };
+		74D977A21FD8E47F00BAA4F3 /* JFImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFImagePickerController.m; sourceTree = "<group>"; };
+		74D977A31FD8E47F00BAA4F3 /* JFImagePickerViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFImagePickerViewCell.h; sourceTree = "<group>"; };
+		74D977A41FD8E47F00BAA4F3 /* JFImagePickerViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFImagePickerViewCell.m; sourceTree = "<group>"; };
+		74D977A51FD8E47F00BAA4F3 /* JFPhotoBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFPhotoBrowserViewController.h; sourceTree = "<group>"; };
+		74D977A61FD8E47F00BAA4F3 /* JFPhotoBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFPhotoBrowserViewController.m; sourceTree = "<group>"; };
+		74D977A71FD8E47F00BAA4F3 /* JFPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFPhotoView.h; sourceTree = "<group>"; };
+		74D977A81FD8E47F00BAA4F3 /* JFPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFPhotoView.m; sourceTree = "<group>"; };
+		74D977AA1FD8E47F00BAA4F3 /* WSImageBroserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSImageBroserCell.h; sourceTree = "<group>"; };
+		74D977AB1FD8E47F00BAA4F3 /* WSImageBroserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSImageBroserCell.m; sourceTree = "<group>"; };
+		74D977AC1FD8E47F00BAA4F3 /* WSImageBroswerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSImageBroswerVC.h; sourceTree = "<group>"; };
+		74D977AD1FD8E47F00BAA4F3 /* WSImageBroswerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSImageBroswerVC.m; sourceTree = "<group>"; };
+		74D977AE1FD8E47F00BAA4F3 /* WSImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSImageModel.h; sourceTree = "<group>"; };
+		74D977AF1FD8E47F00BAA4F3 /* WSImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSImageModel.m; sourceTree = "<group>"; };
+		74D977B01FD8E47F00BAA4F3 /* WSPhotosBroseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSPhotosBroseVC.h; sourceTree = "<group>"; };
+		74D977B11FD8E47F00BAA4F3 /* WSPhotosBroseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSPhotosBroseVC.m; sourceTree = "<group>"; };
+		74D977B31FD8E47F00BAA4F3 /* WSImagePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSImagePickerView.h; sourceTree = "<group>"; };
+		74D977B41FD8E47F00BAA4F3 /* WSImagePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSImagePickerView.m; sourceTree = "<group>"; };
+		74D977C21FD8E62C00BAA4F3 /* ComMettingUpdateDetailPicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComMettingUpdateDetailPicViewController.h; sourceTree = "<group>"; };
+		74D977C31FD8E62C00BAA4F3 /* ComMettingUpdateDetailPicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComMettingUpdateDetailPicViewController.m; sourceTree = "<group>"; };
+		74D977C51FD8E7A100BAA4F3 /* bg_photo_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_photo_add.png; sourceTree = "<group>"; };
 		74DB27A01F1CF7170088FF4A /* MyTiXianQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTiXianQRCodeViewController.h; sourceTree = "<group>"; };
 		74DB27A11F1CF7170088FF4A /* MyTiXianQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTiXianQRCodeViewController.m; sourceTree = "<group>"; };
 		74DB99FB1F13655700635968 /* UIImage+SGHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SGHelper.h"; sourceTree = "<group>"; };
@@ -2589,6 +2633,7 @@
 		081839921ECB404D00C9E553 /* CommLib */ = {
 			isa = PBXGroup;
 			children = (
+				74D977961FD8E47F00BAA4F3 /* 图片选择 */,
 				7414C4C21FC7E0A6005E43E4 /* 图片滚动显示 */,
 				7414C49B1FC7E0A6005E43E4 /* SDWebImage */,
 				7406B80F1FC41F0E0056372C /* MJRefresh */,
@@ -5062,6 +5107,72 @@
 			path = "水电工会议";
 			sourceTree = "<group>";
 		};
+		74D977961FD8E47F00BAA4F3 /* 图片选择 */ = {
+			isa = PBXGroup;
+			children = (
+				74D977971FD8E47F00BAA4F3 /* 3DSource */,
+				74D977B21FD8E47F00BAA4F3 /* WSImagePicker */,
+			);
+			path = "图片选择";
+			sourceTree = "<group>";
+		};
+		74D977971FD8E47F00BAA4F3 /* 3DSource */ = {
+			isa = PBXGroup;
+			children = (
+				74D977C51FD8E7A100BAA4F3 /* bg_photo_add.png */,
+				74D977981FD8E47F00BAA4F3 /* JFImagePickerController */,
+				74D977A91FD8E47F00BAA4F3 /* WSImagebroswerVC */,
+			);
+			path = 3DSource;
+			sourceTree = "<group>";
+		};
+		74D977981FD8E47F00BAA4F3 /* JFImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				74D977991FD8E47F00BAA4F3 /* JFAssetHelper.h */,
+				74D9779A1FD8E47F00BAA4F3 /* JFAssetHelper.m */,
+				74D9779B1FD8E47F00BAA4F3 /* JFImageCollectionViewController.h */,
+				74D9779C1FD8E47F00BAA4F3 /* JFImageCollectionViewController.m */,
+				74D9779D1FD8E47F00BAA4F3 /* JFImageGroupTableViewController.h */,
+				74D9779E1FD8E47F00BAA4F3 /* JFImageGroupTableViewController.m */,
+				74D9779F1FD8E47F00BAA4F3 /* JFImageManager.h */,
+				74D977A01FD8E47F00BAA4F3 /* JFImageManager.m */,
+				74D977A11FD8E47F00BAA4F3 /* JFImagePickerController.h */,
+				74D977A21FD8E47F00BAA4F3 /* JFImagePickerController.m */,
+				74D977A31FD8E47F00BAA4F3 /* JFImagePickerViewCell.h */,
+				74D977A41FD8E47F00BAA4F3 /* JFImagePickerViewCell.m */,
+				74D977A51FD8E47F00BAA4F3 /* JFPhotoBrowserViewController.h */,
+				74D977A61FD8E47F00BAA4F3 /* JFPhotoBrowserViewController.m */,
+				74D977A71FD8E47F00BAA4F3 /* JFPhotoView.h */,
+				74D977A81FD8E47F00BAA4F3 /* JFPhotoView.m */,
+			);
+			path = JFImagePickerController;
+			sourceTree = "<group>";
+		};
+		74D977A91FD8E47F00BAA4F3 /* WSImagebroswerVC */ = {
+			isa = PBXGroup;
+			children = (
+				74D977AA1FD8E47F00BAA4F3 /* WSImageBroserCell.h */,
+				74D977AB1FD8E47F00BAA4F3 /* WSImageBroserCell.m */,
+				74D977AC1FD8E47F00BAA4F3 /* WSImageBroswerVC.h */,
+				74D977AD1FD8E47F00BAA4F3 /* WSImageBroswerVC.m */,
+				74D977AE1FD8E47F00BAA4F3 /* WSImageModel.h */,
+				74D977AF1FD8E47F00BAA4F3 /* WSImageModel.m */,
+				74D977B01FD8E47F00BAA4F3 /* WSPhotosBroseVC.h */,
+				74D977B11FD8E47F00BAA4F3 /* WSPhotosBroseVC.m */,
+			);
+			path = WSImagebroswerVC;
+			sourceTree = "<group>";
+		};
+		74D977B21FD8E47F00BAA4F3 /* WSImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				74D977B31FD8E47F00BAA4F3 /* WSImagePickerView.h */,
+				74D977B41FD8E47F00BAA4F3 /* WSImagePickerView.m */,
+			);
+			path = WSImagePicker;
+			sourceTree = "<group>";
+		};
 		74DB99F91F13655700635968 /* SGQRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -5136,6 +5247,8 @@
 				74E599161F4192C500587D8A /* ComMettingDetailSHowPicViewController.m */,
 				74E599121F41922A00587D8A /* ComMettingDetailUploadPicViewController.h */,
 				74E599131F41922A00587D8A /* ComMettingDetailUploadPicViewController.m */,
+				74D977C21FD8E62C00BAA4F3 /* ComMettingUpdateDetailPicViewController.h */,
+				74D977C31FD8E62C00BAA4F3 /* ComMettingUpdateDetailPicViewController.m */,
 			);
 			path = "更新会议";
 			sourceTree = "<group>";
@@ -5446,6 +5559,7 @@
 				74039C8F1F3759EE005214EA /* 2xin@3x.png in Resources */,
 				748FE9501F5FEA740056DB1E /* bt其它应用1.png in Resources */,
 				742491BA1F4F1C3A00D35C6B /* 应收款金额@2x.png in Resources */,
+				74D977C61FD8E7A100BAA4F3 /* bg_photo_add.png in Resources */,
 				085471F31EE848E700DC9B4D /* usercode.png in Resources */,
 				088EE5DA1EF3BFCF00A5A9D3 /* me关于@2x.png in Resources */,
 				0887AA2F1EDEBD8300EC334B /* water统计@2x.png in Resources */,
@@ -5790,6 +5904,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74D977BB1FD8E48000BAA4F3 /* JFPhotoBrowserViewController.m in Sources */,
 				08183EAF1ECB404F00C9E553 /* NSArray+MASAdditions.m in Sources */,
 				74DB9A0B1F13655700635968 /* SGQRCodeScanManager.m in Sources */,
 				08183EAE1ECB404F00C9E553 /* MASViewConstraint.m in Sources */,
@@ -5816,6 +5931,7 @@
 				748D2F601F3CABB600A7A766 /* ComWaterMettingReadyViewController.m in Sources */,
 				08183D271ECB404E00C9E553 /* CLBottomCommentView.m in Sources */,
 				745C39611F9F1F61008E0BB2 /* TbeaDaiChuLiDetailViewController.m in Sources */,
+				74D977B51FD8E47F00BAA4F3 /* JFAssetHelper.m in Sources */,
 				74DB9A0A1F13655700635968 /* SGQRCodeGenerateManager.m in Sources */,
 				08183E6D1ECB404F00C9E553 /* STUI.m in Sources */,
 				74DB9A0C1F13655700635968 /* SGQRCodeScanningView.m in Sources */,
@@ -5866,6 +5982,7 @@
 				08CAA64A1EE7F2C200F47C9E /* WaterPersonMangerViewController.m in Sources */,
 				08183EA91ECB404F00C9E553 /* MASCompositeConstraint.m in Sources */,
 				08183D3F1ECB404E00C9E553 /* JQBounceSpot2Animation.m in Sources */,
+				74D977C41FD8E62C00BAA4F3 /* ComMettingUpdateDetailPicViewController.m in Sources */,
 				081705651EFCB2790017D1AE /* MemberMangementSelectUserTypeViewController.m in Sources */,
 				745C39671F9F2ED1008E0BB2 /* PopCustomDoneView.m in Sources */,
 				741264D11F13B48A0070D9E8 /* ScanQRInputCodeViewController.m in Sources */,
@@ -5884,10 +6001,12 @@
 				080FD46D1EEE86F9006EFC62 /* AlertViewExtension.m in Sources */,
 				08183D3C1ECB404E00C9E553 /* FYPhotoInAssetViewController.m in Sources */,
 				08183D1C1ECB404E00C9E553 /* UIImageView+AFNetworking.m in Sources */,
+				74D977BA1FD8E48000BAA4F3 /* JFImagePickerViewCell.m in Sources */,
 				7406B8731FC41F0F0056372C /* UIScrollView+MJRefresh.m in Sources */,
 				745152CD1F4EB31E006FB244 /* ReturnSearchViewController.m in Sources */,
 				0865C9E11EEA547700B2E70C /* RegiestPageViewController.m in Sources */,
 				7448BC971F5267EC00354934 /* MyMessageViewController.m in Sources */,
+				74D977B71FD8E47F00BAA4F3 /* JFImageGroupTableViewController.m in Sources */,
 				08183E131ECB404E00C9E553 /* DBTakeVideoVC.m in Sources */,
 				08183D431ECB404E00C9E553 /* JQMusic1Animation.m in Sources */,
 				08CAA6481EE7F2C200F47C9E /* WaterPersonHpViewController.m in Sources */,
@@ -5946,6 +6065,7 @@
 				0818397F1ECB3F7300C9E553 /* AppDelegate.m in Sources */,
 				745152B81F4EB31E006FB244 /* InstitutionViewController.m in Sources */,
 				742F69C71FA2E32300D4E5C2 /* TbeaDetectUserHPViewController.m in Sources */,
+				74D977BC1FD8E48000BAA4F3 /* JFPhotoView.m in Sources */,
 				7452DC021F5406E6008AE7EC /* MallStoreGoodsMangerViewController.m in Sources */,
 				748D2F641F3CABFE00A7A766 /* ComMettingDetailLookViewController.m in Sources */,
 				08CF46051EFBA683002A154A /* MemberManagementViewController.m in Sources */,
@@ -5965,6 +6085,7 @@
 				0860169B1ECDEA730046FB3D /* MyPageViewController.m in Sources */,
 				08FC41C01EF8CF6C00DE56D4 /* SonAccountMangerViewController.m in Sources */,
 				081840341ECB535D00C9E553 /* MBProgressHUD.m in Sources */,
+				74D977C11FD8E48000BAA4F3 /* WSImagePickerView.m in Sources */,
 				08183D361ECB404E00C9E553 /* FYAlbumAssetCell.m in Sources */,
 				7497F60F1F4DDC4E006AE830 /* WkWebViewViewController.m in Sources */,
 				088D5A1F1EF2855700DE7A3A /* TbeaContactViewController.m in Sources */,
@@ -5999,6 +6120,8 @@
 				088270891F05D80C0006F8ED /* AreaSelectViewController.m in Sources */,
 				748D2F5D1F3CABB600A7A766 /* ComMettingScheduleViewController.m in Sources */,
 				08183E7B1ECB404F00C9E553 /* PHFetchResult+PhotoObject.m in Sources */,
+				74D977BE1FD8E48000BAA4F3 /* WSImageBroswerVC.m in Sources */,
+				74D977B81FD8E47F00BAA4F3 /* JFImageManager.m in Sources */,
 				0860169E1ECDEA810046FB3D /* OtherAppPageViewController.m in Sources */,
 				08E5B1831ED72313005C9A63 /* UIButton+Layout.m in Sources */,
 				745152BE1F4EB31E006FB244 /* AddProductViewController.m in Sources */,
@@ -6019,7 +6142,9 @@
 				7406B8611FC41F0F0056372C /* MJRefreshNormalHeader.m in Sources */,
 				742F69D41FA310CE00D4E5C2 /* TbeaDetectUserWeiJieDanViewController.m in Sources */,
 				08C63E9D1ED1DF5600325F44 /* ScanRebatehpCellview.m in Sources */,
+				74D977C01FD8E48000BAA4F3 /* WSPhotosBroseVC.m in Sources */,
 				08183EB11ECB404F00C9E553 /* View+MASAdditions.m in Sources */,
+				74D977BF1FD8E48000BAA4F3 /* WSImageModel.m in Sources */,
 				084D9C691EF7B357008A4D10 /* MyPageModifyPhoneDoneViewController.m in Sources */,
 				08183E711ECB404F00C9E553 /* UIImagePickerController+ST.m in Sources */,
 				0854B7CB1EE8E83000A2F301 /* LoginPageViewController.m in Sources */,
@@ -6072,6 +6197,7 @@
 				742F69D81FA3111300D4E5C2 /* TbeaDetectUserYiJieDanViewController.m in Sources */,
 				084D9C6C1EF7B634008A4D10 /* SettingModifyPwdViewController.m in Sources */,
 				74DB9A221F136D4F00635968 /* ScanQRCodeARViewController.m in Sources */,
+				74D977BD1FD8E48000BAA4F3 /* WSImageBroserCell.m in Sources */,
 				08CAA63D1EE7F2C200F47C9E /* TiXianDataHpViewController.m in Sources */,
 				08183E141ECB404E00C9E553 /* InsetsLabel.m in Sources */,
 				745929351FA967B7008FBE3C /* SwiftWebview.swift in Sources */,
@@ -6095,6 +6221,7 @@
 				745152C71F4EB31E006FB244 /* JXOrderProductDetailViewController.m in Sources */,
 				74F8C6FA1F399C4C007AD1D0 /* DistributorRebateTiXianHistoryViewController.m in Sources */,
 				745152C01F4EB31E006FB244 /* OnlineOrderDetailViewController.m in Sources */,
+				74D977B61FD8E47F00BAA4F3 /* JFImageCollectionViewController.m in Sources */,
 				7406B8541FC41F0F0056372C /* MJRefreshAutoFooter.m in Sources */,
 				7414C4E21FC7E0A6005E43E4 /* LLWaitingView.m in Sources */,
 				08183E7C1ECB404F00C9E553 /* PhotoCollectionViewCell.m in Sources */,
@@ -6163,6 +6290,7 @@
 				7406B8561FC41F0F0056372C /* MJRefreshComponent.m in Sources */,
 				08183E111ECB404E00C9E553 /* HomeTabbarController.m in Sources */,
 				74E599111F41908D00587D8A /* ComMettinDetailUploadSummaryViewController.m in Sources */,
+				74D977B91FD8E48000BAA4F3 /* JFImagePickerController.m in Sources */,
 				747DB73C1F0F77C400D0D15F /* MallStoreTopImageViewController.m in Sources */,
 				08183E0E1ECB404E00C9E553 /* UISwipeNavigationController.m in Sources */,
 				747DB7391F0F768000D0D15F /* MallStoreFuntionView.m in Sources */,

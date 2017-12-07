@@ -39,11 +39,14 @@
     self.view.backgroundColor = [UIColor whiteColor];
     app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     arrayselectitem = [[NSMutableArray alloc] init];
-    FCorderid = @"desc";
+    FCorderid = @"";
     FCorderitem = @"money";
     FCstarttime = @"";
     FCendtime = @"";
     FCzonelds = @"";
+    FCorderuser = @"";
+    FCordermoney = @"";
+    FCSelectDropListItem = 0;
     
     tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-40)];
     tableview.backgroundColor = [UIColor clearColor];
@@ -110,14 +113,12 @@
     float nowwidth = (SCREEN_WIDTH-20)/4;
     
     //编码
-    UIButton *buttonitemusertype = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonitemusertype.frame =CGRectMake(15, 0, nowwidth-5, 40);
-    buttonitemusertype.backgroundColor = [UIColor clearColor];
-    [buttonitemusertype setTitle:@"分销商" forState:UIControlStateNormal];
-    buttonitemusertype.titleLabel.font = FONTB(14.0f);
-    buttonitemusertype.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [buttonitemusertype setTitleColor:COLORNOW(117, 117, 117) forState:UIControlStateNormal];
-    [viewselectitem addSubview:buttonitemusertype];
+    ButtonItemLayoutView *buttonitemuser = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, 0, nowwidth*2, 40)];
+    [buttonitemuser.button addTarget:self action:@selector(ClickSelectUser:) forControlEvents:UIControlEventTouchUpInside];
+    buttonitemuser.tag = EnSortMoreSelectItembt1;
+    [buttonitemuser updatebuttonitem:EnButtonTextLeft TextStr:@"用户" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrawgray", @"png")];
+    [viewselectitem addSubview:buttonitemuser];
+    
     
     //区域
     ButtonItemLayoutView *buttonitemarea = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10+nowwidth*2, 0, nowwidth, 40)];
@@ -142,9 +143,12 @@
     
     float nowwidth = (SCREEN_WIDTH-20)/4;
     
-    UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 40, 40)];
+    UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 40, 40)];
     NSString *strpic = [dic objectForKey:@"thumbpicture"];
     [imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
+    imageheader.contentMode = UIViewContentModeScaleAspectFill;
+    imageheader.layer.cornerRadius = 20.0f;
+    imageheader.clipsToBounds = YES;
     [viewcell addSubview:imageheader];
     
     NSString *strname = [dic objectForKey:@"mastername"];
@@ -246,31 +250,33 @@
     //数量  从小到大   从大到小
     //远近  从远到近   从近到远
     //激活  已激活  未激活
-    FCorderitem = @"money";
     ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnSortMoreSelectItembt3];
-    if([FCorderid isEqualToString:@"desc"])
+    ButtonItemLayoutView *buttonitem2 = [self.view viewWithTag:EnSortMoreSelectItembt1];
+    [buttonitem2 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+    FCorderitem = @"money";
+    FCorderuser = @"";
+    if([FCordermoney isEqualToString:@""])
     {
-        FCorderid= @"asc";
-        FCorderitem = @"money";
-        [buttonitem1 updatelabstr:@"金额"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
+        FCordermoney= @"desc";
         [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    else if([FCordermoney isEqualToString:@"desc"])
+    {
+        FCordermoney= @"asc";
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
     }
     else
     {
-        FCorderid= @"desc";
-        FCorderitem = @"money";
-        [buttonitem1 updatelabstr:@"金额"];
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
-        [buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
+        FCordermoney= @"desc";
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
     }
+    FCorderid = FCordermoney;
     [self getrebatesortlist:@"1" Pagesize:@"10"];
 }
 
 -(void)ClickSelectarea:(id)sender
 {
     ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnSortMoreSelectItembt2];
-    [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
     [buttonitem1 updateimage:LOADIMAGE(@"arrowblueunder", @"png")];
     [arrayselectitem removeAllObjects];
     if (flagnow==0)
@@ -290,11 +296,44 @@
     }
 }
 
+-(void)ClickSelectUser:(id)sender
+{
+    //排序分
+    //金额  从小到大   从大到小
+    //数量  从小到大   从大到小
+    //远近  从远到近   从近到远
+    //激活  已激活  未激活
+    ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnSortMoreSelectItembt1];
+    ButtonItemLayoutView *buttonitem2 = [self.view viewWithTag:EnSortMoreSelectItembt3];
+    [buttonitem2 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+    FCorderitem = @"user";
+    FCordermoney = @"";
+    if([FCorderuser isEqualToString:@""])
+    {
+        FCorderuser= @"desc";
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    else if([FCorderuser isEqualToString:@"desc"])
+    {
+        FCorderuser= @"asc";
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
+    }
+    else
+    {
+        FCorderuser= @"desc";
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    FCorderid = FCorderuser;
+    [self getrebatesortlist:@"1" Pagesize:@"10"];
+}
+
+
 #pragma mark TYYNavFilterDelegate
 -(AndyDropDownList *)initandydroplist:(UIButton *)button
 {
     andydroplist = [[AndyDropDownList alloc] initWithListDataSource:arrayselectitem rowHeight:44 view:button Frame:CGRectMake(0, 40, SCREEN_WIDTH, SCREEN_HEIGHT)];
     andydroplist.delegate = self;
+    [andydroplist setselectrow:FCSelectDropListItem];
     return andydroplist;
 }
 
@@ -310,15 +349,17 @@
     
     if([aStr isEqualToString:@"区域选择"])
     {
+        FCSelectDropListItem = 1;
         AreaSelectViewController *areaseelct = [[AreaSelectViewController alloc] init];
         areaseelct.delegate1 = self;
         [self.navigationController pushViewController:areaseelct animated:YES];
     }
     else
     {
+        FCSelectDropListItem = 0;
         FCzonelds = @"";
         ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnSortMoreSelectItembt2];
-        [buttonitem1 updatelabstr:@"全部区域"];
+//        [buttonitem1 updatelabstr:@"全部区域"];
         [self getrebatesortlist:@"1" Pagesize:@"10"];
     }
     

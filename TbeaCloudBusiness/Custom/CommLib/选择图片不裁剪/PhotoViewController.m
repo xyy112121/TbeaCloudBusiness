@@ -107,7 +107,7 @@
 {
     if (_bottomBar == nil)
     {
-        _bottomBar = [[UITabBar alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height - 44-IPhone_SafeBottomMargin, self.view.frame.size.width, 44)];
+        _bottomBar = [[UITabBar alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height -44-StatusBarAndNavigationHeight-IPhone_SafeBottomMargin, self.view.frame.size.width, 44)];
         //add subviews
         [_bottomBar addSubview:self.sendButton];
         [_bottomBar addSubview:self.numberOfLabel];
