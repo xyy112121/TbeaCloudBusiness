@@ -282,7 +282,7 @@
 	switch (indexPath.row)
 	{
 		case 0:
-			labelname.text = @"金额";
+			labelname.text = @"面额";
 			labelname.font = FONTN(15.0f);
 			labelname.textColor = [UIColor blackColor];
 			[cell.contentView addSubview:labelname];

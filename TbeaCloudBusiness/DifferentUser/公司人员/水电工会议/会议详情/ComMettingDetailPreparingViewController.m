@@ -30,15 +30,17 @@
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:contentView];
     self.navigationItem.leftBarButtonItem = barButtonItem;
     
-    UIView *contentViewright = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    UIButton *buttonright = [[UIButton alloc] initWithFrame:contentViewright.bounds];
-    [buttonright setImage:LOADIMAGE(@"morepointwhite", @"png") forState:UIControlStateNormal];
-    [buttonright addTarget:self action: @selector(Clickmorefunction:) forControlEvents: UIControlEventTouchUpInside];
-    [contentViewright addSubview:buttonright];
-    buttonright.imageEdgeInsets = UIEdgeInsetsMake(0,0, 0, -20);
-    UIBarButtonItem *barButtonItemright = [[UIBarButtonItem alloc] initWithCustomView:contentViewright];
-    self.navigationItem.rightBarButtonItem = barButtonItemright;
-    
+    if([_FCmeetingsponsorid isEqualToString:app.userinfo.userid])
+    {
+        UIView *contentViewright = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+        UIButton *buttonright = [[UIButton alloc] initWithFrame:contentViewright.bounds];
+        [buttonright setImage:LOADIMAGE(@"morepointwhite", @"png") forState:UIControlStateNormal];
+        [buttonright addTarget:self action: @selector(Clickmorefunction:) forControlEvents: UIControlEventTouchUpInside];
+        [contentViewright addSubview:buttonright];
+        buttonright.imageEdgeInsets = UIEdgeInsetsMake(0,0, 0, -20);
+        UIBarButtonItem *barButtonItemright = [[UIBarButtonItem alloc] initWithCustomView:contentViewright];
+        self.navigationItem.rightBarButtonItem = barButtonItemright;
+    }
     // Do any additional setup after loading the view.
 }
 

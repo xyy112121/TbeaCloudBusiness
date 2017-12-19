@@ -288,6 +288,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"provinceidwithuser"] = @"1";
     params[@"cityidwithuser"] = @"1";
+    params[@"city"] = _FCstrcity;
     [RequestInterface doGetJsonWithParametersNoAn:params App:app RequestCode:RQComWaterMettingJSXSelectListCode ReqUrl:InterfaceRequestUrl ShowView:app.window alwaysdo:^{
         
     } Success:^(NSDictionary *dic) {

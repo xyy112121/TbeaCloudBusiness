@@ -82,6 +82,8 @@
 #define RQMettingShowPicDeletePicCode @"TBEAYUN008003003002"  //删除图片s
 #define REMySelfPersoninfoCode @"TBEAYUN011006001001"  //个人中心个人资料
 #define REModifyPersonInfoCode @"TBEAYUN011006002001"  //修改个人中心个人资料
+#define RQShangJiaZiLiaoInfoCode @"TBEAYUN004005003000" //获取经销商详情
+
 
 #define RQUserCenterSettingHpCode  @"TBEAYUN011001001001"//用户中心设置
 #define RQUserCenterReceiveAddressCode @"TBEAYUN011001002001" //收货地址列表

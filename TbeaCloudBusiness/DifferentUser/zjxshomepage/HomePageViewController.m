@@ -234,6 +234,7 @@
     else if([strmoduleid isEqualToString:@"marketer_shuidiangongguanli"]) //公司人员水电工管理
     {
         comwaterperson = [[ComWaterPersonMangerZJXViewController alloc] init];
+        comwaterperson.FCfromflag = @"1";
         comwaterperson.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:comwaterperson animated:YES];
     }
@@ -251,11 +252,18 @@
         tebianfenxiao.hidesBottomBarWhenPushed = YES;
          [self.navigationController pushViewController:tebianfenxiao animated:YES];
     }
-    else if([strmoduleid isEqualToString:@"fenxiaoshang"])
+    else if([strmoduleid isEqualToString:@"fenxiaoshang"]) //进入分销系统
     {
         distributormanger = [[DistributorMangerViewController alloc] init];
         distributormanger.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:distributormanger animated:YES];
+    }
+    else if([strmoduleid isEqualToString:@"marketer_shaomafanli"]) //外勤人员的扫码返利
+    {
+        comwaterperson = [[ComWaterPersonMangerZJXViewController alloc] init];
+        comwaterperson.hidesBottomBarWhenPushed = YES;
+        comwaterperson.FCfromflag = @"2";
+        [self.navigationController pushViewController:comwaterperson animated:YES];
     }
 }
 

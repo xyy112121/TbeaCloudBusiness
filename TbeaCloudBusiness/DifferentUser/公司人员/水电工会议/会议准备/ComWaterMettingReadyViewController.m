@@ -395,7 +395,7 @@
                 
                 
                 break;
-            case 2:
+            case 3:
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 labelname.text = @"举办单位";
                 [cell.contentView addSubview:labelname];
@@ -412,7 +412,7 @@
                     [cell.contentView addSubview:labelvalue];
                 }
                 break;
-            case 3:
+            case 2:
                 labelname.text = @"会议地点";
                 labelname.frame = CGRectMake(XYViewL(labelname), 5, XYViewWidth(labelname), 40);
                 [cell.contentView addSubview:labelname];
@@ -498,12 +498,13 @@
                     timeselect.FCendtime = FCendtime;
                     [self.navigationController pushViewController:timeselect animated:YES];
                     break;
-                case 2:
+                case 3:
                     comjsxlist = [[ComWaterJXSSelectViewController alloc] init];
                     comjsxlist.delegate1 = self;
+                    comjsxlist.FCstrcity = FCcity;
                     [self.navigationController pushViewController:comjsxlist animated:YES];
                     break;
-                case 3:
+                case 2:
                     addressselect = [[AddressSelectInputViewController alloc] init];
                     addressselect.delegate1 = self;
                     [self.navigationController pushViewController:addressselect animated:YES];

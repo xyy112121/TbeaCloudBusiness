@@ -43,7 +43,9 @@
     NSMutableArray *arrayselectitem;
     int flagnow; //表明当前的是否显示
     
+    
 }
+
 
 @property(nonatomic,strong)id<ActionDelegate>delegate1;
 

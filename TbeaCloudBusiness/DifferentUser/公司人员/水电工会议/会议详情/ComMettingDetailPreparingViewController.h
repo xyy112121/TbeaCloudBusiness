@@ -45,7 +45,7 @@
     
     NSString *FCparticipantnumber; //会议number
 }
-
+@property(nonatomic,strong)NSString *FCmeetingsponsorid;
 @property(nonatomic,strong)NSString *FCmettingid;
 @property(nonatomic,strong)id<ActionDelegate>delegate1;
 

@@ -26,7 +26,10 @@
     //
     NSArray *FCarraydata;
     NSDictionary *FCdicelectricianinfo;
+    
+    UIView *viewtop;
 }
+@property(nonatomic,strong)NSString *FCfromflag;//1 外勤人员水电工管理进入  2 外勤人员扫码返利
 @property(nonatomic,strong)NSString *FCelectricianid;
 @property(nonatomic,strong)NSString *FCpersontype;
 @property(nonatomic,strong)NSString *FCpayeeid;

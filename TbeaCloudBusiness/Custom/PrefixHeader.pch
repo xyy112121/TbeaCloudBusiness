@@ -252,6 +252,9 @@
 #import "CMArrangementPicView.h"
 #import "WSImagePickerView.h"
 #import "ComMettingUpdateDetailPicViewController.h"
+#import "AddressPickerHeader.h"
+#import "CZHAddressPickerView.h"
+#import "ShangJiaZiLiaoViewController.h"
 #endif /* PrefixHeader_pch */
 
 /**

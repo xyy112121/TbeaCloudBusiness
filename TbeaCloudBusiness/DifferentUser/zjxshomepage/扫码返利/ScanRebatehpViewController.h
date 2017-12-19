@@ -19,4 +19,5 @@
 	NSArray *FCarraydata; // 列表数据
 	NSDictionary *FCdictakemoney;//提现dic
 }
+@property(nonatomic,strong)NSString *FCfdistributorid;
 @end

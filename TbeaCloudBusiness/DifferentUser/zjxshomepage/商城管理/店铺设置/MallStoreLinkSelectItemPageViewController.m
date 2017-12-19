@@ -45,6 +45,12 @@
     app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     FCorder = @"desc";
     FCorderid = @"";
+    FCorderprice = @"";
+    FCordernew = @"";
+    FCordersalenum = @"";
+    FCorderrecommend = @"";
+    FCordertime = @"";
+    
     linkselectitem = EnMallStoreLinkSelectCommodity;  //默认店铺商品
     
     tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight)];
@@ -203,13 +209,23 @@
 
 -(void)clickselectitem:(id)sender
 {
+    ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnMallStoreMangerLinkTypeSelectItem2];
+    ButtonItemLayoutView *buttonitem2 = [self.view viewWithTag:EnMallStoreMangerLinkTypeSelectItem3];
+    ButtonItemLayoutView *buttonitem3 = [self.view viewWithTag:EnMallStoreMangerLinkTypeSelectItem4];
+    [buttonitem1 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+    [buttonitem2 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+    [buttonitem3 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+    FCorderprice = @"";
+    FCordersalenum = @"";
+    FCordernew = @"";
     UIButton *button = (UIButton *)sender;
     int tagnow = (int)[button tag];
     switch (tagnow)
     {
         case EnMallStoreMangerLinkTypeSelectItem1:
             FCorderid = @"";
-            [button setTitleColor:COLORNOW(0, 170, 238) forState:UIControlStateNormal];
+
+//            [button setTitleColor:COLORNOW(0, 170, 238) forState:UIControlStateNormal];
             break;
         case EnMallStoreMangerLinkTypeSelectItem2:
             FCorderid = @"salenumber";
@@ -228,38 +244,117 @@
 -(void)selectprice:(id)sender
 {
     ButtonItemLayoutView *buttonitem = [self.view viewWithTag:EnMallStoreMangerLinkTypeSelectItem4];
-    [buttonitem updatelablecolor:COLORNOW(0, 170, 236)];
-    if([FCorderid isEqualToString:@"desc"])
+    ButtonItemLayoutView *buttonitem2 = [self.view viewWithTag:EnMallStoreMangerLinkTypeSelectItem2];
+    ButtonItemLayoutView *buttonitem3 = [self.view viewWithTag:EnMallStoreMangerLinkTypeSelectItem3];
+    [buttonitem2 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+    [buttonitem3 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+    FCorderrecommend = @"";
+    FCordersalenum = @"";
+    FCordernew = @"";
+    FCordertime = @"";
+    FCorderid = @"price";
+    if([FCorderprice isEqualToString:@""])
     {
-        FCorder = @"asc";
-        FCorderid = @"price";
+        FCorderprice = @"desc";
+        [buttonitem updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    else if([FCorderprice isEqualToString:@"desc"])
+    {
+        FCorderprice = @"asc";
+        
         [buttonitem updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
     }
     else
     {
-        FCorder = @"desc";
-        FCorderid = @"price";
+        FCorderprice = @"desc";
         [buttonitem updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
     }
-    
+    FCorder = FCorderprice;
+    [self getgoodsmanger:@"1" PageSize:@"10"];
+}
+
+-(void)selectnew:(id)sender
+{
+    ButtonItemLayoutView *buttonitem = [self.view viewWithTag:EnMallStoreMangerLinkTypeSelectItem3];
+    ButtonItemLayoutView *buttonitem2 = [self.view viewWithTag:EnMallStoreMangerLinkTypeSelectItem2];
+    ButtonItemLayoutView *buttonitem3 = [self.view viewWithTag:EnMallStoreMangerLinkTypeSelectItem4];
+    [buttonitem2 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+    [buttonitem3 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+    FCorderprice = @"";
+    FCorderrecommend = @"";
+    FCordersalenum = @"";
+    FCorderid = @"time";
+    if([FCordernew isEqualToString:@""])
+    {
+        FCordernew = @"desc";
+        [buttonitem updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    else if([FCordernew isEqualToString:@"desc"])
+    {
+        FCordernew = @"asc";
+        
+        [buttonitem updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
+    }
+    else
+    {
+        FCordernew = @"desc";
+        [buttonitem updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    FCorder = FCordernew;
+    [self getgoodsmanger:@"1" PageSize:@"10"];
+}
+
+-(void)selectsalenum:(id)sender
+{
+    ButtonItemLayoutView *buttonitem = [self.view viewWithTag:EnMallStoreMangerLinkTypeSelectItem2];
+    ButtonItemLayoutView *buttonitem2 = [self.view viewWithTag:EnMallStoreMangerLinkTypeSelectItem3];
+    ButtonItemLayoutView *buttonitem3 = [self.view viewWithTag:EnMallStoreMangerLinkTypeSelectItem4];
+    [buttonitem2 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+    [buttonitem3 updateimage:LOADIMAGE(@"arrawgray", @"png")];
+    FCorderprice = @"";
+    FCorderrecommend = @"";
+    FCordernew = @"";
+    FCorderid = @"salenumber";
+    if([FCordersalenum isEqualToString:@""])
+    {
+        FCordersalenum = @"desc";
+        [buttonitem updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    else if([FCordersalenum isEqualToString:@"desc"])
+    {
+        FCordersalenum = @"asc";
+        
+        [buttonitem updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
+    }
+    else
+    {
+        FCordersalenum = @"desc";
+        [buttonitem updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    FCorder = FCordersalenum;
+    [self getgoodsmanger:@"1" PageSize:@"10"];
 }
 
 -(void)selecttime:(id)sender
 {
     ButtonItemLayoutView *buttonitem = [self.view viewWithTag:EnMallStoreMangerLinkTypeSelectItem5];
-    [buttonitem updatelablecolor:COLORNOW(0, 170, 236)];
-    if([FCorderid isEqualToString:@"desc"])
+    FCorderid = @"time";
+    if([FCordertime isEqualToString:@""])
     {
-        FCorder = @"asc";
-        FCorderid = @"time";
+        FCordertime = @"desc";
+        [buttonitem updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    else if([FCordertime isEqualToString:@"desc"])
+    {
+        FCordertime = @"asc";
         [buttonitem updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
     }
     else
     {
-        FCorder = @"desc";
-        FCorderid = @"time";
+        FCordertime = @"desc";
         [buttonitem updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
     }
+    FCorder = FCordertime;
     [self getlinkactivitylist:@"1" PageSize:@"10"];
 }
 
@@ -320,44 +415,82 @@
 {
     if(section == 0)
         return nil;
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableview.frame.size.width,40)];
-    view.backgroundColor = [UIColor clearColor];
+//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableview.frame.size.width,40)];
+//    view.backgroundColor = [UIColor clearColor];
     
     if(linkselectitem == EnMallStoreLinkSelectCommodity)
     {
-        UIButton *button1 = [self initbutton:@"推荐" Frame:CGRectMake(0,0,SCREEN_WIDTH/4,40)];
-        [button1 addTarget:self action:@selector(clickselectitem:) forControlEvents:UIControlEventTouchUpInside];
-        button1.tag = EnMallStoreMangerLinkTypeSelectItem1;
-        [view addSubview:button1];
-        
-        UIButton *button2 = [self initbutton:@"销量" Frame:CGRectMake(SCREEN_WIDTH/4,0,SCREEN_WIDTH/4,40)];
-        [button2 addTarget:self action:@selector(clickselectitem:) forControlEvents:UIControlEventTouchUpInside];
-        button2.tag = EnMallStoreMangerLinkTypeSelectItem2;
-        [view addSubview:button2];
-        
-        UIButton *button3 = [self initbutton:@"新品" Frame:CGRectMake(SCREEN_WIDTH/4*2,0,SCREEN_WIDTH/4,40)];
-        [button3 addTarget:self action:@selector(clickselectitem:) forControlEvents:UIControlEventTouchUpInside];
-        button3.tag = EnMallStoreMangerLinkTypeSelectItem3;
-        [view addSubview:button3];
-        
-        ButtonItemLayoutView *buttonitemmoney = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/4*3, 0, SCREEN_WIDTH/4, 40)];
-        [buttonitemmoney.button addTarget:self action:@selector(selectprice:) forControlEvents:UIControlEventTouchUpInside];
-        buttonitemmoney.tag = EnMallStoreMangerLinkTypeSelectItem4;
-        [buttonitemmoney updatebuttonitem:EnButtonTextCenter TextStr:@"价格" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrawgray", @"png")];
-        [view addSubview:buttonitemmoney];
+        viewActivity = nil;
+        if(viewCommodity == nil)
+        {
+            FCorderprice = @"";
+            FCorderrecommend = @"";
+            FCordersalenum = @"";
+            FCordernew = @"";
+            FCordertime = @"";
+            
+            viewCommodity = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableview.frame.size.width,40)];
+            viewCommodity.backgroundColor = [UIColor whiteColor];
+            
+            UIButton *button1 = [self initbutton:@"推荐" Frame:CGRectMake(0,0,SCREEN_WIDTH/4,40)];
+            [button1 addTarget:self action:@selector(clickselectitem:) forControlEvents:UIControlEventTouchUpInside];
+            button1.tag = EnMallStoreMangerLinkTypeSelectItem1;
+            [viewCommodity addSubview:button1];
+            
+            ButtonItemLayoutView *buttonitemsalenum = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/4,0,SCREEN_WIDTH/4,40)];
+            [buttonitemsalenum.button addTarget:self action:@selector(selectsalenum:) forControlEvents:UIControlEventTouchUpInside];
+            buttonitemsalenum.tag = EnMallStoreMangerLinkTypeSelectItem2;
+            [buttonitemsalenum updatebuttonitem:EnButtonTextCenter TextStr:@"销量" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrawgray", @"png")];
+            [viewCommodity addSubview:buttonitemsalenum];
+            
+            
+            ButtonItemLayoutView *buttonitemnew = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/4*2,0,SCREEN_WIDTH/4,40)];
+            [buttonitemnew.button addTarget:self action:@selector(selectnew:) forControlEvents:UIControlEventTouchUpInside];
+            buttonitemnew.tag = EnMallStoreMangerLinkTypeSelectItem3;
+            [buttonitemnew updatebuttonitem:EnButtonTextCenter TextStr:@"新品" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrawgray", @"png")];
+            [viewCommodity addSubview:buttonitemnew];
+            
+            
+            ButtonItemLayoutView *buttonitemmoney = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/4*3, 0, SCREEN_WIDTH/4, 40)];
+            [buttonitemmoney.button addTarget:self action:@selector(selectprice:) forControlEvents:UIControlEventTouchUpInside];
+            buttonitemmoney.tag = EnMallStoreMangerLinkTypeSelectItem4;
+            [buttonitemmoney updatebuttonitem:EnButtonTextCenter TextStr:@"价格" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrawgray", @"png")];
+            [viewCommodity addSubview:buttonitemmoney];
+            
+            UIImageView *imageline = [[UIImageView alloc] initWithFrame:CGRectMake(0, 39, SCREEN_WIDTH, 0.7)];
+            imageline.backgroundColor = COLORNOW(220, 220, 220);
+            [viewCommodity addSubview:imageline];
+        }
+        return viewCommodity;
     }
     else
     {
-        ButtonItemLayoutView *buttonitemmoney = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, 0, (SCREEN_WIDTH-20)/4, 40)];
-        [buttonitemmoney.button addTarget:self action:@selector(selecttime:) forControlEvents:UIControlEventTouchUpInside];
-        buttonitemmoney.tag = EnMallStoreMangerLinkTypeSelectItem5;
-        [buttonitemmoney updatebuttonitem:EnButtonTextCenter TextStr:@"发布时间" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrawgray", @"png")];
-        [view addSubview:buttonitemmoney];
+        viewCommodity = nil;
+        if(viewActivity == nil)
+        {
+            FCorderprice = @"";
+            FCorderrecommend = @"";
+            FCordersalenum = @"";
+            FCordernew = @"";
+            FCordertime = @"";
+            
+            viewActivity = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableview.frame.size.width,40)];
+            viewActivity.backgroundColor = [UIColor whiteColor];
+            
+            ButtonItemLayoutView *buttonitemmoney = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, 0, (SCREEN_WIDTH-20)/4, 40)];
+            [buttonitemmoney.button addTarget:self action:@selector(selecttime:) forControlEvents:UIControlEventTouchUpInside];
+            buttonitemmoney.tag = EnMallStoreMangerLinkTypeSelectItem5;
+            [buttonitemmoney updatebuttonitem:EnButtonTextCenter TextStr:@"发布时间" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrawgray", @"png")];
+            [viewActivity addSubview:buttonitemmoney];
+            
+            UIImageView *imageline = [[UIImageView alloc] initWithFrame:CGRectMake(0, 39, SCREEN_WIDTH, 0.7)];
+            imageline.backgroundColor = COLORNOW(220, 220, 220);
+            [viewActivity addSubview:imageline];
+        }
+        return viewActivity;
     }
-    UIImageView *imageline = [[UIImageView alloc] initWithFrame:CGRectMake(0, 39, SCREEN_WIDTH, 0.7)];
-    imageline.backgroundColor = COLORNOW(220, 220, 220);
-    [view addSubview:imageline];
-    return view;
+    
+    return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

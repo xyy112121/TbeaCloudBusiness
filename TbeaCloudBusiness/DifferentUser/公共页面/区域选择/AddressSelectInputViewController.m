@@ -63,6 +63,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [self.navigationController setNavigationBarHidden:NO];
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar  setBackgroundImage:[[UIImage alloc] init] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
@@ -91,21 +92,20 @@
     return YES;
 }
 
-#pragma mark 地址选择代理 
-//地址选择
-- (void)clickselectcity{
-    FDCityPicker *city = [[FDCityPicker alloc] initWithDelegate:self];
-    [city show];
-}
+#pragma mark 地址选择代理
 
-- (void)pickerAreaer:(FDCityPicker *)pickerAreaer province:(NSString *)province city:(NSString *)city area:(NSString *)area
+-(void)clickselectcity
 {
-    FCprovice = province;
-    FCcity = city;
-    FCarea = area;
-    NSString *text = [NSString stringWithFormat:@"%@%@%@",province,city,area];
-    UITextField *textfield = [tableview viewWithTag:EnTimeSelectTextfieldtag1];
-    textfield.text = text;
+//    CZHWeakSelf(self);
+    [CZHAddressPickerView areaPickerViewWithProvince:_FCprovice city:_FCcity area:_FCarea areaBlock:^(NSString *province, NSString *city, NSString *area) {
+  //      CZHStrongSelf(self);
+        _FCprovice = province;
+        _FCcity = city;
+        _FCarea = area;
+        NSString *text = [NSString stringWithFormat:@"%@%@%@",province,city,area];
+        UITextField *textfield = [tableview viewWithTag:EnTimeSelectTextfieldtag1];
+        textfield.text = text;
+    }];
 }
 
 #pragma mark IBaction
@@ -122,7 +122,7 @@
         if([self.delegate1 respondsToSelector:@selector(DGSelectAreaAddress:City:Area:Address:)])
         {
             UITextField *textfield2 = [self.view viewWithTag:EnTimeSelectTextfieldtag2];
-            [self.delegate1 DGSelectAreaAddress:FCprovice City:FCcity Area:FCarea Address:textfield2.text];
+            [self.delegate1 DGSelectAreaAddress:_FCprovice City:_FCcity Area:_FCarea Address:textfield2.text];
         }
         [self returnback];
     }
@@ -221,8 +221,8 @@
             
             textfield.placeholder = @"点击选择省市区";
             textfield.tag = EnTimeSelectTextfieldtag1;
-            if([FCprovice length]>0)
-                textfield.text = [NSString stringWithFormat:@"%@%@%@",FCprovice,FCcity,FCarea];
+            if([_FCprovice length]>0)
+                textfield.text = [NSString stringWithFormat:@"%@%@%@",_FCprovice,_FCcity,_FCarea];
             [cell.contentView addSubview:textfield];
             break;
         case 1:
@@ -232,8 +232,8 @@
             [cell.contentView addSubview:labelname];
             
             textfield.placeholder = @"请填写详细地址";
-            if([FCspecificaddress length]>0)
-                textfield.text = FCspecificaddress;
+            if([_FCspecificaddress length]>0)
+                textfield.text = _FCspecificaddress;
             textfield.tag = EnTimeSelectTextfieldtag2;
             [cell.contentView addSubview:textfield];
             break;

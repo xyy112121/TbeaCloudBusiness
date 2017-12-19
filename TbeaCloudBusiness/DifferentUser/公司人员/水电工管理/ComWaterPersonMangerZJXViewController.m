@@ -39,7 +39,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     FCorderitem = @"";
-    FCorderid = @"desc";
+    FCorderid = @"";
     
     tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-100)];
     tableview.backgroundColor = [UIColor clearColor];
@@ -55,7 +55,9 @@
     UIView *tabviewheader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     tabviewheader.backgroundColor = [UIColor clearColor];
     [self.view addSubview:tabviewheader];
-    [tabviewheader addSubview:[self getviewselectitem:CGRectMake(0, 0, SCREEN_WIDTH, 40)]];
+    if(viewtop ==nil)
+        viewtop = [self getviewselectitem:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
+    [tabviewheader addSubview:viewtop];
 }
 
 
@@ -73,7 +75,7 @@
     line2.backgroundColor = COLORNOW(200, 200, 200);
     [viewselectitem addSubview:line2];
     
-    float widthnow = (SCREEN_WIDTH-20)/4;
+    float widthnow = (SCREEN_WIDTH-20)/3;
     //用户
     ButtonItemLayoutView *buttonstatus = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(10, XYViewBottom(line1), widthnow, 40)];
 //    [buttonstatus.button addTarget:self action:@selector(ClickSelectTime:) forControlEvents:UIControlEventTouchUpInside];
@@ -84,7 +86,7 @@
 
     
     //水电工数量
-    ButtonItemLayoutView *buttonitemmoney = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-15-widthnow, XYViewBottom(line1), widthnow, 40)];
+    ButtonItemLayoutView *buttonitemmoney = [[ButtonItemLayoutView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-10-widthnow, XYViewBottom(line1), widthnow, 40)];
     [buttonitemmoney.button addTarget:self action:@selector(ClickSelectnumber:) forControlEvents:UIControlEventTouchUpInside];
     buttonitemmoney.tag = EnTixianDataSelectItembt3;
     [buttonitemmoney updatebuttonitem:EnButtonTextRight TextStr:@"水电工数量" Font:FONTN(14.0f) Color:COLORNOW(117, 117, 117) Image:LOADIMAGE(@"arrawgray", @"png")];
@@ -137,17 +139,20 @@
     //激活  已激活  未激活
     FCorderitem = @"money";
     ButtonItemLayoutView *buttonitem1 = [self.view viewWithTag:EnTixianDataSelectItembt3];
-    if([FCorderid isEqualToString:@"desc"])
+    if([FCorderid isEqualToString:@""])
+    {
+        FCorderid= @"desc";
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+    }
+    else if([FCorderid isEqualToString:@"desc"])
     {
         FCorderid= @"asc";
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
-        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
     }
     else
     {
         FCorderid= @"desc";
-        [buttonitem1 updatelablecolor:COLORNOW(0, 170, 236)];
-        [buttonitem1 updateimage:LOADIMAGE(@"arrawbluegray", @"png")];
+        [buttonitem1 updateimage:LOADIMAGE(@"arrawgrayblue", @"png")];
     }
     [self getwaterzjxlist:@"1" Pagesize:@"10"];
 }
@@ -221,8 +226,8 @@
     
     float widthnow = (SCREEN_WIDTH-20)/4;
     
-    UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 30, 30)];
-    NSString *strpic = [dictemp objectForKey:@"thumbpicture"];//[InterfaceResource stringByAppendingString:[[dictemp objectForKey:@"thumbpicture"] length]>0?[dictemp objectForKey:@"thumbpicture"]:@"noimage.png"];
+    UIImageView *imageheader = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 30, 30)];
+    NSString *strpic = [dictemp objectForKey:@"thumbpicture"];
     [imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"scanrebatetest1", @"png")];
     imageheader.contentMode = UIViewContentModeScaleAspectFill;
     imageheader.layer.cornerRadius = 15.0f;
@@ -261,9 +266,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *dictemp = [FCarraydata objectAtIndex:indexPath.row];
-    WaterPersonMangerViewController *watermanger = [[WaterPersonMangerViewController alloc] init];
-    watermanger.FCzjxid = [dictemp objectForKey:@"fdistributorid"];
-    [self.navigationController pushViewController:watermanger animated:YES];
+    if([_FCfromflag isEqualToString:@"1"])
+    {
+        WaterPersonMangerViewController *watermanger = [[WaterPersonMangerViewController alloc] init];
+        watermanger.FCzjxid = [dictemp objectForKey:@"fdistributorid"];
+        [self.navigationController pushViewController:watermanger animated:YES];
+    }
+    else
+    {
+        ScanRebatehpViewController *scanrebate = [[ScanRebatehpViewController alloc] init];
+        scanrebate.FCfdistributorid = [dictemp objectForKey:@"fdistributorid"];
+        scanrebate.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:scanrebate animated:YES];
+    }
 }
 
 #pragma mark 接口

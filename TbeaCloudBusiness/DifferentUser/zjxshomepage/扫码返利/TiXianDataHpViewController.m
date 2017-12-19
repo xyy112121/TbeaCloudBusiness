@@ -651,7 +651,8 @@
 -(void)gettixiandatalist:(NSString *)page Pagesize:(NSString *)pagesize
 {
 	NSMutableDictionary *params = [NSMutableDictionary dictionary];
-	params[@"paystatusid"] = FCpaystatusid;
+    params[@"fdistributorid"] = _FCfdistributorid;
+    params[@"paystatusid"] = FCpaystatusid;
 	params[@"payeetypeid"] = FCpayeeusertypeid;;
 	params[@"starttime"] = FCstarttime;
 	params[@"endtime"] = FCendtime;

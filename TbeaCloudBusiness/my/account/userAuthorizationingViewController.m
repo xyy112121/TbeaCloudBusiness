@@ -103,6 +103,10 @@
     {
         AddressSelectInputViewController *addressselect = [[AddressSelectInputViewController alloc] init];
         addressselect.delegate1 = self;
+//        addressselect.FCprovice = FC;
+//        addressselect.FCcity = FCcity;
+//        addressselect.FCarea = FCarea;
+//        addressselect.FCspecificaddress = FCaddress;
         [self.navigationController pushViewController:addressselect animated:YES];
         return NO;
     }

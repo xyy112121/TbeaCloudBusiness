@@ -91,25 +91,45 @@
     {
         AddressSelectInputViewController *addressselect = [[AddressSelectInputViewController alloc] init];
         addressselect.delegate1 = self;
+        addressselect.FCprovice = FCprovice;
+        addressselect.FCcity = FCcity;
+        addressselect.FCarea = FCarea;
+        addressselect.FCspecificaddress = FCaddress;
         [self.navigationController pushViewController:addressselect animated:YES];
         return NO;
     }
 	return YES;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    int tagnow = (int)textField.tag;
+    switch (tagnow)
+    {
+        case EnUserAuthorizaTextfield1:
+            FCcompanyname = textField.text;
+            break;
+        case EnUserAuthorizaTextfield2:
+            FClisencecode = textField.text;
+            break;
+        case EnUserAuthorizaTextfield4:
+            FCbusinesscope = textField.text;
+            break;
+        case EnUserAuthorizaTextfield5:
+            FCmasterperson = textField.text;
+            break;
+        case EnUserAuthorizaTextfield6:
+            FCmasterpersonid = textField.text;
+            break;
+            
+        default:
+            break;
+    }
+ 
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    UITextField *textfield1 = [tableview viewWithTag:EnUserAuthorizaTextfield1];
-    UITextField *textfield2 = [tableview viewWithTag:EnUserAuthorizaTextfield2];
- //   UITextField *textfield3 = [tableview viewWithTag:EnUserAuthorizaTextfield3];
-    UITextField *textfield4 = [tableview viewWithTag:EnUserAuthorizaTextfield4];
-    UITextField *textfield5 = [tableview viewWithTag:EnUserAuthorizaTextfield5];
-    UITextField *textfield6 = [tableview viewWithTag:EnUserAuthorizaTextfield6];
-    FCcompanyname = textfield1.text;
-    FClisencecode = textfield2.text;
-    FCbusinesscope = textfield4.text;
-    FCmasterperson = textfield5.text;
-    FCmasterpersonid = textfield6.text;
     FCstraddress = [NSString stringWithFormat:@"%@%@%@%@",FCprovice?FCprovice:@"",FCcity?FCcity:@"",FCarea?FCarea:@"",FCaddress?FCaddress:@""];
 }
 
@@ -337,18 +357,18 @@
 {
 	UITableViewCell *cell;
 	static NSString *reuseIdetify = @"cell";
-	if (!cell) {
+    if (!cell) {
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdetify];
 		cell.accessoryType = UITableViewCellAccessoryNone;
-	}
-	
+    }
+
 	[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
 	
-	for(UIView *view in cell.contentView.subviews)
-	{
-		[view removeFromSuperview];
-	}
-	
+    for(UIView *view in cell.contentView.subviews)
+    {
+        [view removeFromSuperview];
+    }
+
 	cell.backgroundColor = [UIColor whiteColor];
 	
 	UILabel *labelname = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 80, 20)];
@@ -435,6 +455,7 @@
 				
 				textfield.placeholder = @"请输入与营业执照一致的姓名";
 				textfield.tag = EnUserAuthorizaTextfield5;
+                textfield.text = FCmasterperson;
 				[cell.contentView addSubview:textfield];
 				break;
 			case 1:
@@ -442,8 +463,8 @@
 				[cell.contentView addSubview:labelname];
 				
 				textfield.placeholder = @"请输入与营业执照一致的号码";
-				textfield.textColor = COLORNOW(117, 117, 117);
 				textfield.tag = EnUserAuthorizaTextfield6;
+                textfield.text = FCmasterpersonid;
 				[cell.contentView addSubview:textfield];
 				break;
 			case 2:
@@ -516,12 +537,6 @@
 -(void)uploadcustompic:(NSArray *)arrayimage FromFlag:(int)tagnow
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    
-    //    params[@"meetingcontent"] = @"测试内容。。。。。。。";
-    
-//    NSMutableArray *arrayimage = [[NSMutableArray alloc] init];
-//    [arrayimage addObject:FCimage];
-    
     
     [RequestInterface doGetJsonWithArraypic:arrayimage Parameter:params App:app RequestCode:RQUploadCustomPicCode ReqUrl:InterfaceRequestUrl ShowView:app.window alwaysdo:^{
         

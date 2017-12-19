@@ -36,7 +36,7 @@
 	
 	
 }
-
+@property(nonatomic,strong)NSString *FCfdistributorid;
 @property(nonatomic,strong)id<ActionDelegate>delegate1;
 
 @end

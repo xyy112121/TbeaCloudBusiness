@@ -19,6 +19,7 @@
     NSMutableArray *FCarrayselectdata;
     
 }
+@property(nonatomic,strong)NSString *FCstrcity;
 @property(nonatomic,strong)NSArray *FCselectdata;
 @property(nonatomic,strong)NSString *FCmettingid;
 @property(nonatomic,strong)id<ActionDelegate>delegate1;

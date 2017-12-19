@@ -259,13 +259,15 @@
 -(void)gototixiandata:(id)sender
 {
 	TiXianDataHpViewController *tixiandata = [[TiXianDataHpViewController alloc] init];
-	[self.navigationController pushViewController:tixiandata animated:YES];
+	tixiandata.FCfdistributorid = _FCfdistributorid;
+    [self.navigationController pushViewController:tixiandata animated:YES];
 }
 
 //排行更多
 -(void)gotosortmore:(id)sender
 {
 	SortMoreViewController *sortmore = [[SortMoreViewController alloc] init];
+    sortmore.FCfdistributorid = _FCfdistributorid;
 	[self.navigationController pushViewController:sortmore animated:YES];
 }
 
@@ -357,7 +359,7 @@
 -(void)getscanrebatelist
 {
 	NSMutableDictionary *params = [NSMutableDictionary dictionary];
-	
+    params[@"fdistributorid"] = _FCfdistributorid;
 	
 	[RequestInterface doGetJsonWithParametersNoAn:params App:app RequestCode:RQZJXScanRebactListCode ReqUrl:InterfaceRequestUrl ShowView:app.window alwaysdo:^{
 		

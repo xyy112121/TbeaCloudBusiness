@@ -158,11 +158,17 @@
     lablemoneyflag1.backgroundColor = [UIColor clearColor];
     [viewheader addSubview:lablemoneyflag1];
     
+    
+    UIButton *buttonshangjiaziliao = [UIButton buttonWithType:UIButtonTypeCustom];
+    buttonshangjiaziliao.frame = CGRectMake(0, 0, SCREEN_WIDTH, 60);
+    [buttonshangjiaziliao addTarget:self action:@selector(clickgotoshangjiaziliao:) forControlEvents:UIControlEventTouchUpInside];
+    [viewheader addSubview:buttonshangjiaziliao];
 }
 
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [self.navigationController setNavigationBarHidden:NO];
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar  setBackgroundImage:[[UIImage alloc] init] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
@@ -185,6 +191,13 @@
 -(void)returnback
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)clickgotoshangjiaziliao:(id)sender
+{
+    ShangJiaZiLiaoViewController *ziliao = [[ShangJiaZiLiaoViewController alloc] init];
+    ziliao.FCdistributorid = _FCdistributorid;
+    [self.navigationController pushViewController:ziliao animated:YES];
 }
 
 -(void)ClickSelectMoney:(id)sender

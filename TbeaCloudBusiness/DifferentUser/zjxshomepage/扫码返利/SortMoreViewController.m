@@ -389,6 +389,7 @@
 -(void)getrebatesortlist:(NSString *)page Pagesize:(NSString *)pagesize
 {
 	NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"fdistributorid"] = _FCfdistributorid;
 	params[@"zoneids"] = FCzonelds;
 //	params[@"starttime"] = FCstarttime;
 //	params[@"endtime"] = FCendtime;

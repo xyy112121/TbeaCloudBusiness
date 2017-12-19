@@ -28,6 +28,16 @@
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:contentView];
     self.navigationItem.leftBarButtonItem = barButtonItem;
     
+    UIView *contentViewright = [[UIView alloc] initWithFrame:CGRectMake(2, 2, 80, 40)];
+    UIButton *buttonright = [[UIButton alloc] initWithFrame:contentViewright.bounds];
+    [buttonright setTitle:@"时间选择" forState:UIControlStateNormal];
+    buttonright.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, -30);
+    buttonright.titleLabel.font = FONTN(15.0f);
+    [buttonright addTarget:self action: @selector(clickselecttime:) forControlEvents: UIControlEventTouchUpInside];
+    [contentViewright addSubview:buttonright];
+    UIBarButtonItem *barButtonItemright = [[UIBarButtonItem alloc] initWithCustomView:contentViewright];
+    self.navigationItem.rightBarButtonItem = barButtonItemright;
+    
     // Do any additional setup after loading the view.
 }
 
@@ -48,7 +58,7 @@
     FCordermoney = @"";
     FCSelectDropListItem = 0;
     
-    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-40)];
+    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-40-IPhone_SafeBottomMargin)];
     tableview.backgroundColor = [UIColor clearColor];
     [self.view addSubview:tableview];
     [self addtabviewheader];
@@ -213,10 +223,13 @@
 }
 
 #pragma mark ActionDelegate
--(void)DGSelectDateDone:(NSString *)starttime EndTime:(NSString *)endtime
+-(void)DGSelectDateHourSecondDone:(NSString *)starttime EndTime:(NSString *)endtime
 {
+    
+    DLog(@"starttime====%@,%@",starttime,endtime);
     FCstarttime = starttime;
     FCendtime = endtime;
+    
     [self getrebatesortlist:@"1" Pagesize:@"10"];
 }
 
@@ -242,6 +255,15 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)clickselecttime:(id)sender
+{
+    CustomTimeSelectViewController *timeselect = [[CustomTimeSelectViewController alloc] init];
+    timeselect.delegate1 = self;
+//    timeselect.FCstarttime = FCstartime;
+//    timeselect.FCendtime = FCendtime;
+    timeselect.datemode = DatePickerViewDateMode;
+    [self.navigationController pushViewController:timeselect animated:YES];
+}
 
 -(void)ClickSelectMoney:(id)sender
 {

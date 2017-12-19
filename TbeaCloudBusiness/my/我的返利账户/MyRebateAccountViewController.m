@@ -111,6 +111,7 @@
     lablemoneyflag.text = @"￥";
     lablemoneyflag.font = FONTMEDIUM(12.0f);
     lablemoneyflag.textColor = [UIColor blackColor];
+    lablemoneyflag.tag = EnMyKyNowTiXianMoneyLabelTag+1;
     lablemoneyflag.backgroundColor = [UIColor clearColor];
     [viewheader addSubview:lablemoneyflag];
     
@@ -415,7 +416,12 @@
                     tableview.mj_footer = footer;
                 }
                 UILabel *labjifen = [tableview.tableHeaderView viewWithTag:EnMyKyNowTiXianMoneyLabelTag];
-                labjifen.text = [NSString stringWithFormat:@"%@",[[[dic objectForKey:@"data"] objectForKey:@"mymoneyinfo"] objectForKey:@"currentmoney"]];
+                UILabel *labjifen1 = [tableview.tableHeaderView viewWithTag:EnMyKyNowTiXianMoneyLabelTag+1];
+                NSString *strmoney = [NSString stringWithFormat:@"%@",[[[dic objectForKey:@"data"] objectForKey:@"mymoneyinfo"] objectForKey:@"currentmoney"]];
+                CGSize size = [AddInterface getlablesize:strmoney Fwidth:200 Fheight:20 Sfont:FONTMEDIUM(18.0f)];
+                labjifen.text = strmoney;
+                labjifen.frame = CGRectMake(labjifen.frame.origin.x, labjifen.frame.origin.y, size.width, 20);
+                labjifen1.frame = CGRectMake(XYViewL(labjifen)-13, XYViewTop(labjifen)+4, 10,10);
             }
             else
             {

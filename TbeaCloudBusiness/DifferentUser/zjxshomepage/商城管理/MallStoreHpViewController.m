@@ -41,7 +41,7 @@
 
 -(void)initview
 {
-	self.title = @"店铺名称";
+	self.title = @"店铺管理";
 	self.view.backgroundColor = COLORNOW(235, 235, 235);
 	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
 	app = (AppDelegate *)[[UIApplication sharedApplication] delegate];

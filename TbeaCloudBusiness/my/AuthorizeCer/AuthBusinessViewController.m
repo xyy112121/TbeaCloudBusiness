@@ -259,14 +259,23 @@
 {
     if((indexPath.section ==2)&&(indexPath.row == 0))
     {
-        if([[FCcompanyidentifyinfo objectForKey:@"identifystatusid"] isEqualToString:@"notidentify"])
+        if([[FCcompanyidentifyinfo objectForKey:@"identifystatusid"] isEqualToString:@"notidentify"]) //未认证
+        {
+            UserAuthorizationViewController *userauth = [[UserAuthorizationViewController alloc] init];
+            [self.navigationController pushViewController:userauth animated:YES];
+        }
+        else if([[FCcompanyidentifyinfo objectForKey:@"identifystatusid"] isEqualToString:@"identifyfailed"]) //认证失败
         {
             AuthNotPassReasonViewController *authnowpass = [[AuthNotPassReasonViewController alloc] init];
             [self.navigationController pushViewController:authnowpass animated:YES];
-//            userAuthorizationingViewController *userauth = [[userAuthorizationingViewController alloc] init];
-//            [self.navigationController pushViewController:userauth animated:YES];
         }
-        else
+        else if([[FCcompanyidentifyinfo objectForKey:@"identifystatusid"] isEqualToString:@"identified"]) //已认证
+        {
+            userAuthorizationingViewController *userauth = [[userAuthorizationingViewController alloc] init];
+            userauth.FCidentifystatus = [FCcompanyidentifyinfo objectForKey:@"identifystatusid"];
+            [self.navigationController pushViewController:userauth animated:YES];
+        }
+        else //认证中
         {
             userAuthorizationingViewController *userauth = [[userAuthorizationingViewController alloc] init];
             userauth.FCidentifystatus = [FCcompanyidentifyinfo objectForKey:@"identifystatusid"];

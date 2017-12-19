@@ -22,7 +22,14 @@
     NSArray *FCarraydata;
     
     EnMallStoreLinkSelecttype linkselectitem;
+    NSString *FCorderprice;
+    NSString *FCorderrecommend;
+    NSString *FCordernew;
+    NSString *FCordersalenum;
+    NSString *FCordertime;
     
+    UIView *viewCommodity;  //商品
+    UIView *viewActivity;  //动态
 }
 
 @property(nonatomic,strong)id<ActionDelegate>delegate1;

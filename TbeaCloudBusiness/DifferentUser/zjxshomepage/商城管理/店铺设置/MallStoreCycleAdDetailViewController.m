@@ -210,9 +210,17 @@
     UITextField *textfield1 = [tableview viewWithTag:EnMallStoreAddNewCycleAdNameTextfield];
     FCtitle = textfield1.text;
     
-    if(([FCtitle length]==0)||([FCurl length]==0)||([FCurltype length]==0)||([FCuploadstrpic length]==0))
+    if(([FCurl length]==0)||([FCurltype length]==0))
     {
         [MBProgressHUD showError:@"请填写内容" toView:app.window];
+    }
+    else if([FCtitle length]==0)
+    {
+        [MBProgressHUD showError:@"请填写主题" toView:app.window];
+    }
+    else if([FCuploadstrpic length]==0)
+    {
+        [MBProgressHUD showError:@"请选择图片" toView:app.window];
     }
     else
         [self uploadcyclead];
@@ -354,7 +362,7 @@
         case 2:
             labelname.text = @"图片";
             labelvalue.frame = CGRectMake(SCREEN_WIDTH-40, 30, 40, 40);
-            labelvalue.text = @"添加";
+            labelvalue.text = @"修改";
             [cell.contentView addSubview:labelvalue];
             
             FCadimageview  = [[UIImageView alloc] initWithFrame:CGRectMake(100, 10, SCREEN_WIDTH-190, 80)];
@@ -430,7 +438,7 @@
 -(void)uploadcyclead
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"advertiseid"] = @"";
+    params[@"advertiseid"] = _FCadvertiseid;
     params[@"title"] = FCtitle;
     params[@"urltype"] = FCurltype;
     params[@"url"] = FCurl;

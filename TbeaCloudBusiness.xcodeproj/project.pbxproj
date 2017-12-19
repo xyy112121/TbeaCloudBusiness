@@ -789,6 +789,11 @@
 		74359E5E1FA6F48A0007D51C /* MyPageHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74359E5D1FA6F48A0007D51C /* MyPageHelpViewController.m */; };
 		74359E611FA6F4980007D51C /* MyPageAboutMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74359E601FA6F4980007D51C /* MyPageAboutMeViewController.m */; };
 		743B2ACF1FD798D600E27008 /* CMArrangementPicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 743B2ACE1FD798D600E27008 /* CMArrangementPicView.m */; };
+		7443127A1FDFB74100A01705 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 744312731FDFB74100A01705 /* city.plist */; };
+		7443127B1FDFB74100A01705 /* CZHAddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 744312751FDFB74100A01705 /* CZHAddressPickerView.m */; };
+		7443127C1FDFB74100A01705 /* UIButton+CZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 744312771FDFB74100A01705 /* UIButton+CZHExtension.m */; };
+		7443127D1FDFB74100A01705 /* UIView+CZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 744312791FDFB74100A01705 /* UIView+CZHExtension.m */; };
+		7443127F1FDFB78700A01705 /* description in Sources */ = {isa = PBXBuildFile; fileRef = 7443127E1FDFB78700A01705 /* description */; };
 		74444B281F16FB2D009AB2CA /* MallStoreCycleAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74444B271F16FB2D009AB2CA /* MallStoreCycleAdViewController.m */; };
 		74444B2F1F17047B009AB2CA /* testpic.png in Resources */ = {isa = PBXBuildFile; fileRef = 74444B2C1F17047B009AB2CA /* testpic.png */; };
 		74444B301F17047B009AB2CA /* testpic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74444B2D1F17047B009AB2CA /* testpic@2x.png */; };
@@ -929,6 +934,7 @@
 		74A21FA01F5C5A2E0073EF92 /* MallStoreSalesAccountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A21F9F1F5C5A2E0073EF92 /* MallStoreSalesAccountListViewController.m */; };
 		74AA2DC11FD531F800910BCF /* MyPagePersonInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AA2DC01FD531F800910BCF /* MyPagePersonInfoViewController.m */; };
 		74AA2DC41FD5339C00910BCF /* AddCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AA2DC21FD5339C00910BCF /* AddCustomView.m */; };
+		74D64C531FE956D40079B0DC /* ShangJiaZiLiaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D64C521FE956D40079B0DC /* ShangJiaZiLiaoViewController.m */; };
 		74D977B51FD8E47F00BAA4F3 /* JFAssetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D9779A1FD8E47F00BAA4F3 /* JFAssetHelper.m */; };
 		74D977B61FD8E47F00BAA4F3 /* JFImageCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D9779C1FD8E47F00BAA4F3 /* JFImageCollectionViewController.m */; };
 		74D977B71FD8E47F00BAA4F3 /* JFImageGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D9779E1FD8E47F00BAA4F3 /* JFImageGroupTableViewController.m */; };
@@ -2076,6 +2082,15 @@
 		74359E601FA6F4980007D51C /* MyPageAboutMeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPageAboutMeViewController.m; sourceTree = "<group>"; };
 		743B2ACD1FD798D600E27008 /* CMArrangementPicView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMArrangementPicView.h; sourceTree = "<group>"; };
 		743B2ACE1FD798D600E27008 /* CMArrangementPicView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMArrangementPicView.m; sourceTree = "<group>"; };
+		744312721FDFB74100A01705 /* AddressPickerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressPickerHeader.h; sourceTree = "<group>"; };
+		744312731FDFB74100A01705 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
+		744312741FDFB74100A01705 /* CZHAddressPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZHAddressPickerView.h; sourceTree = "<group>"; };
+		744312751FDFB74100A01705 /* CZHAddressPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZHAddressPickerView.m; sourceTree = "<group>"; };
+		744312761FDFB74100A01705 /* UIButton+CZHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CZHExtension.h"; sourceTree = "<group>"; };
+		744312771FDFB74100A01705 /* UIButton+CZHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CZHExtension.m"; sourceTree = "<group>"; };
+		744312781FDFB74100A01705 /* UIView+CZHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CZHExtension.h"; sourceTree = "<group>"; };
+		744312791FDFB74100A01705 /* UIView+CZHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CZHExtension.m"; sourceTree = "<group>"; };
+		7443127E1FDFB78700A01705 /* description */ = {isa = PBXFileReference; lastKnownFileType = text; path = description; sourceTree = "<group>"; };
 		74444B261F16FB2D009AB2CA /* MallStoreCycleAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallStoreCycleAdViewController.h; sourceTree = "<group>"; };
 		74444B271F16FB2D009AB2CA /* MallStoreCycleAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallStoreCycleAdViewController.m; sourceTree = "<group>"; };
 		74444B2C1F17047B009AB2CA /* testpic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testpic.png; sourceTree = "<group>"; };
@@ -2322,6 +2337,8 @@
 		74AA2DC01FD531F800910BCF /* MyPagePersonInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPagePersonInfoViewController.m; sourceTree = "<group>"; };
 		74AA2DC21FD5339C00910BCF /* AddCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCustomView.m; sourceTree = "<group>"; };
 		74AA2DC31FD5339C00910BCF /* AddCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCustomView.h; sourceTree = "<group>"; };
+		74D64C511FE956D40079B0DC /* ShangJiaZiLiaoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShangJiaZiLiaoViewController.h; sourceTree = "<group>"; };
+		74D64C521FE956D40079B0DC /* ShangJiaZiLiaoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShangJiaZiLiaoViewController.m; sourceTree = "<group>"; };
 		74D977991FD8E47F00BAA4F3 /* JFAssetHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAssetHelper.h; sourceTree = "<group>"; };
 		74D9779A1FD8E47F00BAA4F3 /* JFAssetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAssetHelper.m; sourceTree = "<group>"; };
 		74D9779B1FD8E47F00BAA4F3 /* JFImageCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFImageCollectionViewController.h; sourceTree = "<group>"; };
@@ -2633,6 +2650,7 @@
 		081839921ECB404D00C9E553 /* CommLib */ = {
 			isa = PBXGroup;
 			children = (
+				744312711FDFB74100A01705 /* AddressPickerView */,
 				74D977961FD8E47F00BAA4F3 /* 图片选择 */,
 				7414C4C21FC7E0A6005E43E4 /* 图片滚动显示 */,
 				7414C49B1FC7E0A6005E43E4 /* SDWebImage */,
@@ -4672,6 +4690,22 @@
 			path = ArrangementPic;
 			sourceTree = "<group>";
 		};
+		744312711FDFB74100A01705 /* AddressPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				744312721FDFB74100A01705 /* AddressPickerHeader.h */,
+				744312731FDFB74100A01705 /* city.plist */,
+				744312741FDFB74100A01705 /* CZHAddressPickerView.h */,
+				744312751FDFB74100A01705 /* CZHAddressPickerView.m */,
+				744312761FDFB74100A01705 /* UIButton+CZHExtension.h */,
+				744312771FDFB74100A01705 /* UIButton+CZHExtension.m */,
+				744312781FDFB74100A01705 /* UIView+CZHExtension.h */,
+				744312791FDFB74100A01705 /* UIView+CZHExtension.m */,
+				7443127E1FDFB78700A01705 /* description */,
+			);
+			path = AddressPickerView;
+			sourceTree = "<group>";
+		};
 		74444B291F16FB7D009AB2CA /* 店铺动态 */ = {
 			isa = PBXGroup;
 			children = (
@@ -5268,6 +5302,8 @@
 			isa = PBXGroup;
 			children = (
 				74F8C6F11F396777007AD1D0 /* 扫码返利 */,
+				74D64C511FE956D40079B0DC /* ShangJiaZiLiaoViewController.h */,
+				74D64C521FE956D40079B0DC /* ShangJiaZiLiaoViewController.m */,
 			);
 			path = "分销商";
 			sourceTree = "<group>";
@@ -5325,7 +5361,7 @@
 				TargetAttributes = {
 					081839761ECB3F7300C9E553 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 64VCC3B3JQ;
+						DevelopmentTeam = JYN6A5X8LV;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 					};
@@ -5403,6 +5439,7 @@
 				748FE9551F5FEA740056DB1E /* bt首页1@3x.png in Resources */,
 				08CF45F11EFBA3FA002A154A /* hp商城系统@2x.png in Resources */,
 				7497F6041F4DBA2D006AE830 /* hp_searchblue@2x.png in Resources */,
+				7443127A1FDFB74100A01705 /* city.plist in Resources */,
 				7424917A1F4F1C3A00D35C6B /* closezhifu.png in Resources */,
 				745152D51F4EB31E006FB244 /* zbar-helpicons.png in Resources */,
 				7406B8661FC41F0F0056372C /* dropdown_loading1_02.png in Resources */,
@@ -5938,6 +5975,7 @@
 				08183D291ECB404E00C9E553 /* CLTextView.m in Sources */,
 				7406B86D1FC41F0F0056372C /* MJDIYBackFooter.m in Sources */,
 				747ACB441F5655F700EC32FD /* MallStoreGoodsDetailViewController.m in Sources */,
+				7443127D1FDFB74100A01705 /* UIView+CZHExtension.m in Sources */,
 				74444B371F17123B009AB2CA /* MallStoreLinkSelectItemViewController.m in Sources */,
 				7414C4D61FC7E0A6005E43E4 /* SDWebImageManager.m in Sources */,
 				74EFAE3F1F45DAE900790340 /* SettingBGImageViewController.m in Sources */,
@@ -5958,9 +5996,11 @@
 				08183EB41ECB404F00C9E553 /* UserInfo.m in Sources */,
 				084EDA4A1EFA247F00602116 /* MyAttentionViewController.m in Sources */,
 				084103391F0F30B000A4194A /* HpFunctionCellView.m in Sources */,
+				7443127C1FDFB74100A01705 /* UIButton+CZHExtension.m in Sources */,
 				745929381FA9A2DE008FBE3C /* AuthNotPassReasonViewController.m in Sources */,
 				7414C4DD1FC7E0A6005E43E4 /* UIView+WebCache.m in Sources */,
 				747999D71F5809FB0027933D /* MallStoreHasBeenSoldDetailViewController.m in Sources */,
+				7443127F1FDFB78700A01705 /* description in Sources */,
 				08A0BA5B1ED8444C0047EC83 /* SortMoreCellView.m in Sources */,
 				742A0D731F4B373100A01C34 /* userAuthorizationingViewController.m in Sources */,
 				0887AA331EDEC68200EC334B /* WaterPersonHpHeaderView.m in Sources */,
@@ -6101,6 +6141,7 @@
 				08183E121ECB404E00C9E553 /* DBPlayVideoVC.m in Sources */,
 				7466B3C51F3FE3B500E8D8C6 /* ComMettingDetailMettingInViewController.m in Sources */,
 				745152B71F4EB31E006FB244 /* JXGuidePriceViewController.m in Sources */,
+				7443127B1FDFB74100A01705 /* CZHAddressPickerView.m in Sources */,
 				086718041EF116010030F22E /* TbeaNewsListViewController.m in Sources */,
 				745152C61F4EB31E006FB244 /* JXOrderListViewController.m in Sources */,
 				745152DD1F4ED510006FB244 /* PopoverView.m in Sources */,
@@ -6187,6 +6228,7 @@
 				08183D131ECB404E00C9E553 /* AFSecurityPolicy.m in Sources */,
 				74E599141F41922A00587D8A /* ComMettingDetailUploadPicViewController.m in Sources */,
 				08183E801ECB404F00C9E553 /* PhotoStore.m in Sources */,
+				74D64C531FE956D40079B0DC /* ShangJiaZiLiaoViewController.m in Sources */,
 				7497F5F31F4DB96D006AE830 /* SearchPageView.m in Sources */,
 				7497F60C1F4DD910006AE830 /* WkWebViewCustomView.m in Sources */,
 				08183E4A1ECB404F00C9E553 /* VPImageCropperViewController.m in Sources */,
@@ -6425,7 +6467,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 64VCC3B3JQ;
+				DEVELOPMENT_TEAM = JYN6A5X8LV;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6477,10 +6519,10 @@
 					"$(PROJECT_DIR)/TbeaCloudBusiness/Custom/CommLib/极光/Jpush",
 					"$(PROJECT_DIR)/TbeaCloudBusiness/jxc/二维码扫描",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.reerapp.TbeaCloudBusiness;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tbeacloud.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "aa209252-c26f-4cca-91df-cd43de788290";
-				PROVISIONING_PROFILE_SPECIFIER = developreerapp;
+				PROVISIONING_PROFILE = "cc73e74a-7b4f-4253-9a03-f0fc1f744a94";
+				PROVISIONING_PROFILE_SPECIFIER = tbeaclounddev;
 				SWIFT_OBJC_BRIDGING_HEADER = "TbeaCloudBusiness/my/helpandabout/TbeaCloudBusiness-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -6495,7 +6537,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 64VCC3B3JQ;
+				DEVELOPMENT_TEAM = JYN6A5X8LV;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6547,10 +6589,10 @@
 					"$(PROJECT_DIR)/TbeaCloudBusiness/Custom/CommLib/极光/Jpush",
 					"$(PROJECT_DIR)/TbeaCloudBusiness/jxc/二维码扫描",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.reerapp.TbeaCloudBusiness;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tbeacloud.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "aa209252-c26f-4cca-91df-cd43de788290";
-				PROVISIONING_PROFILE_SPECIFIER = developreerapp;
+				PROVISIONING_PROFILE = "cc73e74a-7b4f-4253-9a03-f0fc1f744a94";
+				PROVISIONING_PROFILE_SPECIFIER = tbeaclounddev;
 				SWIFT_OBJC_BRIDGING_HEADER = "TbeaCloudBusiness/my/helpandabout/TbeaCloudBusiness-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				WARNING_CFLAGS = "-Wno-documentation";

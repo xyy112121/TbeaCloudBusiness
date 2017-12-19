@@ -15,14 +15,12 @@
     UITableView *tableview;
     AppDelegate *app;
     
-    EnSelectTime enselecttime;
-    
-    NSString *FCprovice;
-    NSString *FCcity;
-    NSString *FCarea;
-    NSString *FCspecificaddress; //区以下的地址
-    
+    EnSelectTime enselecttime; 
 }
+@property (nonatomic, strong)NSString *FCprovice;
+@property (nonatomic, strong)NSString *FCcity;
+@property (nonatomic, strong)NSString *FCarea;
+@property (nonatomic, strong)NSString *FCspecificaddress; //区以下的地址
 @property (nonatomic, strong) DateTimePickerView *datePickerView;
 @property(nonatomic,strong)id<ActionDelegate>delegate1;
 

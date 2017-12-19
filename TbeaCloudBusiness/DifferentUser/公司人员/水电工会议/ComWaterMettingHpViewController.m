@@ -538,12 +538,14 @@
     {
         ComMettingDetailPreparingViewController *comcomitdone = [[ComMettingDetailPreparingViewController alloc] init];
         comcomitdone.FCmettingid = [dictemp objectForKey:@"id"];
+        comcomitdone.FCmeetingsponsorid = [dictemp objectForKey:@"meetingsponsorid"];
         [self.navigationController pushViewController:comcomitdone animated:YES];
     }
     else if([[dictemp objectForKey:@"meetingstatusid"] isEqual:@"new"])  //表示新会议
     {
         ComMettingDetailNewViewController *comcomitdone = [[ComMettingDetailNewViewController alloc] init];
         comcomitdone.FCmettingid = [dictemp objectForKey:@"id"];
+        comcomitdone.FCmeetingsponsorid = [dictemp objectForKey:@"meetingsponsorid"];
         [self.navigationController pushViewController:comcomitdone animated:YES];
     }
     else if([[dictemp objectForKey:@"meetingstatusid"] isEqual:@"finish"])  //表示会议结束
@@ -556,6 +558,7 @@
     {
         ComMettingDetailMettingInViewController *comcomitdone = [[ComMettingDetailMettingInViewController alloc] init];
         comcomitdone.FCmettingid = [dictemp objectForKey:@"id"];
+        comcomitdone.FCmeetingsponsorid = [dictemp objectForKey:@"meetingsponsorid"];
         [self.navigationController pushViewController:comcomitdone animated:YES];
     }
 }

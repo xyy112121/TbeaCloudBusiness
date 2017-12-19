@@ -34,7 +34,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     //    self.view.backgroundColor = COLORNOW(0, 170, 238);
     app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
+    FCmodifytype = 0;
     tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     tableview.backgroundColor = [UIColor clearColor];
     tableview.estimatedRowHeight = 0;
@@ -53,8 +53,6 @@
 
 -(void)viewheader
 {
-    
-    
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 150)];
     view.backgroundColor = COLORNOW(0, 170, 238);
     
@@ -89,8 +87,8 @@
     [self keyboardHide:nil];
     NSMutableArray *arraytemp = [[NSMutableArray alloc] init];
     
-    [arraytemp addObject:@"先生"];
-    [arraytemp addObject:@"女士"];
+    [arraytemp addObject:@"男"];
+    [arraytemp addObject:@"女"];
     
     [ZJBLStoreShopTypeAlert showWithTitle:@"性别选择" titles:arraytemp deleGate1:self selectIndex:^(NSInteger selectIndex) {
     } selectValue:^(NSString *selectValue) {
@@ -98,9 +96,26 @@
         UITextField *textfield2 = [tableview viewWithTag:EnMyPersonInfoTextfield3];
         textfield2.text = selectValue;
         FCSex = selectValue;
+        FCmodifytype = 2;
+        [self modifypersoninfo];
     } showCloseButton:YES];
 }
 
+#pragma mark ActionDelegate
+-(void)DGSelectAreaAddress:(NSString *)pstr City:(NSString *)city Area:(NSString *)area Address:(NSString *)address
+{
+    FCProvice = pstr;
+    FCCity = city;
+    FCZone = area;
+    FCUserAddr = address;
+    
+    FCStraddress = [NSString stringWithFormat:@"%@%@%@%@",pstr,city,area,address];
+    
+    UILabel *labelvalue = [tableview viewWithTag:EnMyPersonInfoTextfield5];
+    labelvalue.text = FCStraddress;
+    FCmodifytype = 3;
+    [self modifypersoninfo];
+}
 
 #pragma mark IBaction
 -(void)returnback
@@ -284,6 +299,7 @@
             imageviewicon.tag = EnMyPersonInfoImageView1;
             [imageviewicon setImageWithURL:[NSURL URLWithString:strimage] placeholderImage:nil];
             imageviewicon.layer.cornerRadius = 20.0f;
+            imageviewicon.contentMode = UIViewContentModeScaleAspectFill;
             imageviewicon.clipsToBounds = YES;
             
             [cell.contentView addSubview:imageviewicon];
@@ -364,6 +380,29 @@
     {
         [self picupload];
     }
+    else if(indexPath.row == 5)
+    {
+        AddressSelectInputViewController *addressselect = [[AddressSelectInputViewController alloc] init];
+        addressselect.delegate1 = self;
+        addressselect.FCprovice = FCProvice;
+        addressselect.FCcity = FCCity;
+        addressselect.FCarea = FCZone;
+        addressselect.FCspecificaddress = FCUserAddr;
+        [self.navigationController pushViewController:addressselect animated:YES];
+    }
+    else if(indexPath.row == 8)
+    {
+        if([[FCdicuserinfo objectForKey:@"identifystatusid"] isEqualToString:@"notidentify"]) //未认证
+        {
+            AuthBusinessViewController *business = [[AuthBusinessViewController alloc] init];
+            business.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:business animated:YES];
+        }
+        else if([[FCdicuserinfo objectForKey:@"identifystatusid"] isEqualToString:@"identifying"]) //认证中
+        {
+       //
+        }
+    }
 }
 
 
@@ -379,6 +418,7 @@
         if([[dic objectForKey:@"success"] isEqualToString:@"true"])
         {
             FCdicuserinfo = [[dic objectForKey:@"data"] objectForKey:@"userinfo"];
+            FCUserImagePath = [FCdicuserinfo objectForKey:@"thumbpicture"];
             FCSex = [FCdicuserinfo objectForKey:@"sex"];
             FCProvice = [FCdicuserinfo objectForKey:@"province"];
             FCCity = [FCdicuserinfo objectForKey:@"city"];
@@ -403,19 +443,29 @@
 -(void)modifypersoninfo
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"picture"]= FCUserImagePath;
-    params[@"sex"]= FCSex;
-    params[@"province"]= FCProvice;;
-    params[@"city"]= FCCity;
-    params[@"zone"]= FCZone;
-    params[@"addr"]=  FCUserAddr;
-    
+    if(FCmodifytype == 1)
+        params[@"picture"]= FCUserImagePath;
+    else if(FCmodifytype == 2)
+    {
+        if([FCSex isEqualToString:@"男"])
+            params[@"sex"]= @"male";
+        else
+            params[@"sex"]= @"female";
+    }
+    else if(FCmodifytype == 3)
+    {
+        params[@"province"]= FCProvice;;
+        params[@"city"]= FCCity;
+        params[@"zone"]= FCZone;
+        params[@"addr"]=  FCUserAddr;
+    }
     [RequestInterface doGetJsonWithParametersNoAn:params App:app RequestCode:REModifyPersonInfoCode ReqUrl:InterfaceRequestUrl ShowView:app.window alwaysdo:^{
         
     } Success:^(NSDictionary *dic) {
         DLog(@"dic====%@",dic);
         if([[dic objectForKey:@"success"] isEqualToString:@"true"])
         {
+            [MBProgressHUD showSuccess:[dic objectForKey:@"msg"] toView:app.window];
 //            FCdicuserinfo = [[dic objectForKey:@"data"] objectForKey:@"userinfo"];
 //
 //            tableview.delegate = self;
@@ -449,6 +499,7 @@
         if([[dic objectForKey:@"success"] isEqualToString:@"true"])
         {
             FCUserImagePath = [[[dic objectForKey:@"data"] objectForKey:@"pictureinfo"] objectForKey:@"picturesavenames"];
+            FCmodifytype = 1;
             [self modifypersoninfo];
         }
         else

@@ -31,6 +31,8 @@
     [imageheader setImageWithURL:[NSURL URLWithString:strpic] placeholderImage:LOADIMAGE(@"watertest", @"png")];
 	imageheader.layer.cornerRadius = 35.f;
 	imageheader.clipsToBounds = YES;
+    imageheader.layer.borderWidth = 2.0f;
+    imageheader.layer.borderColor = [UIColor whiteColor].CGColor;
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotonext:)];
     imageheader.userInteractionEnabled  = YES;
     [imageheader addGestureRecognizer:gesture];

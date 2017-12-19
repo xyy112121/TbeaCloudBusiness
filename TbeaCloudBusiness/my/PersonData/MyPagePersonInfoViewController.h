@@ -27,9 +27,12 @@
     NSString *FCCity;
     NSString *FCZone;
     NSString *FCUserAddr;
+    NSString *FCStraddress;
     NSString *FCUserTel;
     NSString *FCShopName;
     NSString *FCUseridentify;
+    
+    int FCmodifytype;//1表示修改头像  2表示修改性别 3表示修改地址
     
 }
 @property(nonatomic,strong)NSString *FCelectricianid;
