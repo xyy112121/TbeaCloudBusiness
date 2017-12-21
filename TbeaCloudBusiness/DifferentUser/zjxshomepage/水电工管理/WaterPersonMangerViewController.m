@@ -78,7 +78,9 @@
 	tabviewheader.backgroundColor = [UIColor clearColor];
 	[self.view addSubview:tabviewheader];
 	[tabviewheader addSubview:[self searchbarview]];
-	[tabviewheader addSubview:[self viewselectitem:CGRectMake(0, 50, SCREEN_WIDTH, 40)]];
+    if(viewtop == nil)
+        viewtop = [self viewselectitem:CGRectMake(0, 50, SCREEN_WIDTH, 40)];
+	[tabviewheader addSubview:viewtop];
 }
 
 -(UIView *)searchbarview
@@ -86,7 +88,7 @@
 	UIView *viewsearch = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
 	viewsearch.backgroundColor = COLORNOW(0, 170, 238);
 	
-	SearchTextFieldView *searchtext = [[SearchTextFieldView alloc] initWithFrame:CGRectMake(40, 10, SCREEN_WIDTH-60, 30) Pastr:@"扫码返利查询"];
+	SearchTextFieldView *searchtext = [[SearchTextFieldView alloc] initWithFrame:CGRectMake(40, 10, SCREEN_WIDTH-60, 30) Pastr:@"水电工查询"];
 	searchtext.delegate1 = self;
 	[viewsearch addSubview:searchtext];
 	

@@ -31,7 +31,7 @@
 	[self.view addSubview:imageviewtopblue];
 
     [self searchinpuview];
-    
+    arrayselftemp = [[NSMutableArray alloc] init];
     NSFileManager *filemanger= [NSFileManager defaultManager];
 	if([filemanger fileExistsAtPath:SearchhotList])
 	{
@@ -42,16 +42,24 @@
 	{
 		arraydata = [[NSMutableArray alloc] init];
 	}
+    
+    for(int i=0;i<[arraydata count];i++)
+    {
+        NSDictionary *dictemp = [arraydata objectAtIndex:i];
+        if([[dictemp objectForKey:@"type"] isEqualToString:_FCSearchFromType])
+        {
+            [arrayselftemp addObject:dictemp];
+        }
+    }
+    
 	tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, StatusBarHeight+44, SCREEN_WIDTH, SCREEN_HEIGHT-(StatusBarHeight+44)) style:UITableViewStylePlain];
 	tableview.backgroundColor = [UIColor clearColor];
 	tableview.delegate = self;
 	tableview.dataSource = self;
 	[self.view addSubview:tableview];
 	[self setExtraCellLineHidden:tableview];
-//	[self gethotword];
-	
-	
-	if([arraydata count]>0)
+
+	if([arrayselftemp count]>0)
 	{
 		[self tablefootview:nil];
 	}
@@ -239,7 +247,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	// Return the number of rows in the section.
-	return [arraydata count];
+	return [arrayselftemp count];
 	
 }
 
@@ -261,9 +269,9 @@
 	
 	cell.backgroundColor = [UIColor whiteColor];
 	
-	NSString *strname = [arraydata objectAtIndex:indexPath.row];
+	NSDictionary *dictemp = [arrayselftemp objectAtIndex:indexPath.row];
 	UILabel *labeltitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, SCREEN_WIDTH-30, 20)];
-	labeltitle.text = strname;
+	labeltitle.text = [dictemp objectForKey:@"name"];
 	labeltitle.textColor = ColorBlackdeep;
 	labeltitle.font = FONTN(14.0f);
 	[cell.contentView addSubview:labeltitle];
@@ -274,9 +282,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSString *str = [arraydata objectAtIndex:indexPath.row];
+	NSDictionary *dictemp = [arrayselftemp objectAtIndex:indexPath.row];
 	SearchResultViewController *searresult = [[SearchResultViewController alloc] init];
-	searresult.FCsearchkeyword = str;
+	searresult.FCsearchkeyword = [dictemp objectForKey:@"name"];
 	searresult.FCSearchFromType = _FCSearchFromType;
 	[self.navigationController pushViewController:searresult animated:YES];
 	
@@ -289,8 +297,9 @@
 	int flag = 0;
 	for(int i=0;i<[arraydata count];i++)
 	{
-		NSString *str = [arraydata objectAtIndex:i];
-		if([str isEqualToString:sender])
+	//	NSString *str = [arraydata objectAtIndex:i];
+        NSDictionary *dictemp = [arraydata objectAtIndex:i];
+		if([[dictemp objectForKey:@"name"] isEqualToString:sender]&&[[dictemp objectForKey:@"type"] isEqualToString:_FCSearchFromType])
 		{
 			flag =1;
 			break;
@@ -299,12 +308,14 @@
 	
 	if(flag == 0)
 	{
-		if([arraydata count]>19)
+		if([arraydata count]>199)
 		{
 			[arraydata removeLastObject];
 		}
-		[arraydata addObject:sender];
-		
+        NSDictionary *dictemp = [[NSDictionary alloc] initWithObjectsAndKeys:sender,@"name",_FCSearchFromType,@"type", nil];
+		[arraydata addObject:dictemp];
+        [arrayselftemp addObject:dictemp];
+        
 		[arraydata writeToFile:SearchhotList atomically:NO];
 	}
 	
@@ -323,7 +334,9 @@
 	if([filemanger fileExistsAtPath:SearchhotList])
 	{
 		[filemanger removeItemAtPath:SearchhotList error:nil];
+        [arraydata removeAllObjects];
 		arraydata = [[NSMutableArray alloc] init];
+        [arrayselftemp removeAllObjects];
 		[tableview reloadData];
 	}
 }

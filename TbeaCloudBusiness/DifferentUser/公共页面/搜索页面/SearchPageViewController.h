@@ -14,6 +14,7 @@
 	NSMutableArray *arraydata;
 	NSArray *arrayhot;
 	UITableView *tableview;
+    NSMutableArray *arrayselftemp;
 }
 
 @property(nonatomic,strong)NSString *FCSearchFromType;

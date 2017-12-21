@@ -22,7 +22,7 @@
     
     //
     NSArray *FCarraydata;
-    
+    UIView *viewtop;
     //
     NSString *FCorderid;
     NSString *FCorderitem;

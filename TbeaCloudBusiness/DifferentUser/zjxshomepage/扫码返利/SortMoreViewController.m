@@ -175,7 +175,7 @@
 {
     SearchPageViewController *searchpage = [[SearchPageViewController alloc] init];
     UINavigationController *nctl = [[UINavigationController alloc] initWithRootViewController:searchpage];
-    searchpage.FCSearchFromType = @"all";
+    searchpage.FCSearchFromType = @"scanrebate";
     [self.navigationController presentViewController:nctl animated:YES completion:nil];
 }
 

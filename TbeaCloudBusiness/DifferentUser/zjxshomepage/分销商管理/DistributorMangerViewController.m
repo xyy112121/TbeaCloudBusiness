@@ -58,7 +58,7 @@
     FCordermoney = @"";
     FCSelectDropListItem = 0;
     
-    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, SCREEN_HEIGHT-StatusBarAndNavigationHeight-40-IPhone_SafeBottomMargin)];
+    tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 90, SCREEN_WIDTH, SCREEN_HEIGHT-90-IPhone_SafeBottomMargin-StatusBarAndNavigationHeight)];
     tableview.backgroundColor = [UIColor clearColor];
     [self.view addSubview:tableview];
     [self addtabviewheader];
@@ -79,10 +79,25 @@
 
 -(void)addtabviewheader
 {
-    UIView *tabviewheader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
+    UIView *tabviewheader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 90)];
     tabviewheader.backgroundColor = [UIColor clearColor];
     [self.view addSubview:tabviewheader];
-    [tabviewheader addSubview:[self viewselectitem:CGRectMake(0, 0, SCREEN_WIDTH, 40)]];
+    [tabviewheader addSubview:[self searchbarview]];
+    if(viewtop == nil)
+        viewtop = [self viewselectitem:CGRectMake(0, 50, SCREEN_WIDTH, 40)];
+    [tabviewheader addSubview:viewtop];
+}
+
+-(UIView *)searchbarview
+{
+    UIView *viewsearch = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
+    viewsearch.backgroundColor = COLORNOW(0, 170, 238);
+    
+    SearchTextFieldView *searchtext = [[SearchTextFieldView alloc] initWithFrame:CGRectMake(40, 10, SCREEN_WIDTH-60, 30) Pastr:@"分销商查询"];
+    searchtext.delegate1 = self;
+    [viewsearch addSubview:searchtext];
+    
+    return viewsearch;
 }
 
 //选择经销商的时候进行时间选择
@@ -223,6 +238,14 @@
 }
 
 #pragma mark ActionDelegate
+-(void)DGClickGoToSearch:(id)sender
+{
+    SearchPageViewController *searchpage = [[SearchPageViewController alloc] init];
+    UINavigationController *nctl = [[UINavigationController alloc] initWithRootViewController:searchpage];
+    searchpage.FCSearchFromType = @"distributor";
+    [self.navigationController presentViewController:nctl animated:YES completion:nil];
+}
+
 -(void)DGSelectDateHourSecondDone:(NSString *)starttime EndTime:(NSString *)endtime
 {
     

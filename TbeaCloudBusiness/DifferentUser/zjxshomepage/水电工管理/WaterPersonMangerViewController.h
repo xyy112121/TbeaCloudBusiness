@@ -31,6 +31,8 @@
 	AndyDropDownList *andydroplist;
 	NSMutableArray *arrayselectitem;
 	int flagnow; //表明当前的是否显示
+    
+    UIView *viewtop;
 	
 }
 @property(nonatomic,strong)NSString *FCzjxid;
